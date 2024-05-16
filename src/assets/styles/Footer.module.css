@@ -1,0 +1,35 @@
+.footer1 {
+    background-color: #343536;
+    padding: 25px 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer1 a{
+    color: white;
+    background-color: #343536;
+    text-decoration: none;
+}
+.footer1 a:hover{
+    color: #EFF6E0;
+    background-color: #343536;
+    text-decoration: underline;
+}
+.footer1 p {
+    font-size: 1.2em;
+    color: white;
+}   
+.footer1 .social  img {
+    padding-top: 15px
+}
+
+@media screen and (max-width: 600px) {
+    
+    nav, .footer1 {
+        flex-direction: column;
+    }
+    .footer1 {
+        margin-top: 25px;
+    }
+  }
