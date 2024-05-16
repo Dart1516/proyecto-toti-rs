@@ -1,16 +1,16 @@
-import logo from '../assets/images/logo.svg';
+import React from "react";
 import Header from "../Components/Header-NavMenu";
 import '../assets/styles/App.css';
 
-function Demo() {
+
+function Principal() {
   return (
     <div className="App">
       <header className="App-header">
         <Header/>
       </header>
-      <body className="App-body">
-      <img src={logo} className="App-logo" alt="logo" />
-       <h2>Demo</h2>
+      <body >
+        <h2> Iniciar Sessaõ       </h2>
         <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel volutpat orci. Nullam non pulvinar nibh, quis ultrices urna. Vestibulum magna est, sodales eget aliquet a, tincidunt sed magna. Donec dui lacus, efficitur at leo nec, dignissim ultrices nunc. Donec non ligula orci. Vivamus ut placerat felis. Ut elit libero, ullamcorper sit amet venenatis et, auctor sed diam. Cras nec est sagittis, tempor ante sed, imperdiet ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.
 
@@ -23,20 +23,15 @@ Curabitur tempus lacus vitae nulla iaculis viverra. Nunc non volutpat neque, sit
 Cras purus dolor, efficitur et tellus id, ultrices aliquet dui. Curabitur rutrum magna vitae libero rutrum, eu viverra nulla molestie. Vestibulum sagittis erat sed turpis volutpat condimentum. Pellentesque aliquam ligula dolor, eget varius arcu interdum nec. Nulla sit amet enim purus. Etiam auctor feugiat velit. Duis pharetra nulla id egestas ultricies. Phasellus rhoncus tempor tincidunt. Morbi at suscipit nisl, a dapibus nulla. Maecenas mi mi, convallis eget metus a, faucibus convallis leo. In in facilisis ex. Duis vitae turpis dictum, fermentum nunc vel, tristique tortor. Cras lacinia magna dui, ac convallis arcu vestibulum vel. Maecenas id posuere mauris, sed vehicula ipsum.
 
 
+
         </p>
         
-        
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </body>
+      <footer>
+
+      </footer>
     </div>
   );
 }
 
-export default Demo;
+export default Principal;

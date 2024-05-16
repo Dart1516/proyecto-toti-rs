@@ -20,14 +20,19 @@ function HeaderAndMenu() {
               </Link>
             </li>
             <li>
-              <Link to="/Principal" className="menu-option-name">
-                Página 2
+              <Link to="/AboutUs" className="menu-option-name">
+                Sobre Nós
               </Link>
             </li>
             {/* Coloca la opción 3 a la derecha */}
             <li className="menu-option-right">
-              <Link to="/Principal" className="menu-option-name">
-                Página 3
+              <Link to="/JoinUs" className="menu-option-name">
+                Seja Voluntario
+              </Link>
+            </li>
+            <li className="menu-option-right">
+              <Link to="/Login" className="menu-option-name">
+                Iniciar Sessão
               </Link>
             </li>
           </ul>
