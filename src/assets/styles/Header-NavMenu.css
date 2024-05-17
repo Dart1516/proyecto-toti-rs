@@ -1,6 +1,5 @@
 
-
-/* ----- Header  desktop view -----*/
+/* ----- Barra de navegación -----*/
 
 .contenedor_de_opciones {
     display: flex;
@@ -14,15 +13,17 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 2px; /* Altura de la línea */
+    height: 2 px; /* Altura de la línea */
     background-color: #00909e; /* Color de la línea */
 }
 
 .opciones-izquiera{
     position: left;
+    margin-top: -10px;
+    margin-bottom: -10px;
 }
 .opciones-izquiera,
-.opciones-derecha { /*navigation bar color*/
+.opciones-derecha { 
     list-style: none;
     display: flex;
     align-items: center;
@@ -44,12 +45,12 @@
 
 
 /* Estilos para el contenedor de cada opción en hover */
-.opciones-izquiera li:hover,
+.opciones-izquiera li:not(:first-child):hover,
 .opciones-derecha li:hover {
   background-color: #00909e; /* Cambia el color de fondo al pasar el cursor */
   color: white; /* Cambia el color del texto al pasar el cursor */
   cursor: pointer; /* Cambia el cursor al pasar el cursor sobre el contenedor */
-padding: 5px;
+  padding: 5px;
   border-radius: 19px;
 }
 
@@ -69,9 +70,56 @@ padding: 5px;
     margin-left: -10%; /* Establece un margen derecho automático para mover el primer elemento hacia la izquierda */
   }
 /* ----- END desktop view ----- */
+/* ----- Ocultar el primer div para el boton de mobile ----- */
+header nav div{
+    display: none;
+}
+/* ----- Ocultar el primer div para el boton de mobile ----- */
 
-
+/*
 
 *{
     border: solid green 2px ;
 }
+*/
+
+/*Para el telefono*/
+@media screen and (max-width: 768px) {
+    .contenedor_de_opciones {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 100vh; /* Ajusta el tamaño del menú para ocupar toda la pantalla */
+      position: fixed; /* Fija el menú en la pantalla */
+      top: 0;
+      left: 0;
+      background-color: white; /* Cambia el color de fondo si es necesario */
+      z-index: 1000; /* Asegúrate de que el menú esté por encima de otros elementos */
+      transform: translateX(-100%); /* Oculta el menú fuera de la pantalla por defecto */
+      transition: transform 0.3s ease-in-out; /* Agrega una transición suave al abrir/cerrar el menú */
+    }
+  
+    .contenedor_de_opciones.open {
+      transform: translateX(0); /* Muestra el menú al abrir */
+    }
+  
+    /* Ajusta el estilo del botón de menú como desees */
+    .menu-button {
+      font-size: 2.5rem;
+      background-color: transparent;
+      margin-right: 5%;
+    }
+  
+    .menu-button.open::before {
+      content: "X";
+      color: black;
+    }
+  
+    .menu-button::before {
+      content: "☰";
+      color: black;
+    }
+  }
+  
