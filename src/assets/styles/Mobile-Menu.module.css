@@ -1,8 +1,13 @@
+
 .Hamburger-menu-icon {
     display: none; /* Inicialmente oculto en pantallas más grandes */
   }
   
   @media only screen and (max-width: 768px) {
+    .contenedor_de_opciones {
+      display: none;
+    
+  }
     .Hamburger-menu-icon {
       display: flex;
       flex-direction: column;
