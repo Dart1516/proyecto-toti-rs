@@ -6,7 +6,7 @@ import '../assets/styles/App.css';
 function Principal() {
   return (
     <div className="App">
-      <header className="App-header">
+      <header   >
         <Header/>
       </header>
       <body >

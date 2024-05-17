@@ -1,211 +1,77 @@
-/* ----- Start of main code -----*/
 
-/* ----- End of main code  ----- */
 
-/* ----- Header -----*/
-header {
+/* ----- Header  desktop view -----*/
+
+.contenedor_de_opciones {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    position: relative; /* Establece la posición relativa para el contenedor */
 }
 
-/* Estilos para el navbar-header */
-.navbar-header {
-    display: flex;
-    align-items: center; /* Alinea los elementos verticalmente */
+.contenedor_de_opciones:hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px; /* Altura de la línea */
+    background-color: #00909e; /* Color de la línea */
 }
-header span{
-    display: none;
+
+.opciones-izquiera{
+    position: left;
 }
-/* ----- End of Header -----*/
-
-
-
-/* ----- things that affect both, mobile and desktop view ----- */
-#mobile-menu { /* to hide the borders and a space that appear*/
-    border: none;
-    padding: 0;
-}
-.navigation-menu-bar { /*navigation bar color*/
+.opciones-izquiera,
+.opciones-derecha { /*navigation bar color*/
     list-style: none;
-    padding: 0;
-    margin: 0;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    
 }
 
-.navigation-menu-bar li { /*text of navigation bar*/
-    flex: 1;
-    text-align: center;
-    padding: 10px;
-    background-color: #93cadf;
-    
-    border-style: solid;  
-    border-radius: 20px; 
-    padding: 20px;
-}
-.navigation-menu-bar li a {
-    color: black;
-    font-weight: 700;
-    text-decoration: none; /* Quita la subrayado del enlace */
-    transition: color 0.3s; /* Transición suave para el cambio de color del texto */
-    
+
+.opciones-derecha li {
+  margin-right: 20px; /* Añade espacio entre los elementos de la lista */
 }
 
-.navigation-menu-bar li:hover { /* hover of navigation */
-    background-color: #00909e; 
+.opciones-izquiera li a,
+.opciones-derecha li a {
+  text-decoration: none; /* Quita el subrayado del enlace */
+  color: black;
+  font-weight: 700;
+  transition: color 0.3s; /* Transición suave para el cambio de color del texto */
+  padding: 10px;
 }
 
-.navigation-menu-bar li a:hover {
-    color: #a38288; /* text hover */
 
+/* Estilos para el contenedor de cada opción en hover */
+.opciones-izquiera li:hover,
+.opciones-derecha li:hover {
+  background-color: #00909e; /* Cambia el color de fondo al pasar el cursor */
+  color: white; /* Cambia el color del texto al pasar el cursor */
+  cursor: pointer; /* Cambia el cursor al pasar el cursor sobre el contenedor */
+padding: 5px;
+  border-radius: 19px;
 }
 
-/* ----- things that affect both, mobile and desktop view-----  */
+/* ----- logo view ----- */
 
-/* ----- desktop view ----- */
 .home-logo {
-    width: 50%;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-    margin: -10%;
-}
-
-
-.logoMobile img{
-    display: none;
-}
-.dark-mode-logo {
-    display: none;
-}
-.menu-option-logo {
     font-size: 0; /* Hace que el texto sea invisible */
+    width: auto; /* Establece el ancho automático para ajustarse al tamaño del contenido */
+    width: 10px; /* Ajusta el ancho del logo */
 }
+.home-logo img {
+    width: 80px; /* Ajusta el ancho del logo */
+ 
+}
+
+.opciones-izquiera li:first-child {
+    margin-left: -10%; /* Establece un margen derecho automático para mover el primer elemento hacia la izquierda */
+  }
 /* ----- END desktop view ----- */
 
 
 
-.menu-option-right {
-  margin-left: auto; /* Empuja el elemento hacia la derecha */
-}
-.menu-option-right {
-    margin-left: auto; /* Empuja el elemento hacia la derecha */
-  }
-
-@media screen and (max-width: 768px) {
-
-    header div{
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-    }
-    .dark-mode-logo {
-        display: flex;
-        max-width: 100px; /* Máximo ancho permitido */
-        max-height: 100px; /* Máximo alto permitido */
-        margin-right: -25PX;
-    }
-
-    .logo-mobile img {
-        display: flex;
-        margin-left: 5%;
-        max-width: 100px; /* Máximo ancho permitido */
-        max-height: 100px; /* Máximo alto permitido */
-    }
-
-    #mobile-menu {
-        font-size: 2.5rem;
-        background-color: transparent;
-        margin-right: 5%;
-    }
-
-    #mobile-menu.open::before {
-        content: "X";
-        color: black;
-    }
-    #mobile-menu::before {
-        content: "☰";
-        color: black;
-    }
-    .navigation-menu-bar { /*navigation bar color*/
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
-}
-
-.navigation-menu-bar li {
-    background-color: inherit; 
-    text-decoration: none; /* Quita la subrayado del enlace */
-    border: inherit;
-}
-
-.navigation-menu-bar li:hover { /* hover of navigation */
-    background-color: inherit; 
-}
-
-.navigation-menu-bar li a:hover {
-    color:inherit; /* text hover */
-
-}
-
-
-.navigation-menu-bar li a {
-    color: black;
-    font-weight: 700;
-    text-decoration: none; /* Quita la subrayado del enlace */
-    transition: color 0.3s; /* Transición suave para el cambio de color del texto */
-    font-size: x-large;
-    background-color: #93cadf;
-    border-style: solid;  
-    border-radius: 20px; 
-    padding: 20px;
-    display: inline-block;
-    width: 80%;
-    
-}
-
-.navigation-menu-bar li:hover a{ /* hover of navigation */
-    background-color: #00909e; 
-}
-
-    /*hide the desktop menu on mobile*/
-    .navigation-menu-bar {
-        display: none;
-    }
-    .open {
-        display: block;
-    }
-
-    /*remove the  desktop logos*/
-    .dark-mode-button-on-desktop,
-    .navigation-menu-bar>li>a>img {
-        display: none;
-    }
-    footer {
-        grid-template-columns: 2fr repeat(auto-fit, minmax(180px, 1fr)); /* La primera columna toma 2fr */
-    }
-    .menu-option-logo {
-        font-size: 16px; /* Hace que el texto sea invisible */
-    }
-
-
-}
-
-
-@media (max-width: 767px) { /* Cambios para tamaños de pantalla de teléfono */
-    footer {
-        grid-template-columns: 1fr; /* Cambia a una columna en pantallas pequeñas */
-    }
-    footer div a img{
-        width: 50px;
-        height: 50px;
-    }
-
+*{
+    border: solid green 2px ;
 }

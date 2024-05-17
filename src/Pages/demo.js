@@ -5,7 +5,7 @@ import '../assets/styles/App.css';
 function Demo() {
   return (
     <div className="App">
-      <header className="App-header">
+      <header >
         <Header/>
       </header>
       <body className="App-body">
