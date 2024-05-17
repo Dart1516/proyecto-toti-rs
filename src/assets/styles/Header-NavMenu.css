@@ -4,17 +4,7 @@
 .contenedor_de_opciones {
     display: flex;
     justify-content: space-between;
-    position: relative; /* Establece la posición relativa para el contenedor */
-}
-
-.contenedor_de_opciones:hover::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2 px; /* Altura de la línea */
-    background-color: #00909e; /* Color de la línea */
+   
 }
 
 .opciones-izquierda{
@@ -22,6 +12,7 @@
     margin-top: -10px;
     margin-bottom: -10px;
 }
+
 .opciones-izquierda,
 .opciones-derecha { 
     list-style: none;
@@ -63,29 +54,22 @@
 }
 .home-logo img {
     width: 80px; /* Ajusta el ancho del logo */
- 
 }
 
 .opciones-izquierda li:first-child {
     margin-left: -10%; /* Establece un margen derecho automático para mover el primer elemento hacia la izquierda */
   }
 /* ----- END desktop view ----- */
-/* ----- Ocultar el primer div para el boton de mobile ----- */
-header nav div{
-    display: none;
-}
-/* ----- Ocultar el primer div para el boton de mobile ----- */
 
-/*
 
-*{
-    border: solid green 2px ;
-}
-*/
 
-/*Para el telefono*/
+/*Para el ocultar este menu cuando este en modo teléfono*/
   @media only screen and (max-width: 768px) {
     .contenedor_de_opciones {
       display: none;
     
   }}
+/*
+*{
+    border: solid green 2px ;
+}*/

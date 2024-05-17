@@ -1,23 +1,17 @@
 import React, { useState } from "react";
 import logo from "../assets/images/logos/logo1.png";
 import "../assets/styles/Header-NavMenu.css";
-import mobileStyles from "../assets/styles/Mobile-Menu.module.css";
+import MobileMenu from "../Components/Mobile-Menu";
 import { Link } from "react-router-dom";
 
 function HeaderAndMenu() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+
   return (
     <div>
       <header>
+        <MobileMenu/>
         {/* Icono del menú hamburguesa */}
-        <div className={mobileStyles["Hamburger-menu-icon"]} onClick={toggleMenu}>
-          <div className={menuOpen ? "open" : ""}></div>
-          <div className={menuOpen ? "open" : ""}></div>
-          <div className={menuOpen ? "open" : ""}></div>
-        </div>
+
         <nav className="contenedor_de_opciones">
           <ul className="opciones-izquierda">
             <li>
@@ -50,38 +44,7 @@ function HeaderAndMenu() {
           </ul>
         </nav>
       </header>
-      {/* Contenido Mobile */}
-      {menuOpen && (
-        <div className={mobileStyles["Mobile-menu"]}>
-          <ul>
-            <li>
-              <Link to="/Principal" className="home-logo">
-                <img className="home-logo" src={logo} alt="Home Logo" /> Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/Demo" className="menu-option-name">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/AboutUs" className="menu-option-name">
-                Sobre Nós
-              </Link>
-            </li>
-            <li className="menu-option-right">
-              <Link to="/JoinUs" className="menu-option-name">
-                Seja Voluntario
-              </Link>
-            </li>
-            <li className="menu-option-right">
-              <Link to="/Login" className="menu-option-name">
-                Login
-              </Link>
-            </li>
-          </ul>
-        </div>
-      )}
+
     </div>
   );
 }
