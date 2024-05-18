@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import logo from "../assets/images/logos/logo1.png";
 import mobileStyles from "../assets/styles/Mobile-Menu.module.css";
 import { Link } from "react-router-dom";
 import { IoMenu, IoCloseOutline } from "react-icons/io5";
@@ -14,10 +13,9 @@ function MobileMenu() {
         {/* Header */}
         <nav className={mobileStyles["mobile-header"]}>
           <div className={mobileStyles["logo-y-titulo-a-la-izquierda"]}>
-            <Link to="/Principal" className={mobileStyles["Mobile-home-logo"]}>
-              <img className={mobileStyles["Mobile-home-logo"]} src={logo} alt="Home Logo" />
+            <Link to="/Principal" className={mobileStyles["home-logo"]}>
             </Link>
-            <span className={mobileStyles["company-name"]}>Nombre de la Página</span>
+            <span className={mobileStyles["company-name"]}>nombre de la página</span>
           </div>
           {/* Icono del menú hamburguesa */}
           <div className={mobileStyles["Hamburger-menu-icon"]} onClick={toggleMenu}>

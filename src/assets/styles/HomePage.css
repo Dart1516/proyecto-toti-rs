@@ -7,17 +7,15 @@
     --color4: #3969C8;
 }
 
+/*Body*/
+
 body {
     background-color: var(--color3);
     font-family: 'Jost Font';
     width: 100vw;
 }
 
-.web {
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-}
+/*Bloque Principal*/
 
 .main {
     display: flex;
@@ -25,12 +23,14 @@ body {
     justify-content: center;
     gap: 10%;
     width: inherit;
-    height: 600px;
+    padding-top: 150px;
 }
 
 .main img {
     filter: drop-shadow(2px 4px 6px var(--color4));
 }
+
+/*Texto*/
 
 .text-home {
     display: flex;
@@ -61,20 +61,70 @@ body {
     color: var(--color3);
 }
 
-h1 {
+/*Titulos*/
+
+.main h1 {
     text-transform: uppercase;
     font-size: 44px;
     margin: 0;
     color: var(--color4);
 }
 
-h2 {
+.main h2 {
     text-transform: uppercase;
     margin: 0;
     color: var(--color4);
 }
 
-h3 {
+.main h3 {
     text-transform: capitalize;
     color: var(--color4);
+}
+
+/*Mobile*/
+@media only screen and (max-width: 1040px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .main {
+        padding-top: 60px;
+        flex-direction: column;
+    }}
+
+    .main h1 {
+        font-size: 70px;
+    }
+
+    .text-home {
+        font-size: 24px;
+    }
+
+    .titulo-home {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+@media only screen and (max-width: 460px) { 
+
+    .main {
+        max-width: 100%;
+    }
+
+    .text-home {
+        max-width: 100%;
+    }
+
+    .sub-text-home {
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        align-items: center;
+        min-width: 100%;
+    }
+
+    .sub-text-home a {
+        width: 50%;
+    }
 }

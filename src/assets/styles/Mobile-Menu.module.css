@@ -1,18 +1,43 @@
+/*Colores*/
+
+:root {
+  --color1: #3498db;
+  --color2: #98C9F4;
+  --color3: #F2F2F2;
+  --color4: #3969C8;
+}
+
 .Hamburger-menu-icon {
   display: none;
   /* Inicialmente oculto en pantallas más grandes */
 }
 
 .mobile-header {
-  display: flex;
-  justify-content: space-between;
+  display: none;
+  justify-content: space-around;
   align-items: center;
-  padding: 10px;
+  z-index: 40;
+  width: 100%;
+  background-color: var(--color3);
+  position: fixed;
+  border-bottom: var(--color4) 3px solid;
 }
 
 .logo-y-titulo-a-la-izquierda {
   display: flex;
   align-items: center;
+  gap: 25px;
+}
+
+.home-logo {
+  display: block;
+  background-image: url(/src/assets/images/logos/logo1.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 51px;
+  height: 51px;
+  border-radius: 50%;
 }
 
 .company-name {
@@ -23,73 +48,86 @@
   display: none;
 }
 
+
+.Mobile-menu ul {
+  display: none;
+}
+
 @media only screen and (max-width: 768px) {
+  .mobile-header {
+    display: flex;
+  }
+  
   .company-name {
     display: flex;
-    font-size: 1.5em;
-    margin-left: 10px;
+    font-size: 20px;
     font-weight: bold;
-  }
-
-  .Mobile-home-logo {
-    display: flex;
-    font-size: 1.5em;
-    margin-left: 10px;
-    font-weight: bold;
-    width: 80px;
+    padding: 15px;
+    text-transform: uppercase;
+    color: var(--color4);
   }
 
   .Hamburger-menu-icon {
     display: flex;
     flex-direction: column;
     cursor: pointer;
+    color: var(--color4);
     padding: 10px;
   }
 
   .Mobile-menu {
     position: absolute;
-    align-items: center;
-    background-color: #fff;
-    padding-left: 35%;
-    padding-right: 35%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background-color: var(--color3);
+    width: 490px;
     z-index: 10; /* Ensure it is above the overlay */
+    top: 51px; /*misma medida que height de header-menu*/
+    right: 0; /*colocado a la derecha*/
   }
 
   .Mobile-menu ul {
+    display: flex;
+    flex-direction: column;
     list-style-type: none;
+    margin: 0;
     padding: 0;
-  }
-
-  .Mobile-menu ul li {
-    margin-bottom: 10px;
   }
 
   .Mobile-menu ul li a {
     text-decoration: none;
-    color: #333;
+    color: var(--color4);
     display: block;
-    padding: 10px;
-    transition: color 0.3s, background-color 0.3s; /* Transición suave para el cambio de color del texto */
+    padding: 25px;
+    transition: 0.3s; /* Transición suave para el cambio de color del texto */
   }
 
   .Mobile-menu ul li a:hover,
   .Mobile-menu ul li a:active {
-    background-color: #00909e; /* Cambia el color de fondo al pasar el cursor */
-    color: white; /* Cambia el color del texto al pasar el cursor */
+    background-color: var(--color1); /* Cambia el color de fondo al pasar el cursor */
+    color: var(--color3); /* Cambia el color del texto al pasar el cursor */
     cursor: pointer; /* Cambia el cursor al pasar el cursor sobre el contenedor */
-    border-radius: 5px;
   }
 
   .overlay {
     position: fixed;
-    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
-    backdrop-filter: blur(5px); /* Efecto de desenfoque */
+    backdrop-filter: blur(4px); /* Efecto de desenfoque */
     z-index: 5; /* Ensure it is below the menu */
+  }
+}
+
+@media only screen and (max-width: 490px) {
+  .Mobile-menu {
+    width: 100%;
+  }
+
+  .mobile-header {
+    height: 54.8px;
+  }
+
+  .home-logo {
+    min-width: 51px;
   }
 }

@@ -12,12 +12,10 @@ function HeaderAndMenu() {
         {/* Icono del menú hamburguesa */}
 
         <nav className="contenedor_de_opciones">
+          <div className="logo-opciones">
+          <Link to="/Principal" className="home-logo">
+          </Link>
           <ul className="opciones-izquierda">
-            <li>
-              <Link to="/Principal" className="home-logo">
-                <img className="home-logo" src={logo} alt="Home Logo" /> Home
-              </Link>
-            </li>
             <li>
               <Link to="/Demo" className="menu-option-name">
                 Home
@@ -29,6 +27,7 @@ function HeaderAndMenu() {
               </Link>
             </li>
           </ul>
+          </div>
           <ul className="opciones-derecha">
             <li className="menu-option-right">
               <Link to="/JoinUs" className="menu-option-name">
