@@ -9,7 +9,7 @@
 
 /*esto es para que se vea el header en cada página si no usan el header entonces eliminar */
 h2{
-  padding-top: 10%;
+  padding-top: 50px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
