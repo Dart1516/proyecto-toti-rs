@@ -1,17 +1,18 @@
 {
   "files": {
-    "main.css": "/proyecto-toti-rs/static/css/main.e9fe882e.css",
-    "main.js": "/proyecto-toti-rs/static/js/main.ffd38e10.js",
+    "main.css": "/proyecto-toti-rs/static/css/main.4121a083.css",
+    "main.js": "/proyecto-toti-rs/static/js/main.82bb42f9.js",
     "static/js/453.8c6c71f4.chunk.js": "/proyecto-toti-rs/static/js/453.8c6c71f4.chunk.js",
+    "static/media/home.svg": "/proyecto-toti-rs/static/media/home.c58a885eaf51e477338220905559dffc.svg",
     "static/media/logo1.png": "/proyecto-toti-rs/static/media/logo1.a1929ce94b60a4cca9c0.png",
     "static/media/logo.svg": "/proyecto-toti-rs/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/proyecto-toti-rs/index.html",
-    "main.e9fe882e.css.map": "/proyecto-toti-rs/static/css/main.e9fe882e.css.map",
-    "main.ffd38e10.js.map": "/proyecto-toti-rs/static/js/main.ffd38e10.js.map",
+    "main.4121a083.css.map": "/proyecto-toti-rs/static/css/main.4121a083.css.map",
+    "main.82bb42f9.js.map": "/proyecto-toti-rs/static/js/main.82bb42f9.js.map",
     "453.8c6c71f4.chunk.js.map": "/proyecto-toti-rs/static/js/453.8c6c71f4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e9fe882e.css",
-    "static/js/main.ffd38e10.js"
+    "static/css/main.4121a083.css",
+    "static/js/main.82bb42f9.js"
   ]
 }
