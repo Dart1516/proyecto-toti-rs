@@ -5,6 +5,7 @@ import Principal from "./Pages/HomePage";
 import AboutUs from "./Pages/AboutUs";
 import JoinUs from "./Pages/JoinUs";
 import Login from "./Pages/Login";
+import NewAccount from "./Pages/NewAccount";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/JoinUs" element={<JoinUs />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/NewAccount" element={<NewAccount />} />
         {/* Ruta predeterminada */}
         <Route path="/*" element={<Navigate to="/Principal" />} />
       </Routes>

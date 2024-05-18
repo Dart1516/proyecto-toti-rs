@@ -10,7 +10,6 @@ function HeaderAndMenu() {
     <div>
        <MobileMenu/>
         {/* Icono del menú hamburguesa */}
-
         <nav className="contenedor_de_opciones">
           <div className="menu-left">
           <Link to="/Principal" className="home-logo">
@@ -33,6 +32,11 @@ function HeaderAndMenu() {
             <li className="menu-option-right">
               <Link to="/JoinUs" className="menu-option-name">
                 Seja Voluntario
+              </Link>
+            </li>
+            <li className="menu-option-right">
+              <Link to="/NewAccount" className="menu-option-name">
+                Cadastre-se
               </Link>
             </li>
             <li className="menu-option-right">
