@@ -1,20 +1,16 @@
-/*Colores*/
-
-:root {
-  --color1: #3498db;
-  --color2: #98C9F4;
-  --color3: #F2F2F2;
-  --color4: #3969C8;
-}
 
 /* ----- Barra de navegación -----*/
 
 .contenedor_de_opciones {
     display: flex;
-    justify-content: space-around;
-    border-bottom: var(--color4) 3px solid;
-    position: fixed;
-    width: 100%;
+    justify-content: space-between;
+   
+}
+
+.opciones-izquierda{
+    position: left;
+    margin-top: -10px;
+    margin-bottom: -10px;
 }
 
 .opciones-izquierda,
@@ -24,42 +20,45 @@
     align-items: center;
 }
 
+
+.opciones-derecha li {
+  margin-right: 20px; /* Añade espacio entre los elementos de la lista */
+}
+
 .opciones-izquierda li a,
 .opciones-derecha li a {
   text-decoration: none; /* Quita el subrayado del enlace */
-  color: var(--color4);
+  color: black;
   font-weight: 700;
-  transition: 0.2s; /* Transición suave para el cambio de color del texto */
-  font-size: 20px;
-  padding: 15px;
+  transition: color 0.3s; /* Transición suave para el cambio de color del texto */
+  padding: 10px;
 }
 
 
 /* Estilos para el contenedor de cada opción en hover */
-.opciones-izquierda li a:hover,
-.opciones-derecha li a:hover { /* Cambia el color de fondo al pasar el cursor */
-  color: var(--color3); /* Cambia el color del texto al pasar el cursor */
+.opciones-izquierda li:not(:first-child):hover,
+.opciones-derecha li:hover {
+  background-color: #00909e; /* Cambia el color de fondo al pasar el cursor */
+  color: white; /* Cambia el color del texto al pasar el cursor */
   cursor: pointer; /* Cambia el cursor al pasar el cursor sobre el contenedor */
-  background-color: var(--color1);
+  padding: 5px;
+  border-radius: 19px;
 }
 
 /* ----- logo view ----- */
 
-.logo-opciones {
-  display: flex;
-}
-
 .home-logo {
-  display: block;
-  background-image: url(/src/assets/images/logos/logo1.png);
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 51px;
-  height: 51px;
-  border-radius: 50%;
+    font-size: 0; /* Hace que el texto sea invisible */
+    width: auto; /* Establece el ancho automático para ajustarse al tamaño del contenido */
+    width: 10px; /* Ajusta el ancho del logo */
+}
+.home-logo img {
+    width: 80px; /* Ajusta el ancho del logo */
 }
 
+.opciones-izquierda li:first-child {
+    margin-left: -10%; /* Establece un margen derecho automático para mover el primer elemento hacia la izquierda */
+  }
 /* ----- END desktop view ----- */
 
 
