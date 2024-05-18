@@ -8,8 +8,7 @@ function HeaderAndMenu() {
 
   return (
     <div>
-      <header>
-        <MobileMenu/>
+       <MobileMenu/>
         {/* Icono del menú hamburguesa */}
 
         <nav className="contenedor_de_opciones">
@@ -43,8 +42,6 @@ function HeaderAndMenu() {
             </li>
           </ul>
         </nav>
-      </header>
-
     </div>
   );
 }
