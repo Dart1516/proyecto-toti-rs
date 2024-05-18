@@ -1,18 +1,37 @@
+/*Colores*/
+
+:root {
+  --color1: #3498db;
+  --color2: #98C9F4;
+  --color3: #F2F2F2;
+  --color4: #3969C8;
+}
+
 .Hamburger-menu-icon {
   display: none;
   /* Inicialmente oculto en pantallas más grandes */
 }
 
 .mobile-header {
-  display: flex;
-  justify-content: space-between;
+  z-index: 50;
+  display: none;
   align-items: center;
-  padding: 10px;
+    position: fixed;
+    width: 100%;
+    margin: 0;
+    justify-content: space-around;
+    border-bottom: var(--color4) 3px solid;
+    background-color: var(--color3);
+}
+
+.Mobile-menu ul {
+  display: none;
 }
 
 .logo-y-titulo-a-la-izquierda {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
 .company-name {
@@ -24,19 +43,28 @@
 }
 
 @media only screen and (max-width: 768px) {
+
+  .mobile-header {
+    display: flex;
+  }
+
   .company-name {
     display: flex;
-    font-size: 1.5em;
-    margin-left: 10px;
+    font-size: 20px;
     font-weight: bold;
+    color: var(--color4);
+    text-transform: uppercase;
   }
 
   .Mobile-home-logo {
-    display: flex;
-    font-size: 1.5em;
-    margin-left: 10px;
-    font-weight: bold;
-    width: 80px;
+  display: block;
+  background-image: url(/src/assets/images/logos/logo1.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 51px;
+  height: 51px;
+  border-radius: 50%;
   }
 
   .Hamburger-menu-icon {
@@ -44,42 +72,43 @@
     flex-direction: column;
     cursor: pointer;
     padding: 10px;
+    color: var(--color4);
   }
 
   .Mobile-menu {
+    margin-top: 53.4px;
+    right: 0;
+    display: flex;
     position: absolute;
     align-items: center;
-    background-color: #fff;
-    padding-left: 35%;
-    padding-right: 35%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background-color: var(--color3);
     z-index: 10; /* Ensure it is above the overlay */
   }
 
   .Mobile-menu ul {
+    display: flex;
+    flex-direction: column;
     list-style-type: none;
+    margin: 0;
+    width: 460px;
     padding: 0;
-  }
-
-  .Mobile-menu ul li {
-    margin-bottom: 10px;
   }
 
   .Mobile-menu ul li a {
     text-decoration: none;
-    color: #333;
+    color: var(--color4);
     display: block;
-    padding: 10px;
-    transition: color 0.3s, background-color 0.3s; /* Transición suave para el cambio de color del texto */
+    margin: 0;
+    width: 100%;
+    padding: 25px 0px;
+    transition: 0.3s; /* Transición suave para el cambio de color del texto */
   }
 
   .Mobile-menu ul li a:hover,
   .Mobile-menu ul li a:active {
-    background-color: #00909e; /* Cambia el color de fondo al pasar el cursor */
-    color: white; /* Cambia el color del texto al pasar el cursor */
+    background-color: var(--color4); /* Cambia el color de fondo al pasar el cursor */
+    color: var(--color3); /* Cambia el color del texto al pasar el cursor */
     cursor: pointer; /* Cambia el cursor al pasar el cursor sobre el contenedor */
-    border-radius: 5px;
   }
 
   .overlay {

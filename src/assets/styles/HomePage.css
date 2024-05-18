@@ -25,7 +25,7 @@ body {
     justify-content: center;
     gap: 10%;
     width: inherit;
-    height: 600px;
+    padding-top: 140px;
 }
 
 .main img {
@@ -37,6 +37,12 @@ body {
     flex-direction: column;
     width: 450px;
     gap: 30px;
+}
+
+.titulo-home {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
 .sub-text-home {
@@ -61,20 +67,56 @@ body {
     color: var(--color3);
 }
 
-h1 {
+.main h1 {
     text-transform: uppercase;
-    font-size: 44px;
+    font-size: 60px;
     margin: 0;
     color: var(--color4);
 }
 
-h2 {
+.main h2 {
     text-transform: uppercase;
     margin: 0;
     color: var(--color4);
+    font-size: 40px;
 }
 
-h3 {
+.main h3 {
     text-transform: capitalize;
     color: var(--color4);
+}
+
+@media only screen and (max-width: 1020px) {
+    body{ 
+        overflow-x: hidden;
+    }
+
+    .main {
+        flex-direction: column;
+        height: 1000px;
+        gap: 0px;
+        padding-top: 53.4px;
+    }
+
+    .sub-text-home {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .sub-text-home a {
+        width: 50%;
+        padding: 10px 0px;
+    }
+}
+
+@media only screen and (max-width: 465px) {
+    .main {
+        max-width: 100%;
+        padding-top: 80px;
+    }
+
+    .text-home {
+        width: 100%;
+    }
 }

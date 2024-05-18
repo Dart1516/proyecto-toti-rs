@@ -15,9 +15,8 @@ function MobileMenu() {
         <nav className={mobileStyles["mobile-header"]}>
           <div className={mobileStyles["logo-y-titulo-a-la-izquierda"]}>
             <Link to="/Principal" className={mobileStyles["Mobile-home-logo"]}>
-              <img className={mobileStyles["Mobile-home-logo"]} src={logo} alt="Home Logo" />
             </Link>
-            <span className={mobileStyles["company-name"]}>Nombre de la Página</span>
+            <span className={mobileStyles["company-name"]}>nombre de la página</span>
           </div>
           {/* Icono del menú hamburguesa */}
           <div className={mobileStyles["Hamburger-menu-icon"]} onClick={toggleMenu}>
