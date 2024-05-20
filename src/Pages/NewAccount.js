@@ -6,9 +6,11 @@ import login1 from "../assets/images/login/login1.png";
 function NewAccount() {
   return (
   <>
-    <Header />
-    <body>
+ 
     <div className="App">
+    <header>
+  <Header />
+  </header>
       <body>
         {/*crear conta */}
 
@@ -54,7 +56,6 @@ function NewAccount() {
       
       <footer></footer>
     </div>
-    </body>
   
   </>
   
