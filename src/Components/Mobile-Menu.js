@@ -16,7 +16,7 @@ function MobileMenu() {
           <div className={mobileStyles["logo-y-titulo-a-la-izquierda"]}>
             <Link to="/Principal" className={mobileStyles["Mobile-home-logo"]}>
             </Link>
-            <span className={mobileStyles["company-name"]}>nombre de la página</span>
+            <span className={mobileStyles["company-name"]}>Comunidade Toti</span>
           </div>
           {/* Icono del menú hamburguesa */}
           <div className={mobileStyles["Hamburger-menu-icon"]} onClick={toggleMenu}>
