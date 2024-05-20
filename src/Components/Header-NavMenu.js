@@ -31,17 +31,13 @@ function HeaderAndMenu() {
           <ul className="opciones-derecha">
             <li className="menu-option-right">
               <Link to="/JoinUs" className="menu-option-name">
-                Seja Voluntario
+              Quero Ser voluntario
+                
               </Link>
             </li>
             <li className="menu-option-right">
               <Link to="/NewAccount" className="menu-option-name">
-                Cadastre-se
-              </Link>
-            </li>
-            <li className="menu-option-right">
-              <Link to="/Login" className="menu-option-name">
-                Login
+              Quero ser Atendido
               </Link>
             </li>
           </ul>

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-d
 import Demo from "./Pages/demo";
 import Principal from "./Pages/HomePage";
 import AboutUs from "./Pages/AboutUs";
-import JoinUs from "./Pages/JoinUs";
+import JoinUs from "./Pages/SejaVoluntario";
 import Login from "./Pages/Login";
 import NewAccount from "./Pages/NewAccount";
 
