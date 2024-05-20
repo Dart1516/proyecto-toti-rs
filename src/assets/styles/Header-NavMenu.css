@@ -1,10 +1,10 @@
 /*Colores*/
 
 :root {
-  --color1: #3498db;
-  --color2: #98C9F4;
-  --color3: #F2F2F2;
-  --color4: #3969C8;
+  --color1: #0a9466;
+  --color2: #14c389;
+  --color3: #19e09d;
+  --color4: #F0F0F0;
 }
 
 /* ----- Barra de navegación -----*/
@@ -16,7 +16,7 @@
     margin: 0;
     justify-content: space-around;
     border-bottom: var(--color4) 3px solid;
-    background-color: var(--color3);
+    background: linear-gradient(to top, #0a9466, #14c389, #19e09d);
 }
 
 .menu-left {
@@ -44,9 +44,9 @@
 /* Estilos para el contenedor de cada opción en hover */
 .opciones-izquierda li a:hover,
 .opciones-derecha li a:hover { /* Cambia el color de fondo al pasar el cursor */
-  color: var(--color3); /* Cambia el color del texto al pasar el cursor */
+  color: var(--color4); /* Cambia el color del texto al pasar el cursor */
   cursor: pointer; /* Cambia el cursor al pasar el cursor sobre el contenedor */
-  background-color: var(--color1);
+  background-color: var(--color2);
 }
 
 /* ----- logo view ----- */

@@ -1,12 +1,12 @@
 /*Colores*/
 
-:root {
-  --color1: #3498db;
-  --color2: #98C9F4;
-  --color3: #F2F2F2;
-  --color4: #3969C8;
-}
 
+:root {
+  --color1: #0a9466;
+  --color2: #14c389;
+  --color3: #19e09d;
+  --color4: #F0F0F0;
+}
 .Hamburger-menu-icon {
   display: none;
   /* Inicialmente oculto en pantallas más grandes */
@@ -20,13 +20,14 @@
     width: 100%;
     margin: 0;
     justify-content: space-around;
-    border-bottom: var(--color4) 3px solid;
-    background-color: var(--color3);
+    border-bottom: var(--color1) 3px solid;
+    background: linear-gradient(to top, #0a9466, #14c389, #19e09d);
 }
 
 .Mobile-menu ul {
   display: none;
 }
+
 
 .logo-y-titulo-a-la-izquierda {
   display: flex;
@@ -81,7 +82,7 @@
     display: flex;
     position: absolute;
     align-items: center;
-    background-color: var(--color3);
+    background-color: var(--color1);
     z-index: 10; /* Ensure it is above the overlay */
   }
 
@@ -92,6 +93,7 @@
     margin: 0;
     width: 460px;
     padding: 0;
+    align-items: center;
   }
 
   .Mobile-menu ul li a {
@@ -106,8 +108,8 @@
 
   .Mobile-menu ul li a:hover,
   .Mobile-menu ul li a:active {
-    background-color: var(--color4); /* Cambia el color de fondo al pasar el cursor */
-    color: var(--color3); /* Cambia el color del texto al pasar el cursor */
+    background-color: var(--color2); /* Cambia el color de fondo al pasar el cursor */
+    color: var(--color4); /* Cambia el color del texto al pasar el cursor */
     cursor: pointer; /* Cambia el cursor al pasar el cursor sobre el contenedor */
   }
 
@@ -120,5 +122,9 @@
     background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
     backdrop-filter: blur(5px); /* Efecto de desenfoque */
     z-index: 5; /* Ensure it is below the menu */
+  }
+  .text-home {
+    gap: 15px;
+    padding-top: 2rem;
   }
 }

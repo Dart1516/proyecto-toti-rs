@@ -3,12 +3,17 @@ import logo from "../assets/images/logos/logo1.png";
 import "../assets/styles/Header-NavMenu.css";
 import MobileMenu from "../Components/Mobile-Menu";
 import { Link } from "react-router-dom";
+import { styled} from "@mui/material"
 
 function HeaderAndMenu() {
-
+  const StyledHeader = styled("div")(({ theme }) => ({
+    backgroundColor: theme.palette.primary,
+    color:theme.palette.secondary,
+  }))
   return (
     <div>
-       <MobileMenu/>
+      <StyledHeader>
+      <MobileMenu/>
         {/* Icono del menú hamburguesa */}
         <nav className="contenedor_de_opciones">
           <div className="menu-left">
@@ -46,6 +51,8 @@ function HeaderAndMenu() {
             </li>
           </ul>
         </nav>
+      </StyledHeader>
+     
     </div>
   );
 }
