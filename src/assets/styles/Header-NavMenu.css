@@ -19,7 +19,7 @@
     width: 100%;
     margin: 0;
     justify-content: space-around;
-    border-bottom: var(--color4) 3px solid;
+    border-bottom: var(--color1) 3px solid;
     background: linear-gradient(to top, #0a9466, #14c389, #19e09d);
 }
 

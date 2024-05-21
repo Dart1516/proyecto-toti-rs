@@ -2,7 +2,6 @@ import React from "react";
 import Header from "../Components/Header-NavMenu";
 import '../assets/styles/App.css';
 import '../assets/styles/HomePage.css'
-import HomePage from '../assets/images/home.svg'
 
 function Principal() {
   return (
@@ -11,25 +10,21 @@ function Principal() {
         <Header/>
       </header>
       <body>
+        <div className="background-main">
           <div className='main'>
             <div className='text-home'>
               <div className='titulo-home'>
                 <h2>TOTERS do BEM</h2>
                 <h1> SOS rio grande do sul</h1>
               </div>
-              <h3>uma rede de apoio para você. não está sozinho</h3>  
+              <h3>nosso objetivo é encaminhá-lo à ajuda emocional gratuita e online</h3>  
                 <div className='sub-text-home'>
                   <a href="./demo">Quero ser atendido</a>
                   <a href='./JoinUs'>Quero ser voluntário</a>
                 </div>
+                </div>
             </div>
-        
-              <img src={HomePage} className="HomePage" alt="Imagem de home" width='500px'/>
           </div>
-          <h3> Cliente dijo que el verde seria tambien lamativo y paso una imagen</h3>  
-            <p> Pidio más imagenes de reio grande do sul lagado</p>
-            <p> mudar o logo </p>
-            <p> Cambiar el titulo del home, en vez de decir unidos pelo rio grando do sul , que fale TOTERS do BEM</p>
       </body>
       <footer>
 
