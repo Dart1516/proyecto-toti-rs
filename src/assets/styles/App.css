@@ -1,3 +1,12 @@
+/*Colores*/
+
+:root {
+  --color1: #0a9466;
+  --color2: #14c389;
+  --color3: #19e09d;
+  --color4: #F0F0F0;
+}
+
 .App {
   text-align: center;
 }
@@ -5,11 +14,6 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-/*esto es para que se vea el header en cada página si no usan el header entonces eliminar */
-h2{
-  padding-top: 50px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -43,3 +47,4 @@ h2{
     transform: rotate(360deg);
   }
 }
+
