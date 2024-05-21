@@ -3,6 +3,7 @@ import Header from "../Components/Header-NavMenu";
 import {Grid, Container, Typography, styled} from "@mui/material"
 import imgComunidade from "../assets/images/voluntarios.jpg"
 import imgRS from "../assets/images/rs.jpg"
+
 const About = () => {
 
 
@@ -31,6 +32,7 @@ const About = () => {
     justifyContent: "center",
     alignItems: "center"
 }));
+
   return (
       <>
        <Header/>
@@ -64,20 +66,23 @@ const About = () => {
                                       </Typography>
                                       </StyledText>
 </Grid></Grid>
-<Grid container spacing={2} gap={6} textAlign="center" justifyContent="center">
-                                      <Grid item xs={12} md={12}>
-                                      <Typography variant="h6" width='100%' textAlign="center" pt={6} pb={4}>
+<Grid container spacing={2} gap={6} textAlign="center" justifyContent="center"  direction={{ xs: 'column-reverse', md: 'row' }}>
+
+                                      <Grid item xs={12} md={12} mb={4}>
+                                      <Typography variant="h6" width='100%' textAlign="center" pb={2} >
                                       Convidamos profissionais de todas as áreas a se juntarem a este movimento humanitário, contribuindo com seu tempo e habilidades em apoio às vítimas das inundações no RS. Esperamos que muitos se juntem a nós neste esforço coletivo, pois juntos somos mais fortes. Todos juntos pelo Rio Grande do Sul.
                                       </Typography>
                                       <hr />  
                                       </Grid>
+                                    
                                       </Grid>
+                                     
+                                
                     </Container>
-                </StyledAbout>
-                 
-      <footer>
+           
+</StyledAbout>
 
-</footer>
+
             </>
     
       
