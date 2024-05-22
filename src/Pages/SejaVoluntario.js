@@ -21,32 +21,32 @@ function Principal() {
 
         <form className="inputs">
           <div className="input-field">
-            <h4>1. Nome Completo</h4>
+            <h4>1. Nome Completo<span>*</span></h4>
             <input type="text" placeholder="Digite seu nome" required />
           </div>
 
           <div className="input-field">
-            <h4>2. CPF</h4>
+            <h4>2. CPF<span>*</span></h4>
             <input type="text" placeholder="O valor deve ser numérico" required />
           </div>
 
           <div className="input-field">
-            <h4>3. Data de Nascimento</h4>
+            <h4>3. Data de Nascimento<span>*</span></h4>
             <input type="date" required />
           </div>
 
           <div className="input-field">
-            <h4>4. Número do WhatsApp</h4>
+            <h4>4. Número do WhatsApp<span>*</span></h4>
             <input type="text" placeholder="(DDD) Digite o número" required />
           </div>
 
           <div className="input-field">
-            <h4>5. E-mail</h4>
+            <h4>5. E-mail<span>*</span></h4>
             <input type="email" placeholder="Digite o e-mail" required />
           </div>
 
           <div className="form-group">
-            <h4>6. Tipo de voluntário</h4>
+            <h4>6. Tipo de voluntário<span>*</span></h4>
             <select className="form-select" name="voluntario" onChange={handleVoluntarioChange} required>
               <option value="">Selecione</option>
               <option value="Educador social">Educador(a) Social</option>
@@ -58,11 +58,11 @@ function Principal() {
           {voluntario === "Psicólogo" && (
             <>
               <div className="input-field">
-                <h4>CRM</h4>
+                <h4>CRM<span>*</span></h4>
                 <input type="text" placeholder="Digite seu CRM" required />
               </div>
               <div className="input-field">
-                <h4>Especialidade</h4>
+                <h4>Especialidade<span>*</span></h4>
                 <input type="text" placeholder="Digite sua especialidade" required />
               </div>
             </>
@@ -70,13 +70,13 @@ function Principal() {
 
           {(voluntario === "Educador social" || voluntario === "Liderança Para Emigrantes, refugiados e apátridas") && (
             <div className="input-field">
-              <h4>Área em que pode ajudar</h4>
+              <h4>Área em que pode ajudar<span>*</span></h4>
               <input type="text" placeholder="Digite a área em que pode ajudar" required />
             </div>
           )}
 
           <div className="form-group">
-            <h4>7. Estado</h4>
+            <h4>7. Estado <span>*</span></h4>
             <select className="form-select" name="estado" required>
               <option value="">Selecione</option>
               <option value="SP">SP</option>
@@ -95,7 +95,7 @@ function Principal() {
           </div>
 
           <div className="form-group">
-            <h4>8. Disponibilidade</h4>
+          <h4>8. Disponibilidade<span>*</span></h4>
             <select className="form-select" name="disponibilidade" required>
               <option value="">Selecione</option>
               <option value="Manhã">Manhã</option>

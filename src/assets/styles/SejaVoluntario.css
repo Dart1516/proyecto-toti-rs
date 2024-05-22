@@ -15,6 +15,20 @@ body {
     line-height: 1.6;
 }
 
+
+
+
+.input-field h4 {
+    display: flex;
+    align-items: center;
+}
+
+.input-field h4 span {
+    color: #f00a0a; 
+    margin-left: 5px; 
+}
+
+
 .App {
     display: flex;
     flex-direction: column;
