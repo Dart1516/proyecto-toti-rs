@@ -62,7 +62,7 @@ const About = () => {
                     <Grid item xs={12} md={7}>
                             <StyledText>
                           
-                            <Typography pt={3} pb={4}  textAlign="end" justifyContent="center" variant="h6">Em resposta a os recentes eventos no Rio Grande do Sul, nossa comunidade está mobilizada para fazer a diferença. Com empatia e solidariedade, lançamos esta plataforma para conectar voluntários e recursos, visando oferecer ajuda prática e esperança àqueles afetados pelas inundações.  O intuito dessa plataforma é oferecer apoio psicosocial às famílias afetadas pela tragédia no RS, disponibilizando serviços com psicólogos e educadores sociais. Esses profissionais estão prontos para atender e auxiliar no processo de recuperação emocional e social das pessoas impactadas, garantindo um suporte integral e humanizado.
+                            <Typography pt={3} pb={4}  textAlign="start" justifyContent="center" variant="h6">Em resposta a os recentes eventos no Rio Grande do Sul, nossa comunidade está mobilizada para fazer a diferença. Com empatia e solidariedade, lançamos esta plataforma para conectar voluntários e recursos, visando oferecer ajuda prática e esperança àqueles afetados pelas inundações.  O intuito dessa plataforma é oferecer apoio psicosocial às famílias afetadas pela tragédia no RS, disponibilizando serviços com psicólogos e educadores sociais. Esses profissionais estão prontos para atender e auxiliar no processo de recuperação emocional e social das pessoas impactadas, garantindo um suporte integral e humanizado.
                                       </Typography>
                                       </StyledText>
 </Grid></Grid>
