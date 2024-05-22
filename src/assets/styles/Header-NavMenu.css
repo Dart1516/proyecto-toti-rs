@@ -16,7 +16,6 @@
     left: 0;
     width: 100%;
     z-index: 100;
-    width: 100%;
     margin: 0;
     justify-content: space-around;
     border-bottom: var(--color1) 3px solid;
