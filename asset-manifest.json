@@ -1,21 +1,29 @@
 {
   "files": {
-    "main.css": "/proyecto-toti-rs/static/css/main.9b7fae49.css",
-    "main.js": "/proyecto-toti-rs/static/js/main.ed916ef7.js",
+    "main.css": "/proyecto-toti-rs/static/css/main.ac207107.css",
+    "main.js": "/proyecto-toti-rs/static/js/main.770c8d35.js",
     "static/js/453.6b206af5.chunk.js": "/proyecto-toti-rs/static/js/453.6b206af5.chunk.js",
-    "static/media/home.svg": "/proyecto-toti-rs/static/media/home.c58a885eaf51e477338220905559dffc.svg",
     "static/media/login2.png": "/proyecto-toti-rs/static/media/login2.3650db5005f2733d0b6e.png",
     "static/media/login1.png": "/proyecto-toti-rs/static/media/login1.475e28a3939953ba645c.png",
+    "static/media/lideres.png": "/proyecto-toti-rs/static/media/lideres.90b4e0750110f5ab7289.png",
+    "static/media/home.jpg": "/proyecto-toti-rs/static/media/home.9e3853d0d00ab4465c32.jpg",
     "static/media/voluntarios.jpg": "/proyecto-toti-rs/static/media/voluntarios.a838a18b1b9d8f7df5b8.jpg",
     "static/media/logo1.png": "/proyecto-toti-rs/static/media/logo1.a1929ce94b60a4cca9c0.png",
+    "static/media/JSMF.png": "/proyecto-toti-rs/static/media/JSMF.837ae36bf92cbd17ec26.png",
+    "static/media/JUNTOS SOMOS MAIS FORTES.png": "/proyecto-toti-rs/static/media/JUNTOS SOMOS MAIS FORTES.837ae36bf92cbd17ec26.png",
     "static/media/rs.jpg": "/proyecto-toti-rs/static/media/rs.3c364a6da7ce952d6827.jpg",
+    "static/media/voluntariado 1.jpeg": "/proyecto-toti-rs/static/media/voluntariado 1.91cc9eab3dfcc9a37d23.jpeg",
+    "static/media/educador-social.jpg": "/proyecto-toti-rs/static/media/educador-social.97354e88530fba6899ee.jpg",
+    "static/media/voluntariado 2.jpeg": "/proyecto-toti-rs/static/media/voluntariado 2.e299f0504c96af597031.jpeg",
+    "static/media/voluntariado 3.jpeg": "/proyecto-toti-rs/static/media/voluntariado 3.5186ac40dbede781a47e.jpeg",
+    "static/media/psicologa.jpg": "/proyecto-toti-rs/static/media/psicologa.f5c12ba2a31e86784e11.jpg",
     "index.html": "/proyecto-toti-rs/index.html",
-    "main.9b7fae49.css.map": "/proyecto-toti-rs/static/css/main.9b7fae49.css.map",
-    "main.ed916ef7.js.map": "/proyecto-toti-rs/static/js/main.ed916ef7.js.map",
+    "main.ac207107.css.map": "/proyecto-toti-rs/static/css/main.ac207107.css.map",
+    "main.770c8d35.js.map": "/proyecto-toti-rs/static/js/main.770c8d35.js.map",
     "453.6b206af5.chunk.js.map": "/proyecto-toti-rs/static/js/453.6b206af5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9b7fae49.css",
-    "static/js/main.ed916ef7.js"
+    "static/css/main.ac207107.css",
+    "static/js/main.770c8d35.js"
   ]
 }
