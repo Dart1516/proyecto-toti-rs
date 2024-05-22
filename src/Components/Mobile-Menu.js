@@ -30,10 +30,7 @@ function MobileMenu() {
             <div className={mobileStyles["Mobile-menu"]}>
               <ul>
                 <li>
-                  <Link to="/Principal">Como Funciona</Link>
-                </li>
-                <li>
-                  <Link to="/Demo">Home</Link>
+                  <Link to="/Principal">Home</Link>
                 </li>
                 <li>
                   <Link to="/AboutUs">Sobre Nós</Link>
