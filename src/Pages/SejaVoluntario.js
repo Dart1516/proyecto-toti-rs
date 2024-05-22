@@ -1,13 +1,26 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Header from "../Components/Header-NavMenu";
 import '../assets/styles/App.css';
 import '../assets/styles/SejaVoluntario.css';
 
 function Principal() {
   const [voluntario, setVoluntario] = useState("");
+  const [isTermsAccepted, setIsTermsAccepted] = useState(false);
 
   const handleVoluntarioChange = (event) => {
     setVoluntario(event.target.value);
+  };
+
+  const handleTermsChange = (event) => {
+    setIsTermsAccepted(event.target.checked);
+  };
+
+  const handleSubmit = (event) => {
+    if (!isTermsAccepted) {
+      event.preventDefault();
+      alert("Por favor, aceite os termos e condições antes de enviar o formulário.");
+    }
   };
 
   return (
@@ -19,7 +32,7 @@ function Principal() {
       <div className="container">
         <h2>SOS Rio Grande do Sul - Cadastro de profissionais de saúde e intérpretes voluntários</h2>
 
-        <form className="inputs">
+        <form className="inputs" onSubmit={handleSubmit}>
           <div className="input-field">
             <h4>1. Nome Completo<span>*</span></h4>
             <input type="text" placeholder="Digite seu nome" required />
@@ -95,7 +108,7 @@ function Principal() {
           </div>
 
           <div className="form-group">
-          <h4>8. Disponibilidade<span>*</span></h4>
+            <h4>8. Disponibilidade<span>*</span></h4>
             <select className="form-select" name="disponibilidade" required>
               <option value="">Selecione</option>
               <option value="Manhã">Manhã</option>
@@ -103,16 +116,24 @@ function Principal() {
               <option value="Noite">Noite</option>
             </select>
           </div>
-          <div>  
-          <h4>Observação(opcional)</h4>
-          <textarea name="message" id="" cols="60" rows="10" placeholder="Your Message" class="contact-inputs"></textarea>
+
+          <div>
+            <h4>Observação (opcional)</h4>
+            <textarea name="message" cols="60" rows="10" placeholder="Sua mensagem" className="contact-inputs"></textarea>
           </div>
+
+          <div className="form-group">
+            <input type="checkbox" id="terms" name="terms" onChange={handleTermsChange} required />
+            <label htmlFor="terms">
+              Ao marcar esta caixa e clicar em Enviar, aceito o tratamento de meus dados pessoais por <Link to="/avisoLegal" target="_blank">[Nome da sua organização]</Link> conforme explicado no seu <Link to="/avisoLegal" target="_blank">Aviso Legal de Proteção de Dados</Link>, que inclui: 1) a coordenação e gestão de voluntários, e 2) a comunicação sobre atividades e oportunidades relacionadas.
+            </label>
+          </div>
+
           <button type="submit">Enviar</button>
         </form>
       </div>
 
-      <footer className="App-footer">
-      </footer>
+      <footer className="App-footer"></footer>
     </div>
   );
 }
