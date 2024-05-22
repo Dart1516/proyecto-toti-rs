@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../Components/Header-NavMenu";
 import '../assets/styles/App.css';
-
+import '../assets/styles/SejaVoluntario.css'
 function Principal() {
   return (
     <div className="App">

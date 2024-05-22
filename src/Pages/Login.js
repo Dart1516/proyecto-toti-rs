@@ -32,14 +32,7 @@ function Login () {
 
           <button  className="btn-log">Ingresar</button>
 
-          <p> Pedir Horario</p>
-          <p> agenda disponivel, dia y hora</p>
-          <p> numero de whatsapp si posible </p>
-          <p> plataforma que puede usar</p>
-          <p> cidade</p>
-          <p> tipo de voluntariado </p>
-          <h3> Especialidad </h3>
-          <h3> Yo autorizo que mis datos sean compartidos </h3>
+
 
       </div>
         
