@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../Components/Header-NavMenu";
 import '../assets/styles/App.css';
-import '../assets/styles/SejaVoluntario.css'
+import '../assets/styles/SejaVoluntario.css';
+
 function Principal() {
+  const [voluntario, setVoluntario] = useState("");
+
+  const handleVoluntarioChange = (event) => {
+    setVoluntario(event.target.value);
+  };
+
   return (
     <div className="App">
       <div className="App-header">
@@ -40,7 +47,7 @@ function Principal() {
 
           <div className="form-group">
             <h4>6. Tipo de voluntário</h4>
-            <select className="form-select" name="voluntario" required>
+            <select className="form-select" name="voluntario" onChange={handleVoluntarioChange} required>
               <option value="">Selecione</option>
               <option value="Educador social">Educador(a) Social</option>
               <option value="Psicólogo">Psicólogo(a)</option>
@@ -48,8 +55,28 @@ function Principal() {
             </select>
           </div>
 
+          {voluntario === "Psicólogo" && (
+            <>
+              <div className="input-field">
+                <h4>CRM</h4>
+                <input type="text" placeholder="Digite seu CRM" required />
+              </div>
+              <div className="input-field">
+                <h4>Especialidade</h4>
+                <input type="text" placeholder="Digite sua especialidade" required />
+              </div>
+            </>
+          )}
+
+          {(voluntario === "Educador social" || voluntario === "Liderança Para Emigrantes, refugiados e apátridas") && (
+            <div className="input-field">
+              <h4>Área em que pode ajudar</h4>
+              <input type="text" placeholder="Digite a área em que pode ajudar" required />
+            </div>
+          )}
+
           <div className="form-group">
-            <h4>7.Estado</h4>
+            <h4>7. Estado</h4>
             <select className="form-select" name="estado" required>
               <option value="">Selecione</option>
               <option value="SP">SP</option>
@@ -80,13 +107,11 @@ function Principal() {
           <button type="submit">Enviar</button>
         </form>
       </div>
-      
+
       <footer className="App-footer">
-        
       </footer>
     </div>
   );
 }
 
 export default Principal;
-

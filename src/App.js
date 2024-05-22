@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import Principal from "./Pages/HomePage";
-import AboutUs from "./Pages/AboutUs";
+import Principal from "./Pages/Home";
+import AboutUs from "./Pages/SobreNos";
 import JoinUs from "./Pages/SejaVoluntario";
 import Login from "./Pages/Login";
 import NewAccount from "./Pages/NewAccount";

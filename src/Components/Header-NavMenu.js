@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import logo from "../assets/images/logos/logo1.png";
 import "../assets/styles/Header-NavMenu.css";
 import MobileMenu from "../Components/Mobile-Menu";
 import { Link } from "react-router-dom";
