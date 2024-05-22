@@ -11,7 +11,7 @@ function Principal() {
   };
 
   return (
-    <div className="App">
+    <div className="App SV">
       <div className="App-header">
         <Header />
       </div>
