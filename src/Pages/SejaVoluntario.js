@@ -103,7 +103,10 @@ function Principal() {
               <option value="Noite">Noite</option>
             </select>
           </div>
-
+          <div>  
+          <h4>Observação(opcional)</h4>
+          <textarea name="message" id="" cols="60" rows="10" placeholder="Your Message" class="contact-inputs"></textarea>
+          </div>
           <button type="submit">Enviar</button>
         </form>
       </div>
