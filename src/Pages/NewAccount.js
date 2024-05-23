@@ -39,15 +39,15 @@ function NewAccount() {
             type="email"
             placeholder="Igresa seu senha"
           />
+          <input id="voluntario" type="radio"/>
+          <input id="usuario" type="radio"/>
+
+          
           <p> Hacerlo más entendible entre las persnas que necesitan ayuda y los voluntariados </p>
           <p> Roteiro de las cosas que creen que pidan  </p>
           <p> Evitar palabras en Mayusculas  </p>
-          <p>  </p>
-          <p> </p>
-          <p> </p>
-          <p> </p>
-          <h3></h3>
-          <h3>  </h3>
+          
+         
           <button className="btn-nwAcoun">crear conta</button>
         </div>
       </div>

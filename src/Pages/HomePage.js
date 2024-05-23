@@ -20,7 +20,7 @@ function Principal() {
               <h3>uma rede de apoio para você. não está sozinho</h3>  
                 <div className='sub-text-home'>
                   <a href="./demo">Quero ser atendido</a>
-                  <a href='./JoinUs'>Quero ser voluntário</a>
+                  <a href='./FormVoluntario'>Quero ser voluntário</a>
                 </div>
             </div>
         
