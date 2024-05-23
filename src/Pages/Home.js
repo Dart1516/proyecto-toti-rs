@@ -23,7 +23,7 @@ function Principal() {
               </div>
               <h3>nosso objetivo é encaminhá-lo à ajuda emocional gratuita e online</h3>  
                 <div className='sub-text-home'>
-                  <a href="./demo">Quero ser atendido</a>
+                  <a href="./demo">Liderança Emigrante </a>
                   <a href='./JoinUs'>Quero ser voluntário</a>
                 </div>
                 </div>
