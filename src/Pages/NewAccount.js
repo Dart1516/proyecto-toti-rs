@@ -5,7 +5,7 @@ import login1 from "../assets/images/login/login1.png";
 
 function NewAccount() {
   return (
-  <>
+  
  
     <div className="App">
     <header>
@@ -35,18 +35,20 @@ function NewAccount() {
           />
           <input
             id="pswd"
+            className="btn-email"
+            type="tel"
+            placeholder="Igresa seu Telefone"
+          />
+          <input
+            id="pswd"
             className="btn-pwsd"
             type="email"
             placeholder="Igresa seu senha"
           />
-          <input id="voluntario" type="radio"/>
-          <input id="usuario" type="radio"/>
+          
 
           
-          <p> Hacerlo más entendible entre las persnas que necesitan ayuda y los voluntariados </p>
-          <p> Roteiro de las cosas que creen que pidan  </p>
-          <p> Evitar palabras en Mayusculas  </p>
-          
+        
          
           <button className="btn-nwAcoun">crear conta</button>
         </div>
@@ -57,7 +59,7 @@ function NewAccount() {
       <footer></footer>
     </div>
   
-  </>
+  
   
   );
 }

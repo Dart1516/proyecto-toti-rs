@@ -24,7 +24,7 @@
     margin-top: 15px;
     border-radius: 8px;
     width: 580px;
-    border: 3px var(--color3) solid ;
+    border: 1px var(--color5) solid ;
     padding: 10px;
     cursor: text;
     
@@ -36,12 +36,14 @@
 .forGenero, .forOrSexual {
     margin-top: 20px;
     margin-left: 15px;
+    
 }
  
 .genero, .oriSex{
-    border: 3px var(--color3) solid ;
-    border-radius: 8px;
+    border: 1px var(--color5) solid ;
+    border-radius: 5px;
     cursor: pointer;
+    color: #777;
 }
 .servicio{
    display: flex;
@@ -51,13 +53,13 @@
 .forServ{
     display: flex;
     justify-content: center;
-    
     margin-top: 20px;
 }
 
 .liderV, .eduSoc, .psico{
    margin-top: 5px;
    margin-left: 5px;
+   color: #777;
    }
 
 
@@ -69,7 +71,7 @@
     appearance: none;
     border-radius: 5px;
     margin: 10px 20px;
-    border: 3px var(--color3) solid ;
+    border: 1px var(--color3) solid ;
     outline: none;
     cursor: pointer;
     position: relative;
@@ -91,21 +93,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 3px var(--color1) solid ;
+    border: 1px var(--color5) solid ;
     margin-top: 20px;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
+    color: #777;
 }
 option {
-    background-color: var(--color3); /* Color de fondo por defecto */
+    background-color: var(--color4); /* Color de fondo por defecto */
     border-radius: 10px;
-    border: 3px var(--color1) solid ;
+    border: 1px var(--color5) solid ;
 }
 
 #availability option:checked {
     background-color: var(--color1) ;
-    
 }
 
 .forTexTarea textarea{
@@ -114,11 +116,12 @@ option {
     align-items: center;
     flex-direction: row;
     margin-top: 20px;
-    border: 3px var(--color3) solid ;
+    border: 1px var(--color5) solid ;
     width: 580px;
-    border-radius: 15px;
+    border-radius: 5px;
     border-color: var(--color3);
     cursor: text;
+    color: #777;
 }
 
 .btnEnviar{
@@ -126,8 +129,9 @@ option {
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-    border: 3px var(--color3) solid ;
+    border: 1px var(--color5) solid ;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
+    color: #777;
 } 

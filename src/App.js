@@ -5,6 +5,8 @@ import Principal from "./Pages/HomePage";
 import AboutUs from "./Pages/AboutUs";
 import JoinUs from "./Pages/SejaVoluntario";
 import FormUsuario from "./Pages/FormUsuario";
+import Login from "./Pages/Login";
+import NewAccount from "./Pages/NewAccount";
 
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
         <Route path="/Demo" element={<Demo />} />
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/JoinUs" element={<JoinUs />} />
+        <Route path="/NewAccount" element={<NewAccount />}/>
+        <Route path="/Login" element={<Login />} />
         <Route path="/FormUsuario" element={<FormUsuario />} />
         
         {/* Ruta predeterminada */}
