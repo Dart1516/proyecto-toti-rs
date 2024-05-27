@@ -5,6 +5,7 @@ import {Box, Grid, Container, Typography, styled} from "@mui/material"
 import imgComunidade from "../assets/images/voluntarios.jpg"
 import imgToters from "../assets/images/totersimg.png"
 import "../../src/Pages/MaterialDeApoio"
+import "../../src/Pages/Accesso"
 import { Link } from "react-router-dom";
 const About = () => {
 
@@ -88,7 +89,10 @@ const About = () => {
                                       <hr />  
                                       <Link to="/material-de-apoyo">
     <button justifyContent="center" alignItems="center">Material de apoio ao volutario</button>
-  </Link>          
+  </Link>        
+  <Link to="/Accesso">
+    <button justifyContent="center" alignItems="center">Accesso </button>
+  </Link> 
 </Box>
                                      
                                      

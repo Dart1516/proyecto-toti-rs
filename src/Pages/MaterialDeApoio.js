@@ -1,18 +1,18 @@
 import React from "react";
 import Header from "../Components/Header-NavMenu";
-import img from "../../src/assets/images/rs.jpg"
+import AccordionUsage from "../Components/AccordionUsage"
 import imagen from "../../src/assets/images/pfd1.png"
 import imagenDos from "../../src/assets/images/img1.png"
 import imagenTres from "../../src/assets/images/situation.webp"
 import imagenCuatro from "../../src/assets/images/psicologa.jpg"
 import imagenCinco from "../../src/assets/images/lideres.png"
 import imagenSeis from "../../src/assets/images/voluntariado 1.jpeg"
-import {Box, Grid, Container, Typography, styled} from "@mui/material"
+
+import { Grid, Container, Typography, styled} from "@mui/material"
 const MaterialDeApoio = () => {
 
 
   const StyledMaterialDeApoio = styled("div")(({ theme }) => ({
-    backgroundColor: theme.palette.secondary,
       height: "100vh",
 
       [theme.breakpoints.up('xs')]: { // <= mobile
@@ -155,10 +155,11 @@ Psicologia em estudo, 17(2), 307-315. <a href="  https://www.scielo.br/j/pe/a/5w
                                       
 </StyledGrid>
 </Grid>
-
+<AccordionUsage></AccordionUsage>
                     </Container>
            
 </StyledMaterialDeApoio>
+       
 
 
             </>

@@ -5,7 +5,7 @@ import AboutUs from "./Pages/SobreNos";
 import JoinUs from "./Pages/SejaVoluntario";
 import Login from "./Pages/Login";
 import NewAccount from "./Pages/NewAccount";
-
+import Accesso from "../src/Pages/Accesso"
 import AvisoLegal from "./Pages/avisoLegal.js";
 import MaterialDeApoio from "./Pages/MaterialDeApoio";
 
@@ -21,6 +21,8 @@ function App() {
         <Route path="/material-de-apoyo" element={<MaterialDeApoio />} />
         <Route path="/NewAccount" element={<NewAccount />} />
         <Route path="/avisoLegal" element={<AvisoLegal/>} />
+        <Route path="/Accesso" element={<Accesso/>} />
+
         {/* Ruta predeterminada */}
         <Route path="/*" element={<Navigate to="/Principal" />} />
       </Routes>
