@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import InputMask from "react-input-mask";
 import Header from "../Components/Header-NavMenu";
 import '../assets/styles/App.css';
 import '../assets/styles/SejaVoluntario.css';
 
+// aca se importo la libreria InputMask para hacer la validación de los datos en el cpf y whatsapp 
+// falta una la información del login, usuario y senha, se podrá confirmar el email?
+
 function Principal() {
   const [voluntario, setVoluntario] = useState("");
   const [isTermsAccepted, setIsTermsAccepted] = useState(false);
+  const [phone, setPhone] = useState("");
+  const [cpf, setCpf] = useState("");
 
   const handleVoluntarioChange = (event) => {
     setVoluntario(event.target.value);
@@ -14,6 +20,16 @@ function Principal() {
 
   const handleTermsChange = (event) => {
     setIsTermsAccepted(event.target.checked);
+  };
+
+  const handlePhoneChange = (event) => {
+    const input = event.target.value;
+    setPhone(input);
+  };
+
+  const handleCpfChange = (event) => {
+    const input = event.target.value;
+    setCpf(input);
   };
 
   const handleSubmit = (event) => {
@@ -40,7 +56,17 @@ function Principal() {
 
           <div className="input-field">
             <h4>2. CPF<span>*</span></h4>
+<<<<<<< HEAD
             <input class="input-text" type="text" placeholder="O valor deve ser numérico" required />
+=======
+            <InputMask
+              mask="999.999.999-99"
+              value={cpf}
+              onChange={handleCpfChange}
+              placeholder="Digite seu CPF"
+              required
+            />
+>>>>>>> f27f4a66c841b311e672218b585da84a4091629a
           </div>
 
           <div className="input-field">
@@ -50,7 +76,17 @@ function Principal() {
 
           <div className="input-field">
             <h4>4. Número do WhatsApp<span>*</span></h4>
+<<<<<<< HEAD
             <input class="input-text" type="text" placeholder="(DDD) Digite o número" required />
+=======
+            <InputMask
+              mask="(99) 99999-9999"
+              value={phone}
+              onChange={handlePhoneChange}
+              placeholder="(DDD) Digite o número"
+              required
+            />
+>>>>>>> f27f4a66c841b311e672218b585da84a4091629a
           </div>
 
           <div className="input-field">
