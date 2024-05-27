@@ -55,7 +55,7 @@ function Principal() {
           </div>
 
           <div className="input-field">
-            <h4>2. CPF<span>*</span></h4>
+            <h4>2. CPF<span>*</span></h4></
 <<<<<<< HEAD
             <input class="input-text" type="text" placeholder="O valor deve ser numérico" required />
 =======
