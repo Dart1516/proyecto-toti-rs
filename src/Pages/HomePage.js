@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../Components/Header-NavMenu";
 import '../assets/styles/App.css';
-import '../assets/styles/HomePage.css'
+import '../assets/styles/Home-Page.css'
 import HomePage from '../assets/images/home.svg'
 
 function Principal() {

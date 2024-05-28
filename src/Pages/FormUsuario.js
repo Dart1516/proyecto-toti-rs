@@ -11,7 +11,7 @@ export default function FormUsuario() {
       </header>
       <div className="forUSario">
         <div className="forContac">
-          <h1 className="titleform">quero ser atendido</h1>
+          <h1 className="titleform">Quero ser Atendido</h1>
           <form className="contacto">
             <input
               type="text"

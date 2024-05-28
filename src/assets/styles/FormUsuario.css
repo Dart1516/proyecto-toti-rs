@@ -24,7 +24,7 @@
     margin-top: 15px;
     border-radius: 8px;
     width: 580px;
-    border: 1px var(--color5) solid ;
+    border: 1px var(--color3) solid ;
     padding: 10px;
     cursor: text;
     
@@ -40,7 +40,7 @@
 }
  
 .genero, .oriSex{
-    border: 1px var(--color5) solid ;
+    border: 1px var(--color3) solid ;
     border-radius: 5px;
     cursor: pointer;
     color: #777;
@@ -93,7 +93,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px var(--color5) solid ;
+    border: 1px var(--color3) solid ;
     margin-top: 20px;
     padding: 5px;
     border-radius: 5px;
@@ -116,10 +116,10 @@ option {
     align-items: center;
     flex-direction: row;
     margin-top: 20px;
-    border: 1px var(--color5) solid ;
+    border: 1px var(--color3) solid ;
     width: 580px;
     border-radius: 5px;
-    border-color: var(--color3);
+    
     cursor: text;
     color: #777;
 }
@@ -129,7 +129,7 @@ option {
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-    border: 1px var(--color5) solid ;
+    border: 1px var(--color3) solid ;
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;

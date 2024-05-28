@@ -1,26 +1,25 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import Demo from "./Pages/demo";
-import Principal from "./Pages/HomePage";
-import AboutUs from "./Pages/AboutUs";
+import Principal from "./Pages/Home";
+import AboutUs from "./Pages/SobreNos";
 import JoinUs from "./Pages/SejaVoluntario";
-import FormUsuario from "./Pages/FormUsuario";
 import Login from "./Pages/Login";
 import NewAccount from "./Pages/NewAccount";
-
+import FormUsuario from "./Pages/FormUsuario";
+import SejaVoluntario from "./Pages/SejaVoluntario";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/Principal" element={<Principal />} />
-        <Route path="/Demo" element={<Demo />} />
+        <Route path="/Demo" element={<Principal />} />
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/JoinUs" element={<JoinUs />} />
-        <Route path="/NewAccount" element={<NewAccount />}/>
         <Route path="/Login" element={<Login />} />
-        <Route path="/FormUsuario" element={<FormUsuario />} />
-        
+        <Route path="/NewAccount" element={<NewAccount />} />
+        <Route path="/FormUsuario" element={<FormUsuario/>}/>
+        <Route path="/SejaVoluntario" element={<SejaVoluntario/>}/>
         {/* Ruta predeterminada */}
         <Route path="/*" element={<Navigate to="/Principal" />} />
       </Routes>

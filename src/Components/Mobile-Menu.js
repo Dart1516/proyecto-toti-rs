@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from "../assets/images/logos/logo1.png";
-import mobileStyles from "../assets/styles/Mobile-Menu.module.css";
+import mobileStyles from "../assets/styles/MobileMenuModules.css";
 import { Link } from "react-router-dom";
 import { IoMenu, IoCloseOutline } from "react-icons/io5";
 
@@ -30,10 +30,7 @@ function MobileMenu() {
             <div className={mobileStyles["Mobile-menu"]}>
               <ul>
                 <li>
-                  <Link to="/Principal">Como Funciona</Link>
-                </li>
-                <li>
-                  <Link to="/Demo">Home</Link>
+                  <Link to="/Principal">Home</Link>
                 </li>
                 <li>
                   <Link to="/AboutUs">Sobre Nós</Link>

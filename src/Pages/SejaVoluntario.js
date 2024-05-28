@@ -1,24 +1,173 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import InputMask from "react-input-mask";
 import Header from "../Components/Header-NavMenu";
 import '../assets/styles/App.css';
+import '../assets/styles/Seja-Voluntario.css';
 
+// aca se importo la libreria InputMask para hacer la validación de los datos en el cpf y whatsapp 
+// falta una la información del login, usuario y senha, se podrá confirmar el email?
 
-function Principal() {
+function SejaVoluntario() {
+  const [voluntario, setVoluntario] = useState("");
+  const [isTermsAccepted, setIsTermsAccepted] = useState(false);
+  const [phone, setPhone] = useState("");
+  const [cpf, setCpf] = useState("");
+
+  const handleVoluntarioChange = (event) => {
+    setVoluntario(event.target.value);
+  };
+
+  const handleTermsChange = (event) => {
+    setIsTermsAccepted(event.target.checked);
+  };
+
+  const handlePhoneChange = (event) => {
+    const input = event.target.value;
+    setPhone(input);
+  };
+
+  const handleCpfChange = (event) => {
+    const input = event.target.value;
+    setCpf(input);
+  };
+
+  const handleSubmit = (event) => {
+    if (!isTermsAccepted) {
+      event.preventDefault();
+      alert("Por favor, aceite os termos e condições antes de enviar o formulário.");
+    }
+  };
+
   return (
-    <div className="App">
-      <header  className="App-header">
-        <Header/>
-      </header>
-      <body >
-        <h2> Eu vou fazer todo o body</h2>
-        <h1>MANUEL COMEÇANDO A TRABALHAR...</h1>
-        
-      </body>
-      <footer>
+    <div className="App SV">
+      <div className="App-header">
+        <Header />
+      </div>
 
-      </footer>
+      <div className="container">
+        <h2>SOS Rio Grande do Sul - Cadastro de profissionais de saúde e intérpretes voluntários</h2>
+
+        <form className="inputs" onSubmit={handleSubmit}>
+          <div className="input-field">
+            <h4>1. Nome Completo<span>*</span></h4>
+            <input type="text" placeholder="Digite seu nome" required />
+          </div>
+
+          <div className="input-field">
+            <h4>2. CPF<span>*</span></h4>
+            <InputMask
+              mask="999.999.999-99"
+              value={cpf}
+              onChange={handleCpfChange}
+              placeholder="Digite seu CPF"
+              required
+            />
+          </div>
+
+          <div className="input-field">
+            <h4>3. Data de Nascimento<span>*</span></h4>
+            <input type="date" required />
+          </div>
+
+          <div className="input-field">
+            <h4>4. Número do WhatsApp<span>*</span></h4>
+            <InputMask
+              mask="(99) 99999-9999"
+              value={phone}
+              onChange={handlePhoneChange}
+              placeholder="(DDD) Digite o número"
+              required
+            />
+          </div>
+
+          <div className="input-field">
+            <h4>5. E-mail<span>*</span></h4>
+            <input type="email" placeholder="Digite o e-mail" required />
+          </div>
+
+          <div className="form-group">
+            <h4>6. Tipo de voluntário<span>*</span></h4>
+            <select className="form-select" name="voluntario" onChange={handleVoluntarioChange} required>
+              <option value="">Selecione</option>
+              <option value="Educador social">Educador(a) Social</option>
+              <option value="Psicólogo">Psicólogo(a)</option>
+              <option value="Liderança Para Emigrantes, refugiados e apátridas">Liderança Para Emigrantes, refugiados e apátridas</option>
+            </select>
+          </div>
+
+          {voluntario === "Psicólogo" && (
+            <>
+              <div className="input-field">
+                <h4>CRM<span>*</span></h4>
+                <input type="text" placeholder="Digite seu CRM" required />
+              </div>
+              <div className="input-field">
+                <h4>Especialidade<span>*</span></h4>
+                <input type="text" placeholder="Digite sua especialidade" required />
+              </div>
+            </>
+          )}
+
+          {(voluntario === "Educador social" || voluntario === "Liderança Para Emigrantes, refugiados e apátridas") && (
+            <div className="input-field">
+              <h4>Área em que pode ajudar<span>*</span></h4>
+              <input type="text" placeholder="Digite a área em que pode ajudar" required />
+            </div>
+          )}
+
+          <div className="form-group">
+            <h4>7. Estado <span>*</span></h4>
+            <select className="form-select" name="estado" required>
+              <option value="">Selecione</option>
+              <option value="SP">SP</option>
+              <option value="MT">MT</option>
+              <option value="MG">MG</option>
+              <option value="CE">CE</option>
+              <option value="AC">AC</option>
+              <option value="AM">AM</option>
+              <option value="RS">RS</option>
+              <option value="MA">MA</option>
+              <option value="MS">MS</option>
+              <option value="RJ">RJ</option>
+              <option value="RO">RO</option>
+              <option value="SC">SC</option>
+            </select>
+          </div>
+
+          <div className="form-group">
+            <h4>8. Disponibilidade<span>*</span></h4>
+            <select className="form-select" name="disponibilidade" required>
+              <option value="">Selecione</option>
+              <option value="Manhã">Manhã</option>
+              <option value="Tarde">Tarde</option>
+              <option value="Noite">Noite</option>
+            </select>
+          </div>
+
+          <div>
+            <h4>Observação (opcional)</h4>
+            <textarea name="message" cols="60" rows="10" placeholder="Sua mensagem" className="contact-inputs"></textarea>
+          </div>
+
+          <div className="form-group">
+            <input type="checkbox" id="terms" name="terms" onChange={handleTermsChange} required />
+            <label htmlFor="terms">
+              Ao marcar esta caixa e clicar em Enviar, aceito o tratamento de meus dados pessoais por <Link to="/avisoLegal" target="_blank">[Nome da sua organização]</Link> conforme explicado no seu <Link to="/avisoLegal" target="_blank">Aviso Legal de Proteção de Dados</Link>, que inclui: 1) a coordenação e gestão de voluntários, e 2) a comunicação sobre atividades e oportunidades relacionadas.
+            </label>
+          </div>
+
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+
+      <footer className="App-footer"></footer>
     </div>
+        
   );
 }
 
-export default Principal;
+
+export default SejaVoluntario;
+
+

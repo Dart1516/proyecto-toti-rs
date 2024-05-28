@@ -1,4 +1,4 @@
-/*Colores*/
+/*Colores
 
 
 :root {
@@ -6,7 +6,7 @@
   --color2: #14c389;
   --color3: #19e09d;
   --color4: #F0F0F0;
-}
+}*/
 .Hamburger-menu-icon {
   display: none;
   /* Inicialmente oculto en pantallas más grandes */
@@ -22,6 +22,9 @@
     justify-content: space-around;
     border-bottom: var(--color1) 3px solid;
     background: linear-gradient(to top, #0a9466, #14c389, #19e09d);
+      top: 0;
+      left: 0;
+      z-index: 100;
 }
 
 .Mobile-menu ul {
@@ -59,7 +62,7 @@
 
   .Mobile-home-logo {
   display: block;
-  background-image: url(/src/assets/images/logos/logo1.png);
+  background-image: url(/src/assets/images/logos/JSMF.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
