@@ -55,18 +55,8 @@ function Principal() {
           </div>
 
           <div className="input-field">
-            <h4>2. CPF<span>*</span></h4></
-<<<<<<< HEAD
+            <h4>2. CPF<span>*</span></h4>
             <input class="input-text" type="text" placeholder="O valor deve ser numérico" required />
-=======
-            <InputMask
-              mask="999.999.999-99"
-              value={cpf}
-              onChange={handleCpfChange}
-              placeholder="Digite seu CPF"
-              required
-            />
->>>>>>> f27f4a66c841b311e672218b585da84a4091629a
           </div>
 
           <div className="input-field">
@@ -76,17 +66,7 @@ function Principal() {
 
           <div className="input-field">
             <h4>4. Número do WhatsApp<span>*</span></h4>
-<<<<<<< HEAD
             <input class="input-text" type="text" placeholder="(DDD) Digite o número" required />
-=======
-            <InputMask
-              mask="(99) 99999-9999"
-              value={phone}
-              onChange={handlePhoneChange}
-              placeholder="(DDD) Digite o número"
-              required
-            />
->>>>>>> f27f4a66c841b311e672218b585da84a4091629a
           </div>
 
           <div className="input-field">
