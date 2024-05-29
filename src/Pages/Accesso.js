@@ -1,8 +1,83 @@
 import React, { useState } from 'react';
-import {  Button,  Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import {Grid, styled} from "@mui/material"
 import { FormGroup, FormControl, InputLabel, Input,  } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
+
+
+const StyledContainer = styled("div")(() => ({
+  height: "100vh",
+  width:"100%",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+}));
+
+const StyledLogin = styled("div")(() => ({
+  width:"100%",
+  boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+  background: "#f9f9f9",
+  padding: "40px",
+  alignItems:"center",
+  justifyContent:"center",
+  border: "1px solid #4CAF50",
+}));
+const StyledButton = styled("button")(() => ({
+  width:"100%",
+  boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+  background: "#4CAF50",
+  padding: "10px",
+  alignItems:"center",
+  justifyContent:"center",
+  margin:'1rem 0',
+  border:"0",
+  cursor:"pointer",
+ color:"white",
+ fontSize:"18px",
+  "&:hover": {
+    color:"white",
+    border:"0",
+    backgroundColor:" #45a049"
+  },
+}));
+const StyledLinkGoogle = styled("a")(() => ({
+  textDecoration: 'none',
+  color: 'black',
+  cursor: "pointer",
+
+}));
+
+const StyledButtonGoogle = styled("a")(() => ({
+  width: "100%",
+  background: "white",
+  border: "1px solid blue",
+  padding: "8px",
+  alignItems: "center",
+  justifyContent: "center",
+  display: "flex",
+  margin: '1rem 0',
+  fontSize: "18px",
+  color: "",
+  gap: "30px",
+  transition: "background-color 0.3s ease-in-out",
+  "&:hover": {
+    backgroundColor: "blue",
+    border: "0",
+    "& > .GoogleIcon": {
+      color: "white",
+    },
+    "& > .StyledLinkGoogle": {
+      color: "white",
+    },
+  },
+}));
+const StyledLinkCadastro = styled("a")(() => ({
+textDecoration: 'none',
+color: 'black',
+cursor:"pointer",
+
+}));
 
 const Accesso = () => {
   const [email, setEmail] = useState('');
@@ -12,92 +87,17 @@ const Accesso = () => {
     console.log('Email:', email);
     console.log('Password:', password);
   }
-      const StyledContainer = styled("div")(() => ({
-        height: "100vh",
-        width:"100%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }));
-      
-      const StyledLogin = styled("div")(() => ({
-        width:"100%",
-        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-        background: "#f9f9f9",
-        padding: "40px",
-        alignItems:"center",
-        justifyContent:"center",
-        border: "1px solid #4CAF50",
-        fontFamily:"Times New Roman"
-      }));
-      const StyledButton = styled("button")(() => ({
-        width:"100%",
-        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-        background: "#4CAF50",
-        padding: "10px",
-        alignItems:"center",
-        justifyContent:"center",
-        margin:'1rem 0',
-        border:"0",
-        cursor:"pointer",
-       color:"white",
-       fontSize:"18px",
-        "&:hover": {
-          color:"white",
-          border:"0",
-          backgroundColor:" #45a049"
-        },
-      }));
-      const StyledLinkGoogle = styled("a")(() => ({
-        textDecoration: 'none',
-        color: 'black',
-        cursor: "pointer",
-    
-      }));
-      
-      const StyledButtonGoogle = styled("a")(() => ({
-        width: "100%",
-        background: "white",
-        border: "1px solid blue",
-        padding: "8px",
-        alignItems: "center",
-        justifyContent: "center",
-        display: "flex",
-        margin: '1rem 0',
-        fontSize: "18px",
-        color: "",
-        gap: "30px",
-        transition: "background-color 0.3s ease-in-out",
-        "&:hover": {
-          backgroundColor: "blue",
-          border: "0",
-          "& > .GoogleIcon": {
-            color: "white",
-          },
-          "& > .StyledLinkGoogle": {
-            color: "white",
-          },
-        },
-      }));
-    const StyledLinkCadastro = styled("a")(() => ({
-      textDecoration: 'none',
-      color: 'black',
-      cursor:"pointer",
-      
-    }));
+
+  
         return (
 <StyledContainer>
-<Grid container spacing={2} textAlign="center" justifyContent="center" columnGap={6} >
+<Grid container spacing={2} textAlign="center" justifyContent="center" >
 <StyledLogin>
 <Grid item xs={12} md={12}>
- 
             <Typography variant="h4" padding={4}>Seja bem-vindo(a) de volta</Typography>
-            </Grid>
-            <Grid item xs={12} md={12} >
-            <FormGroup >
+            <FormGroup>
             <FormControl>
-  <InputLabel>Email</InputLabel>
+  <InputLabel  style={{all:"unset", left:"0", justifyContent:"start", display:"flex", textAlign:"left" }}>Email</InputLabel>
   <Input
     type="email"
     value={email}
@@ -108,7 +108,7 @@ const Accesso = () => {
 </FormControl>
 
 <FormControl style={{ marginTop: '20px' }}>
-  <InputLabel>Password</InputLabel>
+  <InputLabel  style={{all:"unset", left:"0", justifyContent:"start", display:"flex", textAlign:"left" }}>Password</InputLabel>
   <Input
     type="password"
     value={password}
