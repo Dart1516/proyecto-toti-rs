@@ -31,31 +31,33 @@ function Principal() {
     const input = event.target.value;
     setCpf(input);
   };
-
   const handleSubmit = (event) => {
     if (!isTermsAccepted) {
       event.preventDefault();
       alert("Por favor, aceite os termos e condições antes de enviar o formulário.");
     }
   };
-
   return (
     <div className="App SV">
       <div className="App-header">
         <Header />
       </div>
-
       <div className="container">
         <h2>SOS Rio Grande do Sul - Cadastro de profissionais de saúde e intérpretes voluntários</h2>
-
         <form className="inputs" onSubmit={handleSubmit}>
           <div className="input-field">
             <h4>1. Nome Completo<span>*</span></h4>
             <input class="input-text" type="text" placeholder="Digite seu nome" required />
           </div>
-
           <div className="input-field">
             <h4>2. CPF<span>*</span></h4>
+            <InputMask
+              mask="999.999.999-99"
+              value={cpf}
+              onChange={handleCpfChange}
+              placeholder="Digite seu CPF"
+              required  className="input-text"
+            />
             <input class="input-text" type="text" placeholder="O valor deve ser numérico" required />
           </div>
 
@@ -66,7 +68,16 @@ function Principal() {
 
           <div className="input-field">
             <h4>4. Número do WhatsApp<span>*</span></h4>
+
+            <InputMask
+              mask="(99) 99999-9999"
+              value={phone}
+              onChange={handlePhoneChange}
+              placeholder="(DDD) Digite o número"
+              required  className="input-text"/>
+
             <input class="input-text" type="text" placeholder="(DDD) Digite o número" required />
+
           </div>
 
           <div className="input-field">
@@ -145,7 +156,7 @@ function Principal() {
             </label>
           </div>
 
-          <button type="submit">Enviar</button>
+          <button class="SV" type="submit">Enviar</button>
         </form>
       </div>
 
