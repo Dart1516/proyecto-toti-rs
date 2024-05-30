@@ -8,6 +8,7 @@ import NewAccount from "./Pages/NewAccount";
 import Accesso from "./Pages/Accesso";
 import AvisoLegal from "./Pages/avisoLegal";
 import MaterialDeApoio from "./Pages/MaterialDeApoio";
+import FormUsuario from "./Pages/FormUsuario";
 import InterfazLider from "./Pages/interfazLider";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/avisoLegal" element={<AvisoLegal />} />
         <Route path="/Accesso" element={<Accesso />} />
         <Route path="/interfazLider" element={<InterfazLider />} />
+        <Route path="/FormUsuario" element={<FormUsuario/>} />
 
         {/* Ruta predeterminada */}
         <Route path="/*" element={<Navigate to="/Principal" />} />

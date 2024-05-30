@@ -41,7 +41,7 @@ function HeaderAndMenu() {
               </Link>
             </li>
             <li className="menu-option-right">
-              <Link to="/NewAccount" className="menu-option-name">
+              <Link to="/FormUsuario" className="menu-option-name">
               Liderança Emigrante
               </Link>
             </li>

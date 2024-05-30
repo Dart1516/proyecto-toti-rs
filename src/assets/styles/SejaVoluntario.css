@@ -90,7 +90,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="date"]:focus, .
     outline: none;
 }
 
-button {
+button.SV {
     background: #4CAF50;
     color: #fff;
     padding: 10px 15px;
@@ -102,7 +102,7 @@ button {
     transition: background 0.3s ease;
 }
 
-button:hover {
+button.SV:hover {
     background: #45a049;
 }
 
@@ -125,7 +125,7 @@ button:hover {
         padding: 8px;
     }
 
-    button {
+    button.SV {
         font-size: 14px;
         padding: 8px 12px;
     }
@@ -149,7 +149,7 @@ button:hover {
         padding: 6px;
     }
 
-    button {
+    button.SV {
         font-size: 12px;
         padding: 6px 10px;
     }
