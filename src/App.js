@@ -8,6 +8,7 @@ import NewAccount from "./Pages/NewAccount";
 import Accesso from "../src/Pages/Accesso"
 import AvisoLegal from "./Pages/avisoLegal.js";
 import MaterialDeApoio from "./Pages/MaterialDeApoio";
+import interfazLider from "./Pages/interfazLider";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/NewAccount" element={<NewAccount />} />
         <Route path="/avisoLegal" element={<AvisoLegal/>} />
         <Route path="/Accesso" element={<Accesso/>} />
+        <Route path="/interfazLider" element={<interfazLider/>} />
 
         {/* Ruta predeterminada */}
         <Route path="/*" element={<Navigate to="/Principal" />} />

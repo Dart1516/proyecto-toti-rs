@@ -51,27 +51,39 @@ function Principal() {
         <form className="inputs" onSubmit={handleSubmit}>
           <div className="input-field">
             <h4>1. Nome Completo<span>*</span></h4>
-            <input class="input-text" type="text" placeholder="Digite seu nome" required />
+            <input type="text" placeholder="Digite seu nome" required />
           </div>
 
           <div className="input-field">
             <h4>2. CPF<span>*</span></h4>
-            <input class="input-text" type="text" placeholder="O valor deve ser numérico" required />
+            <InputMask
+              mask="999.999.999-99"
+              value={cpf}
+              onChange={handleCpfChange}
+              placeholder="Digite seu CPF"
+              required
+            />
           </div>
 
           <div className="input-field">
             <h4>3. Data de Nascimento<span>*</span></h4>
-            <input class="input-text" type="date" required />
+            <input type="date" required />
           </div>
 
           <div className="input-field">
             <h4>4. Número do WhatsApp<span>*</span></h4>
-            <input class="input-text" type="text" placeholder="(DDD) Digite o número" required />
+            <InputMask
+              mask="(99) 99999-9999"
+              value={phone}
+              onChange={handlePhoneChange}
+              placeholder="(DDD) Digite o número"
+              required
+            />
           </div>
 
           <div className="input-field">
             <h4>5. E-mail<span>*</span></h4>
-            <input class="input-text" type="email" placeholder="Digite o e-mail" required />
+            <input type="email" placeholder="Digite o e-mail" required />
           </div>
 
           <div className="form-group">
@@ -88,11 +100,11 @@ function Principal() {
             <>
               <div className="input-field">
                 <h4>CRM<span>*</span></h4>
-                <input class="input-text" type="text" placeholder="Digite seu CRM" required />
+                <input type="text" placeholder="Digite seu CRM" required />
               </div>
               <div className="input-field">
                 <h4>Especialidade<span>*</span></h4>
-                <input class="input-text" type="text" placeholder="Digite sua especialidade" required />
+                <input type="text" placeholder="Digite sua especialidade" required />
               </div>
             </>
           )}
@@ -100,7 +112,7 @@ function Principal() {
           {(voluntario === "Educador social" || voluntario === "Liderança Para Emigrantes, refugiados e apátridas") && (
             <div className="input-field">
               <h4>Área em que pode ajudar<span>*</span></h4>
-              <input class="input-text" type="text" placeholder="Digite a área em que pode ajudar" required />
+              <input type="text" placeholder="Digite a área em que pode ajudar" required />
             </div>
           )}
 

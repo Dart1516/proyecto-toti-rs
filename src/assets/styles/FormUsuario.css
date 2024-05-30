@@ -1,0 +1,133 @@
+.forUSario {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    text-align: center; 
+    margin: auto; 
+    padding: 2rem; 
+    flex-direction: column;
+}
+
+
+.forContac {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 90px;
+
+}
+
+#name, #email, #phone{
+    display: flex;
+    margin-top: 15px;
+    border-radius: 8px;
+    width: 580px;
+    border: 3px var(--color3) solid ;
+    padding: 10px;
+    cursor: text;
+
+}
+.Genero-orientação{
+    display: flex;
+
+}
+.forGenero, .forOrSexual {
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+.genero, .oriSex{
+    border: 3px var(--color3) solid ;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.servicio{
+   display: flex;
+   justify-content:baseline;
+    flex-direction: column;
+}
+.forServ{
+    display: flex;
+    justify-content: center;
+
+    margin-top: 20px;
+}
+
+.liderV, .eduSoc, .psico{
+   margin-top: 5px;
+   margin-left: 5px;
+   }
+
+
+#interestPsico, #interestEduca, #interestLidLog, #interestVol {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 16px;
+    height: 16px;
+    appearance: none;
+    border-radius: 5px;
+    margin: 10px 20px;
+    border: 3px var(--color3) solid ;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    cursor: pointer;
+
+}
+#interestPsico:checked::before, #interestEduca:checked::before, #interestVol:checked::before {
+    content: '';
+    /* top: 2px;
+    left: 2px; */
+    width: 10px;
+    height: 10px;
+    background-color: var(--color1);
+    outline: none;
+    position: absolute;
+}
+
+#availability{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px var(--color1) solid ;
+    margin-top: 20px;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+option {
+    background-color: var(--color3); /* Color de fondo por defecto */
+    border-radius: 10px;
+    border: 3px var(--color1) solid ;
+}
+
+#availability option:checked {
+    background-color: var(--color1) ;
+
+}
+
+.forTexTarea textarea{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 20px;
+    border: 3px var(--color3) solid ;
+    width: 580px;
+    border-radius: 15px;
+    border-color: var(--color3);
+    cursor: text;
+}
+
+.btnEnviar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    border: 3px var(--color3) solid ;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+} 

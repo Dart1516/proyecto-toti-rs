@@ -3,6 +3,8 @@ import "../assets/styles/Header-NavMenu.css";
 import MobileMenu from "../Components/Mobile-Menu";
 import { Link } from "react-router-dom";
 import { styled} from "@mui/material"
+import LoginMenu from "../Components/LoginMenu"; // Importa el nuevo menu
+
 
 function HeaderAndMenu() {
   const StyledHeader = styled("div")(({ theme }) => ({
@@ -43,6 +45,9 @@ function HeaderAndMenu() {
               <Link to="/NewAccount" className="menu-option-name">
               Liderança Emigrante
               </Link>
+            </li>
+            <li className="menu-option-right">
+              <LoginMenu /> {/* el menu que veran los usuarios */}
             </li>
           </ul>
         </nav>
