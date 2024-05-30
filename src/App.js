@@ -5,10 +5,10 @@ import AboutUs from "./Pages/SobreNos";
 import JoinUs from "./Pages/SejaVoluntario";
 import Login from "./Pages/Login";
 import NewAccount from "./Pages/NewAccount";
-import Accesso from "../src/Pages/Accesso"
-import AvisoLegal from "./Pages/avisoLegal.js";
+import Accesso from "./Pages/Accesso";
+import AvisoLegal from "./Pages/avisoLegal";
 import MaterialDeApoio from "./Pages/MaterialDeApoio";
-import interfazLider from "./Pages/interfazLider";
+import InterfazLider from "./Pages/interfazLider";
 
 function App() {
   return (
@@ -18,12 +18,12 @@ function App() {
         <Route path="/Demo" element={<Principal />} />
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/JoinUs" element={<JoinUs />} />
-        <Route path="/Login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/material-de-apoyo" element={<MaterialDeApoio />} />
         <Route path="/NewAccount" element={<NewAccount />} />
-        <Route path="/avisoLegal" element={<AvisoLegal/>} />
-        <Route path="/Accesso" element={<Accesso/>} />
-        <Route path="/interfazLider" element={<interfazLider/>} />
+        <Route path="/avisoLegal" element={<AvisoLegal />} />
+        <Route path="/Accesso" element={<Accesso />} />
+        <Route path="/interfazLider" element={<InterfazLider />} />
 
         {/* Ruta predeterminada */}
         <Route path="/*" element={<Navigate to="/Principal" />} />

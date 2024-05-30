@@ -1,63 +1,70 @@
-/* src/assets/styles/LoginMenu.css */
-
+/* Contenedor del menú de login */
 .login-menu {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  
-  .login-info {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-  }
-  
-  .profile-image {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .username {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--color4);
-    margin-right: 5px;
-  }
-  
-  .dropdown-icon {
-    color: var(--color4);
-  }
-  
-  .dropdown-menu {
-    position: absolute;
-    top: 50px;
-    right: 0;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-  }
-  
-  .dropdown-menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .dropdown-menu li {
-    padding: 10px 20px;
-  }
-  
-  .dropdown-menu li a {
-    text-decoration: none;
-    color: #333;
-    display: block;
-  }
-  
-  .dropdown-menu li:hover {
-    background-color: #f0f0f0;
-  }
-  
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Contenedor de la información del usuario (imagen de perfil y nombre) */
+.login-info {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Estilos para la imagen de perfil del usuario */
+.profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* Estilos para el nombre de usuario */
+.username {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color4);
+  margin-right: 5px;
+}
+
+/* Estilos para el icono de flecha hacia abajo */
+.dropdown-icon {
+  color: var(--color4);
+}
+
+/* Contenedor del menú desplegable */
+.dropdown-menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+/* Lista dentro del menú desplegable */
+.dropdown-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Elementos de la lista en el menú desplegable */
+.dropdown-menu li {
+  padding: 10px 20px;
+}
+
+/* Enlaces dentro de los elementos de la lista */
+.dropdown-menu li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+
+/* Estilo de los elementos de la lista en hover */
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}
