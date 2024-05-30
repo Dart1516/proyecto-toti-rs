@@ -1,17 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import '../assets/styles/LoginMenu.css';
 import profileImage from '../assets/images/login/login3.png';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { Link, useNavigate } from 'react-router-dom'; //este es el codigo para que entre en acceso
+
 
 function LoginMenu() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para manejar si el usuario está logueado
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para manejar si el menú está abierto
   const menuRef = useRef(null); // Referencia para el menú desplegable
+  const navigate = useNavigate (); //este es el codigo para que entre en acceso
 
   // Función para manejar el clic en el botón de login
   const handleLoginClick = () => {
     setIsLoggedIn(true); // Cambia el estado a logueado
+    navigate('/Accesso'); //este es el codigo para que entre en acceso
   };
 
   // Función para alternar el menú desplegable
