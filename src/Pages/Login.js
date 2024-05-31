@@ -14,8 +14,6 @@ function Login () {
 <body>
 { /*login e register*/}
 
-      
-
 <h1 className="title">Iniciar Sessão</h1>
 
    <div className="Login">
