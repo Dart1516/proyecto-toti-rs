@@ -3,7 +3,8 @@ import { Typography } from '@mui/material';
 import {Grid, styled} from "@mui/material"
 import { FormGroup, FormControl, InputLabel, Input,  } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
-
+import { Api } from '../services/api';
+import { useNavigate } from 'react-router-dom';
 
 const StyledContainer = styled("div")(() => ({
   height: "100vh",
@@ -13,7 +14,6 @@ const StyledContainer = styled("div")(() => ({
   justifyContent: "center",
   alignItems: "center",
 }));
-
 const StyledLogin = styled("div")(() => ({
   width:"100%",
   boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
@@ -47,7 +47,6 @@ const StyledLinkGoogle = styled("a")(() => ({
   cursor: "pointer",
 
 }));
-
 const StyledButtonGoogle = styled("a")(() => ({
   width: "100%",
   background: "white",
@@ -82,13 +81,30 @@ cursor:"pointer",
 const Accesso = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+  const navigate = useNavigate(); 
+  const handleLogin = async () => {
+    try {
+      const response = await Api.get(`/login?email=${email}&password=${password}`);
+    console.log('Datos del cliente:', response.data);
 
-  const handleLogin = () => {
-    console.log('Email:', email);
-    console.log('Password:', password);
-  }
+    // Si el cliente se autentica correctamente, redirige a la página de inicio
+    navigate('/home'); 
+    } catch (error) {
+      console.error('Error al autenticar o cargar los datos del cliente:', error);
+      setError('Email o contraseña incorrectos');
+    }
+  };
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+    setError(null); // Limpia el mensaje de error al escribir nuevos datos
+  };
 
-  
+  // Función para manejar cambios en el campo de contraseña
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+    setError(null); // Limpia el mensaje de error al escribir nuevos datos
+  };
         return (
 <StyledContainer>
 <Grid container spacing={2} textAlign="center" justifyContent="center" >
@@ -101,7 +117,7 @@ const Accesso = () => {
   <Input
     type="email"
     value={email}
-    onChange={(e) => setEmail(e.target.value)}
+    onChange={handleEmailChange}
     required
     
   />
@@ -112,7 +128,7 @@ const Accesso = () => {
   <Input
     type="password"
     value={password}
-    onChange={(e) => setPassword(e.target.value)}
+    onChange={handlePasswordChange} 
     required
   />
 </FormControl>
@@ -122,7 +138,8 @@ const Accesso = () => {
           
                   Entrar
             
-              </StyledButton>           
+              </StyledButton>    
+              {error && <p style={{ color: 'red' }}>{error}</p>} {/* Muestra el mensaje de error */}       
             </FormGroup>
                 </Grid>
 {/* ------------------------------------------------------- */}
