@@ -88,7 +88,7 @@ const Accesso = () => {
       const response = await Api.get(`/login?email=${email}&password=${password}`);
     console.log('Datos del cliente:', response.data);
 
-    // Si el cliente se autentica correctamente, redirige a la página de inicio
+    
     navigate('/home'); 
     } catch (error) {
       console.error('Error al autenticar o cargar los datos del cliente:', error);
@@ -100,10 +100,10 @@ const Accesso = () => {
     setError(null); // Limpia el mensaje de error al escribir nuevos datos
   };
 
-  // Función para manejar cambios en el campo de contraseña
+  
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
-    setError(null); // Limpia el mensaje de error al escribir nuevos datos
+    setError(null); 
   };
         return (
 <StyledContainer>
