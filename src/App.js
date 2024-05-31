@@ -10,6 +10,7 @@ import AvisoLegal from "./Pages/avisoLegal";
 import MaterialDeApoio from "./Pages/MaterialDeApoio";
 import FormUsuario from "./Pages/FormUsuario";
 import InterfazLider from "./Pages/interfazLider";
+import { AuthProvider } from './Components/AuthContext';
 
 function App() {
   return (

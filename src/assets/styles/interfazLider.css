@@ -1,0 +1,68 @@
+.App-body {
+    padding: 20px;
+  }
+  
+  h2 {
+    color: #333;
+  }
+  
+  h3 {
+    margin-top: 20px;
+    color: #666;
+  }
+  
+  .professional-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .professional-card {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  .left-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .professional-info {
+    text-align: left;
+  }
+  
+  .professional-info h4 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+  
+  .professional-info p {
+    margin: 5px 0 0;
+    color: #666;
+  }
+  
+  .right-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .right-section p {
+    margin: 5px 0;
+  }
+  
+  .right-section p strong {
+    font-weight: bold;
+  }
+  

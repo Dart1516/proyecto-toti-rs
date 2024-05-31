@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import logo from "../assets/images/logos/logo1.png";
 import mobileStyles from "../assets/styles/Mobile-Menu.module.css";
 import { Link } from "react-router-dom";
 import { IoMenu, IoCloseOutline } from "react-icons/io5";
@@ -39,7 +38,7 @@ function MobileMenu() {
                   <Link to="/JoinUs">Seja Voluntario</Link>
                 </li>
                 <li>
-                  <Link to="/Login">Login</Link>
+                  <Link to="/Accesso">Login</Link>
                 </li>
               </ul>
             </div>
