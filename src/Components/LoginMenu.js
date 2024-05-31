@@ -53,7 +53,7 @@ function LoginMenu() {
               <Link to="/profile">Mi Perfil</Link>
             </li>
             <li>
-              <Link to="/volunteers">Lista de Voluntarios</Link>
+              <Link to="/interfazLider">Lista de Voluntarios</Link>
             </li>
             <li onClick={logout}>
               <Link to="/">Salir de la Sesión</Link>
