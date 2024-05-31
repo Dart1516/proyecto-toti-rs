@@ -2,37 +2,28 @@ import React, { useState, useRef, useEffect } from 'react';
 import '../assets/styles/LoginMenu.css';
 import profileImage from '../assets/images/login/login3.png';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { Link, useNavigate } from 'react-router-dom'; //este es el codigo para que entre en acceso
-
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../Components/AuthContext';
 
 function LoginMenu() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para manejar si el usuario está logueado
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para manejar si el menú está abierto
-  const menuRef = useRef(null); // Referencia para el menú desplegable
-  const navigate = useNavigate (); //este es el codigo para que entre en acceso
+  const { isLoggedIn, login, logout } = useAuth();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+  const navigate = useNavigate();
 
-  // Función para manejar el clic en el botón de login
   const handleLoginClick = () => {
-    setIsLoggedIn(true); // Cambia el estado a logueado
-    navigate('/Accesso'); //este es el codigo para que entre en acceso
+    login();
+    navigate('/Accesso');
   };
 
-  // Función para alternar el menú desplegable
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen); // Alterna el estado del menú desplegable
+    setIsMenuOpen(!isMenuOpen);
   };
 
-  // Función para manejar el cierre de sesión
-  const handleLogout = () => {
-    setIsLoggedIn(false); // Cambia el estado a no logueado
-    setIsMenuOpen(false); // Cierra el menú desplegable
-  };
-
-  // useEffect para manejar clics fuera del menú
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setIsMenuOpen(false); // Cierra el menú si se hace clic fuera de él
+        setIsMenuOpen(false);
       }
     };
 
@@ -64,8 +55,8 @@ function LoginMenu() {
             <li>
               <Link to="/volunteers">Lista de Voluntarios</Link>
             </li>
-            <li onClick={handleLogout}>
-              <Link to="/logout">Salir de la Sesión</Link>
+            <li onClick={logout}>
+              <Link to="/">Salir de la Sesión</Link>
             </li>
           </ul>
         </div>

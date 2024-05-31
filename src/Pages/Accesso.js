@@ -98,7 +98,7 @@ const handleLogin = async () => {
     
 
     // Redireccionamos al usuario a la interfaz de usuario
-    Navigate("/Home");
+    Navigate("/interfazLider");
   } catch (error) {
     console.error("Error al iniciar sesión:", error.message);
   }

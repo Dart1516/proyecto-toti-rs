@@ -1,25 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import "../assets/styles/Header-NavMenu.css";
 import MobileMenu from "../Components/Mobile-Menu";
 import { Link } from "react-router-dom";
-import { styled } from "@mui/material";
 import LoginMenu from "../Components/LoginMenu"; // Importa el nuevo componente
 
-const StyledHeader = styled("div")(({ theme }) => ({
-  backgroundColor: theme.palette.primary.main, // Asegúrate de que el tema tenga configurados estos valores
-  color: theme.palette.secondary.main,
-}));
-
 function HeaderAndMenu() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleLoginSuccess = () => {
-    setIsLoggedIn(true);
-  };
+
+
 
   return (
     <div>
-      <StyledHeader>
         <MobileMenu />
         {/* Icono del menú hamburguesa */}
         <nav className="contenedor_de_opciones">
@@ -54,7 +45,6 @@ function HeaderAndMenu() {
             </li>
           </ul>
         </nav>
-      </StyledHeader>
     </div>
   );
 }
