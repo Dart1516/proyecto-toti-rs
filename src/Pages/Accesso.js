@@ -86,6 +86,7 @@ const Accesso = () => {
     
    
 
+<<<<<<< HEAD
     try {
       const response = await Api.get(
         `/login?email=${email}&password=${password}`
@@ -94,6 +95,10 @@ const Accesso = () => {
       console.log(username);
       navigate("/interfazLider");
   
+=======
+    
+    navigate('/home'); 
+>>>>>>> b9afa606b130fc7f48e8950942d9e01350f52067
     } catch (error) {
       console.error(
         "Error al autenticar o cargar los datos del cliente:",
@@ -110,9 +115,16 @@ const Accesso = () => {
     setError(null);
   };
 
+<<<<<<< HEAD
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
     setError(null);
+=======
+  
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+    setError(null); 
+>>>>>>> b9afa606b130fc7f48e8950942d9e01350f52067
   };
   return (
     <StyledContainer>
