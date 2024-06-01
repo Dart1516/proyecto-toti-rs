@@ -47,7 +47,7 @@ function Principal() {
         <form className="inputs" onSubmit={handleSubmit}>
           <div className="input-field">
             <h4>1. Nome Completo<span>*</span></h4>
-            <input type="text" placeholder="Digite seu nome" required />
+            <input class="input-text" type="text" placeholder="Digite seu nome" required />
           </div>
           <div className="input-field">
             <h4>2. CPF<span>*</span></h4>
@@ -55,15 +55,14 @@ function Principal() {
               mask="999.999.999-99"
               value={cpf}
               onChange={handleCpfChange}
-              placeholder="Digite seu CPF"
+              placeholder="Digite seu CPF O valor deve ser numérico"
               required  className="input-text"
             />
-            <input class="input-text" type="text" placeholder="O valor deve ser numérico" required />
           </div>
 
           <div className="input-field">
             <h4>3. Data de Nascimento<span>*</span></h4>
-            <input type="date" required />
+            <input class="input-text" type="date" required />
           </div>
 
           <div className="input-field">
@@ -76,13 +75,13 @@ function Principal() {
               placeholder="(DDD) Digite o número"
               required  className="input-text"/>
 
-            <input class="input-text" type="text" placeholder="(DDD) Digite o número" required />
+            
 
           </div>
 
           <div className="input-field">
             <h4>5. E-mail<span>*</span></h4>
-            <input type="email" placeholder="Digite o e-mail" required />
+            <input class="input-text" type="email" placeholder="Digite o e-mail" required />
           </div>
 
           <div className="form-group">
@@ -98,7 +97,7 @@ function Principal() {
           {voluntario === "Psicólogo" && (
             <>
               <div className="input-field">
-                <h4>CRM<span>*</span></h4>
+                <h4>CRP<span>*</span></h4>
                 <input type="text" placeholder="Digite seu CRM" required />
               </div>
               <div className="input-field">
