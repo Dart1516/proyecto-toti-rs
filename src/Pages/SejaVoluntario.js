@@ -9,10 +9,24 @@ import { FaTrash, FaPlus } from 'react-icons/fa';
 function Principal() {
   const [voluntario, setVoluntario] = useState("");
   const [isTermsAccepted, setIsTermsAccepted] = useState(false);
-  const [phone, setPhone] = useState("");
-  const [cpf, setCpf] = useState("");
   const [additionalDays, setAdditionalDays] = useState([{ day: "", hour: "" }]);
-
+  const [formData, setFormData] = useState({
+    name: "",
+    cpf: "",
+    birthDate: "",
+    phone: "",
+    email: "",
+    volunteerType: "",
+    crp: "",
+    specialty: "",
+    area: "",
+    state: "",
+    additionalDays: [{ day: "", hour: "" }],
+    password: "",
+    verifyPassword: "",
+    verifyEmail: ""
+  });
+  
   const handleVoluntarioChange = (event) => {
     setVoluntario(event.target.value);
   };
@@ -21,30 +35,24 @@ function Principal() {
     setIsTermsAccepted(event.target.checked);
   };
 
-  const handlePhoneChange = (event) => {
-    const input = event.target.value;
-    setPhone(input);
-  };
-
-  const handleCpfChange = (event) => {
-    const input = event.target.value;
-    setCpf(input);
-  };
-
   const handleDayChange = (index, event) => {
     const values = [...additionalDays];
     values[index][event.target.name] = event.target.value;
     setAdditionalDays(values);
+    setFormData({ ...formData, additionalDays: values });
   };
 
   const addDay = () => {
-    setAdditionalDays([...additionalDays, { day: "", hour: "" }]);
+    const newDays = [...additionalDays, { day: "", hour: "" }];
+    setAdditionalDays(newDays);
+    setFormData({ ...formData, additionalDays: newDays });
   };
 
   const removeDay = (index) => {
     const values = [...additionalDays];
     values.splice(index, 1);
     setAdditionalDays(values);
+    setFormData({ ...formData, additionalDays: values });
   };
 
   const handleSubmit = (event) => {
@@ -53,6 +61,39 @@ function Principal() {
       alert("Por favor, aceite os termos e condições antes de enviar o formulário.");
     }
   };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+
+    if (name === "password") {
+      validatePassword(value);
+    }
+
+    if (name === "verifyPassword") {
+      setPasswordMatchError(value !== formData.password ? "Las contraseñas no coinciden." : "");
+    }
+
+    if (name === "verifyEmail") {
+      setEmailMatchError(value !== formData.email ? "Los correos electrónicos no coinciden." : "");
+    }
+  };
+
+  const validatePassword = (password) => {
+    let error = "";
+    if (!/(?=.*[a-z])/.test(password)) error += "Falta minúscula. ";
+    if (!/(?=.*[A-Z])/.test(password)) error += "Falta mayúscula. ";
+    if (!/(?=.*\d)/.test(password)) error += "Falta número. ";
+    if (!/(?=.*[@#$%^&+=])/.test(password)) error += "Falta símbolo. ";
+    setPasswordError(error);
+  };
+
+  const [passwordError, setPasswordError] = useState("");
+  const [passwordMatchError, setPasswordMatchError] = useState("");
+  const [emailMatchError, setEmailMatchError] = useState("");
 
   return (
     <div className="App SV">
@@ -64,41 +105,66 @@ function Principal() {
         <form className="inputs" onSubmit={handleSubmit}>
           <div className="input-field">
             <h4>1. Nome Completo<span>*</span></h4>
-            <input className="input-text" type="text" placeholder="Digite seu nome" required />
+            <input
+              className="input-text"
+              type="text"
+              name="name"
+              placeholder="Digite seu nome"
+              value={formData.name}
+              onChange={handleInputChange}
+              required
+            />
           </div>
           <div className="input-field">
             <h4>2. CPF<span>*</span></h4>
             <InputMask
               mask="999.999.999-99"
-              value={cpf}
-              onChange={handleCpfChange}
+              value={formData.cpf}
+              onChange={handleInputChange}
               placeholder="Digite seu CPF O valor deve ser numérico"
               required
               className="input-text"
+              name="cpf"
             />
           </div>
           <div className="input-field">
             <h4>3. Data de Nascimento<span>*</span></h4>
-            <input className="input-text" type="date" required />
-          </div>
-          <div className="input-field">
-            <h4>4. Número do WhatsApp<span>*</span></h4>
-            <InputMask
-              mask="(99) 99999-9999"
-              value={phone}
-              onChange={handlePhoneChange}
-              placeholder="(DDD) Digite o número"
-              required
+            <input
               className="input-text"
+              type="date"
+              name="birthDate"
+              value={formData.birthDate}
+              onChange={handleInputChange}
+              required
             />
           </div>
           <div className="input-field">
-            <h4>5. E-mail<span>*</span></h4>
-            <input className="input-text" type="email" placeholder="Digite o e-mail" required />
+            <h4>4. Número do WhatsApp para contato<span>*</span></h4>
+            <InputMask
+              mask="(99) 99999-9999"
+              value={formData.phone}
+              onChange={handleInputChange}
+              placeholder="(DDD) Digite o número"
+              required
+              className="input-text"
+              name="phone"
+            />
+          </div>
+          <div className="input-field">
+            <h4>5. E-mail para contato<span>*</span></h4>
+            <input
+              className="input-text"
+              type="email"
+              name="email"
+              placeholder="Digite o e-mail"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
+            />
           </div>
           <div className="form-group">
             <h4>6. Tipo de voluntário<span>*</span></h4>
-            <select className="form-select" name="voluntario" onChange={handleVoluntarioChange} required>
+            <select className="form-select" name="volunteerType" onChange={handleVoluntarioChange} required>
               <option value="">Selecione</option>
               <option value="Educador social">Educador(a) Social</option>
               <option value="Psicólogo">Psicólogo(a)</option>
@@ -109,23 +175,47 @@ function Principal() {
             <>
               <div className="input-field">
                 <h4>CRP<span>*</span></h4>
-                <input type="text" placeholder="Digite seu CRM" required />
+                <input
+                  type="text"
+                  name="crp"
+                  value={formData.crp}
+                  onChange={handleInputChange}
+                  placeholder="Digite seu CRP"
+                  required
+                  className="input-text"
+                />
               </div>
               <div className="input-field">
                 <h4>Especialidade<span>*</span></h4>
-                <input type="text" placeholder="Digite sua especialidade" required />
+                <input
+                  type="text"
+                  name="specialty"
+                  value={formData.specialty}
+                  onChange={handleInputChange}
+                  placeholder="Digite sua especialidade"
+                  required
+                  className="input-text"
+                />
               </div>
             </>
           )}
           {(voluntario === "Educador social" || voluntario === "Liderança Para Emigrantes, refugiados e apátridas") && (
             <div className="input-field">
               <h4>Área em que pode ajudar<span>*</span></h4>
-              <input type="text" placeholder="Digite a área em que pode ajudar" required />
+              <input
+                type="text"
+                name="area"
+                value={formData.area}
+                onChange={handleInputChange}
+                placeholder="Digite a área em que pode ajudar"
+                required
+                className="input-text"
+              />
             </div>
           )}
           <div className="form-group">
             <h4>7. Estado <span>*</span></h4>
-            <select className="form-select" name="estado" required>
+            <select className="form-select" name="state" value={formData.state} onChange={handleInputChange} required>
               <option value="">Selecione</option>
               <option value="SP">SP</option>
               <option value="MT">MT</option>
@@ -141,94 +231,133 @@ function Principal() {
               <option value="SC">SC</option>
             </select>
           </div>
-          <div className="form-group">
-  <div style={{ display: "flex", gap: "10px" }}>
-    <div>
-      <h4>8. Dia Disponivel<span>*</span></h4>
-      <select className="form-select" name="day" value={additionalDays[0].day} onChange={(e) => handleDayChange(0, e)} required>
-        <option value="">Selecione</option>
-        <option value="Segunda">Segunda</option>
-        <option value="Terça">Terça</option>
-        <option value="Quarta">Quarta</option>
-        <option value="Quinta">Quinta</option>
-        <option value="Sexta">Sexta</option>
-        <option value="Sabado">Sabado</option>
-        <option value="Domingo">Domingo</option>
-      </select>
-    </div>
-    <div>
-      <h4>9. Hora Disponivel<span>*</span></h4>
-      <select className="form-select" name="hour" value={additionalDays[0].hour} onChange={(e) => handleDayChange(0, e)} required>
-        <option value="">Selecione</option>
-        <option value="09:00">09:00</option>
-        <option value="10:00">10:00</option>
-        <option value="11:00">11:00</option>
-        <option value="12:00">12:00</option>
-        <option value="13:00">13:00</option>
-        <option value="14:00">14:00</option>
-        <option value="15:00">15:00</option>
-        <option value="16:00">16:00</option>
-        <option value="17:00">17:00</option>
-        <option value="18:00">18:00</option>
-        <option value="19:00">19:00</option>
-        <option value="20:00">20:00</option>
-        <option value="21:00">21:00</option>
-      </select>
-    </div>
-    {additionalDays.length === 1 && (
-      <button type="button" onClick={() => addDay(0)}><FaPlus /></button>
-    )}
-  </div>
-</div>
-{additionalDays.slice(1).map((additionalDay, index) => (
-  <div className="form-group" key={index + 1}>
-    <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-      <div>
-        <h4>Dia Disponivel {index + 2}<span>*</span></h4>
-        <select className="form-select" name="day" value={additionalDay.day} onChange={(e) => handleDayChange(index + 1, e)} required>
-          <option value="">Selecione</option>
-          <option value="Segunda">Segunda</option>
-          <option value="Terça">Terça</option>
-          <option value="Quarta">Quarta</option>
-          <option value="Quinta">Quinta</option>
-          <option value="Sexta">Sexta</option>
-          <option value="Sabado">Sabado</option>
-          <option value="Domingo">Domingo</option>
-        </select>
-      </div>
-      <div>
-        <h4>Hora Disponivel {index + 2}<span>*</span></h4>
-        <select className="form-select" name="hour" value={additionalDay.hour} onChange={(e) => handleDayChange(index + 1, e)} required>
-          <option value="">Selecione</option>
-          <option value="09:00">09:00</option>
-          <option value="10:00">10:00</option>
-          <option value="11:00">11:00</option>
-          <option value="12:00">12:00</option>
-          <option value="13:00">13:00</option>
-          <option value="14:00">14:00</option>
-          <option value="15:00">15:00</option>
-          <option value="16:00">16:00</option>
-          <option value="17:00">17:00</option>
-          <option value="18:00">18:00</option>
-          <option value="19:00">19:00</option> 
-          <option value="20:00">20:00</option>
-          <option value="21:00">21:00</option>
-        </select>
-      </div>
-      <FaTrash onClick={() => removeDay(index + 1)} style={{ cursor: "pointer" }} />
-      {index === additionalDays.length - 2 && (
-        <button type="button" onClick={() => addDay(index + 1)}><FaPlus /></button>
-      )}
-    </div>
-  </div>
-))}
+          {additionalDays.map((additionalDay, index) => (
+            <div className="form-group" key={index}>
+              <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+                <div>
+                  <h4>Dia Disponivel {index + 1}<span>*</span></h4>
+                  <select
+                    className="form-select"
+                    name="day"
+                    value={additionalDay.day}
+                    onChange={(e) => handleDayChange(index, e)}
+                    required
+                  >
+                    <option value="">Selecione</option>
+                    <option value="Segunda">Segunda</option>
+                    <option value="Terça">Terça</option>
+                    <option value="Quarta">Quarta</option>
+                    <option value="Quinta">Quinta</option>
+                    <option value="Sexta">Sexta</option>
+                    <option value="Sabado">Sabado</option>
+                    <option value="Domingo">Domingo</option>
+                  </select>
+                </div>
+                <div>
+                  <h4>Hora Disponivel {index + 1}<span>*</span></h4>
+                  <select
+                    className="form-select"
+                    name="hour"
+                    value={additionalDay.hour}
+                    onChange={(e) => handleDayChange(index, e)}
+                    required
+                  >
+                    <option value="">Selecione</option>
+                    <option value="09:00">09:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="18:00">18:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
+                    <option value="21:00">21:00</option>
+                  </select>
+                </div>
+                {index > 0 && (
+                  <FaTrash onClick={() => removeDay(index)} style={{ cursor: "pointer" }} />
+                )}
+                {index === additionalDays.length - 1 && (
+                  <button type="button" onClick={() => addDay()}><FaPlus /></button>
+                )}
+              </div>
+            </div>
+          ))}
 
+
+          <div className="input-field">
+            <h4>Email para registrarse<span>*</span></h4>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              placeholder="Ingrese su correo electrónico"
+              required
+              className="input-text"
+            />
+          </div>
+          <div className="input-field">
+            <h4>Verificación de Email<span>*</span></h4>
+            <input
+              type="email"
+              name="verifyEmail"
+              value={formData.verifyEmail}
+              onChange={handleInputChange}
+              placeholder="Confirme su correo electrónico"
+              required
+              className="input-text"
+            />
+            {emailMatchError && <p style={{ color: 'red' }}>{emailMatchError}</p>}
+          </div>
+          <div className="input-field">
+            <h4>Contraseña<span>*</span></h4>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleInputChange}
+              placeholder="Ingrese su contraseña"
+              required
+              className="input-text"
+            />
+            {passwordError && <p>{passwordError}</p>}
+          </div>
+          <div className="input-field">
+            <h4>Verificación de Contraseña<span>*</span></h4>
+            <input
+              type="password"
+              name="verifyPassword"
+              value={formData.verifyPassword}
+              onChange={handleInputChange}
+              placeholder="Confirme su contraseña"
+              required
+              className="input-text"
+            />
+            {passwordMatchError && <p style={{ color: 'red' }}>{passwordMatchError}</p>}
+          </div>
           <div>
             <h4>Observação (opcional)</h4>
-            <textarea name="message" cols="60" rows="10" placeholder="Sua mensagem" className="contact-inputs"></textarea>
+            <textarea
+              name="message"
+              cols="60"
+              rows="10"
+              placeholder="Sua mensagem"
+              className="contact-inputs"
+            ></textarea>
           </div>
           <div className="form-group">
-            <input type="checkbox" id="terms" name="terms" onChange={handleTermsChange} required />
+            <input
+              type="checkbox"
+              id="terms"
+              name="terms"
+              onChange={handleTermsChange}
+              required
+            />
             <label htmlFor="terms">
               Ao marcar esta caixa e clicar em Enviar, aceito o tratamento de meus dados pessoais por <Link to="/avisoLegal" target="_blank">[Nome da sua organização]</Link> conforme explicado no seu <Link to="/avisoLegal" target="_blank">Aviso Legal de Proteção de Dados</Link>, que inclui: 1) a coordenação e gestão de voluntários, e 2) a comunicação sobre atividades e oportunidades relacionadas.
             </label>
