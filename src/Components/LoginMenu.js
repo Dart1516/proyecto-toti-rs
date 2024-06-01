@@ -6,10 +6,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../Components/AuthContext';
 
 function LoginMenu() {
-  const { isLoggedIn, login, logout } = useAuth();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const menuRef = useRef(null);
-  const navigate = useNavigate();
+const { isLoggedIn, login, logout } = useAuth();
+const [isMenuOpen, setIsMenuOpen] = useState(false);
+const menuRef = useRef(null);
+const navigate = useNavigate();
+//  variavel do arquivo acesso que traz o nome do usuario
+const {username} = require('../Pages/Accesso');
 
   const handleLoginClick = () => {
     login();
@@ -19,15 +21,15 @@ function LoginMenu() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setIsMenuOpen(false);
-      }
+if (menuRef.current && !menuRef.current.contains(event.target)) {
+setIsMenuOpen(false);
+}
     };
 
     document.addEventListener('mousedown', handleClickOutside);
+    
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
@@ -38,7 +40,7 @@ function LoginMenu() {
       {isLoggedIn ? (
         <div className="login-info" onClick={toggleMenu}>
           <img src={profileImage} alt="Profile" className="profile-image" />
-          <span className="username">David</span>
+          <span className="username">{username}</span> 
           <ArrowDropDownIcon className="dropdown-icon" />
         </div>
       ) : (
