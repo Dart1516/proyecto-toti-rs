@@ -2,7 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import Principal from "./Pages/Home";
 import AboutUs from "./Pages/SobreNos";
-import JoinUs from "./Pages/SejaVoluntario";
+import FormularioPsicologo from "./Pages/FormularioPsicologo";
+import FormularioEducadorSocial from "./Pages/FormularioEducadorSocial";
+import FormularioLiderImigrante from "./Pages/FormularioLiderImigrante";
 import Login from "./Pages/Login";
 import NewAccount from "./Pages/NewAccount";
 import Accesso from "./Pages/Accesso";
@@ -19,7 +21,9 @@ function App() {
         <Route path="/Principal" element={<Principal />} />
         <Route path="/Demo" element={<Principal />} />
         <Route path="/AboutUs" element={<AboutUs />} />
-        <Route path="/JoinUs" element={<JoinUs />} />
+        <Route path="/FormularioPsicologo" element={<FormularioPsicologo />} />
+        <Route path="/FormularioEducadorSocial" element={<FormularioEducadorSocial />} />
+        <Route path="/FormularioLiderImigrante" element={<FormularioLiderImigrante />} />
         <Route path="/login" element={<Login />} />
         <Route path="/material-de-apoyo" element={<MaterialDeApoio />} />
         <Route path="/NewAccount" element={<NewAccount />} />

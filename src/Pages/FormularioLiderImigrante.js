@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import InputMask from "react-input-mask";
 import Header from "../Components/Header-NavMenu";
 import '../assets/styles/App.css';
 import '../assets/styles/SejaVoluntario.css';
 import { FaTrash, FaPlus } from 'react-icons/fa';
 
-function Principal() {
-  const [voluntario, setVoluntario] = useState("");
-  const [isTermsAccepted, setIsTermsAccepted] = useState(false);
+function FormularioLiderImigrante() {
   const [additionalDays, setAdditionalDays] = useState([{ day: "", hour: "" }]);
   const [formData, setFormData] = useState({
     name: "",
@@ -16,9 +13,7 @@ function Principal() {
     birthDate: "",
     phone: "",
     email: "",
-    volunteerType: "",
-    crp: "",
-    specialty: "",
+    organization: "",
     area: "",
     state: "",
     additionalDays: [{ day: "", hour: "" }],
@@ -26,10 +21,10 @@ function Principal() {
     verifyPassword: "",
     verifyEmail: ""
   });
-  
-  const handleVoluntarioChange = (event) => {
-    setVoluntario(event.target.value);
-  };
+  const [isTermsAccepted, setIsTermsAccepted] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
+  const [passwordMatchError, setPasswordMatchError] = useState("");
+  const [emailMatchError, setEmailMatchError] = useState("");
 
   const handleTermsChange = (event) => {
     setIsTermsAccepted(event.target.checked);
@@ -91,17 +86,13 @@ function Principal() {
     setPasswordError(error);
   };
 
-  const [passwordError, setPasswordError] = useState("");
-  const [passwordMatchError, setPasswordMatchError] = useState("");
-  const [emailMatchError, setEmailMatchError] = useState("");
-
   return (
     <div className="App SV">
       <div className="App-header">
         <Header />
       </div>
       <div className="container">
-        <h2>SOS Rio Grande do Sul - Cadastro de profissionais de saúde e intérpretes voluntários</h2>
+        <h2>SOS Rio Grande do Sul - Cadastro de Liderança Para Emigrantes Voluntário</h2>
         <form className="inputs" onSubmit={handleSubmit}>
           <div className="input-field">
             <h4>1. Nome Completo<span>*</span></h4>
@@ -162,59 +153,32 @@ function Principal() {
               required
             />
           </div>
-          <div className="form-group">
-            <h4>6. Tipo de voluntário<span>*</span></h4>
-            <select className="form-select" name="volunteerType" onChange={handleVoluntarioChange} required>
-              <option value="">Selecione</option>
-              <option value="Educador social">Educador(a) Social</option>
-              <option value="Psicólogo">Psicólogo(a)</option>
-              <option value="Liderança Para Emigrantes, refugiados e apátridas">Liderança Para Emigrantes, refugiados e apátridas</option>
-            </select>
+          <div className="input-field">
+            <h4>Nome da organização para a qual trabalha<span>*</span></h4>
+            <input
+              type="text"
+              name="organization"
+              value={formData.organization}
+              onChange={handleInputChange}
+              placeholder="Digite o nome da organização"
+              required
+              className="input-text"
+            />
           </div>
-          {voluntario === "Psicólogo" && (
-            <>
-              <div className="input-field">
-                <h4>CRP<span>*</span></h4>
-                <input
-                  type="text"
-                  name="crp"
-                  value={formData.crp}
-                  onChange={handleInputChange}
-                  placeholder="Digite seu CRP"
-                  required
-                  className="input-text"
-                />
-              </div>
-              <div className="input-field">
-                <h4>Especialidade<span>*</span></h4>
-                <input
-                  type="text"
-                  name="specialty"
-                  value={formData.specialty}
-                  onChange={handleInputChange}
-                  placeholder="Digite sua especialidade"
-                  required
-                  className="input-text"
-                />
-              </div>
-            </>
-          )}
-          {(voluntario === "Educador social" || voluntario === "Liderança Para Emigrantes, refugiados e apátridas") && (
-            <div className="input-field">
-              <h4>Área em que pode ajudar<span>*</span></h4>
-              <input
-                type="text"
-                name="area"
-                value={formData.area}
-                onChange={handleInputChange}
-                placeholder="Digite a área em que pode ajudar"
-                required
-                className="input-text"
-              />
-            </div>
-          )}
+          <div className="input-field">
+            <h4>Área em que trabalha<span>*</span></h4>
+            <input
+              type="text"
+              name="area"
+              value={formData.area}
+              onChange={handleInputChange}
+              placeholder="Digite a área em que trabalha"
+              required
+              className="input-text"
+            />
+          </div>
           <div className="form-group">
-            <h4>7. Estado <span>*</span></h4>
+            <h4>Estado <span>*</span></h4>
             <select className="form-select" name="state" value={formData.state} onChange={handleInputChange} required>
               <option value="">Selecione</option>
               <option value="SP">SP</option>
@@ -287,8 +251,6 @@ function Principal() {
               </div>
             </div>
           ))}
-
-
           <div className="input-field">
             <h4>Email para registrarse<span>*</span></h4>
             <input
@@ -302,13 +264,13 @@ function Principal() {
             />
           </div>
           <div className="input-field">
-            <h4>Verificación de Email<span>*</span></h4>
+            <h4>Verificação de Email<span>*</span></h4>
             <input
               type="email"
               name="verifyEmail"
               value={formData.verifyEmail}
               onChange={handleInputChange}
-              placeholder="Confirme su correo electrónico"
+              placeholder="Confirme su correo eletrônico"
               required
               className="input-text"
             />
@@ -359,7 +321,7 @@ function Principal() {
               required
             />
             <label htmlFor="terms">
-              Ao marcar esta caixa e clicar em Enviar, aceito o tratamento de meus dados pessoais por <Link to="/avisoLegal" target="_blank">[Nome da sua organização]</Link> conforme explicado no seu <Link to="/avisoLegal" target="_blank">Aviso Legal de Proteção de Dados</Link>, que inclui: 1) a coordenação e gestão de voluntários, e 2) a comunicação sobre atividades e oportunidades relacionadas.
+              Ao marcar esta caixa e clicar em Enviar, aceito o tratamento de meus dados pessoais por <a href="/avisoLegal" target="_blank">[Nome da sua organização]</a> conforme explicado no seu <a href="/avisoLegal" target="_blank">Aviso Legal de Proteção de Dados</a>, que inclui: 1) a coordenação e gestão de voluntários, e 2) a comunicação sobre atividades e oportunidades relacionadas.
             </label>
           </div>
           <button className="SV" type="submit">Enviar</button>
@@ -370,4 +332,4 @@ function Principal() {
   );
 }
 
-export default Principal;
+export default FormularioLiderImigrante;
