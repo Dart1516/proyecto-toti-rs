@@ -21,12 +21,12 @@ const StyledLogin = styled("div")(() => ({
   padding: "40px",
   alignItems: "center",
   justifyContent: "center",
-  border: "1px solid #4CAF50",
+  border: "1px solid #084f54",
 }));
 const StyledButton = styled("button")(() => ({
   width: "100%",
   boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-  background: "#4CAF50",
+  background: "#084f54",
   padding: "10px",
   alignItems: "center",
   justifyContent: "center",
@@ -38,7 +38,7 @@ const StyledButton = styled("button")(() => ({
   "&:hover": {
     color: "white",
     border: "0",
-    backgroundColor: " #45a049",
+    backgroundColor: " RGB(68, 119,130)",
   },
 }));
 const StyledLinkGoogle = styled("a")(() => ({
@@ -60,7 +60,7 @@ const StyledButtonGoogle = styled("a")(() => ({
   gap: "30px",
   transition: "background-color 0.3s ease-in-out",
   "&:hover": {
-    backgroundColor: "blue",
+    backgroundColor: "RGB(68, 119, 250) ",
     border: "0",
     "& > .GoogleIcon": {
       color: "white",
@@ -118,7 +118,7 @@ const Accesso = () => {
       <Grid container spacing={2} textAlign="center" justifyContent="center">
         <StyledLogin>
           <Grid item xs={12} md={12}>
-            <Typography variant="h4" padding={4}>
+            <Typography variant="h4" padding={4} color="black">
               Seja bem-vindo(a) de volta
             </Typography>
             <FormGroup>

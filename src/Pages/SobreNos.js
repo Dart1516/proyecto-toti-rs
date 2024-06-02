@@ -3,7 +3,7 @@ import React from "react";
 import Header from "../Components/Header-NavMenu";
 import {Box, Grid, Container, Typography, styled} from "@mui/material"
 import imgComunidade from "../assets/images/voluntarios.jpg"
-import imgToters from "../assets/images/TOTERS.png"
+import imgToters from "../assets/images/totersimagen.png"
 import "../../src/Pages/MaterialDeApoio"
 import "../../src/Pages/Accesso"
 import { Link } from "react-router-dom";
@@ -57,7 +57,7 @@ const About = () => {
                  
        
  {/* conteudo da primeira div ---------------------------------------------------- */}
-                    <Grid container spacing={2} gap={1} justifyContent="center" alignItems="center" mt="20px"  mb="20px" display="flex" flexDirection="row">
+                    <Grid container spacing={2} gap={1} justifyContent="center" alignItems="center" mt="20px"  mb={6} display="flex" flexDirection="row">
                     <Grid item xs={12} md={5}>
                     <StyledText>
                     <Typography  pt={3}  textAlign="Start" justifyContent="center" variant="h4" color="black">
@@ -73,8 +73,9 @@ const About = () => {
                     <StyledImgNoRadius src={imgToters} />
 </Grid> 
                     </Grid>
+                    <hr></hr>
   {/* conteudo da segunda div -------------------------------------- */}
-                    <Grid container spacing={2} gap={1} textAlign="center" justifyContent="center" direction={{ xs: 'column-reverse', md: 'row' }}>
+                    <Grid container spacing={2} gap={1} textAlign="center" justifyContent="center" direction={{ xs: 'column-reverse', md: 'row' }} mt={2}>
                       {/* img da segunda div--------------------- */}
                     <Grid item xs={12} md={4} display="flex" justifyContent="center" alignItems="center" >
                     <StyledImgWithRadius  src={imgComunidade} />

@@ -19,6 +19,7 @@ function Principal() {
             <div className='text-home'>
               <div className='titulo-home'>
                 <h2>TOTERS do BEM</h2>
+                <p> <i>Somos a maior comunidade de imigrantes profissionais de tecnologia do Brasil.</i></p>
                 <h1> SOS rio grande do sul</h1>
               </div>
               <h3>nosso objetivo é encaminhá-lo à ajuda emocional gratuita e online</h3>  
@@ -36,31 +37,30 @@ function Principal() {
             </div>
             <div className="voluntariado-img"></div>
           </div>
-          <div className="accordion">
-      <div className="accordion-container">
-        <div className="accordion-item">
-          <div className="accordion-content">
-            <h2>Voluntariado</h2>
+          
+      <div className="card-container">
+        <div className="card-item">
+            
             <img src={psicologa} alt="Voluntariado Psicológico" />
-            <h2>Psicológico</h2>
-          </div>
+            <h2>Voluntariado Psicológico</h2>
+         
         </div>
-        <div className="accordion-item">
-          <div className="accordion-content">
-            <h2>Educadores</h2>
+        <div className="card-item">
+        
+           
             <img src={educador} alt="Educadores Sociais" />
-            <h2>Sociais</h2>
-          </div>
+            <h2>Educadores Sociais</h2>
+       
         </div>
-        <div className="accordion-item">
-          <div className="accordion-content">
-            <h2>Líderes</h2>
+        <div className="card-item">
+         
+           
             <img src={lideres} alt="Líderes Comunitários" />
-            <h2>Comunitários</h2>
-          </div>
+            <h2>Líderes Comunitários</h2>
+         
         </div>
       </div>
-    </div>
+    <div id="registro-processo">
     <div className="proceso-voluntariado">
       <h1>processo de voluntariado</h1>
       <div className="proceso-texto">
@@ -68,20 +68,43 @@ function Principal() {
         <p>complete o <a href="./JoinUs">formulário</a> de inscrição com seus dados pessoais e experiência.</p>
       </div>
       <div className="proceso-texto"> 
-        <h2>capacitação</h2>
-        <p>participe de uma breve sessão de capacitação onde forneceremos todas as informações necessárias para sua função.</p>
+        <h2>para onde vão meus dados</h2>
+        <p> iram ao banco de dados que estará disponivel para os lideres dos refugiados, que necessitam da ajuda de você</p>
       </div>
       <div className="proceso-texto"> 
-        <h2>atribuição</h2>
-        <p>você será designado para uma área específica com base em suas habilidades e disponibilidade três dias após o envio do formulário.</p>
+        <h2>depois do cadastro</h2>
+        <p>o lider do refugiado que precise da sua ajuda entrará em contato, e você será designado para uma área específica, com base na suas habilidades e disponibilidade.</p>
       </div>
       <div className="proceso-texto"> 
-        <h2>ação</h2>
-        <p>comece a oferecer seu apoio às comunidades afetadas, fazendo uma diferença real e positiva.</p>
+        <h2>depois do contato</h2>
+        <p>Começe a oferecer seu apoio às comunidades afetadas. O líder fornecerá os detalhes do serviço.</p>
       </div>
       
 
     </div>
+    <div className="proceso-voluntariado lideranca">
+      <h1>processo de liderança</h1>
+      <div className="proceso-texto-lideranca">
+        <h2>registro</h2>
+        <p>complete o <a href="./JoinUs">formulário</a> de inscrição com seus dados pessoais</p>
+      </div>
+      <div className="proceso-texto-lideranca"> 
+        <h2>para onde vão meus dados</h2>
+        <p> só você terá acesso a seus dados</p>
+      </div>
+      <div className="proceso-texto-lideranca"> 
+        <h2>depois do cadastro</h2>
+        <p>com o email e a senha que você cadastrou, terá acesso a lista dos voluntarios disponiveis para atentimento dos seus refugiados</p>
+      </div>
+      <div className="proceso-texto-lideranca"> 
+        <h2>contato</h2>
+        <p>Será disponivilizado telefone e email do voluntario para você entrar en contato e receber a ajuda que necessitam o mais rápido possivel</p>
+      </div>
+      
+
+    </div>
+    </div>
+   
       </body>
     </div>
   );
