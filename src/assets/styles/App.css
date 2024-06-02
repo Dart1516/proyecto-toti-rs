@@ -1,10 +1,11 @@
 /*Colores*/
 
 :root {
-  --color1: #0a9466;
-  --color2: #14c389;
-  --color3: #19e09d;
+  --color1: #085454;
+  --color2: #FFB30B;
+  --color3: #001542;
   --color4: #F0F0F0;
+  --color5: #7A7A7A;
 }
 
 .App {
