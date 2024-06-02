@@ -3,7 +3,7 @@ import React from "react";
 import Header from "../Components/Header-NavMenu";
 import {Box, Grid, Container, Typography, styled} from "@mui/material"
 import imgComunidade from "../assets/images/voluntarios.jpg"
-import imgToters from "../assets/images/totersimg.png"
+import imgToters from "../assets/images/TOTERS.png"
 import "../../src/Pages/MaterialDeApoio"
 import "../../src/Pages/Accesso"
 import { Link } from "react-router-dom";
@@ -26,13 +26,14 @@ const About = () => {
   const StyledText = styled("div")(() => ({
       alignItems: "center",
       width:"100%",
-      padding:"5px"
+      padding:"0px",
+      color:"black"
   }))
   const StyledImgNoRadius = styled("img")(() => ({
-    width: "80%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center"
+    width: "100%",
+    maxWidth:"800px",
+    alignItems: "center",
+    maxHeight:"400px"
   }));
   const StyledImgWithRadius = styled("img")(() => ({
     width: "80%",
@@ -46,7 +47,7 @@ const About = () => {
       <>
        <Header/>
        <StyledAbout>
-                    <Container maxWidth="lg" gap={6}>
+                    <Container maxWidth="lg" padding="0">
                     <Typography color="secondary.main" variant="h1" textAlign="center" pt={6}>Sobre Nós</Typography>
                
 
@@ -56,16 +57,19 @@ const About = () => {
                  
        
  {/* conteudo da primeira div ---------------------------------------------------- */}
-                    <Grid container spacing={2} gap={1} textAlign="center" justifyContent="center">
-                    <Grid item xs={12} md={6}>
+                    <Grid container spacing={2} gap={1} justifyContent="center" alignItems="center" mt="20px"  mb="20px" display="flex" flexDirection="row">
+                    <Grid item xs={12} md={5}>
                     <StyledText>
-                    <Typography  pt={3} pb={4}  textAlign="Start" justifyContent="center" variant="h6">
+                    <Typography  pt={3}  textAlign="Start" justifyContent="center" variant="h4" color="black">
+                                Quem Somos?
+                                      </Typography>
+                    <Typography   pb={4}  textAlign="Start" justifyContent="center" variant="h6">
                                 A Comunidade Toti é um coletivo de profissionais imigrantes de tecnologia no Brasil, unidos pelo desejo de crescer profissionalmente e de apoiar uns aos outros. Nossa missão é oferecer um espaço de acolhimento, onde o conhecimento e as experiências se entrelaçam para criar oportunidades de desenvolvimento e integração.
                                       </Typography>
                                       </StyledText>
                     </Grid>
                     {/* img da primeira div -------------------- */}
-                    <Grid item xs={12} md={5} display="flex" justifyContent="center" alignItems="center">
+                    <Grid item xs={12} md={6} display="flex" justifyContent="center" alignItems="center">
                     <StyledImgNoRadius src={imgToters} />
 </Grid> 
                     </Grid>
@@ -83,16 +87,14 @@ const About = () => {
                                       </StyledText>
 </Grid></Grid>
 <Box component="div" m={4}>
-<Typography  width='100%' textAlign="center"  pt={4} pb={2} variant="h6" >
+<Typography  width='100%' textAlign="center"  pt={4} pb={2} variant="h5" >
                                       Convidamos profissionais de todas as áreas a se juntarem a este movimento humanitário, contribuindo com seu tempo e habilidades em apoio às vítimas das inundações no RS. Esperamos que muitos se juntem a nós neste esforço coletivo, pois juntos somos mais fortes. Todos juntos pelo Rio Grande do Sul.
                                       </Typography>
                                       <hr />  
                                       <Link to="/material-de-apoyo">
     <button justifyContent="center" alignItems="center">Material de apoio ao volutario</button>
   </Link>        
-  <Link to="/Accesso">
-    <button justifyContent="center" alignItems="center">Accesso </button>
-  </Link> 
+
 </Box>
                                      
                                      

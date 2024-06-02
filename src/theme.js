@@ -12,7 +12,7 @@ let theme = createTheme({
     },
     // color verde
     secondary: {
-      main:"#14c389",
+      main:"#085454",
     },
   },
 });
