@@ -65,7 +65,7 @@ function Cadastro() {
                 </div>
               </Link>
             </div>
-          </div>
+          </div>''
         </div>
         <div>
         <Link to="/Home"> {/* Enlace a la página de otros */}

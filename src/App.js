@@ -6,15 +6,11 @@ import FormularioPsicologo from "./Pages/FormularioPsicologo";
 import FormularioEducadorSocial from "./Pages/FormularioEducadorSocial";
 import FormularioLiderImigrante from "./Pages/FormularioLiderImigrante";
 import Login from "./Pages/Login";
-import NewAccount from "./Pages/NewAccount";
 import Accesso from "./Pages/Accesso";
 import AvisoLegal from "./Pages/avisoLegal";
-import Cadastro from "./Pages/cadstro";
 import MaterialDeApoio from "./Pages/MaterialDeApoio";
-import FormUsuario from "./Pages/FormUsuario";
 import InterfazLider from "./Pages/interfazLider";
 import Cadastro from "./Pages/cadastro";
-import { AuthProvider } from './Components/AuthContext';
 
 function App() {
   return (
@@ -29,11 +25,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/Cadastro" element={<Cadastro />} />
         <Route path="/material-de-apoyo" element={<MaterialDeApoio />} />
-        <Route path="/NewAccount" element={<NewAccount />} />
         <Route path="/avisoLegal" element={<AvisoLegal />} />
         <Route path="/Accesso" element={<Accesso />} />
         <Route path="/interfazLider" element={<InterfazLider />} />
-        <Route path="/FormUsuario" element={<FormUsuario/>} />
         <Route path="/cadastro" element={<Cadastro/>} />
 
         {/* Ruta predeterminada */}
