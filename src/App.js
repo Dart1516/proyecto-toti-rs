@@ -9,6 +9,7 @@ import Login from "./Pages/Login";
 import NewAccount from "./Pages/NewAccount";
 import Accesso from "./Pages/Accesso";
 import AvisoLegal from "./Pages/avisoLegal";
+import Cadastro from "./Pages/cadstro";
 import MaterialDeApoio from "./Pages/MaterialDeApoio";
 import FormUsuario from "./Pages/FormUsuario";
 import InterfazLider from "./Pages/interfazLider";
@@ -25,6 +26,7 @@ function App() {
         <Route path="/FormularioEducadorSocial" element={<FormularioEducadorSocial />} />
         <Route path="/FormularioLiderImigrante" element={<FormularioLiderImigrante />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/Cadastro" element={<Cadastro />} />
         <Route path="/material-de-apoyo" element={<MaterialDeApoio />} />
         <Route path="/NewAccount" element={<NewAccount />} />
         <Route path="/avisoLegal" element={<AvisoLegal />} />
@@ -40,3 +42,4 @@ function App() {
 }
 
 export default App;
+
