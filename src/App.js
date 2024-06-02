@@ -13,6 +13,7 @@ import Cadastro from "./Pages/cadstro";
 import MaterialDeApoio from "./Pages/MaterialDeApoio";
 import FormUsuario from "./Pages/FormUsuario";
 import InterfazLider from "./Pages/interfazLider";
+import Cadastro from "./Pages/cadastro";
 import { AuthProvider } from './Components/AuthContext';
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route path="/Accesso" element={<Accesso />} />
         <Route path="/interfazLider" element={<InterfazLider />} />
         <Route path="/FormUsuario" element={<FormUsuario/>} />
+        <Route path="/cadastro" element={<Cadastro/>} />
 
         {/* Ruta predeterminada */}
         <Route path="/*" element={<Navigate to="/Principal" />} />
