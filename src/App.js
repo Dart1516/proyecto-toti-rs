@@ -5,7 +5,6 @@ import AboutUs from "./Pages/SobreNos";
 import FormularioPsicologo from "./Pages/FormularioPsicologo";
 import FormularioEducadorSocial from "./Pages/FormularioEducadorSocial";
 import FormularioLiderImigrante from "./Pages/FormularioLiderImigrante";
-import Login from "./Pages/Login";
 import Accesso from "./Pages/Accesso";
 import AvisoLegal from "./Pages/avisoLegal";
 import MaterialDeApoio from "./Pages/MaterialDeApoio";
@@ -22,7 +21,6 @@ function App() {
         <Route path="/FormularioPsicologo" element={<FormularioPsicologo />} />
         <Route path="/FormularioEducadorSocial" element={<FormularioEducadorSocial />} />
         <Route path="/FormularioLiderImigrante" element={<FormularioLiderImigrante />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/Cadastro" element={<Cadastro />} />
         <Route path="/material-de-apoyo" element={<MaterialDeApoio />} />
         <Route path="/avisoLegal" element={<AvisoLegal />} />
