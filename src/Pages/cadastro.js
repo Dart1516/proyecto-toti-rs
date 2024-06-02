@@ -12,6 +12,7 @@ function Cadastro() {
         <Header />
       </div>
       <div className="background">
+      </div>
       <div className="cadastro">
         <div className="cadastro-titulo">
           <h1>cadastro</h1>
@@ -65,7 +66,7 @@ function Cadastro() {
                 </div>
               </Link>
             </div>
-          </div>''
+          </div>
         </div>
         <div>
         <Link to="/Home"> {/* Enlace a la página de otros */}
@@ -76,7 +77,6 @@ function Cadastro() {
         </div>
       </div>
       </div>
-    </div>
   );
 }
 

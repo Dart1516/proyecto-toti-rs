@@ -91,9 +91,14 @@ function FormularioLiderImigrante() {
       <div className="App-header">
         <Header />
       </div>
+      <div className="background-image"></div>
       <div className="container">
-        <h2>SOS Rio Grande do Sul - Cadastro de Liderança Para Emigrantes Voluntário</h2>
-        <form className="inputs" onSubmit={handleSubmit}>
+        <div className="container-titulo">
+        <h2>SOS Rio Grande do Sul </h2>
+        <h2> Cadastro de Liderança Para Emigrantes Voluntário</h2>
+        </div>
+        <form className="general-inputs" onSubmit={handleSubmit}>
+          <div className="inputs">
           <div className="input-field">
             <h4>1. Nome Completo<span>*</span></h4>
             <input
@@ -195,9 +200,12 @@ function FormularioLiderImigrante() {
               <option value="SC">SC</option>
             </select>
           </div>
+          </div>
           {additionalDays.map((additionalDay, index) => (
             <div className="form-group" key={index}>
               <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+              <div className="form-group" key={index}>
+              <div className="dia-disponible">
                 <div>
                   <h4>Dia Disponivel {index + 1}<span>*</span></h4>
                   <select
@@ -243,14 +251,17 @@ function FormularioLiderImigrante() {
                   </select>
                 </div>
                 {index > 0 && (
-                  <FaTrash onClick={() => removeDay(index)} style={{ cursor: "pointer" }} />
+                  <FaTrash onClick={() => removeDay(index)} className="borrar" />
                 )}
                 {index === additionalDays.length - 1 && (
                   <button type="button" onClick={() => addDay()}><FaPlus /></button>
                 )}
               </div>
             </div>
+              </div>
+            </div>
           ))}
+          <div className="inputs">
           <div className="input-field">
             <h4>Email para registrarse<span>*</span></h4>
             <input
@@ -302,7 +313,8 @@ function FormularioLiderImigrante() {
             />
             {passwordMatchError && <p style={{ color: 'red' }}>{passwordMatchError}</p>}
           </div>
-          <div>
+          </div>
+          <div className="opcional">
             <h4>Observação (opcional)</h4>
             <textarea
               name="message"
@@ -312,7 +324,7 @@ function FormularioLiderImigrante() {
               className="contact-inputs"
             ></textarea>
           </div>
-          <div className="form-group">
+          <div className="legal">
             <input
               type="checkbox"
               id="terms"

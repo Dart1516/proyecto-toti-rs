@@ -15,11 +15,10 @@
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 1000;
     margin: 0;
     justify-content: space-around;
-    border-bottom: var(--color1) 3px solid;
-    background: linear-gradient(to top, #0a9466, #14c389, #19e09d);
+    background: var(--color1);
 }
 
 .menu-left {
@@ -40,7 +39,7 @@
   font-weight: 700;
   transition: 0.3s; /* Transición suave para el cambio de color del texto */
   font-size: 20px;
-  padding: 15px;
+  padding: 12px;
 }
 
 

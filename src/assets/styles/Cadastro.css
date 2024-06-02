@@ -1,14 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0;
+    background: hsl(0, 0%, 96%);
+    color: var(--color5);
+    line-height: 1.6;
+}
+
 .background {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-image: url('../images/home.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    z-index: 1000;
+    filter: brightness(0.3);
 }
 
 .cadastro {
@@ -48,7 +64,7 @@
     bottom: -20px; /* Ajusta según sea necesario para el espacio entre el texto y la línea */
     width: 135px;
     height: 5px; /* Grosor de la línea */
-    background-color: yellow; /* Color de la línea */
+    background-color: var(--color2); /* Color de la línea */
 }
 
 .cuadro-opciones {
@@ -117,8 +133,8 @@
     width: 70px;
     font-size: 25px; /* Tamaño más pequeño para los íconos */
     border-radius: 50%; /* Border radius del 50% */
-    background-color: #F1F5F6; /* Fondo para visualizar el border radius */
-    color: #376563;
+    background-color: var(--color4); /* Fondo para visualizar el border radius */
+    color: var(--color1);
     padding: 20px; /* Aumentado para crear espacio alrededor del ícono */
     display: flex;
     align-items: center;
@@ -132,8 +148,8 @@
     padding: 12px 24px;
     font-size: 16px;
     font-weight: bold;
-    color: #fff;
-    background-color: #085454; /* Color de fondo principal */
+    color: var(--color4);
+    background-color: var(--color1); /* Color de fondo principal */
     border: none;
     border-radius: 4px; /* Bordes redondeados */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
@@ -143,13 +159,12 @@
 }
 
 .boton-cadastro:hover {
-    background-color: #085454; /* Color de fondo al hacer hover */
+    opacity: 0.9;
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3); /* Sombra al hacer hover */
     transform: translateY(-4px); /* Eleva el botón */
 }
 
 .boton-cadastro:active {
-    background-color: #085454; /* Color de fondo al hacer click */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra al hacer click */
     transform: translateY(0); /* Restaura la elevación */
 }

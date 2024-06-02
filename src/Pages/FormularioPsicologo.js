@@ -91,9 +91,14 @@ function FormularioPsicologo() {
       <div className="App-header">
         <Header />
       </div>
+      <div className="background-image"></div>
       <div className="container">
-        <h2>SOS Rio Grande do Sul - Cadastro de Psicólogos Voluntários</h2>
-        <form className="inputs" onSubmit={handleSubmit}>
+        <div className="container-titulo">
+        <h2>SOS Rio Grande do Sul </h2>
+        <h2>Cadastro de Psicólogos Voluntários</h2>
+        </div>
+        <form className="general-inputs" onSubmit={handleSubmit}>
+          <div className="inputs">
           <div className="input-field">
             <h4>1. Nome Completo<span>*</span></h4>
             <input
@@ -195,11 +200,14 @@ function FormularioPsicologo() {
               <option value="SC">SC</option>
             </select>
           </div>
+          </div>
           {additionalDays.map((additionalDay, index) => (
             <div className="form-group" key={index}>
               <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+              <div className="form-group" key={index}>
+              <div className="dia-disponible">
                 <div>
-                  <h4>Dia Disponível {index + 1}<span>*</span></h4>
+                  <h4>Dia Disponivel {index + 1}<span>*</span></h4>
                   <select
                     className="form-select"
                     name="day"
@@ -213,12 +221,12 @@ function FormularioPsicologo() {
                     <option value="Quarta">Quarta</option>
                     <option value="Quinta">Quinta</option>
                     <option value="Sexta">Sexta</option>
-                    <option value="Sabado">Sábado</option>
+                    <option value="Sabado">Sabado</option>
                     <option value="Domingo">Domingo</option>
                   </select>
                 </div>
                 <div>
-                  <h4>Hora Disponível {index + 1}<span>*</span></h4>
+                  <h4>Hora Disponivel {index + 1}<span>*</span></h4>
                   <select
                     className="form-select"
                     name="hour"
@@ -243,14 +251,17 @@ function FormularioPsicologo() {
                   </select>
                 </div>
                 {index > 0 && (
-                  <FaTrash onClick={() => removeDay(index)} style={{ cursor: "pointer" }} />
+                  <FaTrash onClick={() => removeDay(index)} className="borrar" />
                 )}
                 {index === additionalDays.length - 1 && (
                   <button type="button" onClick={() => addDay()}><FaPlus /></button>
                 )}
               </div>
             </div>
+              </div>
+            </div>
           ))}
+          <div className="inputs">
           <div className="input-field">
             <h4>Email para registrarse<span>*</span></h4>
             <input
@@ -302,7 +313,8 @@ function FormularioPsicologo() {
             />
             {passwordMatchError && <p style={{ color: 'red' }}>{passwordMatchError}</p>}
           </div>
-          <div>
+          </div>
+          <div className="opcional">
             <h4>Observação (opcional)</h4>
             <textarea
               name="message"
@@ -312,7 +324,7 @@ function FormularioPsicologo() {
               className="contact-inputs"
             ></textarea>
           </div>
-          <div className="form-group">
+          <div className="legal">
             <input
               type="checkbox"
               id="terms"

@@ -13,24 +13,22 @@
 }
 
 .mobile-header {
-  z-index: 50;
+  z-index: 1000;
   display: none;
   align-items: center;
-    position: fixed;
-    width: 100%;
-    margin: 0;
-    justify-content: space-around;
-    border-bottom: var(--color1) 3px solid;
-    background: linear-gradient(to top, #0a9466, #14c389, #19e09d);
-      top: 0;
-      left: 0;
-      z-index: 100;
+  position: fixed;
+  width: 100%;
+  margin: 0;
+  justify-content: space-around;
+  background-color: var(--color1);
+  top: 0;
+  left: 0;
+  z-index: 100;
 }
 
 .Mobile-menu ul {
   display: none;
 }
-
 
 .logo-y-titulo-a-la-izquierda {
   display: flex;
@@ -47,7 +45,6 @@
 }
 
 @media only screen and (max-width: 768px) {
-
   .mobile-header {
     display: flex;
   }
@@ -61,14 +58,14 @@
   }
 
   .Mobile-home-logo {
-  display: block;
-  background-image: url(/src/assets/images/logos/JSMF.png);
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 51px;
-  height: 51px;
-  border-radius: 50%;
+    display: block;
+    background-image: url(/src/assets/images/logos/JSMF.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 51px;
+    height: 51px;
+    border-radius: 50%;
   }
 
   .Hamburger-menu-icon {
@@ -80,7 +77,7 @@
   }
 
   .Mobile-menu {
-    margin-top: 53.4px;
+    margin-top: 31.4px;
     right: 0;
     display: flex;
     position: absolute;
@@ -99,6 +96,10 @@
     align-items: center;
   }
 
+  .Mobile-menu ul li {
+    width: 100%;
+  }
+
   .Mobile-menu ul li a {
     text-decoration: none;
     color: var(--color4);
@@ -111,7 +112,9 @@
 
   .Mobile-menu ul li a:hover,
   .Mobile-menu ul li a:active {
-    background-color: var(--color2); /* Cambia el color de fondo al pasar el cursor */
+    background-color: var(
+      --color2
+    ); /* Cambia el color de fondo al pasar el cursor */
     color: var(--color4); /* Cambia el color del texto al pasar el cursor */
     cursor: pointer; /* Cambia el cursor al pasar el cursor sobre el contenedor */
   }
@@ -123,11 +126,21 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
-    backdrop-filter: blur(5px); /* Efecto de desenfoque */
     z-index: 5; /* Ensure it is below the menu */
   }
   .text-home {
     gap: 15px;
     padding-top: 2rem;
+  }
+}
+
+@media only screen and (max-width: 460px)  {
+  .Mobile-menu {
+    padding-top: 20px;
+    width: 100%;
+  }
+
+  .Mobile-menu ul {
+    width: 100%;
   }
 }
