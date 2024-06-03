@@ -15,7 +15,7 @@ function Cadastro() {
       </div>
       <div className="cadastro">
         <div className="cadastro-titulo">
-          <h1>cadastro</h1>
+          <h1>Cadastro Social</h1>
           <p>selecione para qual formulário você gostaria de ser redirecionado.</p>
         </div>
         <div className="cuadro-opciones">

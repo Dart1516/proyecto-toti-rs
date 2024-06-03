@@ -96,7 +96,7 @@ function FormularioEducadorSocial() {
       <div className="container">
         <div className="container-titulo">
         <h2>SOS Rio Grande do Sul </h2> 
-        <h2>Cadastro de Educador Social Voluntário</h2>
+        <h2> Educador Social Voluntário </h2>
         </div>
         <form className="general-inputs" onSubmit={handleSubmit}>
         <div className="inputs">
@@ -148,19 +148,20 @@ function FormularioEducadorSocial() {
             />
           </div>
           <div className="input-field">
-            <h4>5. E-mail para contato<span>*</span></h4>
+            <h4>5. Instagram(opcional)</h4>
             <input
               className="input-text"
-              type="email"
-              name="email"
-              placeholder="Digite o e-mail"
-              value={formData.email}
+              type="insta"
+              name="insta"
+              placeholder="digite o nome de usuário"
+              value={formData.insta}
               onChange={handleInputChange}
               required
             />
           </div>
+          
           <div className="input-field">
-            <h4>Certificado<span>*</span></h4>
+            <h4>6. Certificado<span>*</span></h4>
             <input
               type="text"
               name="certificate"
@@ -190,7 +191,7 @@ function FormularioEducadorSocial() {
             </select>
           </div>
           <div className="input-field">
-            <h4>Cidade<span>*</span></h4>
+            <h4>8.Cidade<span>*</span></h4>
             <input
               type="text"
               name="cidade"
@@ -201,9 +202,21 @@ function FormularioEducadorSocial() {
               className="input-text"
             />
           </div>
+          <div className="input-field">
+            <h4>9.Bairro <span>*</span></h4>
+            <input
+              type="text"
+              name="Bairro"
+              value={formData.bairro}
+              onChange={handleInputChange}
+              placeholder="Digite a Bairro"
+              required
+              className="input-text"
+            />
+          </div> 
 </div>
           <div className="form-group">
-            <h4>Disponiblidade para prestar servicio presencial na sua cidade <span>*</span></h4>
+            <h4>Disponiblidade para prestar servicio presencial na sua cidade ou bairro <span>*</span></h4>
             <select
               className="form-select"
               name="day"
@@ -212,7 +225,7 @@ function FormularioEducadorSocial() {
             >
               <option value="">Selecione</option>
               <option value="Segunda">Sim </option>
-              <option value="Terça">Não, apenas remotamente</option>
+              <option value="Terça">Não</option>
             </select>
           </div>
           {additionalDays.map((additionalDay, index) => (
@@ -273,7 +286,7 @@ function FormularioEducadorSocial() {
           ))}
           <div className="inputs">
           <div className="input-field">
-            <h4>Email para registrarse<span>*</span></h4>
+            <h4>Email para registrar - se<span>*</span></h4>
             <input
               type="email"
               name="email"
