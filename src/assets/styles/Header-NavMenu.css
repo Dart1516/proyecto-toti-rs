@@ -31,6 +31,7 @@
     list-style: none;
     display: flex;
     align-items: center;
+    width: 426px;
 }
 
 .opciones-izquierda li a,

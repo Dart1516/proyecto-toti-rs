@@ -182,7 +182,7 @@ function FormularioPsicologo() {
               className="input-text"
             />
           </div>
-          <div className="form-group">
+          <div className="input-field">
             <h4>Estado <span>*</span></h4>
             <select className="form-select" name="state" value={formData.state} onChange={handleInputChange} required>
               <option value="">Selecione</option>
@@ -261,6 +261,11 @@ function FormularioPsicologo() {
               </div>
             </div>
           ))}
+          <div className="lembre-text">
+            <h1>Lembre-se:</h1>
+            <p>Seu e-mail e senha cadastrados serão seu login para o acesso na plataforma</p>
+            <p>Após preencher todos os seus dados clique em <strong>"Enviar"</strong> e seu cadastro estará completo</p>
+          </div>
           <div className="inputs">
           <div className="input-field">
             <h4>Email para registrarse<span>*</span></h4>

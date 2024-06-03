@@ -37,7 +37,7 @@ function Cadastro() {
                   <FaBuilding />
                 </div>
                 <div className="opciones-texto">
-                  <h2>asistente social voluntariado</h2>
+                  <h2>educador social voluntariado</h2>
                   <p>descripción para opción 2</p>
                 </div>
               </Link>
