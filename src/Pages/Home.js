@@ -6,6 +6,7 @@ import psicologa from '../assets/images/psicologa.jpg';
 import educador from "../assets/images/educador-social.jpg";
 import lideres from "../assets/images/lideres.png";
 import voluntario from '../assets/images/voluntariado 1.jpeg';
+import { Typography } from "@mui/material";
  
 function Principal() {
   return (
@@ -32,13 +33,10 @@ function Principal() {
           </div>
           <div className="voluntariado">
           <div className='tipo-vo-texto'>
-              <h1>Como você pode ajudar?</h1>
+              <Typography variant="h3"><strong>Como você pode ajudar?</strong></Typography>
               <p>sua ajuda é crucial para fornecer apoio emergencial às comunidades afetadas, há várias maneiras pelas quais você pode contribuir:</p>
             </div>
-            <div className="voluntariado-img"></div>
-          </div>
-          
-      <div className="card-container">
+            <div className="card-container">
         <div className="card-item">
           <div className="card-img">
           <img src={psicologa} alt="Voluntariado Psicológico" />
@@ -46,6 +44,8 @@ function Principal() {
           <div className="card-text">
           <h2>Voluntariado Psicológico</h2>
           <p>O especialista capaz de oferecer ajuda psicologica, dando as ferramentas para lidar com traumas, fornecerá suporte emocional, tratará estresse pós-traumático e ajudara na recuperação mental. </p>
+          <a href="./JoinUs">Junte-se a causa</a>
+          
           </div>
         </div>
         <div className="card-item">
@@ -55,7 +55,8 @@ function Principal() {
            
         <div className="card-text">
             <h2>Educadores Sociais</h2>
-            <p>Profissionais que trabalham para promover o bem-estar e a inclusão social de individuos e comunidades afetadas pela enchente e que precisam começar do zero</p>
+            <p>Profissionais que trabalham para promover o bem-estar e a inclusão social de individuos e comunidades afetadas pela enchente e que precisam começar do zero.</p>
+            <a href="./JoinUs">Junte-se a causa</a>
        </div>
         </div>
         <div className="card-item">
@@ -65,10 +66,15 @@ function Principal() {
         </div>
         <div className="card-text">
             <h2>Líderes Comunitários</h2>
-            <p>Individuos que organizam e mobilizam ações de apoio em situações de crise, capazes de orientar e direcionar personas em alto nivel de estresse.</p>
+            <p>pessoas que organizam e mobilizam ações de apoio em situações de crise, capazes de orientar e direcionar personas em alto nivel de estresse.</p>
+            <a href="./JoinUs">Junte-se a causa</a>
          </div>
         </div>
       </div>
+            
+          </div>
+          
+          {/* <div className="voluntariado-img"></div> */}
     <div id="registro-processo">
     <div className="proceso-voluntariado">
       <h1>processo de voluntariado</h1>
