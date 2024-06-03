@@ -96,7 +96,7 @@ function FormularioEducadorSocial() {
       <div className="container">
         <div className="container-titulo">
         <h2>SOS Rio Grande do Sul </h2> 
-        <h2> Educador Social Voluntário </h2>
+        <h2> Cadastro Educador Social Voluntário </h2>
         </div>
         <form className="general-inputs" onSubmit={handleSubmit}>
         <div className="inputs">

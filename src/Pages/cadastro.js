@@ -50,7 +50,7 @@ function Cadastro() {
                   <FaBook />
                 </div>
                 <div className="opciones-texto">
-                  <h2>liderança voluntariado</h2>
+                  <h2>Liderança ONG de Imigrantes, refugiados e apátridas</h2>
                   <p>Descripción para opción 3</p>
                 </div>
               </Link>
