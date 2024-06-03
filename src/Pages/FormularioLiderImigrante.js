@@ -147,18 +147,6 @@ function FormularioLiderImigrante() {
             />
           </div>
           <div className="input-field">
-            <h4>5. E-mail para contato<span>*</span></h4>
-            <input
-              className="input-text"
-              type="email"
-              name="email"
-              placeholder="Digite o e-mail"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div className="input-field">
             <h4>Nome da organização para a qual trabalha<span>*</span></h4>
             <input
               type="text"
@@ -182,6 +170,18 @@ function FormularioLiderImigrante() {
               className="input-text"
             />
           </div>
+          <div className="input-field">
+            <h4>Instagram(opcional)</h4>
+            <input
+              className="input-text"
+              type="insta"
+              name="insta"
+              placeholder="digite o nome de usuário"
+              value={formData.insta}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
           <div className="form-group">
             <h4>Estado <span>*</span></h4>
             <select className="form-select" name="state" value={formData.state} onChange={handleInputChange} required>
@@ -200,7 +200,10 @@ function FormularioLiderImigrante() {
               <option value="SC">SC</option>
             </select>
           </div>
+          
           </div>
+
+          
           {additionalDays.map((additionalDay, index) => (
             <div className="form-group" key={index}>
               <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
@@ -263,7 +266,7 @@ function FormularioLiderImigrante() {
           ))}
           <div className="inputs">
           <div className="input-field">
-            <h4>Email para registrarse<span>*</span></h4>
+            <h4>Email para registrar-se<span>*</span></h4>
             <input
               type="email"
               name="email"

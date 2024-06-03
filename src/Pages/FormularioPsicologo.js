@@ -147,13 +147,13 @@ function FormularioPsicologo() {
             />
           </div>
           <div className="input-field">
-            <h4>5. E-mail para contato<span>*</span></h4>
+            <h4>5. Instagram(opcional)</h4>
             <input
               className="input-text"
-              type="email"
-              name="email"
-              placeholder="Digite o e-mail"
-              value={formData.email}
+              type="insta"
+              name="insta"
+              placeholder="digite o nome de usuário"
+              value={formData.insta}
               onChange={handleInputChange}
               required
             />
