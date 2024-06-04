@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import InputMask from "react-input-mask";
 import Header from "../Components/Header-NavMenu";
-import '../assets/styles/App.css';
-import '../assets/styles/SejaVoluntario.css';
-import { FaTrash, FaPlus } from 'react-icons/fa';
+import "../assets/styles/App.css";
+import "../assets/styles/SejaVoluntario.css";
+import { FaTrash, FaPlus } from "react-icons/fa";
 
 function FormularioEducadorSocial() {
   const [additionalDays, setAdditionalDays] = useState([{ day: "", hour: "" }]);
@@ -20,7 +20,7 @@ function FormularioEducadorSocial() {
     additionalDays: [{ day: "", hour: "" }],
     password: "",
     verifyPassword: "",
-    verifyEmail: ""
+    verifyEmail: "",
   });
   const [isTermsAccepted, setIsTermsAccepted] = useState(false);
   const [passwordError, setPasswordError] = useState("");
@@ -54,7 +54,9 @@ function FormularioEducadorSocial() {
   const handleSubmit = (event) => {
     if (!isTermsAccepted) {
       event.preventDefault();
-      alert("Por favor, aceite os termos e condições antes de enviar o formulário.");
+      alert(
+        "Por favor, aceite os termos e condições antes de enviar o formulário."
+      );
     }
   };
 
@@ -62,7 +64,7 @@ function FormularioEducadorSocial() {
     const { name, value } = event.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
 
     if (name === "password") {
@@ -70,11 +72,15 @@ function FormularioEducadorSocial() {
     }
 
     if (name === "verifyPassword") {
-      setPasswordMatchError(value !== formData.password ? "Las contraseñas no coinciden." : "");
+      setPasswordMatchError(
+        value !== formData.password ? "Las contraseñas no coinciden." : ""
+      );
     }
 
     if (name === "verifyEmail") {
-      setEmailMatchError(value !== formData.email ? "Los correos electrónicos no coinciden." : "");
+      setEmailMatchError(
+        value !== formData.email ? "Los correos electrónicos no coinciden." : ""
+      );
     }
   };
 
@@ -95,128 +101,153 @@ function FormularioEducadorSocial() {
       <div className="background-image"></div>
       <div className="container">
         <div className="container-titulo">
-        <h2>SOS Rio Grande do Sul </h2> 
-        <h2> Cadastro Educador Social Voluntário </h2>
+          <h2>SOS Rio Grande do Sul </h2>
+          <h2> Cadastro Educador Social Voluntário </h2>
         </div>
         <form className="general-inputs" onSubmit={handleSubmit}>
-        <div className="inputs">
-          <div className="input-field">
-            <h4>1. Nome Completo<span>*</span></h4>
-            <input
-              className="input-text"
-              type="text"
-              name="name"
-              placeholder="Digite seu nome"
-              value={formData.name}
-              onChange={handleInputChange}
-              required
-            />
+          <div className="inputs">
+            <div className="input-field">
+              <h4>
+                1. Nome Completo<span>*</span>
+              </h4>
+              <input
+                className="input-text"
+                type="text"
+                name="name"
+                placeholder="Digite seu nome"
+                value={formData.name}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div className="input-field">
+              <h4>
+                2. CPF<span>*</span>
+              </h4>
+              <InputMask
+                mask="999.999.999-99"
+                value={formData.cpf}
+                onChange={handleInputChange}
+                placeholder="Digite seu CPF O valor deve ser numérico"
+                required
+                className="input-text"
+                name="cpf"
+              />
+            </div>
+            <div className="input-field">
+              <h4>
+                3. Data de Nascimento<span>*</span>
+              </h4>
+              <input
+                className="input-text"
+                type="date"
+                name="birthDate"
+                value={formData.birthDate}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div className="input-field">
+              <h4>
+                4. Número do WhatsApp<span>*</span>
+              </h4>
+              <InputMask
+                mask="(99) 99999-9999"
+                value={formData.phone}
+                onChange={handleInputChange}
+                placeholder="(DDD) Digite o número"
+                required
+                className="input-text"
+                name="phone"
+              />
+            </div>
+            <div className="input-field">
+              <h4>5. Social Mídia (opcional)</h4>
+              <input
+                className="input-text"
+                type="insta"
+                name="insta"
+                placeholder="digite o nome de usuário"
+                value={formData.insta}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+
+            <div className="input-field">
+              <h4>
+                6. Certificado<span>*</span>
+              </h4>
+              <input
+                type="text"
+                name="certificate"
+                value={formData.certificate}
+                onChange={handleInputChange}
+                placeholder="Digite seu certificado"
+                required
+                className="input-text"
+              />
+            </div>
+            <div className="input-field">
+              <h4>
+                7. Estado <span>*</span>
+              </h4>
+              <select
+                className="form-select"
+                name="state"
+                value={formData.state}
+                onChange={handleInputChange}
+                required
+              >
+                <option value="">Selecione</option>
+                <option value="SP">SP</option>
+                <option value="MT">MT</option>
+                <option value="MG">MG</option>
+                <option value="CE">CE</option>
+                <option value="AC">AC</option>
+                <option value="AM">AM</option>
+                <option value="RS">RS</option>
+                <option value="MA">MA</option>
+                <option value="MS">MS</option>
+                <option value="RJ">RJ</option>
+                <option value="RO">RO</option>
+                <option value="SC">SC</option>
+              </select>
+            </div>
+            <div className="input-field">
+              <h4>
+                8.Cidade<span>*</span>
+              </h4>
+              <input
+                type="text"
+                name="cidade"
+                value={formData.cidade}
+                onChange={handleInputChange}
+                placeholder="Digite a Cidade"
+                required
+                className="input-text"
+              />
+            </div>
+            <div className="input-field">
+              <h4>
+                9.Bairro <span>*</span>
+              </h4>
+              <input
+                type="text"
+                name="Bairro"
+                value={formData.bairro}
+                onChange={handleInputChange}
+                placeholder="Digite o Bairro"
+                required
+                className="input-text"
+              />
+            </div>
           </div>
-          <div className="input-field">
-            <h4>2. CPF<span>*</span></h4>
-            <InputMask
-              mask="999.999.999-99"
-              value={formData.cpf}
-              onChange={handleInputChange}
-              placeholder="Digite seu CPF O valor deve ser numérico"
-              required
-              className="input-text"
-              name="cpf"
-            />
-          </div>
-          <div className="input-field">
-            <h4>3. Data de Nascimento<span>*</span></h4>
-            <input
-              className="input-text"
-              type="date"
-              name="birthDate"
-              value={formData.birthDate}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div className="input-field">
-            <h4>4. Número do WhatsApp<span>*</span></h4>
-            <InputMask
-              mask="(99) 99999-9999"
-              value={formData.phone}
-              onChange={handleInputChange}
-              placeholder="(DDD) Digite o número"
-              required
-              className="input-text"
-              name="phone"
-            />
-          </div>
-          <div className="input-field">
-            <h4>5. Instagram(opcional)</h4>
-            <input
-              className="input-text"
-              type="insta"
-              name="insta"
-              placeholder="digite o nome de usuário"
-              value={formData.insta}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          
-          <div className="input-field">
-            <h4>6. Certificado<span>*</span></h4>
-            <input
-              type="text"
-              name="certificate"
-              value={formData.certificate}
-              onChange={handleInputChange}
-              placeholder="Digite seu certificado"
-              required
-              className="input-text"
-            />
-          </div>
-          <div className="input-field">
-            <h4>7. Estado <span>*</span></h4>
-            <select className="form-select" name="state" value={formData.state} onChange={handleInputChange} required>
-              <option value="">Selecione</option>
-              <option value="SP">SP</option>
-              <option value="MT">MT</option>
-              <option value="MG">MG</option>
-              <option value="CE">CE</option>
-              <option value="AC">AC</option>
-              <option value="AM">AM</option>
-              <option value="RS">RS</option>
-              <option value="MA">MA</option>
-              <option value="MS">MS</option>
-              <option value="RJ">RJ</option>
-              <option value="RO">RO</option>
-              <option value="SC">SC</option>
-            </select>
-          </div>
-          <div className="input-field">
-            <h4>8.Cidade<span>*</span></h4>
-            <input
-              type="text"
-              name="cidade"
-              value={formData.cidade}
-              onChange={handleInputChange}
-              placeholder="Digite a Cidade"
-              required
-              className="input-text"
-            />
-          </div>
-          <div className="input-field">
-            <h4>9.Bairro <span>*</span></h4>
-            <input
-              type="text"
-              name="Bairro"
-              value={formData.bairro}
-              onChange={handleInputChange}
-              placeholder="Digite a Bairro"
-              required
-              className="input-text"
-            />
-          </div> 
-</div>
           <div className="form-group">
-            <h4>Disponiblidade para prestar servicio presencial na sua cidade ou bairro <span>*</span></h4>
+            <h4>
+              Disponibilidade para prestar serviço presencial na sua cidade ou
+              bairro <span>*</span>
+            </h4>
             <select
               className="form-select"
               name="day"
@@ -232,7 +263,10 @@ function FormularioEducadorSocial() {
             <div className="form-group" key={index}>
               <div className="dia-disponible">
                 <div>
-                  <h4>Dia Disponivel {index + 1}<span>*</span></h4>
+                  <h4>
+                    Dia Disponivel {index + 1}
+                    <span>*</span>
+                  </h4>
                   <select
                     className="form-select"
                     name="day"
@@ -251,7 +285,10 @@ function FormularioEducadorSocial() {
                   </select>
                 </div>
                 <div>
-                  <h4>Hora Disponivel {index + 1}<span>*</span></h4>
+                  <h4>
+                    Hora Disponivel {index + 1}
+                    <span>*</span>
+                  </h4>
                   <select
                     className="form-select"
                     name="hour"
@@ -276,74 +313,98 @@ function FormularioEducadorSocial() {
                   </select>
                 </div>
                 {index > 0 && (
-                  <FaTrash onClick={() => removeDay(index)} className="borrar" />
+                  <FaTrash
+                    onClick={() => removeDay(index)}
+                    className="borrar"
+                  />
                 )}
                 {index === additionalDays.length - 1 && (
-                  <button type="button" onClick={() => addDay()}><FaPlus /></button>
+                  <button type="button" onClick={() => addDay()}>
+                    <FaPlus />
+                  </button>
                 )}
               </div>
             </div>
           ))}
           <div className="lembre-text">
             <h1>Lembre-se:</h1>
-            <p>Seu e-mail e senha cadastrados serão seu login para o acesso na plataforma</p>
-            <p>Após preencher todos os seus dados clique em <strong>"Enviar"</strong> e seu cadastro estará completo</p>
+            <p>
+              Seu e-mail e senha cadastrados serão seu login para o acesso na
+              plataforma
+            </p>
+            <p>
+              Após preencher todos os seus dados clique em{" "}
+              <strong>"Enviar"</strong> e seu cadastro estará completo
+            </p>
           </div>
           <div className="inputs">
-          <div className="input-field">
-            <h4>Email para registrar - se<span>*</span></h4>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              placeholder="Ingrese su correo electrónico"
-              required
-              className="input-text"
-            />
+            <div className="input-field">
+              <h4>
+              Email para cadastro<span>*</span>
+              </h4>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder="Digite o seu e-mail"
+                required
+                className="input-text"
+              />
+            </div>
+            <div className="input-field">
+              <h4>
+              Verificação do Email<span>*</span>
+              </h4>
+              <input
+                type="email"
+                name="verifyEmail"
+                value={formData.verifyEmail}
+                onChange={handleInputChange}
+                placeholder="Confirme o seu e-mail"
+                required
+                className="input-text"
+              />
+              {emailMatchError && (
+                <p style={{ color: "red" }}>{emailMatchError}</p>
+              )}
+            </div>
+            <div className="input-field">
+              <h4>
+              Senha<span>*</span>
+              </h4>
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleInputChange}
+                placeholder="Digite a sua senha"
+                required
+                className="input-text"
+              />
+              {passwordError && <p>{passwordError}</p>}
+            </div>
+            <div className="input-field">
+              <h4>
+              Verificação de Senha<span>*</span>
+              </h4>
+              <input
+                type="password"
+                name="verifyPassword"
+                value={formData.verifyPassword}
+                onChange={handleInputChange}
+                placeholder="Confirme a sua senha"
+                required
+                className="input-text"
+              />
+              {passwordMatchError && (
+                <p style={{ color: "red" }}>{passwordMatchError}</p>
+              )}
+            </div>
           </div>
-          <div className="input-field">
-            <h4>Verificação de Email<span>*</span></h4>
-            <input
-              type="email"
-              name="verifyEmail"
-              value={formData.verifyEmail}
-              onChange={handleInputChange}
-              placeholder="Confirme su correo eletrônico"
-              required
-              className="input-text"
-            />
-            {emailMatchError && <p style={{ color: 'red' }}>{emailMatchError}</p>}
-          </div>
-          <div className="input-field">
-            <h4>Contraseña<span>*</span></h4>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleInputChange}
-              placeholder="Ingrese su contraseña"
-              required
-              className="input-text"
-            />
-            {passwordError && <p>{passwordError}</p>}
-          </div>
-          <div className="input-field">
-            <h4>Verificación de Contraseña<span>*</span></h4>
-            <input
-              type="password"
-              name="verifyPassword"
-              value={formData.verifyPassword}
-              onChange={handleInputChange}
-              placeholder="Confirme su contraseña"
-              required
-              className="input-text"
-            />
-            {passwordMatchError && <p style={{ color: 'red' }}>{passwordMatchError}</p>}
-          </div>
-        </div>
           <div className="opcional">
-            <h4>Observação (opcional)</h4>
+            <h4>Observação (opcional)
+</h4>
             <textarea
               name="message"
               cols="60"
@@ -361,10 +422,22 @@ function FormularioEducadorSocial() {
               required
             />
             <label htmlFor="terms">
-              Ao marcar esta caixa e clicar em Enviar, aceito o tratamento de meus dados pessoais por <a href="/avisoLegal" target="_blank">[Nome da sua organização]</a> conforme explicado no seu <a href="/avisoLegal" target="_blank">Aviso Legal de Proteção de Dados</a>, que inclui: 1) a coordenação e gestão de voluntários, e 2) a comunicação sobre atividades e oportunidades relacionadas.
+              Ao marcar esta caixa e clicar em Enviar, aceito o tratamento de
+              meus dados pessoais por{" "}
+              <a href="/avisoLegal" target="_blank">
+                [Nome da sua organização]
+              </a>{" "}
+              conforme explicado no seu{" "}
+              <a href="/avisoLegal" target="_blank">
+                Aviso Legal de Proteção de Dados
+              </a>
+              , que inclui: 1) a coordenação e gestão de voluntários, e 2) a
+              comunicação sobre atividades e oportunidades relacionadas.
             </label>
           </div>
-          <button className="SV" type="submit">Enviar</button>
+          <button className="SV" type="submit">
+            Enviar
+          </button>
         </form>
       </div>
       <footer className="App-footer"></footer>
@@ -373,5 +446,3 @@ function FormularioEducadorSocial() {
 }
 
 export default FormularioEducadorSocial;
-
- 

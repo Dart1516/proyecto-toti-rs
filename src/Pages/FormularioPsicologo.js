@@ -268,51 +268,51 @@ function FormularioPsicologo() {
           </div>
           <div className="inputs">
           <div className="input-field">
-            <h4>Email para registrarse<span>*</span></h4>
+            <h4>Email para cadastro<span>*</span></h4>
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleInputChange}
-              placeholder="Ingrese su correo electrónico"
+              placeholder="Digite o seu e-mail"
               required
               className="input-text"
             />
           </div>
           <div className="input-field">
-            <h4>Verificação de Email<span>*</span></h4>
+            <h4>Verificação do Email<span>*</span></h4>
             <input
               type="email"
               name="verifyEmail"
               value={formData.verifyEmail}
               onChange={handleInputChange}
-              placeholder="Confirme su correo eletrônico"
+              placeholder="Confirme o seu e-mail"
               required
               className="input-text"
             />
             {emailMatchError && <p style={{ color: 'red' }}>{emailMatchError}</p>}
           </div>
           <div className="input-field">
-            <h4>Contraseña<span>*</span></h4>
+            <h4>Senha<span>*</span></h4>
             <input
               type="password"
               name="password"
               value={formData.password}
               onChange={handleInputChange}
-              placeholder="Ingrese su contraseña"
+              placeholder="Digite a sua senha"
               required
               className="input-text"
             />
             {passwordError && <p>{passwordError}</p>}
           </div>
           <div className="input-field">
-            <h4>Verificação de Contraseña<span>*</span></h4>
+            <h4>Verificação de Senha<span>*</span></h4>
             <input
               type="password"
               name="verifyPassword"
               value={formData.verifyPassword}
               onChange={handleInputChange}
-              placeholder="Confirme su contraseña"
+              placeholder="Confirme a sua senha"
               required
               className="input-text"
             />

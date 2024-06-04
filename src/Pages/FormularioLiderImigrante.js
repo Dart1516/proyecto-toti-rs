@@ -8,6 +8,8 @@ import { FaTrash, FaPlus } from 'react-icons/fa';
 function FormularioLiderImigrante() {
   const [additionalDays, setAdditionalDays] = useState([{ day: "", hour: "" }]);
   const [formData, setFormData] = useState({
+    ongName:"",
+    cnpj:"",
     name: "",
     cpf: "",
     birthDate: "",
@@ -15,6 +17,7 @@ function FormularioLiderImigrante() {
     email: "",
     organization: "",
     area: "",
+    endereço:"",
     state: "",
     additionalDays: [{ day: "", hour: "" }],
     password: "",
@@ -106,7 +109,7 @@ function FormularioLiderImigrante() {
               type="text"
               name="name"
               placeholder="Digite seu nome"
-              value={formData.name}
+              value={formData.ongName}
               onChange={handleInputChange}
               required
             />
@@ -115,7 +118,7 @@ function FormularioLiderImigrante() {
             <h4>2. CNPJ Da ONG<span>*</span></h4>
             <InputMask
               mask="999.999.999-99"
-              value={formData.cpf}
+              value={formData.cnpj}
               onChange={handleInputChange}
               placeholder="Digite seu CPF O valor deve ser numérico"
               required
@@ -148,7 +151,7 @@ function FormularioLiderImigrante() {
             />
           </div>
           <div className="input-field">
-            <h4>4. Número do WhatsApp para contato<span>*</span></h4>
+            <h4>4. Número do WhatsApp do Representante<span>*</span></h4>
             <InputMask
               mask="(99) 99999-9999"
               value={formData.phone}
@@ -172,7 +175,7 @@ function FormularioLiderImigrante() {
             />
           </div>
           <div className="input-field">
-            <h4>Estado en que reside  <span>*</span></h4>
+            <h4>Estado em que reside  <span>*</span></h4>
             <select className="form-select" name="state" value={formData.state} onChange={handleInputChange} required>
               <option value="">Selecione</option>
               <option value="SP">SP</option>
@@ -194,7 +197,7 @@ function FormularioLiderImigrante() {
             <input
               type="text"
               name="area"
-              value={formData.area}
+              value={formData.endereço}
               onChange={handleInputChange}
               placeholder="Digite a área em que trabalha"
               required
@@ -213,51 +216,51 @@ function FormularioLiderImigrante() {
           </div>
           <div className="inputs">
           <div className="input-field">
-            <h4>Email para registrar-se<span>*</span></h4>
+            <h4>Email para cadastro<span>*</span></h4>
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleInputChange}
-              placeholder="Ingrese su correo electrónico"
+              placeholder="Digite seu e-mail"
               required
               className="input-text"
             />
           </div>
           <div className="input-field">
-            <h4>Verificação de Email<span>*</span></h4>
+            <h4>Verificação do Email<span>*</span></h4>
             <input
               type="email"
               name="verifyEmail"
               value={formData.verifyEmail}
               onChange={handleInputChange}
-              placeholder="Confirme su correo eletrônico"
+              placeholder="Confirme o  seu e-mail"
               required
               className="input-text"
             />
             {emailMatchError && <p style={{ color: 'red' }}>{emailMatchError}</p>}
           </div>
           <div className="input-field">
-            <h4>Contraseña<span>*</span></h4>
+            <h4>Senha<span>*</span></h4>
             <input
               type="password"
               name="password"
               value={formData.password}
               onChange={handleInputChange}
-              placeholder="Ingrese su contraseña"
+              placeholder="Digite a sua senha"
               required
               className="input-text"
             />
             {passwordError && <p>{passwordError}</p>}
           </div>
           <div className="input-field">
-            <h4>Verificación de Contraseña<span>*</span></h4>
+            <h4>Verificação de Senha<span>*</span></h4>
             <input
               type="password"
               name="verifyPassword"
               value={formData.verifyPassword}
               onChange={handleInputChange}
-              placeholder="Confirme su contraseña"
+              placeholder="Confirme a sua senha"
               required
               className="input-text"
             />
