@@ -3,7 +3,7 @@ import { createTheme, responsiveFontSizes } from "@mui/material";
 
 let theme = createTheme({
   typography:{
-    fontFamily:"Times New Roman"
+    fontFamily:"Poppins"
   },
   // color blanco
   palette: {
