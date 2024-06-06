@@ -33,6 +33,7 @@ const About = () => {
     width: "100%",
     maxWidth:"800px",
     alignItems: "center",
+    borderRadius: "5%",
     maxHeight:"400px"
   }));
   const StyledImgWithRadius = styled("img")(() => ({
@@ -47,23 +48,16 @@ const About = () => {
       <>
        <Header/>
        <StyledAbout>
-                    <Container maxWidth="lg" padding="0">
-                    <Typography color="secondary.main" variant="h1" textAlign="center" pt={6}>Sobre Nós</Typography>
-               
-
-
-
-
-                 
+                    <Container maxWidth="lg" padding="10rem">             
        
  {/* conteudo da primeira div ---------------------------------------------------- */}
-                    <Grid container spacing={2} gap={1} justifyContent="center" alignItems="center" mt="20px"  mb={6} display="flex" flexDirection="row">
-                    <Grid item xs={12} md={5}>
+                    <Grid container spacing={3} gap={0} justifyContent="center" alignItems="center" mt="20px"  mb="20px" display="flex" flexDirection="row" padding={3}>
+                    <Grid item xs={12} md={6}>
                     <StyledText>
                     <Typography  pt={3}  textAlign="Start" justifyContent="center" variant="h4" color="black">
                                 Quem Somos?
                                       </Typography>
-                    <Typography   pb={4}  textAlign="Start" justifyContent="center" variant="h6">
+                    <Typography   pb={4}  textAlign="Start" justifyContent="center" variant="body">
                                 A Comunidade Toti é um coletivo de profissionais imigrantes de tecnologia no Brasil, unidos pelo desejo de crescer profissionalmente e de apoiar uns aos outros. Nossa missão é oferecer um espaço de acolhimento, onde o conhecimento e as experiências se entrelaçam para criar oportunidades de desenvolvimento e integração.
                                       </Typography>
                                       </StyledText>
@@ -73,9 +67,9 @@ const About = () => {
                     <StyledImgNoRadius src={imgToters} />
 </Grid> 
                     </Grid>
-                    <hr></hr>
+                   
   {/* conteudo da segunda div -------------------------------------- */}
-                    <Grid container spacing={2} gap={1} textAlign="center" justifyContent="center" direction={{ xs: 'column-reverse', md: 'row' }} mt={2}>
+                    <Grid container spacing={2} gap={0} textAlign="center" justifyContent="center" direction={{ xs: 'column-reverse', md: 'row' }} mt={2} padding={0}>
                       {/* img da segunda div--------------------- */}
                     <Grid item xs={12} md={4} display="flex" justifyContent="center" alignItems="center" >
                     <StyledImgWithRadius  src={imgComunidade} />
