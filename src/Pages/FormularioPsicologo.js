@@ -185,19 +185,31 @@ function FormularioPsicologo() {
           <div className="input-field">
             <h4>Estado <span>*</span></h4>
             <select className="form-select" name="state" value={formData.state} onChange={handleInputChange} required>
-              <option value="">Selecione</option>
-              <option value="SP">SP</option>
-              <option value="MT">MT</option>
-              <option value="MG">MG</option>
-              <option value="CE">CE</option>
-              <option value="AC">AC</option>
-              <option value="AM">AM</option>
-              <option value="RS">RS</option>
-              <option value="MA">MA</option>
-              <option value="MS">MS</option>
-              <option value="RJ">RJ</option>
-              <option value="RO">RO</option>
-              <option value="SC">SC</option>
+            <option value="">-Selecione-</option>
+                <option value="SP">SP</option>
+                <option value="MT">MT</option>
+                <option value="MG">MG</option>
+                <option value="CE">CE</option>
+                <option value="AC">AC</option>
+                <option value="AM">AM</option>
+                <option value="RS">RS</option>
+                <option value="MA">MA</option>
+                <option value="MS">MS</option>
+                <option value="RJ">RJ</option>
+                <option value="RO">RO</option>
+                <option value="SC">SC</option>
+                <option value="AM">PA</option>
+                <option value="RS">PB</option>
+                <option value="MA">PE</option>
+                <option value="MS">PI</option>
+                <option value="RJ">RR</option>
+                <option value="RO">RN</option>
+                <option value="SC">SE</option>
+                <option value="RJ">TO</option>
+                <option value="RO">DF</option>
+                <option value="SC">GO</option>
+                <option value="SC">MS</option>
+                <option value="SC">SE</option>
             </select>
           </div>
           </div>
