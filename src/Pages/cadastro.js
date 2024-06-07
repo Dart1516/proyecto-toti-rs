@@ -27,7 +27,7 @@ function Cadastro() {
                 </div>
                 <div className="opciones-texto">
                   <h2>psicólogo(a) voluntariado</h2>
-                  <p>descripción para opción 1</p>
+                  <p>descrição para opção 1</p>
                 </div>
               </Link>
             </div>
@@ -38,7 +38,7 @@ function Cadastro() {
                 </div>
                 <div className="opciones-texto">
                   <h2>educador social voluntariado</h2>
-                  <p>descripción para opción 2</p>
+                  <p>descrição para opção 2</p>
                 </div>
               </Link>
             </div>
@@ -51,7 +51,7 @@ function Cadastro() {
                 </div>
                 <div className="opciones-texto">
                   <h2>Liderança ONG de Imigrantes, refugiados e apátridas</h2>
-                  <p>Descripción para opción 3</p>
+                  <p>descrição para opção 3</p>
                 </div>
               </Link>
             </div>
@@ -62,7 +62,7 @@ function Cadastro() {
                 </div>
                 <div className="opciones-texto">
                   <h2>outros</h2>
-                  <p>descripción para opción 4</p>
+                  <p>descrição para opção 4</p>
                 </div>
               </Link>
             </div>

@@ -199,7 +199,7 @@ function FormularioEducadorSocial() {
                 onChange={handleInputChange}
                 required
               >
-                <option value="">Selecione</option>
+                <option value="">-Selecione-</option>
                 <option value="SP">SP</option>
                 <option value="MT">MT</option>
                 <option value="MG">MG</option>
@@ -212,6 +212,18 @@ function FormularioEducadorSocial() {
                 <option value="RJ">RJ</option>
                 <option value="RO">RO</option>
                 <option value="SC">SC</option>
+                <option value="AM">PA</option>
+                <option value="RS">PB</option>
+                <option value="MA">PE</option>
+                <option value="MS">PI</option>
+                <option value="RJ">RR</option>
+                <option value="RO">RN</option>
+                <option value="SC">SE</option>
+                <option value="RJ">TO</option>
+                <option value="RO">DF</option>
+                <option value="SC">GO</option>
+                <option value="SC">MS</option>
+                <option value="SC">SE</option>
               </select>
             </div>
             <div className="input-field">
