@@ -3,10 +3,8 @@ import InputMask from "react-input-mask";
 import Header from "../Components/Header-NavMenu";
 import '../assets/styles/App.css';
 import '../assets/styles/SejaVoluntario.css';
-import { FaTrash, FaPlus } from 'react-icons/fa';
 
 function FormularioLiderImigrante() {
-  const [additionalDays, setAdditionalDays] = useState([{ day: "", hour: "" }]);
   const [formData, setFormData] = useState({
     ongName:"",
     cnpj:"",
@@ -31,26 +29,6 @@ function FormularioLiderImigrante() {
 
   const handleTermsChange = (event) => {
     setIsTermsAccepted(event.target.checked);
-  };
-
-  const handleDayChange = (index, event) => {
-    const values = [...additionalDays];
-    values[index][event.target.name] = event.target.value;
-    setAdditionalDays(values);
-    setFormData({ ...formData, additionalDays: values });
-  };
-
-  const addDay = () => {
-    const newDays = [...additionalDays, { day: "", hour: "" }];
-    setAdditionalDays(newDays);
-    setFormData({ ...formData, additionalDays: newDays });
-  };
-
-  const removeDay = (index) => {
-    const values = [...additionalDays];
-    values.splice(index, 1);
-    setAdditionalDays(values);
-    setFormData({ ...formData, additionalDays: values });
   };
 
   const handleSubmit = (event) => {
