@@ -264,8 +264,8 @@ height:"100%"
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+      <Button size="small" style={{color:"black"}}>Github</Button>
+                       <Button size="small" style={{color:"black"}}>LinkedIn</Button>
       </CardActions>
     </Card>
     </Grid>
@@ -286,8 +286,8 @@ height:"100%"
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+      <Button size="small" style={{color:"black"}}>Github</Button>
+                       <Button size="small" style={{color:"black"}}>LinkedIn</Button>
       </CardActions>
     </Card>
     </Grid>
@@ -308,8 +308,8 @@ height:"100%"
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+      <Button size="small" style={{color:"black"}}>Github</Button>
+                       <Button size="small" style={{color:"black"}}>LinkedIn</Button>
       </CardActions>
     </Card>
     </Grid>
@@ -330,8 +330,8 @@ height:"100%"
                        </Typography>
                      </CardContent>
                      <CardActions>
-                       <Button size="small">Share</Button>
-                       <Button size="small">Learn More</Button>
+                     <Button size="small" style={{color:"black"}}>Github</Button>
+                       <Button size="small" style={{color:"black"}}>LinkedIn</Button>
                      </CardActions>
                    </Card>
                    </Grid>
@@ -352,8 +352,8 @@ height:"100%"
                        </Typography>
                      </CardContent>
                      <CardActions>
-                       <Button size="small">Share</Button>
-                       <Button size="small">Learn More</Button>
+                     <Button size="small" style={{color:"black"}}>Github</Button>
+                       <Button size="small" style={{color:"black"}}>LinkedIn</Button>
                      </CardActions>
                    </Card>
                    </Grid>
@@ -375,8 +375,8 @@ height:"100%"
                        </Typography>
                      </CardContent>
                      <CardActions>
-                       <Button size="small">Share</Button>
-                       <Button size="small">Learn More</Button>
+                     <Button size="small" style={{color:"black"}}>Github</Button>
+                       <Button size="small" style={{color:"black"}}>LinkedIn</Button>
                      </CardActions>
                    </Card>
                    </Grid>
@@ -397,8 +397,8 @@ height:"100%"
                        </Typography>
                      </CardContent>
                      <CardActions>
-                       <Button size="small">Share</Button>
-                       <Button size="small">Learn More</Button>
+                     <Button size="small" style={{color:"black"}}>Github</Button>
+                       <Button size="small" style={{color:"black"}}>LinkedIn</Button>
                      </CardActions>
                    </Card>
                    </Grid>
@@ -418,9 +418,9 @@ height:"100%"
                         Toter
                        </Typography>
                      </CardContent>
-                     <CardActions>
-                       <Button size="small">Share</Button>
-                       <Button size="small">Learn More</Button>
+                     <CardActions >
+                       <Button size="small" style={{color:"black"}}>Github</Button>
+                       <Button size="small" style={{color:"black"}}>LinkedIn</Button>
                      </CardActions>
                    </Card>
                    </Grid>
