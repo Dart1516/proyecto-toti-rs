@@ -4,10 +4,22 @@ import Header from "../Components/Header-NavMenu";
 import {Grid, Container, Typography, styled, Card, CardContent, CardMedia, CardActions, Button} from "@mui/material"
 import imgenchente from "../assets/images/imgsobrenos3.jpg"
 import imgComunidade from "../assets/images/voluntarios.jpg"
-import imgToters from "../assets/images/totersimagen.png"
 import "../../src/Pages/MaterialDeApoio"
 import "../../src/Pages/Accesso"
 import { Link } from "react-router-dom";
+import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
+import AutorenewIcon from '@mui/icons-material/Autorenew';
+import SecurityIcon from '@mui/icons-material/Security';
+import PeopleIcon from '@mui/icons-material/People';
+import StarIcon from '@mui/icons-material/Star';
+import david from '../assets/images/toters/toter2.jpg'
+import manuel from '../assets/images/toters/toter4.jpg'
+import daysi  from '../assets/images/toters/toter1.jpg'
+import victor from '../assets/images/toters/toter3.jpg'
+import cristian from '../assets/images/toters/toter5.jpg'
+import henry from '../assets/images/toters/toter6.jpg'
+import maria from '../assets/images/toters/toter7.jpg'
+import nadi from '../assets/images/toters/toter8.jpg'
 const About = () => {
 
 
@@ -52,7 +64,6 @@ height:"100%"
    backgroundColor:"#FFB30B",
    color:"black",
    fontWeight:"600"
-
   }));
   const StyledbuttonVoluntario = styled("a")(() => ({
     alignItems: "center",
@@ -64,12 +75,16 @@ height:"100%"
    color:"#ffff",
    fontWeight:"600"
   }));
+  const StyledValores = styled('div')({
+    width:"100%",
+    background:"../assets/images/fundo.png",
+  });
   return (
       <>
        <Header  className="App-header"/>
-      
+       <StyledAbout>
                     <Container maxWidth="lg">             
-                    <StyledAbout>
+                   
  {/* conteudo da primeira div ---------------------------------------------------- */}
                     <Grid container spacing={2} justifyContent="space-around" alignItems="center" display="flex"  paddingRight={10} paddingLeft={10} marginTop={10}>
                     <Grid item xs={12} md={6}>
@@ -85,7 +100,6 @@ height:"100%"
                     </Grid>
                     {/* img da primeira div -------------------- */}
                     <Grid item xs={12} md={6} display="flex" justifyContent="center" alignItems="center" padding={0}>
-                    <StyledImg src={imgToters} />
 </Grid> 
                     </Grid>
                    
@@ -139,27 +153,114 @@ height:"100%"
                 </StyledbuttonVoluntario>
  </Grid>
  </Grid>
-{/* ================================ */}
+
+{/* ============================== NOSSOS VALORES ================================== */}
 
 
-<div  >
-  <Typography   textAlign="start" justifyContent="center" variant="h4" color="black" fontWeight={700} >
+<StyledValores >
+  <Typography   textAlign="center" justifyContent="center" variant="h4" color="black" fontWeight={700} >
                                 Nossos valores
                                       </Typography>
-                                      <div  display="flex" >
-     <Card sx={{ maxWidth: 345 }} >
+                                      <Grid container spacing={2} display="flex" alignItems="center" padding={{ xs: '0', md: '1rem' }} justifyContent="center" direction={{ xs: 'column', md: 'row' }} marginBottom={3}>
+ <Grid item xs={12} md={4} >
+                    
+     <Card sx={{ maxWidth: 320 }} style={{}} >
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+        Empatia <SentimentSatisfiedAltIcon/>
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+       Compreensão e respeito pelas experiências e desafios dos imigrantes e das comunidades afetadas por enchentes.
+        </Typography>
+      </CardContent>
+    </Card>
+    </Grid>
+    <Grid item xs={12} md={4}>
+
+    <Card sx={{ maxWidth: 320 }}>
+    
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+        Inclusão <AutorenewIcon/>
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+        Garantir que o site e seus serviços sejam acessíveis e úteis para pessoas de diversas origens, línguas e habilidades.
+        </Typography>
+      </CardContent>
+  
+    </Card>
+    </Grid>
+    <Grid item xs={12} md={4}>
+                    
+     <Card sx={{ maxWidth: 320 }} >
+     
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+        Segurança e Privacidade <SecurityIcon/>
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+       Proteger os dados pessoais e sensíveis dos usuários com rigor
+        </Typography>
+      </CardContent>
+    </Card>
+    </Grid>
+    <Grid item xs={12} md={4}  >
+                    
+     <Card sx={{ maxWidth: 350 }} >
+     
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+        Resiliência < PeopleIcon/>
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+        Adaptar-se e responder efetivamente a desafios e mudanças, tanto tecnológicas quanto sociais.
+        </Typography>
+      </CardContent>
+    </Card>
+    </Grid>
+    <Grid item xs={12} md={4} display="flex" gap={2} alignItems="center" padding={{ xs: '0', md: '0' }}>
+                    
+                    <Card sx={{ maxWidth: 350 }} >
+                     <CardContent>
+                       <Typography gutterBottom variant="h5" component="div" alignItems="center">
+                       Qualidade <StarIcon/>
+                       </Typography>
+                       <Typography variant="body2" color="text.secondary">
+                      Entregar um produto confiável, intuitivo e funcional que atende às necessidades dos usuários.Inovação:Investir em pesquisa e desenvolvimento para integrar novas soluções tecnológicas que possam beneficiar os usuários.
+                       </Typography>
+                     </CardContent>
+                   </Card>
+</Grid>
+
+
+
+    
+    </Grid>
+    
+    </StyledValores>
+    
+    
+    {/* CARDS DO TIME--------------------------------------*/}
+    <div >
+    <Typography   textAlign="center" justifyContent="center" variant="h4" color="black" fontWeight={700} >
+                                Nossos Time
+                                      </Typography>
+    <Grid container spacing={2} display="flex" alignItems="center" padding={{ xs: '0', md: '1rem' }} justifyContent="center" direction={{ xs: 'column', md: 'row' }} marginBottom={3}>
+   
+ <Grid item xs={12} md={3} display="flex" gap={2} alignItems="center" padding={{ xs: '0', md: '1rem' }}>
+                    
+     <Card sx={{ maxWidth: 360 }} >
       <CardMedia
-        sx={{ height: 140 }}
-        image="/static/images/cards/contemplative-reptile.jpg"
-        title="green iguana"
+        sx={{ height: 170 }}
+        image={david}
+        title="david"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          David 
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          Toter
         </Typography>
       </CardContent>
       <CardActions>
@@ -167,19 +268,21 @@ height:"100%"
         <Button size="small">Learn More</Button>
       </CardActions>
     </Card>
-    <Card sx={{ maxWidth: 345 }}>
+    </Grid>
+    <Grid item xs={12} md={3} display="flex" gap={2} alignItems="center" padding={{ xs: '0', md: '1rem' }} >
+
+    <Card sx={{ maxWidth: 360 }}>
       <CardMedia
-        sx={{ height: 140 }}
-        image="/static/images/cards/contemplative-reptile.jpg"
-        title="green iguana"
+        sx={{ height: 170 }}
+        image={victor}
+        title="victor"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          Victor
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+         Toter
         </Typography>
       </CardContent>
       <CardActions>
@@ -187,41 +290,145 @@ height:"100%"
         <Button size="small">Learn More</Button>
       </CardActions>
     </Card>
-    </div></div>
+    </Grid>
+    <Grid item xs={12} md={3} display="flex" gap={2} alignItems="center" padding={{ xs: '0', md: '1rem' }}>
+                    
+     <Card sx={{ maxWidth: 360 }} >
+      <CardMedia
+        sx={{ height: 170 }}
+        image={maria}
+        title=""
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          Maria
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+         Toter
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">Share</Button>
+        <Button size="small">Learn More</Button>
+      </CardActions>
+    </Card>
+    </Grid>
+    <Grid item xs={12} md={3} display="flex" gap={2} alignItems="center" padding={{ xs: '0', md: '1rem' }} >
+                    
+                    <Card sx={{ maxWidth: 360 }} >
+                     <CardMedia
+                       sx={{ height: 170 }}
+                       image={cristian}
+                       title=""
+                     />
+                     <CardContent>
+                       <Typography gutterBottom variant="h5" component="div">
+                         Cristian
+                       </Typography>
+                       <Typography variant="body2" color="text.secondary">
+                        Toter
+                       </Typography>
+                     </CardContent>
+                     <CardActions>
+                       <Button size="small">Share</Button>
+                       <Button size="small">Learn More</Button>
+                     </CardActions>
+                   </Card>
+                   </Grid>
+                   <Grid item xs={12} md={3} display="flex" gap={2} alignItems="center" padding={{ xs: '0', md: '1rem' }} >
+                    
+                    <Card sx={{ maxWidth: 360 }} >
+                     <CardMedia
+                       sx={{ height: 170 }}
+                       image={henry}
+                       title=""
+                     />
+                     <CardContent>
+                       <Typography gutterBottom variant="h5" component="div">
+                         Henry
+                       </Typography>
+                       <Typography variant="body2" color="text.secondary">
+                        Toter
+                       </Typography>
+                     </CardContent>
+                     <CardActions>
+                       <Button size="small">Share</Button>
+                       <Button size="small">Learn More</Button>
+                     </CardActions>
+                   </Card>
+                   </Grid>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                      <Link to="/material-de-apoyo">
-    <button justifyContent="center" alignItems="center">Material de apoio ao volutario</button>
-  </Link>        
-           
-  </StyledAbout>         
+                   <Grid item xs={12} md={3} display="flex" gap={2} alignItems="center" padding={{ xs: '0', md: '1rem' }} >
+                    
+                    <Card sx={{ maxWidth: 360 }} >
+                     <CardMedia
+                       sx={{ height: 170 }}
+                       image={daysi}
+                       title=""
+                     />
+                     <CardContent>
+                       <Typography gutterBottom variant="h5" component="div">
+                         Daysi
+                       </Typography>
+                       <Typography variant="body2" color="text.secondary">
+                        Toter
+                       </Typography>
+                     </CardContent>
+                     <CardActions>
+                       <Button size="small">Share</Button>
+                       <Button size="small">Learn More</Button>
+                     </CardActions>
+                   </Card>
+                   </Grid>
+                   <Grid item xs={12} md={3} display="flex" gap={2} alignItems="center" padding={{ xs: '0', md: '1rem' }} >
+                    
+                    <Card sx={{ maxWidth: 360 }} >
+                     <CardMedia
+                       sx={{ height: 170 }}
+                       image={manuel}
+                       title=""
+                     />
+                     <CardContent>
+                       <Typography gutterBottom variant="h5" component="div">
+                         Manuel
+                       </Typography>
+                       <Typography variant="body2" color="text.secondary">
+                        Toter
+                       </Typography>
+                     </CardContent>
+                     <CardActions>
+                       <Button size="small">Share</Button>
+                       <Button size="small">Learn More</Button>
+                     </CardActions>
+                   </Card>
+                   </Grid>
+                   <Grid item xs={12} md={3} display="flex" gap={2} alignItems="center" padding={{ xs: '0', md: '1rem' }} >
+                    
+                    <Card sx={{ maxWidth: 360 }} >
+                     <CardMedia
+                       sx={{ height: 170 }}
+                       image={nadi}
+                       title=""
+                     />
+                     <CardContent>
+                       <Typography gutterBottom variant="h5" component="div">
+                        Nadi
+                       </Typography>
+                       <Typography variant="body2" color="text.secondary">
+                        Toter
+                       </Typography>
+                     </CardContent>
+                     <CardActions>
+                       <Button size="small">Share</Button>
+                       <Button size="small">Learn More</Button>
+                     </CardActions>
+                   </Card>
+                   </Grid>
+    </Grid>
+   
+    </div>     
                     </Container>
-           
+                    </StyledAbout> 
 
 
 

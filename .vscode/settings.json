@@ -1,8 +1,5 @@
 {
-    "cSpell.words": [
-        "Accesso",
-        "Disponivel",
-        "minha"
-    ],
-    "cSpell.language": "en,es,pt-BR,lorem"
+  "cSpell.words": ["Accesso", "Disponivel", "minha"],
+  "cSpell.language": "en,es,pt-BR,lorem",
+  "liveServer.settings.port": 5501
 }
