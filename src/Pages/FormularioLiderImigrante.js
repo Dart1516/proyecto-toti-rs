@@ -3,8 +3,23 @@ import InputMask from "react-input-mask";
 import Header from "../Components/Header-NavMenu";
 import '../assets/styles/App.css';
 import '../assets/styles/SejaVoluntario.css';
-
+import { Api } from "../services/api";
 function FormularioLiderImigrante() {
+//  POST DOS LIDERES
+const handleSubmit = async (e) => {
+  if (!isTermsAccepted) {
+    alert("Por favor, aceite os termos e condições antes de enviar o formulário.");
+  }
+  e.preventDefault();
+ 
+  try {
+    await Api.post('/cadastro/lideres', formData);
+    
+  } catch (error) {
+    console.error('Error al enviar datos:', error);
+  }
+};
+// ------------------------------------------------------
   const [formData, setFormData] = useState({
     ongName:"",
     cnpj:"",
@@ -29,13 +44,6 @@ function FormularioLiderImigrante() {
 
   const handleTermsChange = (event) => {
     setIsTermsAccepted(event.target.checked);
-  };
-
-  const handleSubmit = (event) => {
-    if (!isTermsAccepted) {
-      event.preventDefault();
-      alert("Por favor, aceite os termos e condições antes de enviar o formulário.");
-    }
   };
 
   const handleInputChange = (event) => {

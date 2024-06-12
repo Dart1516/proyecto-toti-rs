@@ -11,7 +11,7 @@ import {  InputAdornment, IconButton } from '@mui/material';
 const StyledContainer = styled("div")(() => ({
   position: "fixed",
   right: 0,
-  top:"3rem",
+  top:"2rem",
   background: "#fafafa",
   padding: "4rem 6rem",
   zIndex: "1",
