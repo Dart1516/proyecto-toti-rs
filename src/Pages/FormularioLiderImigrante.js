@@ -13,8 +13,8 @@ const handleSubmit = async (e) => {
   e.preventDefault();
  
   try {
-    await Api.post('/cadastro/lideres', formData);
-    
+    await Api.post('/cadastro/lideres', {formData});
+    console.log(formData)
   } catch (error) {
     console.error('Error al enviar datos:', error);
   }
@@ -25,14 +25,12 @@ const handleSubmit = async (e) => {
     cnpj:"",
     name: "",
     cpf: "",
-    birthDate: "",
     phone: "",
     email: "",
     organization: "",
     area: "",
     endereço:"",
     state: "",
-    additionalDays: [{ day: "", hour: "" }],
     password: "",
     verifyPassword: "",
     verifyEmail: ""
