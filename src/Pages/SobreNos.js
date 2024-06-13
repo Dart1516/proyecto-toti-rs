@@ -32,6 +32,7 @@ import maria from "../assets/images/toters/toter7.jpg";
 import nadi from "../assets/images/toters/toter8.jpg";
 import marianela from "../assets/images/toters/Marianela.jpeg";
 import natalia from "../assets/images/toters/natalia1.jpg";
+import avatar from "../assets/images/toters/avatar.jpeg";
 import Footer from '../Components/Footer'
 const About = () => {
   const StyledAbout = styled("div")(({ theme }) => ({
@@ -645,10 +646,10 @@ const About = () => {
                 padding={{ xs: "0", md: "1rem" }}
               >
                 <Card sx={{ maxWidth: 360 }}>
-                  <CardMedia sx={{ height: 170 }} image={nadi} title="" />
+                  <CardMedia sx={{ height: 170 }} image={avatar} title="" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      Nadi
+                      persona 6
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       Toter
@@ -748,7 +749,7 @@ const About = () => {
                     <Button size="small" style={{ color: "black" }} href="https://github.com/Dart1516">
                       Github
                     </Button>
-                    <Button size="small" style={{ color: "black" }} href="https://github.com/Dart1516">
+                    <Button size="small" style={{ color: "black" }} href="https://www.linkedin.com/in/nataliaaugustoux/">
                       LinkedIn
                     </Button>
                   </CardActions>
@@ -765,10 +766,10 @@ const About = () => {
                 padding={{ xs: "0", md: "1rem" }}
               >
                 <Card sx={{ maxWidth: 360 }}>
-                  <CardMedia sx={{ height: 170 }} image={nadi} title="" />
+                  <CardMedia sx={{ height: 170 }} image={avatar} title="" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      Nadi
+                      persona 5
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       Toter
