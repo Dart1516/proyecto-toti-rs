@@ -5,8 +5,8 @@ import '../assets/styles/HomePage.css'
 import psicologa from '../assets/images/psicologa.jpg'; 
 import educador from "../assets/images/educador-social.jpg";
 import lideres from "../assets/images/lideres.png";
-import voluntario from '../assets/images/voluntariado 1.jpeg';
 import { Typography } from "@mui/material";
+import Footer from '../Components/Footer'
  
 function Principal() {
   return (
@@ -121,6 +121,7 @@ function Principal() {
     </div>
    
       </body>
+      <Footer>  </Footer>
     </div>
   );
 }
