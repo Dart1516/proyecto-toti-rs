@@ -1,133 +1,104 @@
-import React from "react";
-import Header from "../Components/Header-NavMenu";
-import '../assets/styles/App.css';
-import '../assets/styles/interfazLider.css';
+import React, { useState, useEffect } from 'react';
+import Header from '../Components/Header-NavMenu';
+import { Api } from '../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faBuilding, faEllipsisH, faPlus } from '@fortawesome/free-solid-svg-icons';
-
-const professionals = [
-  {
-    name: "Dr. Juan Pérez",
-    profession: "Psicólogo",
-    availability: "Martes a las 8",
-    state: "São Paulo",
-    city: "São Paulo",
-    email: "ejemplo1@gmail.com",
-    phone: "(11) 1234-5678",
-    image: "login/login1.png"
-  },
-  {
-    name: "Sra. Ana Gómez",
-    profession: "Educadora Social",
-    availability: "Miércoles a las 10",
-    state: "Rio de Janeiro",
-    city: "Rio de Janeiro",
-    email: "ejemplo2@gmail.com",
-    phone: "(21) 98765-4321",
-    image: "login/login1.png"
-  },
-  {
-    name: "Lic. Carlos Ruiz",
-    profession: "Psicólogo",
-    availability: "Viernes a las 14",
-    state: "Curitiba",
-    city: "Curitiba",
-    email: "ejemplo3@gmail.com",
-    phone: "(41) 4567-8910",
-    image: "login/login1.png"
-  },
-  {
-    name: "Lic. Carlos Ruiz",
-    profession: "Psicólogo",
-    availability: "Viernes a las 14",
-    state: "Curitiba",
-    city: "Curitiba",
-    email: "ejemplo3@gmail.com",
-    phone: "(41) 4567-8910",
-    image: "login/login1.png"
-  },
-  {
-    name: "Lic. Carlos Ruiz",
-    profession: "Psicóloga",
-    availability: "Viernes a las 14",
-    state: "Curitiba",
-    city: "Curitiba",
-    email: "ejemplo3@gmail.com",
-    phone: "(41) 4567-8910",
-    image: "login/login1.png"
-  }
-];
-
+import '../assets/styles/interfazLider.css'
+import '../assets/styles/App.css'
 function InterfazLider() {
-  // Calcular los conteos
-  const psicologosCount = professionals.filter(pro => pro.profession === "Psicólogo" || pro.profession === "Psicóloga").length;
-  const educadoresCount = professionals.filter(pro => pro.profession === "Educador Social" || pro.profession === "Educadora Social").length;
-  const otrosCount = professionals.filter(pro => pro.profession !== "Psicólogo" && pro.profession !== "Psicóloga" && pro.profession !== "Educador Social" && pro.profession !== "Educadora Social").length;
-  const totalCount = professionals.length;
+  // fech voluntarios
+  const [psicologos, setPsicologos] = useState([]);
+  const [educadorSocial, setEducadorSocial] = useState([])
+  useEffect(() => {
+    async function Voluntarios() {
+      try {
+        let response = await Api.get('/voluntarios');
+        setEducadorSocial(response.data.educador);
+        setPsicologos(response.data.psicologo);
+        
+      
+      } catch (error) {
+        console.error('Error al cargar los datos de los psicólogos:', error);
+      }
+    }
 
+    Voluntarios();
+  }, []);
+
+  // ==================================
+  // Calcular los conteos
+  
+  const psicologosCount = psicologos.length;
+  const educadoresCount = educadorSocial.length;
+  const total = psicologosCount + educadoresCount;
+  //========================================
   return (
     <div className="App">
       <header className="App-header">
         <Header />
       </header>
       <div className="App-body">
-        <h2 className="titulo-table">Cadastro especialidades</h2>
+                  <h2 className="titulo-table">Cadastro especialidades</h2>
         <div className="cards-container">
-          <div className="card">
+                  <div className="card">
             <FontAwesomeIcon icon={faUser} className="icon-table"/>
             <p>{psicologosCount}</p>
             <h3>Psicólogos</h3>
           </div>
-          <div className="card">
-            <FontAwesomeIcon icon={faBuilding} className="icon-table"/>
+                  <div className="card">
+                  <FontAwesomeIcon icon={faBuilding} className="icon-table"/>
             <p>{educadoresCount}</p>
             <h3>Educadores</h3>
           </div>
-          <div className="card">
+                  <div className="card">
             <FontAwesomeIcon icon={faEllipsisH} className="icon-table"/>
-            <p>{otrosCount}</p>
-            <h3>Otros</h3>
-          </div>
-          <div className="card">
-            <FontAwesomeIcon icon={faPlus} className="icon-table"/>
-            <p>{totalCount}</p>
+            <p>{total}</p>
             <h3>Total</h3>
-          </div>
-        </div>
-        <h2 className="titulo-table">Voluntários</h2>
-        <div className="table-container">
-          <table className="professional-table">
-            <thead>
-              <tr>
-                <th>Imagen</th>
-                <th>Nome</th>
-                <th>Especialidade</th>
-                <th>Contato</th>
-                <th>Estado/Cidade</th>
-              </tr>
-            </thead>
-            <tbody>
-              {professionals.map((professional, index) => (
-                <tr key={index}>
-                  <td>
-                    <img
-                      src={require(`../assets/images/${professional.image}`)}
-                      alt={professional.name}
-                      className="professional-image-table"
-                    />
-                  </td>
-                  <td>{professional.name}</td>
-                  <td>{professional.profession}</td>
-                  <td className="contato-table">{professional.email}<br/>{professional.phone}</td>
-                  <td>{professional.state}<br/>{professional.city}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  );
-}
+</div>
+</div>                                          
+        <h2 className="titulo-table">Voluntarios</h2>
+        <div className='table-container'>
+        <table className='professional-table'>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Día</th>
+            <th>Especialidade</th>
+            <th>Teléfone</th>
+            <th>Email</th>
+            <th>Estado/Cidade</th>
+          </tr>
+        </thead>
+        <tbody>
+        {psicologos.map(psicologo => (
+            <tr key={psicologo.id}>
+              <td>{psicologo.name}</td>
+              <td>{psicologo.day}</td>
+              <td>{psicologo.specialization}</td>
+              <td>{psicologo.phoneNumber}</td>
+              <td>{psicologo.email}</td>
+              <td>{psicologo.state}</td>
+            </tr>
+          ))}
+           {educadorSocial.map(educador => (
+            <tr key={educador.id}>
+              <td>{educador.name}</td>
+              <td>{educador.day}</td>
+              <td>{educador.phoneNumber}</td>
+              <td className='contato-table'>{educador.email}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      </div> 
+{/* tabela */}
+      </div> 
+      {/* left seccion */}
+ </div>
+      
+  )}
+
 
 export default InterfazLider;
+
+

@@ -4,6 +4,7 @@ import Header from "../Components/Header-NavMenu";
 import '../assets/styles/App.css';
 import '../assets/styles/SejaVoluntario.css';
 import { FaTrash, FaPlus } from 'react-icons/fa';
+import { Api } from "../services/api";
 
 function FormularioPsicologo() {
   const [additionalDays, setAdditionalDays] = useState([{ day: "", hour: "" }]);
@@ -11,15 +12,15 @@ function FormularioPsicologo() {
     name: "",
     cpf: "",
     birthDate: "",
-    phone: "",
+    phoneNumber: "",
     email: "",
+    rede_social:"",
     crp: "",
     specialization: "",
     state: "",
     additionalDays: [{ day: "", hour: "" }],
     password: "",
-    verifyPassword: "",
-    verifyEmail: ""
+    note:""
   });
   const [isTermsAccepted, setIsTermsAccepted] = useState(false);
   const [passwordError, setPasswordError] = useState("");
@@ -50,10 +51,17 @@ function FormularioPsicologo() {
     setFormData({ ...formData, additionalDays: values });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (e) => {
     if (!isTermsAccepted) {
-      event.preventDefault();
       alert("Por favor, aceite os termos e condições antes de enviar o formulário.");
+    }
+    e.preventDefault();
+   
+    try {
+      await Api.post('/cadastro/psicologos', formData);
+      console.log(formData)
+    } catch (error) {
+      console.error('Error al enviar datos:', error);
     }
   };
 
@@ -138,22 +146,22 @@ function FormularioPsicologo() {
             <h4>4. Número do WhatsApp para contato<span>*</span></h4>
             <InputMask
               mask="(99) 99999-9999"
-              value={formData.phone}
+              value={formData.phoneNumber}
               onChange={handleInputChange}
               placeholder="(DDD) Digite o número"
               required
               className="input-text"
-              name="phone"
+              name="phoneNumber"
             />
           </div>
           <div className="input-field">
             <h4>5. Instagram(opcional)</h4>
             <input
               className="input-text"
-              type="insta"
-              name="insta"
+              type="rede_social"
+              name="rede_social"
               placeholder="digite o nome de usuário"
-              value={formData.insta}
+              value={formData.rede_social}
               onChange={handleInputChange}
               required
             />
@@ -163,7 +171,7 @@ function FormularioPsicologo() {
             <input
               type="text"
               name="crp"
-              value={formData.address}
+              value={formData.crp}
               onChange={handleInputChange}
               placeholder="Digite seu CRP"
               required
@@ -175,7 +183,7 @@ function FormularioPsicologo() {
             <input
               type="text"
               name="specialization"
-              value={formData.city}
+              value={formData.specialization}
               onChange={handleInputChange}
               placeholder="Digite sua área de especialização"
               required
@@ -353,7 +361,7 @@ function FormularioPsicologo() {
               Ao marcar esta caixa e clicar em Enviar, aceito o tratamento de meus dados pessoais por <a href="/avisoLegal" target="_blank">[Nome da sua organização]</a> conforme explicado no seu <a href="/avisoLegal" target="_blank">Aviso Legal de Proteção de Dados</a>, que inclui: 1) a coordenação e gestão de voluntários, e 2) a comunicação sobre atividades e oportunidades relacionadas.
             </label>
           </div>
-          <button className="SV" type="submit">Enviar</button>
+          <button className="SV" type="submit"  onClick={handleSubmit}>Enviar</button>
         </form>
       </div>
       <footer className="App-footer"></footer>
