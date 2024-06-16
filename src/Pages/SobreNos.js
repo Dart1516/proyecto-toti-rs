@@ -448,10 +448,10 @@ const About = () => {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" style={{ color: "black" }} href="https://github.com/Dart1516">
+                    <Button size="small" style={{ color: "black" }}  target="_blank"  href="https://github.com/Dart1516">
                       Github
                     </Button>
-                    <Button size="small" style={{ color: "black" }} href="https://www.linkedin.com/in/david-puche/">
+                    <Button size="small" style={{ color: "black" }} target="_blank" href="https://www.linkedin.com/in/david-puche/" >
                       LinkedIn
                     </Button>
                   </CardActions>
@@ -481,10 +481,10 @@ const About = () => {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" style={{ color: "black" }} href="https://github.com/Dart1516">
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
                       Github
                     </Button>
-                    <Button size="small" style={{ color: "black" }} href="https://www.linkedin.com/in/alcalamvictor">
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://www.linkedin.com/in/alcalamvictor">
                       LinkedIn
                     </Button>
                   </CardActions>
@@ -510,10 +510,10 @@ const About = () => {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" style={{ color: "black" }} href="https://github.com/Dart1516">
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
                       Github
                     </Button>
-                    <Button size="small" style={{ color: "black" }} href="https://github.com/Dart1516">
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
                       LinkedIn
                     </Button>
                   </CardActions>
@@ -539,10 +539,10 @@ const About = () => {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" style={{ color: "black" }} href="https://github.com/Dart1516">
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
                       Github
                     </Button>
-                    <Button size="small" style={{ color: "black" }} href="https://www.linkedin.com/in/cristhian-andres-nunez-gascon-774569168">
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://www.linkedin.com/in/cristhian-andres-nunez-gascon-774569168">
                       LinkedIn
                     </Button>
                   </CardActions>
@@ -568,10 +568,10 @@ const About = () => {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" style={{ color: "black" }} href="https://github.com/Dart1516">
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
                       Github
                     </Button>
-                    <Button size="small" style={{ color: "black" }} href="https://www.linkedin.com/in/henry-luna-0793402a/">
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://www.linkedin.com/in/henry-luna-0793402a/">
                       LinkedIn
                     </Button>
                   </CardActions>
@@ -598,10 +598,10 @@ const About = () => {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" style={{ color: "black" }} href="https://github.com/Dart1516">
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
                       Github
                     </Button>
-                    <Button size="small" style={{ color: "black" }} href="https://www.linkedin.com/in/daysibelcotizpitter">
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://www.linkedin.com/in/daysibelcotizpitter">
                       LinkedIn
                     </Button>
                   </CardActions>
@@ -627,10 +627,10 @@ const About = () => {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" style={{ color: "black" }} href="https://github.com/Dart1516">
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
                       Github
                     </Button>
-                    <Button size="small" style={{ color: "black" }} href="hhttps://www.linkedin.com/in/manuel-bernardo-165373208/">
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="hhttps://www.linkedin.com/in/manuel-bernardo-165373208/">
                       LinkedIn
                     </Button>
                   </CardActions>
@@ -656,10 +656,10 @@ const About = () => {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" style={{ color: "black" }} href="https://github.com/Dart1516">
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
                       Github
                     </Button>
-                    <Button size="small" style={{ color: "black" }} href="https://github.com/Dart1516">
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
                       LinkedIn
                     </Button>
                   </CardActions>
@@ -686,10 +686,10 @@ const About = () => {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" style={{ color: "black" }} href="https://github.com/Dart1516">
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
                       Github
                     </Button>
-                    <Button size="small" style={{ color: "black" }} href="https://www.linkedin.com/in/nadiduno/">
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://www.linkedin.com/in/nadiduno/">
                       LinkedIn
                     </Button>
                   </CardActions>
@@ -716,10 +716,10 @@ const About = () => {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" style={{ color: "black" }} href="https://github.com/Dart1516">
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
                       Github
                     </Button>
-                    <Button size="small" style={{ color: "black" }} href="https://www.linkedin.com/in/marianela-arana/">
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://www.linkedin.com/in/marianela-arana/">
                       LinkedIn
                     </Button>
                   </CardActions>
@@ -746,10 +746,10 @@ const About = () => {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" style={{ color: "black" }} href="https://github.com/Dart1516">
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
                       Github
                     </Button>
-                    <Button size="small" style={{ color: "black" }} href="https://www.linkedin.com/in/nataliaaugustoux/">
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://www.linkedin.com/in/nataliaaugustoux/">
                       LinkedIn
                     </Button>
                   </CardActions>
@@ -776,10 +776,10 @@ const About = () => {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" style={{ color: "black" }} href="https://github.com/Dart1516">
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
                       Github
                     </Button>
-                    <Button size="small" style={{ color: "black" }} href="https://github.com/Dart1516">
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
                       LinkedIn
                     </Button>
                   </CardActions>
