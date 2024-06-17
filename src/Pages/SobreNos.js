@@ -649,10 +649,10 @@ const About = () => {
                   <CardMedia sx={{ height: 170 }} image={avatar} title="" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      persona 6
+                      Yurisay
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      Toter
+                      Toter Disenho e Marketing
                     </Typography>
                   </CardContent>
                   <CardActions>
@@ -769,10 +769,10 @@ const About = () => {
                   <CardMedia sx={{ height: 170 }} image={avatar} title="" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      persona 5
+                      Barbara 
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      Toter
+                      Voluntaria Mentor
                     </Typography>
                   </CardContent>
                   <CardActions>
