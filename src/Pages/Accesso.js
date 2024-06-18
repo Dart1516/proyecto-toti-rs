@@ -161,7 +161,7 @@ const Accesso = () => {
                     value={password}
                     onChange={handlePasswordChange}
                     required
-                    label="Contraseña"
+                    label="senha"
                     fullWidth
                     className="input-text login"
                     endAdornment={
