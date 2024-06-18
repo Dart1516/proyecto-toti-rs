@@ -171,28 +171,37 @@ function FormularioPsicologo() {
           </div>
           <div className="input-field">
             <h4>CRP<span>*</span></h4>
-            <input
-              type="text"
-              name="crp"
+            <InputMask
+              mask="**/******"
               value={formData.crp}
               onChange={handleInputChange}
-              placeholder="Digite seu CRP"
+              placeholder="Digite seu CRP no formato XX/XXXXX"
               required
               className="input-text"
+              name="crp"
             />
-          </div>
+                    </div>
+          
           <div className="input-field">
-            <h4>Area de especialização<span>*</span></h4>
-            <input
-              type="text"
-              name="specialization"
-              value={formData.specialization}
-              onChange={handleInputChange}
-              placeholder="Digite sua área de especialização"
-              required
-              className="input-text"
-            />
-          </div>
+                <h4>Área de especialização<span>*</span></h4>
+                <select className="form-select" name="specialization" value={formData.specialization} onChange={handleInputChange} required>
+                  <option value="">-Selecione-</option>
+                  <option value="Aconselhamento Psicológico">Acolhimento Psicológico</option>
+                  <option value="Neuropsicologia">Neuropsicologia</option>
+                  <option value="Psicologia Clínica">Psicologia Clínica</option>
+                  <option value="Psicologia Comunitária">Psicologia Comunitária</option>
+                  <option value="Psicologia do Desenvolvimento">Psicologia do Desenvolvimento</option>
+                  <option value="Psicologia do Esporte">Psicologia do Esporte</option>
+                  <option value="Psicologia Educacional">Psicologia Educacional</option>
+                  <option value="Psicologia Experimental">Psicologia Experimental</option>
+                  <option value="Psicologia Forense">Psicologia Forense</option>
+                  <option value="Psicologia Infantil">Psicologia Infantil</option>
+                  <option value="Psicologia Organizacional e do Trabalho">Psicologia Organizacional e do Trabalho</option>
+                  <option value="Psicologia da Saúde">Psicologia da Saúde</option>
+                  <option value="Psicologia Social">Psicologia Social</option>
+                  <option value="Psicoterapia">Outros</option>
+                </select>
+              </div>
           <div className="input-field">
             <h4>Estado <span>*</span></h4>
             <select className="form-select" name="state" value={formData.state} onChange={handleInputChange} required>

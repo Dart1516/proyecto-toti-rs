@@ -42,6 +42,58 @@
   gap: 10px;
 }
 
+.filter-container {
+  display: flex;
+    width: 100%;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    height: 125px;
+    justify-content: space-around;
+    align-items: center;
+    text-align: left;
+}
+
+.filter-container h4 {
+  font-size: 14px;
+  padding-left: 2px;
+}
+
+.input-space {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-filter {
+  width: 90%;
+  height: 40px;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.input-filter::placeholder {
+  color: black;
+}
+
+.input-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.icon-lupa {
+  font-size: 15px;
+  position: absolute;
+  left: 10px; 
+  color: var(--color5); 
+}
+
+.input-icon input {
+  padding-left: 30px;
+}
+
 .icon-table {
   font-size: 25px;
   color: var(--color1);
@@ -65,9 +117,34 @@
   color: black;
 }
 
+.title-count {
+  align-self: self-start;
+  text-align: center;
+  font-size: 22px;
+}
+
+.title-count::after {
+  display: block;
+  content: '';
+  width: 60px;
+  border-bottom: 3px solid var(--color1);
+  color: var(--color1);
+}
+
+.background-total {
+  padding: 0px 20px;
+  background-color: var(--color1);
+  border-radius: 14px;
+  color: var(--color4);
+  font-size: 18px;
+  position: relative;
+  left: 10px;
+}
+
 .table-container {
   display: flex;
   width: 100%;
+  font-size: 16px;
 }
 
 .professional-table {
@@ -79,31 +156,29 @@
 }
 
 .professional-table th, .professional-table td {
-  padding: 8px;
+  padding: 14px 8px;
   text-align: left;
 }
 
-.professional-table td:first-child {
-  text-align: center;
-}
-
 .professional-table th {
-  background-color: var(--color4);
+  background-color: #c5e1e1;
   color: black;
   font-weight: 700;
 }
 
 .professional-table tr {
   color: var(--color4);
+  background-color: #F0F6F6;
 }
 
 .professional-table tr:nth-child(even) {
-  background-color: #F5F6F8;
+  background-color: #c5e1e1;
   color: black;
 }
 
 .professional-table tr {
-  background-color: var(--color3);
+  background-color: var(--color4);
+  color: black;
 }
 
 .professional-image-table {

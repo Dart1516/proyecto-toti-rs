@@ -101,7 +101,7 @@ const handleSubmit = async (e) => {
           <div className="input-field">
             <h4>2. CNPJ Da ONG<span>*</span></h4>
             <InputMask
-              mask="999.999.999-99"
+              mask="99.999.999/9999-99"
               value={formData.cnpj}
               onChange={handleInputChange}
               placeholder="Digite seu CPF O valor deve ser numérico"
@@ -147,8 +147,9 @@ const handleSubmit = async (e) => {
             />
           </div>
           <div className="input-field">
-            <h4>Área em que trabalha<span>*</span></h4>
+            <h4>Área em que trabalha (opcional) <span></span></h4> 
             <input
+            // NO PERMITIR QUE SE DEJEN ESPACIOS EN BLANCO Y CARACTERES ESPECIALES
               type="text"
               name="area"
               value={formData.area}

@@ -78,7 +78,7 @@ const Accesso = () => {
           return; // Detener la ejecución si los campos están vacíos
       }
   
-      const response = await Api.get(`/login?email=${email}&password=${password}`);
+      const response = await Api.get(`/login/lideres?email=${email}&password=${password}`);
       const username = response.data;
       console.log(username);
       navigate("/interfazLider");

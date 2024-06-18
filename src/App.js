@@ -11,6 +11,7 @@ import MaterialDeApoio from "./Pages/MaterialDeApoio";
 import InterfazLider from "./Pages/interfazLider";
 import Cadastro from "./Pages/cadastro";
 
+
 function App() {
   return (
     <Router>
