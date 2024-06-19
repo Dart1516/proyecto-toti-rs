@@ -249,52 +249,38 @@ button.SV:hover {
     transform: translateY(-4px);
 }
 
-/* Media queries para tornar o layout responsivo */
-@media (max-width: 768px) {
+@media (min-width: 780px) {
     .container {
-        padding: 60px 40px; /* Ajustes para telas menores */
+      width: 70%;
+      margin: 0 auto;
     }
-
-    .inputs {
-        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+  
+    .input-field h4 {
+      font-size: 1.2em;
     }
-
-    .input-text, .form-select {
-        width: 100%; /* Inputs ocupam toda a largura em telas menores */
+  }
+  
+  
+  
+  @media (max-width: 400px) {
+    .background-image {
+      height: 100px;
     }
-
-    .dia-disponible {
-        flex-direction: column; /* Altera para layout de coluna em telas menores */
-        align-items: flex-start;
-    }
-
-    button.SV {
-        width: 100%; /* Botão ocupa toda a largura em telas menores */
-    }
-}
-
-@media only screen and (max-width: 400px) {
-
+  
     .container {
-        padding: 60px 40px; /* Ajustes para telas menores */
-        display: grid;
+      padding: 5px;
     }
-
-    .inputs {
-        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+  
+    .input-field h4 {
+      font-size: 0.9em;
     }
-
-    .input-text, .form-select {
-        width: 100%; /* Inputs ocupam toda a largura em telas menores */
+  
+    .input-text, .form-select, textarea {
+      padding: 5px;
     }
-
-    .dia-disponible {
-        flex-direction: column; /* Altera para layout de coluna em telas menores */
-        align-items: flex-start;
+  
+    .button {
+      width: 100%;
+      padding: 8px;
     }
-
-    button.SV {
-        width: 100%; /* Botão ocupa toda a largura em telas menores */
-    }
-   
   }
