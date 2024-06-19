@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'; // Importa Link desde 'react-router-dom
 import Header from "../Components/Header-NavMenu";
 import "../assets/styles/App.css";
 import "../assets/styles/Cadastro.css";
+import { Typography } from "@mui/material";
 
 function Cadastro() {
   return (
@@ -16,10 +17,10 @@ function Cadastro() {
       <div className="cadastro">
         <div className="cadastro-titulo">
           <h1>Cadastro Social</h1>
-          <p>selecione para qual formulário você gostaria de ser redirecionado.</p>
+          <Typography >selecione para qual formulário você gostaria de ser redirecionado.</Typography>
         </div>
         <div className="cuadro-opciones">
-          <div className="grupo-opciones">
+          
             <div className="opcion">
               <Link to="/FormularioPsicologo"> {/* Enlace a la página de voluntario */}
                 <div className="icono">
@@ -42,15 +43,14 @@ function Cadastro() {
                 </div>
               </Link>
             </div>
-          </div>
-          <div className="grupo-opciones">
+         
             <div className="opcion">
               <Link to="/FormularioLiderImigrante">
                 <div className="icono">
                   <FaBook />
                 </div>
-                <div className="opciones-texto">
-                  <h2>Liderança ONG de Imigrantes, refugiados e apátridas</h2>
+                <div className="opciones-texto lideranca">
+                  <h2>Lider de ONG de Imigrantes, refugiados e apátridas</h2>
                   <p>descrição para opção 3</p>
                 </div>
               </Link>
@@ -66,7 +66,7 @@ function Cadastro() {
                 </div>
               </Link>
             </div>
-          </div>
+        
         </div>
         <div>
         <Link to="/Home"> {/* Enlace a la página de otros */}

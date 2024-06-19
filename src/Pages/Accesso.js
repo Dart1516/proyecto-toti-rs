@@ -8,7 +8,8 @@ import Header from "../Components/Header-NavMenu";
 import Visibility from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOff from '@mui/icons-material/VisibilityOffOutlined';
 import {  InputAdornment, IconButton } from '@mui/material';
-const StyledContainer = styled("div")(() => ({
+
+const StyledContainer = styled("div")(({theme}) => ({
   position: "fixed",
   right: 0,
   top:"2rem",
@@ -17,11 +18,17 @@ const StyledContainer = styled("div")(() => ({
   zIndex: "1",
   height:"100vh", 
   justifyItems:"center", 
-  width:"70%",
   alignItems:"center",
   display:"flex",
-  flexDirection:"column"
-  
+  flexDirection:"column",
+  [theme.breakpoints.up('xs')]: { // <= mobile
+    padding: "4rem 1rem",
+    width:"100%"
+
+},
+[theme.breakpoints.up('md')]: { // >=mobile
+  width:"70%"
+}
 }));
 const StyledLogin = styled("div")(() => ({
     gap:"2rem",
@@ -30,6 +37,7 @@ const StyledLogin = styled("div")(() => ({
     flexDirection:"column",
     justifyContent:"center",
     width:"70%",
+
 }));
 const StyledButton = styled("button")(() => ({
   width: "100%",
@@ -49,6 +57,7 @@ const StyledButton = styled("button")(() => ({
     border: "0",
     backgroundColor: " RGB(68, 119,130)",
   },
+ 
 }));
 const StyledLink = styled("a")(() => ({
   color:"#084f54",
