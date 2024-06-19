@@ -15,24 +15,25 @@ function HeaderAndMenu() {
         {/* Icono del menú hamburguesa */}
         <nav className="contenedor_de_opciones">
           <div className="menu-left">
+            
+            <ul className="opciones-derecha">
             <Link to="/Principal" className="home-logo"></Link>
-            <ul className="opciones-izquierda">
+            </ul>
+          </div>
+          <ul className="opciones-izquierda">
               <li>
                 <Link to="/Demo" className="menu-option-name">
-                  Home
+                  Início
                 </Link>
               </li>
               <li>
                 <Link to="/AboutUs" className="menu-option-name">
-                  Sobre Nós
+                  Sobre nós
                 </Link>
               </li>
-            </ul>
-          </div>
-          <ul className="opciones-derecha">
             <li className="menu-option-right">
               <Link to="/Cadastro" className="menu-option-name">
-                Cadastre-se
+                Serviços
               </Link>
             </li>
             <li className="menu-option-right">

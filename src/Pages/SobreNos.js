@@ -16,7 +16,7 @@ import imgenchente from "../assets/images/imgsobrenos3.jpg";
 import imgComunidade from "../assets/images/voluntarios.jpg";
 import "../../src/Pages/MaterialDeApoio";
 import "../../src/Pages/Accesso";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import SecurityIcon from "@mui/icons-material/Security";
