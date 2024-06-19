@@ -16,6 +16,7 @@ import imgenchente from "../assets/images/imgsobrenos3.jpg";
 import imgComunidade from "../assets/images/voluntarios.jpg";
 import "../../src/Pages/MaterialDeApoio";
 import "../../src/Pages/Accesso";
+import { Link } from "react-router-dom";
 import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import SecurityIcon from "@mui/icons-material/Security";
@@ -531,7 +532,7 @@ const About = () => {
                   <CardMedia sx={{ height: 170 }} image={cristian} title="" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      Cristian
+                      Cristhian
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       Toter

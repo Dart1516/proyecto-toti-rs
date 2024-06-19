@@ -1,16 +1,5 @@
-/*Colores
-
-
-:root {
-  --color1: #0a9466;
-  --color2: #14c389;
-  --color3: #19e09d;
-  --color4: #F0F0F0;
-}*/
-
 body {
     background:  var(--color4);
-    font-family: 'Jost Font';
     width: 100vw;
     overflow-x: hidden;
     display: flex;
@@ -40,12 +29,12 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../images/home.jpg');
+    background-image: url('../images/header.svg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    filter: brightness(0.3); /* Aplica el filtro de brillo */
-    z-index: 0; /* Asegúrate de que el pseudo-elemento esté detrás del contenido */
+    filter: brightness(0.3); 
+    z-index: 0; 
   }
 
 .main {
@@ -66,7 +55,7 @@ body {
 .text-home {
     display: flex;
     flex-direction: column;
-    width: 1000px;
+    width: 42rem;
     gap: 30px;
     padding-top: 2rem;
 }
@@ -75,6 +64,14 @@ body {
     display: flex;
     flex-direction: column;
     gap: 2px;
+    font-size: 1.5rem;
+}
+
+.subtitulo-home {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-size: 1.125rem;
 }
 
 .sub-text-home {
@@ -84,26 +81,11 @@ body {
     font-size: 20px;
 }
 
-.sub-text-home a {
-    color: var(--color4);
-    text-decoration: none;
-    background-color: transparent;
-    padding: 6px 10px 6px 10px;
-    border: 3px solid var(--color1);
-    border-radius: 15px;
-    transition: 0.5s;
-}
-
-.sub-text-home a:hover {
-    background-color: var(--color1);
-    color: var(--color4);
-}
 
 /*Titulos Main*/
 
 .main h1 {
     text-transform: uppercase;
-    font-size: 60px;
     margin: 0;
     color: var(--color4);
 }
@@ -112,7 +94,7 @@ body {
     text-transform: uppercase;
     margin: 0;
     color: var(--color4);
-    font-size: 40px;
+    /* font-size: 40px; */
 }
 
 .main h3::first-letter {
@@ -123,10 +105,8 @@ body {
     color: var(--color4);
 }
 .main p {
-  text-transform: uppercase;
     margin: 0;
     color: var(--color4);
-    font-size: 15px;
 }
 /*voluntariado*/
 
@@ -144,7 +124,7 @@ body {
 .voluntariado-img {
     height: 382px;
     width: 566px;
-    border-radius: 15px;
+    border-radius: 15px;  
     border: 4px var(--color2) solid;
     animation: voluntariado-imagen 6s infinite steps(1);
     background-position: center;
@@ -263,8 +243,8 @@ margin-bottom: 0.5rem;
   }
   .proceso-voluntariado p a {
     text-decoration: none;
-    color: var(--color4);
-    border-bottom: 2px var(--color1) solid;
+    /* color: var(--color4); */
+    border-bottom: 2px var(--color1) solid; 
     transition: all .5s;
   }
 
@@ -312,7 +292,7 @@ margin-bottom: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: self-start;
-  color: var(--color4);
+  /* color: var(--color4); */
   text-align: left;
 }
 .proceso-voluntariado.lideranca p a:hover {
@@ -326,6 +306,55 @@ margin-bottom: 0.5rem;
 .proceso-texto-lideranca h2::first-letter, .proceso-texto-lideranca p::first-letter{
   text-transform: capitalize;
 }
+
+
+/* Botões */
+.areabuttom{
+  width: 42rem;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.buttom0{
+  width: 20rem;
+  height: 3rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+.buttom1{
+  background-color: var(--color4);
+  color: var(--color1);
+}
+.buttom2{
+  background-color: var(--color2);
+  color: var(--color6);
+}
+
+.buttom0,a{
+  text-decoration: none;
+  transition: 0.5s;
+  opacity: 1;
+  /* color: var(--color1); */
+}
+
+.buttom0:hover,a:hover {
+  opacity: .9;
+}
+
+.buttom1:hover { 
+  background-color: var(--color1);
+  color: var(--color4);
+}
+.buttom2:hover { 
+  background-color: var(--color1);
+  color: var(--color4);
+}
+
+
 @media only screen and (max-width: 1020px) {
     body{ 
         overflow-x: hidden;

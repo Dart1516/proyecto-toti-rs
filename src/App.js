@@ -10,7 +10,9 @@ import AvisoLegal from "./Pages/avisoLegal";
 import MaterialDeApoio from "./Pages/MaterialDeApoio";
 import InterfazLider from "./Pages/interfazLider";
 import Cadastro from "./Pages/cadastro";
-
+import MinhaContaEducador from "./Pages/minhaContaEducador";
+import MinhaContaLider from "./Pages/minhaContaLider";
+import MinhaContaVoluntario from "./Pages/minhaContaVoluntario";
 
 function App() {
   return (
@@ -28,6 +30,9 @@ function App() {
         <Route path="/Accesso" element={<Accesso />} />
         <Route path="/interfazLider" element={<InterfazLider />} />
         <Route path="/cadastro" element={<Cadastro/>} />
+        <Route path="/minhaContaEducador" element={<MinhaContaEducador/>} />
+        <Route path="/minhaContaLider" element={<MinhaContaLider/>} />
+        <Route path="/minhaContaVoluntario" element={<MinhaContaVoluntario/>} />
 
         {/* Ruta predeterminada */}
         <Route path="/*" element={<Navigate to="/Principal" />} />

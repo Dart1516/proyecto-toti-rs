@@ -19,17 +19,21 @@ function Principal() {
           <div className='main'>
             <div className='text-home'>
               <div className='titulo-home'>
-                <h2>TOTERS do BEM</h2>
-                <p> <i>Somos a maior comunidade de imigrantes profissionais de tecnologia do Brasil.</i></p>
-                <h1> SOS rio grande do sul</h1>
+                <h1>TOTERS DO BEM,</h1>
+                <h1>SOS RIO GRANDE DO SUL</h1>
+                {/* <p> <i>Somos a maior comunidade de imigrantes profissionais de tecnologia do Brasil.</i></p> */}  
               </div>
-              <h3>Plataforma para conectar voluntarios e recursos, visando oferecer ajuda prática e esperança áqueles afetados pelas inundações no RS,disponibilizando serviços como ajuda emocional gratuita e online  com Psicologos prontros para ajudar e socorrer seus refugiados, e educadores sociais que caminharão lado a lado,  juntos na jornada de recuperação dos mais afetados</h3>  
-                <div className='sub-text-home'>
-                  <a href="./demo">Liderança Emigrante </a>
-                  <a href='./JoinUs'>Quero ser voluntário</a>
-                </div>
-                </div>
+              <div className='subtitulo-home'>
+                <p>Uma plataforma para conectar voluntários e recursos, visando oferecer ajuda prática e esperança àqueles afetados pelas inundações no RS, disponibilizando serviços com psicólogos e educadores sociais.</p>  
+              </div>
+              <div className='areabuttom'> 
+            
+                  <a className='sub-text-home buttom0 buttom1' href="./JoinUs">Quero ser voluntário</a>
+                  <a className='sub-text-home buttom0 buttom2' href='./JoinUs'>Quero ser atendido</a>
+                
+              </div>
             </div>
+          </div>
           </div>
           <div className="voluntariado">
           <div className='tipo-vo-texto'>

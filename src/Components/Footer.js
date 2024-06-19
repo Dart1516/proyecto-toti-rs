@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import "../assets/styles/App.css";
 import "../assets/styles/Footer.css";
 import ToterDoBem from '../assets/images/logos/Juntos pelo RS.svg'; // Asegúrate de que la ruta al logo sea correcta
+import { FaEnvelope, FaPhone } from 'react-icons/fa';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
@@ -15,7 +16,7 @@ function Footer() {
           <h4>Sobre nós</h4>
           <ul>
             <li><a href="https://www2.camara.leg.br/legin/fed/lei/1998/lei-9608-18-fevereiro-1998-365398-publicacaooriginal-1-pl.html" target="_blank" rel="noopener noreferrer">Legislação do voluntariado</a></li>
-            <li><a href="/avisoLegal" target="_blank">Aviso Legal de Proteção de Dados</a></li>
+            <li><a href="/avisoLegal" target="_blank">Proteção de dados</a></li>
           </ul>
         </div>
         <div className="footer-column">
@@ -30,22 +31,28 @@ function Footer() {
         <div className="footer-column">
           <h4>Serviço</h4>
           <ul>
-            <li>  <Link to="/FormularioPsicologo"> Profissional da saúde</Link></li>
+            <li>  <Link to="/FormularioPsicologo"> Profissionais de saúde</Link></li>
             <li>  <Link to="/FormularioEducadorSocial">Educador social</Link></li>
           </ul>
         </div>
         <div className="footer-column">
-          <h4>Contato</h4>
-          <ul>
-            <li>Email: adminriograndedosul@totersdobem.com=            </li>
-            <li>Telefone: (99) 99999-9999</li>
-          </ul>
+        <h4>Contato</h4>
+      <ul>
+        <li className="contato-footer">
+          <FaEnvelope />{' '}
+          <a href="mailto:adminriograndedosul@totersdobem.com">Email</a>
+        </li>
+        <li className="contato-footer">
+          <FaPhone />{' '}
+          <a href="tel:+559999999999">Telefone</a>
+        </li>
+      </ul>
         </div>
       </div>
       <div className="footer-bottom">
         <div className="footer-logo-container">
           <img src={ToterDoBem} alt="Toters do bem Logo" className="footer-logo" />
-          <p>TODOS OS DIREITOS RESERVADOS - {currentMonth} {currentYear}</p>
+          <p>Todos os direitos reservados - {currentMonth} {currentYear}</p>
         </div>
       </div>
     </div>

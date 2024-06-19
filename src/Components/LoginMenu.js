@@ -52,7 +52,7 @@ setIsMenuOpen(false);
         <div className="dropdown-menu" ref={menuRef}>
           <ul>
             <li>
-              <Link to="/profile">Mi Perfil</Link>
+              <Link to="/minhaContaLider">Mi Perfil</Link>
             </li>
             <li>
               <Link to="/interfazLider">Lista de Voluntarios</Link>
