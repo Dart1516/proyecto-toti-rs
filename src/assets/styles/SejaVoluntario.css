@@ -249,46 +249,38 @@ button.SV:hover {
     transform: translateY(-4px);
 }
 
-
-@media (max-width: 768px) {
-
-    h2 {
-        font-size: 1.5rem;
+@media (min-width: 780px) {
+    .container {
+      width: 70%;
+      margin: 0 auto;
     }
-
-    h4 {
-        font-size: 1rem;
+  
+    .input-field h4 {
+      font-size: 1.2em;
     }
-
-    .input-text, .form-select {
-        font-size: 14px;
-        padding: 8px;
+  }
+  
+  
+  
+  @media (max-width: 400px) {
+    .background-image {
+      height: 100px;
     }
-
-    button.SV {
-        font-size: 14px;
-        padding: 8px 12px;
+  
+    .container {
+      padding: 5px;
     }
-}
-
-@media (max-width: 480px) {
-
-    h2 {
-        font-size: 1.25rem;
+  
+    .input-field h4 {
+      font-size: 0.9em;
     }
-
-    h4 {
-        font-size: 0.875rem;
+  
+    .input-text, .form-select, textarea {
+      padding: 5px;
     }
-
-    .input-text, .form-select {
-        font-size: 12px;
-        padding: 6px;
+  
+    .button {
+      width: 100%;
+      padding: 8px;
     }
-
-    button.SV {
-        font-size: 12px;
-        padding: 6px 10px;
-    }
-
-}
+  }
