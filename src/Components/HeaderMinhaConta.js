@@ -1,16 +1,32 @@
-import React, { useState } from 'react';
-import "../assets/styles/HeaderMinhaconta.css";
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import Logo from '../assets/images/logos/Juntos pelo RS.svg'; // Importación de la imagen en la parte superior
-
-
+import Logo from '../assets/images/logos/Juntos pelo RS.svg';
+import "../assets/styles/HeaderMinhaconta.css";
 
 function Headerminhaconta() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const username = 'Usuario';
+  const dropdownRef = useRef(null);
+
+  // Función para manejar el click en cualquier parte del documento
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setDropdownOpen(false);
+    }
+  };
+
+  // Agregar un event listener cuando el componente monta
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
+
+  const username = 'Usuario';
 
   return (
     <div>
@@ -18,7 +34,7 @@ function Headerminhaconta() {
         <div className="espacio-imagen">
           <img src={Logo} alt="Logo" className="imagen-menu" />
         </div>
-        <div className="dropdown">
+        <div className="dropdown" ref={dropdownRef}>
           <button className="dropbtn" onClick={toggleDropdown}>
             Olá, <span>{username}</span>
           </button>
@@ -33,7 +49,6 @@ function Headerminhaconta() {
       </nav>
     </div>
   );
-} 
-
+}
 
 export default Headerminhaconta;
