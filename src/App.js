@@ -10,7 +10,7 @@ import AvisoLegal from "./Pages/avisoLegal";
 import MaterialDeApoio from "./Pages/MaterialDeApoio";
 import InterfazLider from "./Pages/interfazLider";
 import Cadastro from "./Pages/cadastro";
-
+import Minhaconta from "./Pages/Minhaconta";
 
 function App() {
   return (
@@ -28,6 +28,7 @@ function App() {
         <Route path="/Accesso" element={<Accesso />} />
         <Route path="/interfazLider" element={<InterfazLider />} />
         <Route path="/cadastro" element={<Cadastro/>} />
+        <Route path="/Minhaconta" element={<Minhaconta/>} />
 
         {/* Ruta predeterminada */}
         <Route path="/*" element={<Navigate to="/Principal" />} />

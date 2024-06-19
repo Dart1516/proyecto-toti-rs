@@ -20,12 +20,27 @@ function FormularioPsicologo() {
     state: "",
     additionalDays: [{ day: "", hour: "" }],
     password: "",
-    note:""
+    note:"",
+    termos:""
   });
+  const [error, setError] = useState(false);
+  const handleSubmit = async (e) => {
+    if (!isTermsAccepted) {
+      setError("Por favor, aceite os termos e condições antes de enviar o formulário.");
+    }
+    e.preventDefault();
+    try {
+      const response = await Api.post('/cadastro/psicologos', formData);
+      console.log('dados enviados con sucesso:' , response.data)
+    } catch (error) {
+      console.error('Error al enviar datos:', error);
+    }
+  };
+
   const [isTermsAccepted, setIsTermsAccepted] = useState(false);
   const [passwordError, setPasswordError] = useState("");
-  const [passwordMatchError, setPasswordMatchError] = useState("");
-  const [emailMatchError, setEmailMatchError] = useState("");
+  // const [passwordMatchError, setPasswordMatchError] = useState("");
+  // const [emailMatchError, setEmailMatchError] = useState("");
 
   const handleTermsChange = (event) => {
     setIsTermsAccepted(event.target.checked);
@@ -51,19 +66,7 @@ function FormularioPsicologo() {
     setFormData({ ...formData, additionalDays: values });
   };
 
-  const handleSubmit = async (e) => {
-    if (!isTermsAccepted) {
-      alert("Por favor, aceite os termos e condições antes de enviar o formulário.");
-    }
-    e.preventDefault();
-   
-    try {
-      await Api.post('/cadastro/psicologos', formData);
-      console.log(formData)
-    } catch (error) {
-      console.error('Error al enviar datos:', error);
-    }
-  };
+  
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -76,13 +79,13 @@ function FormularioPsicologo() {
       validatePassword(value);
     }
 
-    if (name === "verifyPassword") {
-      setPasswordMatchError(value !== formData.password ? "Las contraseñas no coinciden." : "");
-    }
+    // if (name === "verifyPassword") {
+    //   setPasswordMatchError(value !== formData.password ? "Las contraseñas no coinciden." : "");
+    // }
 
-    if (name === "verifyEmail") {
-      setEmailMatchError(value !== formData.email ? "Los correos electrónicos no coinciden." : "");
-    }
+    // if (name === "verifyEmail") {
+    //   setEmailMatchError(value !== formData.email ? "Los correos electrónicos no coinciden." : "");
+    // }
   };
 
   const validatePassword = (password) => {
@@ -308,7 +311,7 @@ function FormularioPsicologo() {
               className="input-text"
             />
           </div>
-          <div className="input-field">
+          {/* <div className="input-field">
             <h4>Verificação do Email<span>*</span></h4>
             <input
               type="email"
@@ -320,7 +323,7 @@ function FormularioPsicologo() {
               className="input-text"
             />
             {emailMatchError && <p style={{ color: 'red' }}>{emailMatchError}</p>}
-          </div>
+          </div> */}
           <div className="input-field">
             <h4>Senha<span>*</span></h4>
             <input
@@ -334,7 +337,7 @@ function FormularioPsicologo() {
             />
             {passwordError && <p>{passwordError}</p>}
           </div>
-          <div className="input-field">
+          {/* <div className="input-field">
             <h4>Verificação de Senha<span>*</span></h4>
             <input
               type="password"
@@ -346,7 +349,7 @@ function FormularioPsicologo() {
               className="input-text"
             />
             {passwordMatchError && <p style={{ color: 'red' }}>{passwordMatchError}</p>}
-          </div>
+          </div> */}
           </div>
           <div className="opcional">
             <h4>Observação (opcional)</h4>
@@ -365,11 +368,14 @@ function FormularioPsicologo() {
               name="terms"
               onChange={handleTermsChange}
               required
+              value={formData.termos}
             />
             <label htmlFor="terms">
               Ao marcar esta caixa e clicar em Enviar, aceito o tratamento de meus dados pessoais por <a href="/avisoLegal" target="_blank">[Nome da sua organização]</a> conforme explicado no seu <a href="/avisoLegal" target="_blank">Aviso Legal de Proteção de Dados</a>, que inclui: 1) a coordenação e gestão de voluntários, e 2) a comunicação sobre atividades e oportunidades relacionadas.
             </label>
+           
           </div>
+          {error && <p style={{ color: "red" }}>{error}</p>}{" "}
           <button className="SV" type="submit"  onClick={handleSubmit}>Enviar</button>
         </form>
       </div>

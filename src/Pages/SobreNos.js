@@ -532,7 +532,7 @@ const About = () => {
                   <CardMedia sx={{ height: 170 }} image={cristian} title="" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      Cristian
+                      Cristhian
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       Toter
