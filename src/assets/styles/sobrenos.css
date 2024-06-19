@@ -1,0 +1,88 @@
+#about{
+    height: 100%;
+    width: 100vw;
+    margin-top: 10rem;
+    gap: 2rem;
+}
+.grid-container-main{
+    justify-content:space-between;
+    align-items:start;
+    display:flex;
+    padding:0 5rem;
+    margin:2rem 0;
+    width: 100%;
+    gap: 2rem;
+}
+.text-main{
+    display:flex;
+    gap: 1rem;
+    padding: 0 1rem;
+    color: black;
+    justify-items: space-between;
+    flex-direction: column;
+    word-break: break-word;
+    align-items: start;
+    width: 100%;
+    height: 100%;
+    text-align: start;
+    width: 50%;
+}
+.img-main{
+    display:flex;
+              justify-content:center;
+              align-items:center;
+              width: 50%;
+              height: 100%;
+}
+.hr{
+    border: 0;
+    margin: 0;
+    height: 3px;
+    max-width: 70%;
+    background-color: #FFB30B;
+ }
+ .hr.center{
+    max-width: 24%;
+    margin: 0 40% 0 36%;
+ }
+ .nossoValores{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+ }
+ @media only screen and (max-width: 900px) {
+    #about{
+        margin-top: 4rem;
+        gap: 2rem;
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        margin-left: 2rem;
+    }
+    .grid-container-main{
+        justify-content:center;
+        align-items:center;
+        display:flex;
+        align-items: center;
+        padding:0;
+        margin: 2rem 0;
+        flex-direction: column;
+    }
+    .reverse{
+        flex-direction: column-reverse;
+        
+    }
+    .text-main, .img-main {
+        width: 100%;
+    }
+    .card-grid{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .card-toter{
+        width: 100%;
+    }
+}

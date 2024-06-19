@@ -16,7 +16,6 @@ import imgenchente from "../assets/images/imgsobrenos3.jpg";
 import imgComunidade from "../assets/images/voluntarios.jpg";
 import "../../src/Pages/MaterialDeApoio";
 import "../../src/Pages/Accesso";
-import { Link } from "react-router-dom";
 import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import SecurityIcon from "@mui/icons-material/Security";
@@ -34,32 +33,9 @@ import marianela from "../assets/images/toters/Marianela.jpeg";
 import natalia from "../assets/images/toters/natalia1.jpg";
 import avatar from "../assets/images/toters/avatar.jpeg";
 import Footer from '../Components/Footer'
+import "../../src/assets/styles/sobrenos.css"
 const About = () => {
-  const StyledAbout = styled("div")(({ theme }) => ({
-    backgroundColor: theme.palette.secondary,
-    height: "100vh",
-    width: "100%",
-    marginTop: "3rem",
-    [theme.breakpoints.up("xs")]: {
-      // <= mobile
-      paddingTop: "1rem",
-    },
-    [theme.breakpoints.up("md")]: {
-      // >=mobile
-      paddingTop: "2rem",
-    },
-  }));
-  const StyledText = styled("div")(() => ({
-    display: "flex",
-    gap: "1rem",
-    width: "100%",
-    padding: "1rem",
-    color: "black",
-    justifyItems: "space-between",
-    flexDirection: "column",
-    wordBreak: "break-word",
-    height: "100%",
-  }));
+  
   const StyledImg = styled("img")(() => ({
     width: "100%",
     maxWidth: "800px",
@@ -88,51 +64,27 @@ const About = () => {
     color: "#ffff",
     fontWeight: "600",
   }));
-  const StyledValores = styled("div")({
-    width: "100%",
-    background: "../assets/images/fundo.png",
-  });
   return (
     <>
       <Header className="App-header" />
-      <body>
-      <StyledAbout>
-        <Container maxWidth="lg">
+      
+      <div id="about">
+        <Container maxWidth="xl" alignItems="center" justifyContent="center" display="flex">
           {/* conteudo da primeira div ---------------------------------------------------- */}
-          <Grid
-            container
-            spacing={2}
-            justifyContent="space-around"
-            alignItems="center"
-            display="flex"
-            paddingRight={10}
-            paddingLeft={10}
-            marginTop={10}
+          <div
+            className="grid-container-main"
           >
-            <Grid item xs={12} md={6}>
-              <StyledText>
+           
+              <div className="text-main">
                 <Typography
-                  pt={3}
-                  textAlign="start"
-                  justifyContent="center"
                   variant="h4"
                   color="black"
                   fontWeight={700}
                 >
-                  Quem Somos?
+                  Quem Somos?<hr className="hr"/>
                 </Typography>
-                <hr
-                  style={{
-                    border: "0",
-                    margin: "0",
-                    height: "3px",
-                    maxWidth: "50%",
-                    backgroundColor: "#FFB30B",
-                  }}
-                />
-                <Typography
-                  textAlign="start"
-                  justifyContent="center"
+               
+                <Typography 
                   variant="body"
                 >
                   A Comunidade Toti é um coletivo de profissionais imigrantes de
@@ -142,74 +94,43 @@ const About = () => {
                   experiências se entrelaçam para criar oportunidades de
                   desenvolvimento e integração.
                 </Typography>
-              </StyledText>
-            </Grid>
+            
+            </div>
             {/* img da primeira div -------------------- */}
-            <Grid
-              item
-              xs={12}
-              md={6}
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              padding={0}
-            ></Grid>
-          </Grid>
+            <div className="img-main"
+            >
+            </div>
+          </div>
 
           {/* conteudo da segunda div -------------------------------------- */}
-          <Grid
-            container
-            spacing={2}
-            justifyContent="space-around"
-            alignItems="center"
-            display="flex"
-            paddingRight={10}
-            paddingLeft={10}
-            marginTop={10}
-            direction={{ xs: "column-reverse", md: "row" }}
+          <div
+           className="grid-container-main reverse"
           >
             {/* img da segunda div--------------------- */}
-            <Grid
-              item
-              xs={12}
-              md={6}
-              display="flex"
-              justifyContent="space-beetwen"
-              alignItems="center"
+            <div className="img-main"
             >
               <StyledImg src={imgComunidade} />
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <StyledText>
+            </div>
+              <div className="text-main">
                 <Typography
-                  textAlign="start"
                   variant="h4"
                   color="black"
                   fontWeight={700}
                 >
-                  Nossa visão
+                  Nossa visão <hr className="hr"/>
                 </Typography>
-                <hr
-                  style={{
-                    border: "0",
-                    margin: "0",
-                    height: "3px",
-                    maxWidth: "50%",
-                    backgroundColor: "#FFB30B",
-                  }}
-                />
-                <Typography textAlign="start" variant="body">
+                <Typography variant="body">
                   Em resposta a os recentes eventos no Rio Grande do Sul, nossa
                   comunidade está mobilizada para fazer a diferença.
                 </Typography>
 
-                <Typography textAlign="start" variant="body">
+                <Typography variant="body">
                   Com empatia e solidariedade, lançamos esta plataforma para
                   conectar voluntários e recursos, visando oferecer ajuda
                   prática e esperança àqueles afetados pelas inundações.
                 </Typography>
 
-                <Typography textAlign="start" variant="body">
+                <Typography variant="body">
                   O intuito dessa plataforma é oferecer apoio psicosocial às
                   famílias afetadas pela tragédia no RS, disponibilizando
                   serviços com psicólogos e educadores sociais. Esses
@@ -217,40 +138,25 @@ const About = () => {
                   processo de recuperação emocional e social das pessoas
                   impactadas, garantindo um suporte integral e humanizado.
                 </Typography>
-              </StyledText>
-            </Grid>
-          </Grid>
+              </div>
+          </div>
 
           {/* conteudo da terceira div ---------------------------------------------------- */}
-          <Grid
-            container
-            spacing={2}
-            justifyContent="space-around"
-            alignItems="start"
-            display="flex"
-            paddingRight={10}
-            paddingLeft={10}
+          <div
+            className="grid-container-main"
             marginTop={10}
           >
-            <Grid item xs={12} md={6}>
-              <StyledText>
+          
+              <div className="text-main">
                 <Typography
                   textAlign="start"
                   variant="h4"
                   color="black"
                   fontWeight={700}
                 >
-                  Faça parte você também
+                  Faça parte você também <hr className="hr"/>
                 </Typography>
-                <hr
-                  style={{
-                    border: "0",
-                    margin: "0",
-                    height: "3px",
-                    maxWidth: "50%",
-                    backgroundColor: "#FFB30B",
-                  }}
-                />
+                
                 <Typography textAlign="start" variant="body">
                   Convidamos profissionais de todas as áreas a se juntarem a
                   este movimento humanitário, contribuindo com seu
@@ -259,21 +165,16 @@ const About = () => {
                   pois juntos somos mais fortes. Todos juntos pelo
                   Rio Grande do Sul.
                 </Typography>
-              </StyledText>
-            </Grid>
+              
+            </div>
             {/* img da primeira div -------------------- */}
-            <Grid
-              item
-              xs={12}
-              md={6}
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              padding={6}
+            <div
+              className="img-main"
+             
             >
               <StyledImg src={imgenchente} />
-            </Grid>
-          </Grid>
+            </div>
+          </div>
           <Grid
             container
             spacing={2}
@@ -282,6 +183,7 @@ const About = () => {
             display="flex"
             padding={{ xs: "0", md: "1.5rem" }}
             marginBottom={10}
+            marginTop={2}
           >
             <Grid
               item
@@ -302,8 +204,7 @@ const About = () => {
           </Grid>
 
           {/* ============================== NOSSOS VALORES ================================== */}
-
-          <StyledValores>
+          <div className="nossoValores">
             <Typography
               textAlign="center"
               justifyContent="center"
@@ -311,7 +212,7 @@ const About = () => {
               color="black"
               fontWeight={700}
             >
-              Nossos valores
+              Nossos valores<hr className="hr center"/>
             </Typography>
             <Grid
               container
@@ -319,12 +220,13 @@ const About = () => {
               display="flex"
               alignItems="center"
               padding={{ xs: "0", md: "1rem" }}
-              justifyContent="center"
-              direction={{ xs: "column", md: "row" }}
+              justifyContent="center" 
+              direction="row"
               marginBottom={3}
+              mt="2rem"
             >
-              <Grid item xs={12} md={4}>
-                <Card sx={{ maxWidth: 320 }} style={{}}>
+              <Grid item xs={5} md={4} >
+                <Card sx={{ maxWidth: '100%' }} style={{}}>
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       Empatia <SentimentSatisfiedAltIcon />
@@ -336,8 +238,8 @@ const About = () => {
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item xs={12} md={4}>
-                <Card sx={{ maxWidth: 320 }}>
+              <Grid item xs={7} md={4}>
+                <Card sx={{ maxWidth: '100%' }}>
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       Inclusão <AutorenewIcon />
@@ -350,8 +252,8 @@ const About = () => {
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item xs={12} md={4}>
-                <Card sx={{ maxWidth: 320 }}>
+              <Grid item xs={7} md={4} >
+                <Card sx={{ maxWidth: '100%' }}>
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       Segurança e Privacidade <SecurityIcon />
@@ -363,8 +265,8 @@ const About = () => {
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item xs={12} md={4}>
-                <Card sx={{ maxWidth: 350 }}>
+              <Grid item xs={5} md={4}>
+                <Card sx={{ maxWidth:'100%'}}>
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       Resiliência <PeopleIcon />
@@ -379,13 +281,13 @@ const About = () => {
               <Grid
                 item
                 xs={12}
-                md={4}
+                md={6}
                 display="flex"
                 gap={2}
                 alignItems="center"
                 padding={{ xs: "0", md: "0" }}
               >
-                <Card sx={{ maxWidth: 350 }}>
+                <Card sx={{ maxWidth: '100%' }}>
                   <CardContent>
                     <Typography
                       gutterBottom
@@ -405,8 +307,7 @@ const About = () => {
                 </Card>
               </Grid>
             </Grid>
-          </StyledValores>
-
+          </div>
           {/* CARDS DO TIME--------------------------------------*/}
           <div>
             <Typography
@@ -416,7 +317,7 @@ const About = () => {
               color="black"
               fontWeight={700}
             >
-              Nossos Time
+              Nossos Time<hr className="hr center"/>
             </Typography>
             <Grid
               container
@@ -425,19 +326,13 @@ const About = () => {
               alignItems="center"
               padding={{ xs: "0", md: "1rem" }}
               justifyContent="center"
-              direction={{ xs: "column", md: "row" }}
+              direction="row"
+              marginTop={3}
               marginBottom={3}
             >
-              <Grid
-                item
-                xs={12}
-                md={3}
-                display="flex"
-                gap={2}
-                alignItems="center"
-                padding={{ xs: "0", md: "1rem" }}
+              <Grid item  xs={10} md={3} alignItems="center" padding={{ xs: "0", md: "1rem" }} className="card-grid"
               >
-                <Card sx={{ maxWidth: 360 }}>
+                <Card sx={{ maxWidth: '100%' }} className="card-toter">
                   <CardMedia sx={{ height: 170 }} image={david} title="david" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
@@ -459,7 +354,7 @@ const About = () => {
               </Grid>
               <Grid
                 item
-                xs={12}
+                xs={6}
                 md={3}
                 display="flex"
                 gap={2}
@@ -724,7 +619,6 @@ const About = () => {
                     </Button>
                   </CardActions>
                 </Card>
-                
               </Grid>
               <Grid
                 item
@@ -754,7 +648,6 @@ const About = () => {
                     </Button>
                   </CardActions>
                 </Card>
-                
               </Grid>
               <Grid
                 item
@@ -789,9 +682,7 @@ const About = () => {
             </Grid>
           </div>
         </Container>
-      </StyledAbout>
-      </body>
-      
+      </div>
       <Footer></Footer>
     </>
   );
