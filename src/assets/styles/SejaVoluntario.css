@@ -249,46 +249,52 @@ button.SV:hover {
     transform: translateY(-4px);
 }
 
-
+/* Media queries para tornar o layout responsivo */
 @media (max-width: 768px) {
-
-    h2 {
-        font-size: 1.5rem;
+    .container {
+        padding: 60px 40px; /* Ajustes para telas menores */
     }
 
-    h4 {
-        font-size: 1rem;
-    }
-
-    .input-text, .form-select {
-        font-size: 14px;
-        padding: 8px;
-    }
-
-    button.SV {
-        font-size: 14px;
-        padding: 8px 12px;
-    }
-}
-
-@media (max-width: 480px) {
-
-    h2 {
-        font-size: 1.25rem;
-    }
-
-    h4 {
-        font-size: 0.875rem;
+    .inputs {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
     }
 
     .input-text, .form-select {
-        font-size: 12px;
-        padding: 6px;
+        width: 100%; /* Inputs ocupam toda a largura em telas menores */
+    }
+
+    .dia-disponible {
+        flex-direction: column; /* Altera para layout de coluna em telas menores */
+        align-items: flex-start;
     }
 
     button.SV {
-        font-size: 12px;
-        padding: 6px 10px;
+        width: 100%; /* Botão ocupa toda a largura em telas menores */
+    }
+}
+
+@media only screen and (max-width: 400px) {
+
+    .container {
+        padding: 60px 40px; /* Ajustes para telas menores */
+        display: grid;
     }
 
-}
+    .inputs {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    }
+
+    .input-text, .form-select {
+        width: 100%; /* Inputs ocupam toda a largura em telas menores */
+    }
+
+    .dia-disponible {
+        flex-direction: column; /* Altera para layout de coluna em telas menores */
+        align-items: flex-start;
+    }
+
+    button.SV {
+        width: 100%; /* Botão ocupa toda a largura em telas menores */
+    }
+   
+  }
