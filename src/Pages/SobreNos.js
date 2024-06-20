@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React from "react";
 import Header from "../Components/Header-NavMenu";
+import { useState } from "react";
 import {
   Grid,
   Container,
@@ -35,8 +36,14 @@ import natalia from "../assets/images/toters/natalia1.jpg";
 import avatar from "../assets/images/toters/avatar.jpeg";
 import Footer from '../Components/Footer'
 import "../../src/assets/styles/sobrenos.css"
+
+
 const About = () => {
-  
+  const [showAllCards, setShowAllCards] = useState(false);
+
+  const toggleCards = () => {
+      setShowAllCards(!showAllCards);
+  }
   const StyledImg = styled("img")(() => ({
     width: "100%",
     maxWidth: "800px",
@@ -70,7 +77,7 @@ const About = () => {
       <Header className="App-header" />
       
       <div id="about">
-        <Container maxWidth="xl" alignItems="center" justifyContent="center" display="flex">
+        <Container maxWidth="xl" style={{display:"flex", alignItems:"center", justifyContent:"center", flexDirection:"column", width:"100vw"}}>
           {/* conteudo da primeira div ---------------------------------------------------- */}
           <div
             className="grid-container-main"
@@ -310,7 +317,7 @@ const About = () => {
             </Grid>
           </div>
           {/* CARDS DO TIME--------------------------------------*/}
-          <div>
+          <div id="container-time">
             <Typography
               textAlign="center"
               justifyContent="center"
@@ -320,21 +327,10 @@ const About = () => {
             >
               Nossos Time<hr className="hr center"/>
             </Typography>
-            <Grid
-              container
-              spacing={2}
-              display="flex"
-              alignItems="center"
-              padding={{ xs: "0", md: "1rem" }}
-              justifyContent="center"
-              direction="row"
-              marginTop={3}
-              marginBottom={3}
-            >
-              <Grid item  xs={10} md={3} alignItems="center" padding={{ xs: "0", md: "1rem" }} className="card-grid"
-              >
-                <Card sx={{ maxWidth: '100%' }} className="card-toter">
-                  <CardMedia sx={{ height: 170 }} image={david} title="david" />
+           
+            <div id="grid-container-cards">
+                <Card className="card-toter">
+                  <CardMedia image={david} title="david"  sx={{ height: 220 }} />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       David
@@ -352,25 +348,15 @@ const About = () => {
                     </Button>
                   </CardActions>
                 </Card>
-              </Grid>
-              <Grid
-                item
-                xs={6}
-                md={3}
-                display="flex"
-                gap={2}
-                alignItems="center"
-                padding={{ xs: "0", md: "1rem" }}
-              >
-                <Card sx={{ maxWidth: 360 }}>
-                  <CardMedia
-                    sx={{ height: 170 }}
+                <Card className="card-toter">
+                  <CardMedia 
+                   sx={{ height: 220 }}
                     image={victor}
                     title="victor"
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      Víctor 
+                      Víctor Alcala
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       Toter
@@ -385,18 +371,8 @@ const About = () => {
                     </Button>
                   </CardActions>
                 </Card>
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                md={3}
-                display="flex"
-                gap={2}
-                alignItems="center"
-                padding={{ xs: "0", md: "1rem" }}
-              >
-                <Card sx={{ maxWidth: 360 }}>
-                  <CardMedia sx={{ height: 170 }} image={maria} title="" />
+                <Card className="card-toter">
+                  <CardMedia sx={{ height: 220 }} image={maria} title="" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       Maria
@@ -414,18 +390,9 @@ const About = () => {
                     </Button>
                   </CardActions>
                 </Card>
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                md={3}
-                display="flex"
-                gap={2}
-                alignItems="center"
-                padding={{ xs: "0", md: "1rem" }}
-              >
-                <Card sx={{ maxWidth: 360 }}>
-                  <CardMedia sx={{ height: 170 }} image={cristian} title="" />
+               
+                <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                  <CardMedia sx={{ height: 220 }} image={cristian} title="" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       Cristhian
@@ -443,18 +410,8 @@ const About = () => {
                     </Button>
                   </CardActions>
                 </Card>
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                md={3}
-                display="flex"
-                gap={2}
-                alignItems="center"
-                padding={{ xs: "0", md: "1rem" }}
-              >
-                <Card sx={{ maxWidth: 360 }}>
-                  <CardMedia sx={{ height: 170 }} image={henry} title="" />
+                <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                  <CardMedia  sx={{ height: 220 }}image={henry} title="" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       Henry
@@ -472,22 +429,11 @@ const About = () => {
                     </Button>
                   </CardActions>
                 </Card>
-              </Grid>
-
-              <Grid
-                item
-                xs={12}
-                md={3}
-                display="flex"
-                gap={2}
-                alignItems="center"
-                padding={{ xs: "0", md: "1rem" }}
-              >
-                <Card sx={{ maxWidth: 360 }}>
-                  <CardMedia sx={{ height: 170 }} image={daysi} title="" />
+                <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                  <CardMedia  sx={{ height: 220 }} image={daysi} title="" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      Daysi
+                      Daysibel Cotiz
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       Toter
@@ -502,18 +448,8 @@ const About = () => {
                     </Button>
                   </CardActions>
                 </Card>
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                md={3}
-                display="flex"
-                gap={2}
-                alignItems="center"
-                padding={{ xs: "0", md: "1rem" }}
-              >
-                <Card sx={{ maxWidth: 360 }}>
-                  <CardMedia sx={{ height: 170 }} image={manuel} title="" />
+                <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                  <CardMedia  sx={{ height: 220 }} image={manuel} title="" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       Manuel
@@ -531,18 +467,8 @@ const About = () => {
                     </Button>
                   </CardActions>
                 </Card>
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                md={3}
-                display="flex"
-                gap={2}
-                alignItems="center"
-                padding={{ xs: "0", md: "1rem" }}
-              >
-                <Card sx={{ maxWidth: 360 }}>
-                  <CardMedia sx={{ height: 170 }} image={avatar} title="" />
+                <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                  <CardMedia  sx={{ height: 220 }} image={avatar} title="" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       Yurisay
@@ -560,19 +486,8 @@ const About = () => {
                     </Button>
                   </CardActions>
                 </Card>
-                
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                md={3}
-                display="flex"
-                gap={2}
-                alignItems="center"
-                padding={{ xs: "0", md: "1rem" }}
-              >
-                <Card sx={{ maxWidth: 360 }}>
-                  <CardMedia sx={{ height: 170 }} image={nadi} title="" />
+                <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                  <CardMedia sx={{ height: 220 }} image={nadi} title="" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       Nadi
@@ -590,19 +505,8 @@ const About = () => {
                     </Button>
                   </CardActions>
                 </Card>
-                
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                md={3}
-                display="flex"
-                gap={2}
-                alignItems="center"
-                padding={{ xs: "0", md: "1rem" }}
-              >
-                <Card sx={{ maxWidth: 360 }}>
-                  <CardMedia sx={{ height: 170 }} image={marianela} title="" />
+                <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                  <CardMedia  sx={{ height: 220 }} image={marianela} title="" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                     Marianela 
@@ -620,18 +524,8 @@ const About = () => {
                     </Button>
                   </CardActions>
                 </Card>
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                md={3}
-                display="flex"
-                gap={2}
-                alignItems="center"
-                padding={{ xs: "0", md: "1rem" }}
-              >
-                <Card sx={{ maxWidth: 360 }}>
-                  <CardMedia sx={{ height: 170 }} image={natalia} title="" />
+                <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                  <CardMedia  sx={{ height: 220 }} image={natalia} title="" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       Natalia
@@ -649,18 +543,8 @@ const About = () => {
                     </Button>
                   </CardActions>
                 </Card>
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                md={3}
-                display="flex"
-                gap={2}
-                alignItems="center"
-                padding={{ xs: "0", md: "1rem" }}
-              >
-                <Card sx={{ maxWidth: 360 }}>
-                  <CardMedia sx={{ height: 170 }} image={avatar} title="" />
+                <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                  <CardMedia  sx={{ height: 220 }} image={avatar} title="" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       Barbara 
@@ -678,10 +562,11 @@ const About = () => {
                     </Button>
                   </CardActions>
                 </Card>
-                
-              </Grid>
-            </Grid>
-          </div>
+                <button onClick={toggleCards} className="button-cards">
+                {showAllCards ? "Ver menos" : "Ver más"}
+            </button>
+            </div>
+            </div>
         </Container>
       </div>
       <Footer></Footer>
