@@ -333,7 +333,7 @@ const About = () => {
                   <CardMedia image={david} title="david"  sx={{ height: 220 }} />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      David
+                      David Puche
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       Toter
@@ -371,31 +371,13 @@ const About = () => {
                     </Button>
                   </CardActions>
                 </Card>
-                <Card className="card-toter">
-                  <CardMedia sx={{ height: 220 }} image={maria} title="" />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      Maria
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Toter
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
-                      Github
-                    </Button>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
-                      LinkedIn
-                    </Button>
-                  </CardActions>
-                </Card>
                
-                <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+               
+                <Card className='card-toter'>
                   <CardMedia sx={{ height: 220 }} image={cristian} title="" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      Cristhian
+                      Cristhian Nunes
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       Toter
@@ -414,7 +396,7 @@ const About = () => {
                   <CardMedia  sx={{ height: 220 }}image={henry} title="" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      Henry
+                      Henry Luna
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       Toter
@@ -440,7 +422,7 @@ const About = () => {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/daysibel1175">
                       Github
                     </Button>
                     <Button size="small" style={{ color: "black" }} target="_blank"  href="https://www.linkedin.com/in/daysibelcotizpitter">
@@ -490,7 +472,7 @@ const About = () => {
                   <CardMedia sx={{ height: 220 }} image={nadi} title="" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      Nadi
+                      Nadi Duno
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       Toter
@@ -506,13 +488,32 @@ const About = () => {
                   </CardActions>
                 </Card>
                 <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                  <CardMedia  sx={{ height: 220 }} image={marianela} title="" />
+                  <CardMedia sx={{ height: 220 }} image={maria} title="" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                    Marianela 
+                      Maria Rondon
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       Toter
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
+                      Github
+                    </Button>
+                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
+                      LinkedIn
+                    </Button>
+                  </CardActions>
+                </Card>
+                <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                  <CardMedia  sx={{ height: 220 }} image={marianela} title="" />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                    Marianela Arana
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      Toter, Analista de dados, Gestora do Projeto
                     </Typography>
                   </CardContent>
                   <CardActions>
@@ -528,10 +529,10 @@ const About = () => {
                   <CardMedia  sx={{ height: 220 }} image={natalia} title="" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      Natalia
+                      Natalia Augusto
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      Toter
+                      UX/UI Designer
                     </Typography>
                   </CardContent>
                   <CardActions>
