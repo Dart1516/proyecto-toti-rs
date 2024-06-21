@@ -1,0 +1,317 @@
+/*voluntariado*/
+
+.voluntariado {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--color4);
+    width: 100%;
+    flex-direction: column;
+    height: auto;
+    padding: 2rem 4rem;
+}
+
+.voluntariado-img {
+    height: 382px;
+    width: 566px;
+    border-radius: 15px;  
+    border: 4px var(--color2) solid;
+    animation: voluntariado-imagen 6s infinite steps(1);
+    background-position: center;
+    background-size: cover;
+}
+
+.tipo-vo-texto {
+    gap: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 4rem;
+}
+
+.tipo-vo-texto h3{
+ color:var(--color1)
+}
+.tipo-vo-texto p {
+  word-wrap: break-word;
+font-size: 25px;
+
+}
+.tipo-vo-texto h1::first-letter, .tipo-vo-texto p::first-letter {
+    text-transform: capitalize;
+}
+
+
+/*Tipo de Voluntariado*/
+
+  .card-container {
+    display: grid;
+    width: 100%;
+    height:auto; 
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5rem;
+    margin: 0 2rem;
+  }
+  
+  .card-item {
+   width: 100%;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+  }
+  .card-img{
+    width: 100%;
+    height: 50%;
+  }
+  .card-img img {
+    border-radius: 15px;
+    border: 1px var(--color2) solid;
+    width:100%;
+    height: 100%;
+  }
+  .card-text h2{
+margin-bottom: 0.5rem;
+  }
+  .card-text{
+    height: 50%;
+    width: 100%;
+    text-align: center;
+    word-break: break-all;
+    padding-top: 1rem;
+  }
+  .card-text a{
+    color: var(--color3);
+    text-decoration: none;
+    border-bottom: 3px solid var(--color1);
+  }
+  /*Proceso de Voluntariado*/
+   #registro-processo{
+    width: 100%;
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    flex-direction: row;
+    background: url(../images/fundo.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment:local;
+    z-index: 0; 
+   }
+  .proceso-voluntariado {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+    width: 100%;
+    padding: 65px;
+    margin: 40px;
+  }
+
+  .proceso-voluntariado h1 {
+    padding: 10px 0;
+    color: var(--color1);
+  }
+  .proceso-voluntariado h1::first-letter {
+    text-transform: capitalize;
+  }
+
+  .proceso-voluntariado h2 {
+    color: var(--color1);
+  
+  }
+  .proceso-texto.contato h2 {
+    color: var(--color1);
+  
+  }
+  .proceso-texto.contato p {
+    color: var(--color1);
+  
+  }
+  .proceso-voluntariado p a {
+    text-decoration: none;
+    /* color: var(--color4); */
+    border-bottom: 2px var(--color1) solid; 
+    transition: all .5s;
+  }
+
+  .proceso-voluntariado p a:hover {
+    filter: brightness(2);
+  }
+
+  .proceso-texto {
+    display: flex;
+    flex-direction: column;
+    gap:0;
+    align-items: self-start;
+    color: var(--color3);
+    text-align: left;
+  }
+
+  .proceso-texto p {
+    margin: 0;
+    word-wrap: break-word;
+  }
+
+  .proceso-texto h2::first-letter,.proceso-texto.contato h2::first-letter, .proceso-texto p::first-letter{
+    text-transform: capitalize;
+  }
+  
+/* processo de liderança */
+.proceso-voluntariado.lideranca h1 {
+  padding: 10px 0;
+  color: var(--color2);
+}
+.proceso-texto-lideranca h2 {
+  color: var(--color2);
+}
+.proceso-voluntariado.lideranca h1::first-letter {
+  text-transform: capitalize;
+}
+
+.proceso-voluntariado-lideranca p a {
+  text-decoration: none;
+  color: var(--color4);
+  border-bottom: 2px var(--color2) solid;
+  transition: all .5s;
+}
+.proceso-texto-lideranca {
+  display: flex;
+  flex-direction: column;
+  align-items: self-start;
+  /* color: var(--color4); */
+  text-align: left;
+}
+.proceso-voluntariado.lideranca p a:hover {
+  filter: brightness(2);
+}
+.proceso-texto-lideranca p {
+  margin: 0;
+  word-wrap: break-word;
+}
+
+.proceso-texto-lideranca h2::first-letter, .proceso-texto-lideranca p::first-letter{
+  text-transform: capitalize;
+}
+
+/*
+@media only screen and (max-width: 1020px) {
+    body{ 
+        overflow-x: hidden;
+    }
+
+  
+
+    .main {
+        flex-direction: column;
+        height: 100vh;
+        gap: 0px;
+    }
+
+  
+
+    .text-home {
+        width: 450px;
+    }
+
+    .sub-text-home {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .sub-text-home a {
+        width: 80%;
+        padding: 10px 0px;
+    }
+
+  
+
+    .card-container {
+        flex-direction: column;
+    }
+
+    .card-item {
+        width: 10%;
+        height: 10%;
+    }
+    .card-content img{
+      width: 50%;
+      max-width: 100px;
+    }
+    .card-content h2{
+      width: 50%;
+    }
+
+
+    
+
+    .proceso-voluntariado {
+        width: 465px;
+    }
+
+    .voluntariado {
+        flex-direction: column;
+        height: 850px;
+    }
+
+    .tipo-vo-texto {
+        width: 80%;
+    }
+
+
+
+}
+
+@media only screen and (max-width: 465px) {
+    
+
+
+    .main {
+        max-width: 100%;
+    }
+
+    .text-home {
+        width: 100%;
+    }
+
+    .accordion-content h2 {
+        position: absolute;
+    }
+    
+    .proceso-voluntariado {
+        width: 100%;
+    }
+
+    .accordion-content h2 {
+        font-size: 20px;
+    }
+
+    .accordion-item:hover .accordion-content h2 {
+        font-size: 25px;
+    }
+
+    .voluntariado-img {
+        display: none;
+    }
+}
+
+@keyframes voluntariado-imagen {
+    0% {
+      background: url('../images/voluntariado\ 1.jpeg');
+    }
+    33% {
+      background: url('../images/voluntariado\ 2.jpeg');
+    }
+    66% {
+      background: url('../images/voluntariado\ 3.jpeg');
+    }
+    100% {
+      background: url('../images/voluntariado\ 1.jpeg');
+    }
+  }
+  
+  */

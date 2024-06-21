@@ -87,7 +87,7 @@ const handleSubmit = async (e) => {
         <h2> Cadastro de Liderança de ONG para Imigrantes, refugiados e apátridas</h2>
         </div>
         <form className="general-inputs" onSubmit={handleSubmit}>
-          <div className="inputs">
+          <div className="inputs formCadastro">
           <div className="input-field">
             <h4>1. Nome da ONG que representa<span>*</span></h4>
             <input
@@ -213,7 +213,7 @@ const handleSubmit = async (e) => {
             <p>Seu e-mail e senha cadastrados serão seu login para o acesso na plataforma</p>
             <p>Após preencher todos os seus dados clique em <strong>"Enviar"</strong> e seu cadastro estará completo</p>
           </div>
-          <div className="inputs">
+          <div className="inputs formCadastro">
           <div className="input-field">
             <h4>Email para cadastro<span>*</span></h4>
             <input
