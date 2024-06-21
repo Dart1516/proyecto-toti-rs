@@ -1,0 +1,29 @@
+/* src/assets/styles/App.css */
+.thank-you-page {
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .thank-you-page h2 {
+    margin-bottom: 20px;
+  }
+  
+  .thank-you-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .thank-you-buttons .btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .thank-you-buttons .btn:hover {
+    background-color: #0056b3;
+  }
+  
