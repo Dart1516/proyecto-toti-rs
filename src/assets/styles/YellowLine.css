@@ -1,0 +1,9 @@
+.YellowLineCenter {
+  width: 10.25rem;
+  height: 0.125rem;
+  background-color: var(--color2);
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

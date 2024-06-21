@@ -1,0 +1,57 @@
+.areabuttom{
+    width: 42rem;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .buttom0{
+    width: 20rem;
+    height: 3rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+  }
+  .buttom1{
+    background-color: var(--color4);
+    color: var(--color1);
+  }
+  .buttom2{
+    background-color: var(--color2);
+    color: var(--color6);
+  }
+  
+  .buttom0,a{
+    text-decoration: none;
+    transition: 0.5s;
+    opacity: 1;
+    /* color: var(--color1); */
+  }
+  
+  .buttom0:hover,a:hover {
+    opacity: .9;
+  }
+  
+  .buttom1:hover { 
+    background-color: var(--color1);
+    color: var(--color4);
+  }
+  .buttom2:hover { 
+    background-color: var(--color1);
+    color: var(--color4);
+  }
+    
+@media only screen and (max-width: 768px) {
+    .areabuttom{
+        display: grid;
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+    .buttom0{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
