@@ -13,7 +13,7 @@ import {
   CardActions,
   Button,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import imgenchente from "../assets/images/imgsobrenos3.jpg";
 import imgComunidade from "../assets/images/voluntarios.jpg";
 import "../../src/Pages/MaterialDeApoio";
@@ -34,16 +34,15 @@ import nadi from "../assets/images/toters/toter8.jpg";
 import marianela from "../assets/images/toters/Marianela.jpeg";
 import natalia from "../assets/images/toters/natalia1.jpg";
 import avatar from "../assets/images/toters/avatar.jpeg";
-import Footer from '../Components/Footer'
-import "../../src/assets/styles/sobrenos.css"
-
+import Footer from "../Components/Footer";
+import "../../src/assets/styles/sobrenos.css";
 
 const About = () => {
   const [showAllCards, setShowAllCards] = useState(false);
 
   const toggleCards = () => {
-      setShowAllCards(!showAllCards);
-  }
+    setShowAllCards(!showAllCards);
+  };
   const StyledImg = styled("img")(() => ({
     width: "100%",
     maxWidth: "800px",
@@ -75,111 +74,93 @@ const About = () => {
   return (
     <>
       <Header className="App-header" />
-      
+
       <div id="about">
-        <Container maxWidth="xl" style={{display:"flex", alignItems:"center", justifyContent:"center", flexDirection:"column", width:"100vw"}}>
+        <Container
+          maxWidth="xl"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+            width: "100vw",
+          }}
+        >
           {/* conteudo da primeira div ---------------------------------------------------- */}
-          <div
-            className="grid-container-main"
-          >
-           
-              <div className="text-main">
-                <Typography
-                  variant="h4"
-                  color="black"
-                  fontWeight={700}
-                >
-                  Quem Somos?<hr className="hr"/>
-                </Typography>
-               
-                <Typography 
-                  variant="body"
-                >
-                  A Comunidade Toti é um coletivo de profissionais imigrantes de
-                  tecnologia no Brasil, unidos pelo desejo de crescer
-                  profissionalmente e de apoiar uns aos outros. Nossa missão é
-                  oferecer um espaço de acolhimento, onde o conhecimento e as
-                  experiências se entrelaçam para criar oportunidades de
-                  desenvolvimento e integração.
-                </Typography>
-            
+          <div className="grid-container-main">
+            <div className="text-main">
+              <Typography variant="h4" color="black" fontWeight={700}>
+                Quem Somos?
+                <hr className="hr" />
+              </Typography>
+
+              <Typography variant="body">
+                A Comunidade Toti é um coletivo de profissionais imigrantes de
+                tecnologia no Brasil, unidos pelo desejo de crescer
+                profissionalmente e de apoiar uns aos outros. Nossa missão é
+                oferecer um espaço de acolhimento, onde o conhecimento e as
+                experiências se entrelaçam para criar oportunidades de
+                desenvolvimento e integração.
+              </Typography>
             </div>
             {/* img da primeira div -------------------- */}
-            <div className="img-main"
-            >
-            </div>
+            <div className="img-main"></div>
           </div>
 
           {/* conteudo da segunda div -------------------------------------- */}
-          <div
-           className="grid-container-main reverse"
-          >
+          <div className="grid-container-main reverse">
             {/* img da segunda div--------------------- */}
-            <div className="img-main"
-            >
+            <div className="img-main">
               <StyledImg src={imgComunidade} />
             </div>
-              <div className="text-main">
-                <Typography
-                  variant="h4"
-                  color="black"
-                  fontWeight={700}
-                >
-                  Nossa visão <hr className="hr"/>
-                </Typography>
-                <Typography variant="body">
-                  Em resposta a os recentes eventos no Rio Grande do Sul, nossa
-                  comunidade está mobilizada para fazer a diferença.
-                </Typography>
+            <div className="text-main">
+              <Typography variant="h4" color="black" fontWeight={700}>
+                Nossa visão <hr className="hr" />
+              </Typography>
+              <Typography variant="body">
+                Em resposta a os recentes eventos no Rio Grande do Sul, nossa
+                comunidade está mobilizada para fazer a diferença.
+              </Typography>
 
-                <Typography variant="body">
-                  Com empatia e solidariedade, lançamos esta plataforma para
-                  conectar voluntários e recursos, visando oferecer ajuda
-                  prática e esperança àqueles afetados pelas inundações.
-                </Typography>
+              <Typography variant="body">
+                Com empatia e solidariedade, lançamos esta plataforma para
+                conectar voluntários e recursos, visando oferecer ajuda prática
+                e esperança àqueles afetados pelas inundações.
+              </Typography>
 
-                <Typography variant="body">
-                  O intuito dessa plataforma é oferecer apoio psicosocial às
-                  famílias afetadas pela tragédia no RS, disponibilizando
-                  serviços com psicólogos e educadores sociais. Esses
-                  profissionais estão prontos para atender e auxiliar no
-                  processo de recuperação emocional e social das pessoas
-                  impactadas, garantindo um suporte integral e humanizado.
-                </Typography>
-              </div>
+              <Typography variant="body">
+                O intuito dessa plataforma é oferecer apoio psicosocial às
+                famílias afetadas pela tragédia no RS, disponibilizando serviços
+                com psicólogos e educadores sociais. Esses profissionais estão
+                prontos para atender e auxiliar no processo de recuperação
+                emocional e social das pessoas impactadas, garantindo um suporte
+                integral e humanizado.
+              </Typography>
+            </div>
           </div>
 
           {/* conteudo da terceira div ---------------------------------------------------- */}
-          <div
-            className="grid-container-main"
-            marginTop={10}
-          >
-          
-              <div className="text-main">
-                <Typography
-                  textAlign="start"
-                  variant="h4"
-                  color="black"
-                  fontWeight={700}
-                >
-                  Faça parte você também <hr className="hr"/>
-                </Typography>
-                
-                <Typography textAlign="start" variant="body">
-                  Convidamos profissionais de todas as áreas a se juntarem a
-                  este movimento humanitário, contribuindo com seu
-                  tempo e habilidades em apoio às vítimas das inundações no RS.
-                  Esperamos que muitos se juntem a nós neste esforço coletivo,
-                  pois juntos somos mais fortes. Todos juntos pelo
-                  Rio Grande do Sul.
-                </Typography>
-              
+          <div className="grid-container-main" marginTop={10}>
+            <div className="text-main">
+              <Typography
+                textAlign="start"
+                variant="h4"
+                color="black"
+                fontWeight={700}
+              >
+                Faça parte você também <hr className="hr" />
+              </Typography>
+
+              <Typography textAlign="start" variant="body">
+                Convidamos profissionais de todas as áreas a se juntarem a este
+                movimento humanitário, contribuindo com seu tempo e habilidades
+                em apoio às vítimas das inundações no RS. Esperamos que muitos
+                se juntem a nós neste esforço coletivo, pois juntos somos mais
+                fortes. Todos juntos pelo Rio Grande do Sul.
+              </Typography>
             </div>
             {/* img da primeira div -------------------- */}
-            <div
-              className="img-main"
-             
-            >
+            <div className="img-main">
               <StyledImg src={imgenchente} />
             </div>
           </div>
@@ -220,7 +201,8 @@ const About = () => {
               color="black"
               fontWeight={700}
             >
-              Nossos valores<hr className="hr center"/>
+              Nossos valores
+              <hr className="hr center" />
             </Typography>
             <Grid
               container
@@ -228,13 +210,13 @@ const About = () => {
               display="flex"
               alignItems="center"
               padding={{ xs: "0", md: "1rem" }}
-              justifyContent="center" 
+              justifyContent="center"
               direction="row"
               marginBottom={3}
               mt="2rem"
             >
-              <Grid item xs={5} md={4} >
-                <Card sx={{ maxWidth: '100%' }} style={{}}>
+              <Grid item xs={5} md={4}>
+                <Card sx={{ maxWidth: "100%" }} style={{}}>
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       Empatia <SentimentSatisfiedAltIcon />
@@ -247,7 +229,7 @@ const About = () => {
                 </Card>
               </Grid>
               <Grid item xs={7} md={4}>
-                <Card sx={{ maxWidth: '100%' }}>
+                <Card sx={{ maxWidth: "100%" }}>
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       Inclusão <AutorenewIcon />
@@ -260,8 +242,8 @@ const About = () => {
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item xs={7} md={4} >
-                <Card sx={{ maxWidth: '100%' }}>
+              <Grid item xs={7} md={4}>
+                <Card sx={{ maxWidth: "100%" }}>
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       Segurança e Privacidade <SecurityIcon />
@@ -274,7 +256,7 @@ const About = () => {
                 </Card>
               </Grid>
               <Grid item xs={5} md={4}>
-                <Card sx={{ maxWidth:'100%'}}>
+                <Card sx={{ maxWidth: "100%" }}>
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       Resiliência <PeopleIcon />
@@ -295,7 +277,7 @@ const About = () => {
                 alignItems="center"
                 padding={{ xs: "0", md: "0" }}
               >
-                <Card sx={{ maxWidth: '100%' }}>
+                <Card sx={{ maxWidth: "100%" }}>
                   <CardContent>
                     <Typography
                       gutterBottom
@@ -325,249 +307,365 @@ const About = () => {
               color="black"
               fontWeight={700}
             >
-              Nossos Time<hr className="hr center"/>
+              Nossos Time
+              <hr className="hr center" />
             </Typography>
-           
+
             <div id="grid-container-cards">
-                <Card className="card-toter">
-                  <CardMedia image={david} title="david"  sx={{ height: 220 }} />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      David Puche
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Toter
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" style={{ color: "black" }}  target="_blank"  href="https://github.com/Dart1516">
-                      Github
-                    </Button>
-                    <Button size="small" style={{ color: "black" }} target="_blank" href="https://www.linkedin.com/in/david-puche/" >
-                      LinkedIn
-                    </Button>
-                  </CardActions>
-                </Card>
-                <Card className="card-toter">
-                  <CardMedia 
-                   sx={{ height: 220 }}
-                    image={victor}
-                    title="victor"
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      Víctor Alcala
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Toter
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
-                      Github
-                    </Button>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://www.linkedin.com/in/alcalamvictor">
-                      LinkedIn
-                    </Button>
-                  </CardActions>
-                </Card>
-               
-               
-                <Card className='card-toter'>
-                  <CardMedia sx={{ height: 220 }} image={cristian} title="" />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      Cristhian Nunes
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Toter
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
-                      Github
-                    </Button>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://www.linkedin.com/in/cristhian-andres-nunez-gascon-774569168">
-                      LinkedIn
-                    </Button>
-                  </CardActions>
-                </Card>
-                <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                  <CardMedia  sx={{ height: 220 }}image={henry} title="" />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      Henry Luna
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Toter
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
-                      Github
-                    </Button>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://www.linkedin.com/in/henry-luna-0793402a/">
-                      LinkedIn
-                    </Button>
-                  </CardActions>
-                </Card>
-                <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                  <CardMedia  sx={{ height: 220 }} image={daysi} title="" />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      Daysibel Cotiz
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Toter
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/daysibel1175">
-                      Github
-                    </Button>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://www.linkedin.com/in/daysibelcotizpitter">
-                      LinkedIn
-                    </Button>
-                  </CardActions>
-                </Card>
-                <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                  <CardMedia  sx={{ height: 220 }} image={manuel} title="" />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      Manuel
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Toter
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
-                      Github
-                    </Button>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="hhttps://www.linkedin.com/in/manuel-bernardo-165373208/">
-                      LinkedIn
-                    </Button>
-                  </CardActions>
-                </Card>
-                <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                  <CardMedia  sx={{ height: 220 }} image={avatar} title="" />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      Yurisay
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Toter Disenho e Marketing
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
-                      Github
-                    </Button>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
-                      LinkedIn
-                    </Button>
-                  </CardActions>
-                </Card>
-                <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                  <CardMedia sx={{ height: 220 }} image={nadi} title="" />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      Nadi Duno
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Toter
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
-                      Github
-                    </Button>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://www.linkedin.com/in/nadiduno/">
-                      LinkedIn
-                    </Button>
-                  </CardActions>
-                </Card>
-                <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                  <CardMedia sx={{ height: 220 }} image={maria} title="" />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      Maria Rondon
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Toter
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
-                      Github
-                    </Button>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
-                      LinkedIn
-                    </Button>
-                  </CardActions>
-                </Card>
-                <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                  <CardMedia  sx={{ height: 220 }} image={marianela} title="" />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
+              <Card className="card-toter">
+                <CardMedia image={david} title="david" sx={{ height: 220 }} />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    David Puche
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Toter
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://github.com/Dart1516"
+                  >
+                    Github
+                  </Button>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://www.linkedin.com/in/david-puche/"
+                  >
+                    LinkedIn
+                  </Button>
+                </CardActions>
+              </Card>
+              <Card className="card-toter">
+                <CardMedia sx={{ height: 220 }} image={victor} title="victor" />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Víctor Alcala
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Toter
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://github.com/Dart1516"
+                  >
+                    Github
+                  </Button>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://www.linkedin.com/in/alcalamvictor"
+                  >
+                    LinkedIn
+                  </Button>
+                </CardActions>
+              </Card>
+
+              <Card className="card-toter">
+                <CardMedia sx={{ height: 220 }} image={cristian} title="" />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Cristhian Nunes
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Toter
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://github.com/Dart1516"
+                  >
+                    Github
+                  </Button>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://www.linkedin.com/in/cristhian-andres-nunez-gascon-774569168"
+                  >
+                    LinkedIn
+                  </Button>
+                </CardActions>
+              </Card>
+              <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                <CardMedia sx={{ height: 220 }} image={henry} title="" />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Henry Luna
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Toter
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://github.com/Dart1516"
+                  >
+                    Github
+                  </Button>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://www.linkedin.com/in/henry-luna-0793402a/"
+                  >
+                    LinkedIn
+                  </Button>
+                </CardActions>
+              </Card>
+              <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                <CardMedia sx={{ height: 220 }} image={daysi} title="" />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Daysibel Cotiz
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Toter
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://github.com/daysibel1175"
+                  >
+                    Github
+                  </Button>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://www.linkedin.com/in/daysibelcotizpitter"
+                  >
+                    LinkedIn
+                  </Button>
+                </CardActions>
+              </Card>
+              <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                <CardMedia sx={{ height: 220 }} image={manuel} title="" />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Manuel
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Toter
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://github.com/Dart1516"
+                  >
+                    Github
+                  </Button>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="hhttps://www.linkedin.com/in/manuel-bernardo-165373208/"
+                  >
+                    LinkedIn
+                  </Button>
+                </CardActions>
+              </Card>
+              <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                <CardMedia sx={{ height: 220 }} image={avatar} title="" />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Yurisay
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Toter Disenho e Marketing
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://github.com/Dart1516"
+                  >
+                    Github
+                  </Button>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://github.com/Dart1516"
+                  >
+                    LinkedIn
+                  </Button>
+                </CardActions>
+              </Card>
+              <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                <CardMedia sx={{ height: 220 }} image={nadi} title="" />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Nadi Duno
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Toter
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://github.com/Dart1516"
+                  >
+                    Github
+                  </Button>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://www.linkedin.com/in/nadiduno/"
+                  >
+                    LinkedIn
+                  </Button>
+                </CardActions>
+              </Card>
+              <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                <CardMedia sx={{ height: 220 }} image={maria} title="" />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Maria Rondon
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Toter
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://github.com/Dart1516"
+                  >
+                    Github
+                  </Button>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://github.com/Dart1516"
+                  >
+                    LinkedIn
+                  </Button>
+                </CardActions>
+              </Card>
+              <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                <CardMedia sx={{ height: 220 }} image={marianela} title="" />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
                     Marianela Arana
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Toter, Analista de dados, Gestora do Projeto
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
-                      Github
-                    </Button>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://www.linkedin.com/in/marianela-arana/">
-                      LinkedIn
-                    </Button>
-                  </CardActions>
-                </Card>
-                <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                  <CardMedia  sx={{ height: 220 }} image={natalia} title="" />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      Natalia Augusto
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      UX/UI Designer
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
-                      Github
-                    </Button>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://www.linkedin.com/in/nataliaaugustoux/">
-                      LinkedIn
-                    </Button>
-                  </CardActions>
-                </Card>
-                <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                  <CardMedia  sx={{ height: 220 }} image={avatar} title="" />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      Barbara 
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Voluntaria Mentor
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
-                      Github
-                    </Button>
-                    <Button size="small" style={{ color: "black" }} target="_blank"  href="https://github.com/Dart1516">
-                      LinkedIn
-                    </Button>
-                  </CardActions>
-                </Card>
-                <button onClick={toggleCards} className="button-cards">
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Toter, Analista de dados, Gestora do Projeto
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://github.com/Dart1516"
+                  >
+                    Github
+                  </Button>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://www.linkedin.com/in/marianela-arana/"
+                  >
+                    LinkedIn
+                  </Button>
+                </CardActions>
+              </Card>
+              <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                <CardMedia sx={{ height: 220 }} image={natalia} title="" />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Natalia Augusto
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    UX/UI Designer
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://github.com/Dart1516"
+                  >
+                    Github
+                  </Button>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://www.linkedin.com/in/nataliaaugustoux/"
+                  >
+                    LinkedIn
+                  </Button>
+                </CardActions>
+              </Card>
+              <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                <CardMedia sx={{ height: 220 }} image={avatar} title="" />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Barbara
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Voluntaria Mentor
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://github.com/Dart1516"
+                  >
+                    Github
+                  </Button>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://github.com/Dart1516"
+                  >
+                    LinkedIn
+                  </Button>
+                </CardActions>
+              </Card>
+              <button onClick={toggleCards} className="button-cards">
                 {showAllCards ? "Ver menos" : "Ver más"}
-            </button>
+              </button>
             </div>
-            </div>
+          </div>
         </Container>
       </div>
       <Footer></Footer>
