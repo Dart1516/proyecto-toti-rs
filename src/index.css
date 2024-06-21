@@ -9,9 +9,13 @@ body{
   -moz-osx-font-smoothing: grayscale;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  width: 100%;
+  /* width: 100%; */
+  width: 100vw;
   max-width: 100%;
   overflow-x: hidden;
+  display: flex;
+  justify-items: center;
+  
 }
 
 body,input,textarea,button {
