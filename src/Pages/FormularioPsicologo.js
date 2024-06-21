@@ -39,8 +39,8 @@ function FormularioPsicologo() {
 
   const [isTermsAccepted, setIsTermsAccepted] = useState(false);
   const [passwordError, setPasswordError] = useState("");
-  // const [passwordMatchError, setPasswordMatchError] = useState("");
-  // const [emailMatchError, setEmailMatchError] = useState("");
+  const [passwordMatchError, setPasswordMatchError] = useState("");
+  const [emailMatchError, setEmailMatchError] = useState("");
 
   const handleTermsChange = (event) => {
     setIsTermsAccepted(event.target.checked);
@@ -79,13 +79,13 @@ function FormularioPsicologo() {
       validatePassword(value);
     }
 
-    // if (name === "verifyPassword") {
-    //   setPasswordMatchError(value !== formData.password ? "Las contraseñas no coinciden." : "");
-    // }
+    if (name === "verifyPassword") {
+      setPasswordMatchError(value !== formData.password ? "Las contraseñas no coinciden." : "");
+    }
 
-    // if (name === "verifyEmail") {
-    //   setEmailMatchError(value !== formData.email ? "Los correos electrónicos no coinciden." : "");
-    // }
+    if (name === "verifyEmail") {
+      setEmailMatchError(value !== formData.email ? "Los correos electrónicos no coinciden." : "");
+    }
   };
 
   const validatePassword = (password) => {
@@ -109,7 +109,7 @@ function FormularioPsicologo() {
         <h2>Cadastro de Psicólogos Voluntários</h2>
         </div>
         <form className="general-inputs" onSubmit={handleSubmit}>
-          <div className="inputs">
+          <div className="inputs formCadastro">
           <div className="input-field">
             <h4>1. Nome Completo<span>*</span></h4>
             <input
@@ -234,9 +234,9 @@ function FormularioPsicologo() {
           </div>
           </div>
           {additionalDays.map((additionalDay, index) => (
-            <div className="form-group" key={index}>
+            <div className="form-group formulario" key={index}>
               <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-              <div className="form-group" key={index}>
+              <div className="form-group formulario" key={index}>
               <div className="dia-disponible">
                 <div>
                   <h4>Dia Disponivel {index + 1}<span>*</span></h4>
@@ -298,7 +298,7 @@ function FormularioPsicologo() {
             <p>Seu e-mail e senha cadastrados serão seu login para o acesso na plataforma</p>
             <p>Após preencher todos os seus dados clique em <strong>"Enviar"</strong> e seu cadastro estará completo</p>
           </div>
-          <div className="inputs">
+          <div className="inputs formCadastro">
           <div className="input-field">
             <h4>Email para cadastro<span>*</span></h4>
             <input
@@ -311,7 +311,7 @@ function FormularioPsicologo() {
               className="input-text"
             />
           </div>
-          {/* <div className="input-field">
+          <div className="input-field">
             <h4>Verificação do Email<span>*</span></h4>
             <input
               type="email"
@@ -323,7 +323,7 @@ function FormularioPsicologo() {
               className="input-text"
             />
             {emailMatchError && <p style={{ color: 'red' }}>{emailMatchError}</p>}
-          </div> */}
+          </div>
           <div className="input-field">
             <h4>Senha<span>*</span></h4>
             <input
@@ -337,7 +337,7 @@ function FormularioPsicologo() {
             />
             {passwordError && <p>{passwordError}</p>}
           </div>
-          {/* <div className="input-field">
+          <div className="input-field">
             <h4>Verificação de Senha<span>*</span></h4>
             <input
               type="password"
@@ -349,7 +349,7 @@ function FormularioPsicologo() {
               className="input-text"
             />
             {passwordMatchError && <p style={{ color: 'red' }}>{passwordMatchError}</p>}
-          </div> */}
+          </div>
           </div>
           <div className="opcional">
             <h4>Observação (opcional)</h4>

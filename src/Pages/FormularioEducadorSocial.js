@@ -105,7 +105,7 @@ function FormularioEducadorSocial() {
           <h2> Cadastro Educador Social Voluntário </h2>
         </div>
         <form className="general-inputs" onSubmit={handleSubmit}>
-          <div className="inputs">
+          <div className="inputs formCadastro">
             <div className="input-field">
               <h4>
                 1. Nome Completo<span>*</span>
@@ -255,7 +255,7 @@ function FormularioEducadorSocial() {
               />
             </div>
           </div>
-          <div className="form-group">
+          <div className="form-group formulario">
             <h4>
               Disponibilidade para prestar serviço presencial na sua cidade ou
               bairro <span>*</span>
@@ -272,7 +272,7 @@ function FormularioEducadorSocial() {
             </select>
           </div>
           {additionalDays.map((additionalDay, index) => (
-            <div className="form-group" key={index}>
+            <div className="form-group formulario" key={index}>
               <div className="dia-disponible">
                 <div>
                   <h4>
@@ -349,7 +349,7 @@ function FormularioEducadorSocial() {
               <strong>"Enviar"</strong> e seu cadastro estará completo
             </p>
           </div>
-          <div className="inputs">
+          <div className="inputs formCadastro">
             <div className="input-field">
               <h4>
               Email para cadastro<span>*</span>
