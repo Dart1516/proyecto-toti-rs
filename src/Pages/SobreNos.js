@@ -49,7 +49,6 @@ const About = () => {
     alignItems: "center",
     borderRadius: "2%",
     display: "flex",
-    height: "auto",
   }));
   const Styledbutton = styled("a")(() => ({
     alignItems: "center",
@@ -110,8 +109,9 @@ const About = () => {
           {/* conteudo da segunda div -------------------------------------- */}
           <div className="grid-container-main reverse">
             {/* img da segunda div--------------------- */}
-            <div className="img-main">
+            <div className="img-main-center">
               <StyledImg src={imgComunidade} />
+              <span>As Toters Marianela Arana & Mayfer Ramirez, vomo voluntarias no RS</span>
             </div>
             <div className="text-main">
               <Typography variant="h4" color="black" fontWeight={700}>

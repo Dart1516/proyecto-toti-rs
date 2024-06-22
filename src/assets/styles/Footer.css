@@ -1,24 +1,34 @@
 .footer-container {
-    background-color: #f8f9fa;
+    background-color: var(--color4);
     padding: 20px 0 0 20px;
-    text-align: start;
+    width: 100%;
+    min-width: 100vw;
+    height: auto;
+    max-height: 14rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
   }
   
-  .footer-columns {
-    display: flex;
-    justify-content: space-around;
-    padding-bottom: 10px;
+  .footer-columns{
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+   align-items: center;
+   height: 95%;
+   gap: 1rem;
+   width: 100%;
   }
   
   .footer-column {
     flex: 1;
-    padding: 0 20px;
   }
   
   .footer-column h4 {
-    margin-bottom: 10px;
     font-weight: 700;
     color: black;
+    font-size: clamp(0.4em, 0.6em + 1vw, 1.2em);
   }
   
   .footer-column ul {
@@ -26,15 +36,18 @@
     padding: 0;
     opacity: 0.9;
   }
-  
+  .parceiros{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
   .footer-column li {
-    margin-bottom: 5px;
     color: var(--color1);
   }
   
   .footer-column a {
     text-decoration: none;
-    color: #007bff;
+    color: var(--color1);
+    font-size: clamp(0.3em, 0.5em + 1vw, 1em);
   }
   
   .footer-column a:hover {
@@ -47,28 +60,42 @@
     align-items: center;
   }
   
-  .footer-bottom {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+
   
   .footer-logo-container {
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 100%;
-    background-color: var(--color4);
+    min-width: 100vw;
+    height: 5%;
   }
 
   .footer-logo-container p {
     text-transform: capitalize;
     opacity: 0.9;
+    font-size: clamp(0.4em, 0.6em + 1vw, 1em);
   }
   
   .footer-logo {
     width: 90px;
     border-radius: 50%;
+    object-fit: cover;
   }
   
-  
+    @media (max-width: 600px) {
+      .footer-container {
+        background-color: var(--color4);
+        padding: 20px 30px;
+        width: 100%;
+        min-width: 100vw;
+        height: auto;
+        max-height: 18rem;
+      }
+      .footer-columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr ;
+        align-items: center;
+     
+       }
+    }

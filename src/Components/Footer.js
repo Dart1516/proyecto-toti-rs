@@ -21,7 +21,7 @@ function Footer() {
         </div>
         <div className="footer-column">
           <h4>Parceiros</h4>
-          <ul>
+          <ul className="parceiros">
             <li>Parceiro 1</li>
             <li>Parceiro 2</li>
             <li>Parceiro 3</li>
@@ -49,12 +49,12 @@ function Footer() {
       </ul>
         </div>
       </div>
-      <div className="footer-bottom">
+     <hr></hr>
         <div className="footer-logo-container">
           <img src={ToterDoBem} alt="Toters do bem Logo" className="footer-logo" />
           <p>Todos os direitos reservados - {currentMonth} {currentYear}</p>
         </div>
-      </div>
+     
     </div>
   );
 }
