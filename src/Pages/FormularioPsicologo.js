@@ -18,7 +18,7 @@ function FormularioPsicologo() {
     crp: "",
     specialization: "",
     state: "",
-    additionalDays: [{ day: "", hour: "" }],
+    additionalDays: [{ day: "", hour: "" }], // cambiar el formato
     password: "",
     note:"",
     termos:""

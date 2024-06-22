@@ -21,19 +21,21 @@ const handleSubmit = async (e) => {
 };
 // ------------------------------------------------------
   const [formData, setFormData] = useState({
-    ongName:"",
-    cnpj:"",
+
     name: "",
-    cpf: "",
-    phone: "",
     email: "",
+    cpf: "",
+    phoneNumber: "",
     organization: "",
+    cnpj:"",
     area: "",
-    endereço:"",
-    state: "",
+    state:"",
+    address:"",
+    notes:"",
     password: "",
-    verifyPassword: "",
-    verifyEmail: ""
+    verifyPassword: "", // si da error coplocarlo en otra variable
+    verifyEmail: "",
+    termos:'',
   });
   const [isTermsAccepted, setIsTermsAccepted] = useState(false);
   const [passwordError, setPasswordError] = useState("");
@@ -93,7 +95,7 @@ const handleSubmit = async (e) => {
               type="text"
               name="name"
               placeholder="Digite seu nome"
-              value={formData.ongName}
+              value={formData.organization}
               onChange={handleInputChange}
               required
             />
@@ -138,7 +140,7 @@ const handleSubmit = async (e) => {
             <h4>4. Número do WhatsApp do Representante<span>*</span></h4>
             <InputMask
               mask="(99) 99999-9999"
-              value={formData.phone}
+              value={formData.phoneNumber}
               onChange={handleInputChange}
               placeholder="(DDD) Digite o número"
               required
