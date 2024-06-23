@@ -12,12 +12,12 @@ import {  InputAdornment, IconButton } from '@mui/material';
 const StyledContainer = styled("div")(({theme}) => ({
   position: "fixed",
   right: 0,
-  top:"2rem",
   background: "#fafafa",
   padding: "4rem 6rem",
   zIndex: "1",
   height:"100vh", 
   justifyItems:"center", 
+  justifyContent:"center",
   alignItems:"center",
   display:"flex",
   flexDirection:"column",
