@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 5rem;
 }
 
 .web {
@@ -434,10 +435,13 @@ color: var(--color3);
   }
 }
 @media only screen and (max-width: 670px) {
+  .body {
+    gap: 5rem;
+  }
   .voluntariado {
     gap: 1rem;
     height: auto;
-    max-height:max-content;
+    max-height:min-content;
     min-height: 100vh;
     margin-bottom: 2rem;
 }
@@ -482,7 +486,7 @@ color: var(--color3);
     .proceso-voluntariado {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 1.5rem;
       align-items: flex-start;
       width: 100%;
       background-color: rgba(159, 152, 98, 0.345);
@@ -496,7 +500,7 @@ color: var(--color3);
     color:var(--color4)
 }
 .proceso-voluntariado h1{
-  background-image: linear-gradient(to right, var(--color3),var(--color3), var(--color2));
+  background-image: linear-gradient(to right, var(--color1), var(--color2));
     background-clip: text;
     -webkit-background-clip: text; /* Prefijo para navegadores WebKit */
     color: transparent;
