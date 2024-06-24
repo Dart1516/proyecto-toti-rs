@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React from "react";
 import Header from "../Components/Header-NavMenu";
+import "../../src/assets/styles/Mobile-Menu.module.css"
+import '../assets/styles/App.css';
 import { useState } from "react";
 import {
   Grid,
@@ -72,8 +74,9 @@ const About = () => {
   }));
   return (
     <>
-      <Header className="App-header" />
-
+      <header className="App-header">
+        <Header/>
+      </header>
       <div id="about">
         <Container
           maxWidth="xl"

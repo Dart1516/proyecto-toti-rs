@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import mobileStyles from "../assets/styles/Mobile-Menu.module.css";
 import { Link } from "react-router-dom";
 import { IoMenu, IoCloseOutline } from "react-icons/io5";
-
+import logo from "../../src/assets/images/logos/toters-logo-green-dark.svg"
 function MobileMenu() {
     const [menuOpen, setMenuOpen] = useState(false);
     const toggleMenu = () => {
@@ -13,7 +13,7 @@ function MobileMenu() {
         {/* Header */}
         <nav className={mobileStyles["nav-container-mobile"]}>
           <div className={mobileStyles["menu-left"]}>
-            <Link to="/Principal" className={mobileStyles["mobile-logo"]}>
+            <Link to="/Principal" className={mobileStyles["mobile-logo"]}><img src={logo}></img>
             </Link>
             <span className={mobileStyles["name"]}>Comunidade Toti</span>
           </div>
@@ -25,7 +25,6 @@ function MobileMenu() {
         {/* Contenido del menu Mobile */}
         {menuOpen && (
           <div className={mobileStyles["menu-dropdown"]}>
-            <div className={mobileStyles["overlay"]} onClick={toggleMenu}></div>
             <div className={mobileStyles["menu"]}>
               <ul>
                 <li>
@@ -35,7 +34,7 @@ function MobileMenu() {
                   <Link to="/AboutUs">Sobre Nós</Link>
                 </li>
                 <li>
-                  <Link to="/JoinUs">Seja Voluntario</Link>
+                  <Link to="/Cadastro">Seja Voluntario</Link>
                 </li>
                 <li>
                   <Link to="/Accesso">Login</Link>

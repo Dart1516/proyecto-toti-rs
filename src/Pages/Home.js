@@ -11,9 +11,9 @@ import Footer from "../Components/Footer";
 function Principal() {
   return (
     <div className="App">
-      <header className="App-header">
+    
         <Header/>
-      </header>
+     
       <body className="body">
         <div className="background-main">
           <div className='main'>
