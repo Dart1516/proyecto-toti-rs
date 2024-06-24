@@ -2,6 +2,7 @@ import React from 'react';
 import Header from "../Components/Header-NavMenu";
 import '../assets/styles/App.css';
 import '../assets/styles/SejaVoluntario.css';
+import "../assets/styles/avisolegal.css"
 
 function AvisoLegal() {
   return (
@@ -9,8 +10,8 @@ function AvisoLegal() {
       <div className="App-header">
         <Header />
       </div>
-
-      <div className="container">
+      <div className='container-body'>
+       <div className="aviso-legal">
         <h2>Aviso Legal de Proteção de Dados</h2>
         
         <div className="legal-content">
@@ -62,7 +63,9 @@ function AvisoLegal() {
           <h3>7. Alterações ao Aviso Legal</h3>
           <p>Reservamo-nos o direito de atualizar este Aviso Legal de Proteção de Dados periodicamente. Recomendamos que os voluntários revisem este aviso regularmente para se manterem informados sobre como protegemos seus dados.</p>
         </div>
+      </div> 
       </div>
+      
 
       <footer className="App-footer"></footer>
     </div>
