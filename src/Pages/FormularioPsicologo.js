@@ -5,8 +5,10 @@ import '../assets/styles/App.css';
 import '../assets/styles/SejaVoluntario.css';
 import { FaTrash, FaPlus } from 'react-icons/fa';
 import { Api } from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 function FormularioPsicologo() {
+  const navigate = useNavigate();
   const [additionalDays, setAdditionalDays] = useState([{ day: "", hour: "" }]);
   const [formData, setFormData] = useState({
     name: "",
@@ -14,26 +16,43 @@ function FormularioPsicologo() {
     birthDate: "",
     phoneNumber: "",
     email: "",
-    rede_social:"",
+    rede_social: "",
     crp: "",
     specialization: "",
     state: "",
-    additionalDays: [{ day: "", hour: "" }], // cambiar el formato
+    day: "",
+    hour: "",
     password: "",
-    note:"",
-    termos:""
+    notes: "",
+    termos: false,
+    verifyEmail: "",
+    verifyPassword: ""
   });
   const [error, setError] = useState(false);
+
   const handleSubmit = async (e) => {
+    e.preventDefault();
     if (!isTermsAccepted) {
       setError("Por favor, aceite os termos e condições antes de enviar o formulário.");
+      return;
     }
-    e.preventDefault();
+
+    const dataToSend = {
+      ...formData,
+      birthDate: new Date(formData.birthDate).toISOString(), // Convertir a formato ISO-8601
+      notes: formData.notes || ""
+    };
+
+    delete dataToSend.verifyEmail;
+    delete dataToSend.verifyPassword;
+
     try {
-      const response = await Api.post('/cadastro/psicologos', formData);
-      console.log('dados enviados con sucesso:' , response.data)
+      const response = await Api.post('/cadastro/psicologos', dataToSend);
+      console.log('dados enviados com sucesso:', response.data);
+      navigate('/thankyou'); // Redirigir a la página de agradecimiento
     } catch (error) {
       console.error('Error al enviar datos:', error);
+      setError('Error al enviar datos: ' + (error.response?.data?.message || error.message));
     }
   };
 
@@ -44,29 +63,31 @@ function FormularioPsicologo() {
 
   const handleTermsChange = (event) => {
     setIsTermsAccepted(event.target.checked);
+    setFormData({ ...formData, termos: event.target.checked });
   };
 
   const handleDayChange = (index, event) => {
     const values = [...additionalDays];
     values[index][event.target.name] = event.target.value;
     setAdditionalDays(values);
-    setFormData({ ...formData, additionalDays: values });
+    setFormData({ ...formData, day: values[0].day, hour: values[0].hour });
   };
 
   const addDay = () => {
     const newDays = [...additionalDays, { day: "", hour: "" }];
     setAdditionalDays(newDays);
-    setFormData({ ...formData, additionalDays: newDays });
   };
 
   const removeDay = (index) => {
     const values = [...additionalDays];
     values.splice(index, 1);
     setAdditionalDays(values);
-    setFormData({ ...formData, additionalDays: values });
+    if (values.length > 0) {
+      setFormData({ ...formData, day: values[0].day, hour: values[0].hour });
+    } else {
+      setFormData({ ...formData, day: "", hour: "" });
+    }
   };
-
-  
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -105,107 +126,105 @@ function FormularioPsicologo() {
       <div className="background-image"></div>
       <div className="container">
         <div className="container-titulo">
-        <h2>SOS Rio Grande do Sul </h2>
-        <h2>Cadastro de Psicólogos Voluntários</h2>
+          <h2>SOS Rio Grande do Sul </h2>
+          <h2>Cadastro de Psicólogos Voluntários</h2>
         </div>
         <form className="general-inputs" onSubmit={handleSubmit}>
           <div className="inputs formCadastro">
-          <div className="input-field">
-            <h4>1. Nome Completo<span>*</span></h4>
-            <input
-              className="input-text"
-              type="text"
-              name="name"
-              placeholder="Digite seu nome"
-              value={formData.name}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div className="input-field">
-            <h4>2. CPF<span>*</span></h4>
-            <InputMask
-              mask="999.999.999-99"
-              value={formData.cpf}
-              onChange={handleInputChange}
-              placeholder="Digite seu CPF O valor deve ser numérico"
-              required
-              className="input-text"
-              name="cpf"
-            />
-          </div>
-          <div className="input-field">
-            <h4>3. Data de Nascimento<span>*</span></h4>
-            <input
-              className="input-text"
-              type="date"
-              name="birthDate"
-              value={formData.birthDate}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div className="input-field">
-            <h4>4. Número do WhatsApp para contato<span>*</span></h4>
-            <InputMask
-              mask="(99) 99999-9999"
-              value={formData.phoneNumber}
-              onChange={handleInputChange}
-              placeholder="(DDD) Digite o número"
-              required
-              className="input-text"
-              name="phoneNumber"
-            />
-          </div>
-          <div className="input-field">
-            <h4>5. Instagram(opcional)</h4>
-            <input
-              className="input-text"
-              type="rede_social"
-              name="rede_social"
-              placeholder="digite o nome de usuário"
-              value={formData.rede_social}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div className="input-field">
-            <h4>CRP<span>*</span></h4>
-            <InputMask
-              mask="**/******"
-              value={formData.crp}
-              onChange={handleInputChange}
-              placeholder="Digite seu CRP no formato XX/XXXXX"
-              required
-              className="input-text"
-              name="crp"
-            />
-                    </div>
-          
-          <div className="input-field">
-                <h4>Área de especialização<span>*</span></h4>
-                <select className="form-select" name="specialization" value={formData.specialization} onChange={handleInputChange} required>
-                  <option value="">-Selecione-</option>
-                  <option value="Aconselhamento Psicológico">Acolhimento Psicológico</option>
-                  <option value="Neuropsicologia">Neuropsicologia</option>
-                  <option value="Psicologia Clínica">Psicologia Clínica</option>
-                  <option value="Psicologia Comunitária">Psicologia Comunitária</option>
-                  <option value="Psicologia do Desenvolvimento">Psicologia do Desenvolvimento</option>
-                  <option value="Psicologia do Esporte">Psicologia do Esporte</option>
-                  <option value="Psicologia Educacional">Psicologia Educacional</option>
-                  <option value="Psicologia Experimental">Psicologia Experimental</option>
-                  <option value="Psicologia Forense">Psicologia Forense</option>
-                  <option value="Psicologia Infantil">Psicologia Infantil</option>
-                  <option value="Psicologia Organizacional e do Trabalho">Psicologia Organizacional e do Trabalho</option>
-                  <option value="Psicologia da Saúde">Psicologia da Saúde</option>
-                  <option value="Psicologia Social">Psicologia Social</option>
-                  <option value="Psicoterapia">Outros</option>
-                </select>
-              </div>
-          <div className="input-field">
-            <h4>Estado <span>*</span></h4>
-            <select className="form-select" name="state" value={formData.state} onChange={handleInputChange} required>
-            <option value="">-Selecione-</option>
+            <div className="input-field">
+              <h4>1. Nome Completo<span>*</span></h4>
+              <input
+                className="input-text"
+                type="text"
+                name="name"
+                placeholder="Digite seu nome"
+                value={formData.name}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div className="input-field">
+              <h4>2. CPF<span>*</span></h4>
+              <InputMask
+                mask="999.999.999-99"
+                value={formData.cpf}
+                onChange={handleInputChange}
+                placeholder="Digite seu CPF O valor deve ser numérico"
+                required
+                className="input-text"
+                name="cpf"
+              />
+            </div>
+            <div className="input-field">
+              <h4>3. Data de Nascimento<span>*</span></h4>
+              <input
+                className="input-text"
+                type="date"
+                name="birthDate"
+                value={formData.birthDate}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div className="input-field">
+              <h4>4. Número do WhatsApp para contato<span>*</span></h4>
+              <InputMask
+                mask="(99) 99999-9999"
+                value={formData.phoneNumber}
+                onChange={handleInputChange}
+                placeholder="(DDD) Digite o número"
+                required
+                className="input-text"
+                name="phoneNumber"
+              />
+            </div>
+            <div className="input-field">
+              <h4>5. Instagram(opcional)</h4>
+              <input
+                className="input-text"
+                type="text"
+                name="rede_social"
+                placeholder="digite o nome de usuário"
+                value={formData.rede_social}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="input-field">
+              <h4>CRP<span>*</span></h4>
+              <InputMask
+                mask="**/******"
+                value={formData.crp}
+                onChange={handleInputChange}
+                placeholder="Digite seu CRP no formato XX/XXXXX"
+                required
+                className="input-text"
+                name="crp"
+              />
+            </div>
+            <div className="input-field">
+              <h4>Área de especialização<span>*</span></h4>
+              <select className="form-select" name="specialization" value={formData.specialization} onChange={handleInputChange} required>
+                <option value="">-Selecione-</option>
+                <option value="Aconselhamento Psicológico">Acolhimento Psicológico</option>
+                <option value="Neuropsicologia">Neuropsicologia</option>
+                <option value="Psicologia Clínica">Psicologia Clínica</option>
+                <option value="Psicologia Comunitária">Psicologia Comunitária</option>
+                <option value="Psicologia do Desenvolvimento">Psicologia do Desenvolvimento</option>
+                <option value="Psicologia do Esporte">Psicologia do Esporte</option>
+                <option value="Psicologia Educacional">Psicologia Educacional</option>
+                <option value="Psicologia Experimental">Psicologia Experimental</option>
+                <option value="Psicologia Forense">Psicologia Forense</option>
+                <option value="Psicologia Infantil">Psicologia Infantil</option>
+                <option value="Psicologia Organizacional e do Trabalho">Psicologia Organizacional e do Trabalho</option>
+                <option value="Psicologia da Saúde">Psicologia da Saúde</option>
+                <option value="Psicologia Social">Psicologia Social</option>
+                <option value="Psicoterapia">Outros</option>
+              </select>
+            </div>
+            <div className="input-field">
+              <h4>Estado <span>*</span></h4>
+              <select className="form-select" name="state" value={formData.state} onChange={handleInputChange} required>
+                <option value="">-Selecione-</option>
                 <option value="SP">SP</option>
                 <option value="MT">MT</option>
                 <option value="MG">MG</option>
@@ -218,78 +237,76 @@ function FormularioPsicologo() {
                 <option value="RJ">RJ</option>
                 <option value="RO">RO</option>
                 <option value="SC">SC</option>
-                <option value="AM">PA</option>
-                <option value="RS">PB</option>
-                <option value="MA">PE</option>
-                <option value="MS">PI</option>
-                <option value="RJ">RR</option>
-                <option value="RO">RN</option>
-                <option value="SC">SE</option>
-                <option value="RJ">TO</option>
-                <option value="RO">DF</option>
-                <option value="SC">GO</option>
-                <option value="SC">MS</option>
-                <option value="SC">SE</option>
-            </select>
-          </div>
+                <option value="PA">PA</option>
+                <option value="PB">PB</option>
+                <option value="PE">PE</option>
+                <option value="PI">PI</option>
+                <option value="RR">RR</option>
+                <option value="RN">RN</option>
+                <option value="SE">SE</option>
+                <option value="TO">TO</option>
+                <option value="DF">DF</option>
+                <option value="GO">GO</option>
+              </select>
+            </div>
           </div>
           {additionalDays.map((additionalDay, index) => (
             <div className="form-group formulario" key={index}>
               <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-              <div className="form-group formulario" key={index}>
-              <div className="dia-disponible">
-                <div>
-                  <h4>Dia Disponivel {index + 1}<span>*</span></h4>
-                  <select
-                    className="form-select"
-                    name="day"
-                    value={additionalDay.day}
-                    onChange={(e) => handleDayChange(index, e)}
-                    required
-                  >
-                    <option value="">Selecione</option>
-                    <option value="Segunda">Segunda</option>
-                    <option value="Terça">Terça</option>
-                    <option value="Quarta">Quarta</option>
-                    <option value="Quinta">Quinta</option>
-                    <option value="Sexta">Sexta</option>
-                    <option value="Sabado">Sabado</option>
-                    <option value="Domingo">Domingo</option>
-                  </select>
+                <div className="form-group formulario" key={index}>
+                  <div className="dia-disponible">
+                    <div>
+                      <h4>Dia Disponivel {index + 1}<span>*</span></h4>
+                      <select
+                        className="form-select"
+                        name="day"
+                        value={additionalDay.day}
+                        onChange={(e) => handleDayChange(index, e)}
+                        required
+                      >
+                        <option value="">Selecione</option>
+                        <option value="Segunda">Segunda</option>
+                        <option value="Terça">Terça</option>
+                        <option value="Quarta">Quarta</option>
+                        <option value="Quinta">Quinta</option>
+                        <option value="Sexta">Sexta</option>
+                        <option value="Sabado">Sabado</option>
+                        <option value="Domingo">Domingo</option>
+                      </select>
+                    </div>
+                    <div>
+                      <h4>Hora Disponivel {index + 1}<span>*</span></h4>
+                      <select
+                        className="form-select"
+                        name="hour"
+                        value={additionalDay.hour}
+                        onChange={(e) => handleDayChange(index, e)}
+                        required
+                      >
+                        <option value="">Selecione</option>
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                        <option value="12:00">12:00</option>
+                        <option value="13:00">13:00</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
+                        <option value="17:00">17:00</option>
+                        <option value="18:00">18:00</option>
+                        <option value="19:00">19:00</option>
+                        <option value="20:00">20:00</option>
+                        <option value="21:00">21:00</option>
+                      </select>
+                    </div>
+                    {index > 0 && (
+                      <FaTrash onClick={() => removeDay(index)} className="borrar" />
+                    )}
+                    {index === additionalDays.length - 1 && (
+                      <button type="button" onClick={() => addDay()}><FaPlus /></button>
+                    )}
+                  </div>
                 </div>
-                <div>
-                  <h4>Hora Disponivel {index + 1}<span>*</span></h4>
-                  <select
-                    className="form-select"
-                    name="hour"
-                    value={additionalDay.hour}
-                    onChange={(e) => handleDayChange(index, e)}
-                    required
-                  >
-                    <option value="">Selecione</option>
-                    <option value="09:00">09:00</option>
-                    <option value="10:00">10:00</option>
-                    <option value="11:00">11:00</option>
-                    <option value="12:00">12:00</option>
-                    <option value="13:00">13:00</option>
-                    <option value="14:00">14:00</option>
-                    <option value="15:00">15:00</option>
-                    <option value="16:00">16:00</option>
-                    <option value="17:00">17:00</option>
-                    <option value="18:00">18:00</option>
-                    <option value="19:00">19:00</option>
-                    <option value="20:00">20:00</option>
-                    <option value="21:00">21:00</option>
-                  </select>
-                </div>
-                {index > 0 && (
-                  <FaTrash onClick={() => removeDay(index)} className="borrar" />
-                )}
-                {index === additionalDays.length - 1 && (
-                  <button type="button" onClick={() => addDay()}><FaPlus /></button>
-                )}
-              </div>
-            </div>
               </div>
             </div>
           ))}
@@ -299,66 +316,68 @@ function FormularioPsicologo() {
             <p>Após preencher todos os seus dados clique em <strong>"Enviar"</strong> e seu cadastro estará completo</p>
           </div>
           <div className="inputs formCadastro">
-          <div className="input-field">
-            <h4>Email para cadastro<span>*</span></h4>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              placeholder="Digite o seu e-mail"
-              required
-              className="input-text"
-            />
-          </div>
-          <div className="input-field">
-            <h4>Verificação do Email<span>*</span></h4>
-            <input
-              type="email"
-              name="verifyEmail"
-              value={formData.verifyEmail}
-              onChange={handleInputChange}
-              placeholder="Confirme o seu e-mail"
-              required
-              className="input-text"
-            />
-            {emailMatchError && <p style={{ color: 'red' }}>{emailMatchError}</p>}
-          </div>
-          <div className="input-field">
-            <h4>Senha<span>*</span></h4>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleInputChange}
-              placeholder="Digite a sua senha"
-              required
-              className="input-text"
-            />
-            {passwordError && <p>{passwordError}</p>}
-          </div>
-          <div className="input-field">
-            <h4>Verificação de Senha<span>*</span></h4>
-            <input
-              type="password"
-              name="verifyPassword"
-              value={formData.verifyPassword}
-              onChange={handleInputChange}
-              placeholder="Confirme a sua senha"
-              required
-              className="input-text"
-            />
-            {passwordMatchError && <p style={{ color: 'red' }}>{passwordMatchError}</p>}
-          </div>
+            <div className="input-field">
+              <h4>Email para cadastro<span>*</span></h4>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder="Digite o seu e-mail"
+                required
+                className="input-text"
+              />
+            </div>
+            <div className="input-field">
+              <h4>Verificação do Email<span>*</span></h4>
+              <input
+                type="email"
+                name="verifyEmail"
+                value={formData.verifyEmail}
+                onChange={handleInputChange}
+                placeholder="Confirme o seu e-mail"
+                required
+                className="input-text"
+              />
+              {emailMatchError && <p style={{ color: 'red' }}>{emailMatchError}</p>}
+            </div>
+            <div className="input-field">
+              <h4>Senha<span>*</span></h4>
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleInputChange}
+                placeholder="Digite a sua senha"
+                required
+                className="input-text"
+              />
+              {passwordError && <p>{passwordError}</p>}
+            </div>
+            <div className="input-field">
+              <h4>Verificação de Senha<span>*</span></h4>
+              <input
+                type="password"
+                name="verifyPassword"
+                value={formData.verifyPassword}
+                onChange={handleInputChange}
+                placeholder="Confirme a sua senha"
+                required
+                className="input-text"
+              />
+              {passwordMatchError && <p style={{ color: 'red' }}>{passwordMatchError}</p>}
+            </div>
           </div>
           <div className="opcional">
             <h4>Observação (opcional)</h4>
             <textarea
-              name="message"
+              name="notes"
               cols="60"
               rows="10"
               placeholder="Sua mensagem"
               className="contact-inputs"
+              value={formData.notes}
+              onChange={handleInputChange}
             ></textarea>
           </div>
           <div className="legal">
@@ -368,15 +387,14 @@ function FormularioPsicologo() {
               name="terms"
               onChange={handleTermsChange}
               required
-              value={formData.termos}
+              checked={formData.termos}
             />
             <label htmlFor="terms">
               Ao marcar esta caixa e clicar em Enviar, aceito o tratamento de meus dados pessoais por <a href="/avisoLegal" target="_blank">[Nome da sua organização]</a> conforme explicado no seu <a href="/avisoLegal" target="_blank">Aviso Legal de Proteção de Dados</a>, que inclui: 1) a coordenação e gestão de voluntários, e 2) a comunicação sobre atividades e oportunidades relacionadas.
             </label>
-           
           </div>
           {error && <p style={{ color: "red" }}>{error}</p>}{" "}
-          <button className="SV" type="submit"  onClick={handleSubmit}>Enviar</button>
+          <button className="SV" type="submit" onClick={handleSubmit}>Enviar</button>
         </form>
       </div>
       <footer className="App-footer"></footer>
