@@ -106,10 +106,10 @@ const handleSubmit = async (e) => {
               mask="99.999.999/9999-99"
               value={formData.cnpj}
               onChange={handleInputChange}
-              placeholder="Digite seu CPF O valor deve ser numérico"
+              placeholder="Digite seu CNPJ O valor deve ser numérico"
               required
               className="input-text"
-              name="cpf"
+              name="cnpj"
             />
           </div>
           <div className="input-field">
