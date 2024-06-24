@@ -1,12 +1,3 @@
-/*Colores
-
-:root {
-  --color1: #0a9466;
-  --color2: #14c389;
-  --color3: #19e09d;
-  --color4: #F0F0F0;
-}*/
-
 /* ----- Barra de navegación -----*/
 
 .contenedor_de_opciones {
@@ -15,6 +6,7 @@
     top: 0;
     left: 0;
     width: 100%;
+    max-width: 100vw;
     height: 5.563rem;
     z-index: 1000;
     margin: 0;
@@ -24,15 +16,23 @@
 
 .menu-left {
   display: flex;
-  
+  width: 20%;
 }
 
-.opciones-izquierda,
+.opciones-izquierda{
+  width: 100%;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  width: 80%;
+  padding: 0 2rem;
+}
+
 .opciones-derecha { 
-    list-style: none;
     display: flex;
     align-items: center;
-    width: 426px;
+    width: 100%;
 }
 
 .opciones-izquierda li a,

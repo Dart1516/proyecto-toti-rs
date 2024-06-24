@@ -11,22 +11,22 @@ function MobileMenu() {
     return (
       <div>
         {/* Header */}
-        <nav className={mobileStyles["mobile-header"]}>
-          <div className={mobileStyles["logo-y-titulo-a-la-izquierda"]}>
-            <Link to="/Principal" className={mobileStyles["Mobile-home-logo"]}>
+        <nav className={mobileStyles["nav-container-mobile"]}>
+          <div className={mobileStyles["menu-left"]}>
+            <Link to="/Principal" className={mobileStyles["mobile-logo"]}>
             </Link>
-            <span className={mobileStyles["company-name"]}>Comunidade Toti</span>
+            <span className={mobileStyles["name"]}>Comunidade Toti</span>
           </div>
           {/* Icono del menú hamburguesa */}
-          <div className={mobileStyles["Hamburger-menu-icon"]} onClick={toggleMenu}>
+          <div className={mobileStyles["icone-menu-hamburguer"]} onClick={toggleMenu}>
             {menuOpen ? <IoCloseOutline size={30} /> : <IoMenu size={30} />}
           </div>
         </nav>
         {/* Contenido del menu Mobile */}
         {menuOpen && (
-          <div className={mobileStyles["menu-container"]}>
+          <div className={mobileStyles["menu-dropdown"]}>
             <div className={mobileStyles["overlay"]} onClick={toggleMenu}></div>
-            <div className={mobileStyles["Mobile-menu"]}>
+            <div className={mobileStyles["menu"]}>
               <ul>
                 <li>
                   <Link to="/Principal">Home</Link>
