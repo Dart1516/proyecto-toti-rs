@@ -56,19 +56,13 @@
 
 /* ----- logo view ----- */
 
-.logo-opciones {
-  display: flex;
+.opciones-derecha {
+  justify-content: center;
 }
 
-.home-logo {
-  display: block;
-  background-image: url(/src/assets/images/logos/Juntos\ pelo\ RS.svg);
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
+.logo-home {
+  width: 60px;
+  height: 60px;
 }
 
 /* ----- END desktop view ----- */

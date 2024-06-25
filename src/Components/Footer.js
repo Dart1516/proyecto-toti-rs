@@ -39,11 +39,11 @@ function Footer() {
         <h4>Contato</h4>
       <ul>
         <li className="contato-footer">
-          <FaEnvelope />{' '}
+          <FaEnvelope className="icon-footer"/>{' '}
           <a href="mailto:adminriograndedosul@totersdobem.com">Email</a>
         </li>
         <li className="contato-footer">
-          <FaPhone />{' '}
+          <FaPhone className="icon-footer"/>{' '}
           <a href="tel:+559999999999">Telefone</a>
         </li>
       </ul>

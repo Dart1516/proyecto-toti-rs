@@ -13,6 +13,7 @@ import Cadastro from "./Pages/cadastro";
 import MinhaContaEducador from "./Pages/minhaContaEducador";
 import MinhaContaLider from "./Pages/minhaContaLider";
 import MinhaContaVoluntario from "./Pages/minhaContaVoluntario";
+import ThankYou from "./Pages/ThankYou";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/minhaContaEducador" element={<MinhaContaEducador/>} />
         <Route path="/minhaContaLider" element={<MinhaContaLider/>} />
         <Route path="/minhaContaVoluntario" element={<MinhaContaVoluntario/>} />
+        <Route path="/ThankYou" element={<ThankYou/>} />
 
         {/* Ruta predeterminada */}
         <Route path="/*" element={<Navigate to="/Principal" />} />

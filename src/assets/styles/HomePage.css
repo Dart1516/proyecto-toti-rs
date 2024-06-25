@@ -2,7 +2,6 @@
   background: var(--color4);
   font-family: "Jost Font";
   width: 100vw;
-  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,8 +20,6 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 100%;
-  min-height: 100vh;
 }
 
 .background-main::before {
@@ -31,22 +28,21 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background-image: url("../images/home.jpg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  filter: brightness(0.3); /* Aplica el filtro de brillo */
-  z-index: 0; /* Asegúrate de que el pseudo-elemento esté detrás del contenido */
+  height: 610px;
+  background-image: url("../images/banner-home.jpeg");
+  background-size: contain;
+  background-position: right;
+  background-repeat: no-repeat;
+  filter: brightness(0.3);
+  z-index: 0;
 }
 
 .main {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  height: 570px;
   width: inherit;
-  height: 100vh;
 }
 
 .main img {
@@ -58,10 +54,11 @@
 .text-home {
   display: flex;
   flex-direction: column;
-  width: 1000px;
+  width: 500px;
   gap: 30px;
-  padding-top: 2rem;
-  align-items: center;
+  padding-top: 60px;
+  margin-left: 10rem;
+  align-items: start;
 }
 
 .titulo-home {
@@ -79,51 +76,50 @@
 }
 
 .sub-text-home a {
-  color: var(--color4);
+  color: #6e3100;
   text-decoration: none;
-  background-color: transparent;
   padding: 6px 10px 6px 10px;
-  border: 3px solid var(--color1);
-  border-radius: 15px;
+  border-radius: 10px;
   transition: 0.5s;
+  width: 50%;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-color: var(--color2);
+}
+
+.sub-text-home a:first-child {
+  background-color: white;
+  color: var(--color1);
+  border: 2px solid var(--color1);
 }
 
 .sub-text-home a:hover {
+  color: white;
+  background-color: var(--color2);
+  transform: translateY(-4px);
+}
+
+.sub-text-home a:first-child:hover {
   background-color: var(--color1);
   color: var(--color4);
 }
 
 /*Titulos Main*/
 
-.main h1 {
-  text-transform: uppercase;
-  font-size: 60px;
-  margin: 0;
-  color: var(--color4);
-  font-size: clamp(0.7em, 1em + 1vw, 2em);
-}
-
 .main h2 {
   text-transform: uppercase;
+  text-align: start;
   margin: 0;
   color: var(--color4);
   font-size: 40px;
   font-size: clamp(0.6em, 1em + 1vw, 1.8em);
 }
 
-.main h3::first-letter {
-  text-transform: capitalize;
-}
-
-.main h3 {
-  color: var(--color4);
-  font-size: clamp(0.5em, 0.8em + 1vw, 1.2em);
-}
 .main p {
-  text-transform: uppercase;
+  font-weight: 400;
   margin: 0;
   color: var(--color4);
-  font-size: 15px;
+  text-align: start;
   font-size: clamp(0.3em, 0.6em + 1vw, 1em);
 }
 /*voluntariado*/
@@ -198,13 +194,79 @@
   text-align: center;
   word-break: break-all;
   padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .card-text a {
   color: var(--color3);
   text-decoration: none;
   border-bottom: 3px solid var(--color1);
+  align-self: center;
 }
+
+/*VIDEO*/
+
+.video-espacio {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  gap: 40px;
+  background-color: white;
+  padding: 50px 0px;
+}
+
+.titulo-video {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.text-video {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  text-align: left;
+  width: 284px;
+  gap: 50px;
+  justify-content: space-around;
+}
+
+.text-video h2 {
+  position: relative;
+  font-weight: 700;
+  text-align: left;
+  font-size: 1.5rem;
+}
+
+.text-video h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -20px;
+  width: 8rem;
+  height: 3px;
+  background-color: var(--color2);
+}
+
+.sub-text-video a {
+  text-decoration: none;
+  background-color: var(--color1);
+  color: white;
+  padding: 8px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.video video {
+  width: 700px;
+  border-radius: 20px;
+}
+
 /*Proceso de Voluntariado*/
+
 #registro-processo {
   width: 100%;
   display: flex;
@@ -215,7 +277,6 @@
   background-position: center;
   background-attachment: local;
   z-index: 0;
-  
 }
 .proceso-voluntariado {
   display: flex;
@@ -244,7 +305,7 @@ h2.h2-processo-voluntariado {
   font-size: clamp(0.5em, 0.8em + 1vw, 1em);
 }
 .proceso-texto.contato .h2-processo-voluntariado {
-color: var(--color3);
+  color: var(--color3);
 }
 .proceso-texto.contato p {
   color: var(--color4);
@@ -263,7 +324,7 @@ color: var(--color3);
 .proceso-texto {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 10px;
   justify-content: center;
   align-items: self-start;
   color: var(--color3);
@@ -304,6 +365,7 @@ color: var(--color3);
 }
 .proceso-texto-lideranca {
   display: flex;
+  gap: 15px;
   flex-direction: column;
   align-items: self-start;
   color: var(--color4);
@@ -322,7 +384,7 @@ color: var(--color3);
   text-transform: capitalize;
 }
 
-@media only screen and (max-width: 940px) {
+@media only screen and (max-width: 1120px) {
   .background-main {
     position: relative;
     overflow: hidden;
@@ -335,21 +397,117 @@ color: var(--color3);
   .background-main::before {
     width: 100%;
     height: 100%;
-    background-image: url("../images/home.jpg");
+    background-image: url("../images/banner-home.jpeg");
     background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
     filter: brightness(0.3);
-    max-height: 80vh;
-    z-index: 0; /* Asegúrate de que el pseudo-elemento esté detrás del contenido */
+    z-index: 0;
   }
   .main {
-    position: relative;
-    display: flex;
+    justify-content: start;
     align-items: center;
-    justify-content: center;
-    width: inherit;
-    height: 100%;
+    padding-top: 66px;
+  }
+  .text-home {
+    width: 51%;
+    margin: 0;
+    padding: 20px;
+    margin-left: 45px;
+  }
+  .video-espacio {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .text-video {
+    align-items: center;
+    width: 500px;
+    gap: 36px;
+    text-align: center;
+  }
+  .video video {
+    width: 90%;
+  }
+  .text-video h2 {
+    align-self: center;
+  }
+  .text-video h2::after {
+    width: 100%;
+    left: 0;
+  }
+}
+
+/*Galeria*/
+
+.banner-espacio {
+  width: 100%; 
+  overflow: hidden;
+  position: relative;
+  padding: 40px 0px;
+  background-color: var(--color1);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.banner-espacio h2 {
+  position: relative;
+    font-weight: 700;
+    text-align: left;
+    font-size: 1.5rem;
+    margin-left: 60px;
+    color: var(--color4);
+}
+
+.banner-espacio h2::after {
+  content: "";
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+    width: 20rem;
+    height: 3px;
+    background-color: var(--color2);
+}
+
+.desplazarImagenes {
+  overflow: hidden;
+  height: 500px; 
+  position: relative;
+}
+
+.contenedorImagenes {
+  display: flex;
+  flex-direction: row;
+  gap: 20px; 
+  align-items: center;
+  animation: desplazamientoHorizontal 40s linear infinite; 
+  width: calc(100% + 780px); 
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.contenedorImagenes img {
+  width: 500px; 
+  height: 500px;
+}
+
+.desplazarImagenes:hover .contenedorImagenes {
+  cursor: pointer;
+  animation-play-state: paused;
+}
+
+@keyframes desplazamientoHorizontal {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-500px * 8)); 
+  }
+}
+
+
+@media only screen and (max-width: 940px) {
+  .video-espacio {
+    flex-direction: column-reverse;
   }
   .voluntariado {
     display: flex;
@@ -387,7 +545,6 @@ color: var(--color3);
     font-size: clamp(0.3em, 0.4em + 1vw, 1em);
   }
   .card-text p {
-    
     font-size: clamp(0.3em, 0.4em + 1vw, 0.8em);
   }
   .card-text a {
@@ -399,10 +556,9 @@ color: var(--color3);
   .sub-text-home {
     display: flex;
     justify-content: space-between;
-    flex-direction: column;
     gap: 2rem;
     font-size: clamp(0.3em, 0.4em + 1vw, 0.8em);
-    width: 40%;
+    width: 100%;
   }
   #registro-processo {
     width: 100%;
@@ -414,7 +570,6 @@ color: var(--color3);
     background-position: center;
     background-attachment: local;
     z-index: 0;
-   
   }
   .proceso-voluntariado {
     display: flex;
@@ -428,7 +583,6 @@ color: var(--color3);
   }
   .proceso-texto.contato h2 {
     color: var(--color2);
-   
   }
   h2.h2-proceso-voluntariado {
     margin-bottom: 0;
@@ -457,13 +611,17 @@ color: var(--color3);
     width: inherit;
     height: 100vh;
   }
+  .text-home {
+    margin: 0;
+    width: 80%;
+  }
   .voluntariado {
     gap: 1rem;
     height: auto;
-    max-height:min-content;
+    max-height: min-content;
     min-height: 100vh;
     margin-bottom: 2rem;
-}
+  }
   .card-container {
     display: grid;
     width: 85%;
@@ -490,46 +648,51 @@ color: var(--color3);
     border-radius: 15px;
     border: 1px var(--color2) solid;
     width: 100%;
-    }
-    .card-text {
-      height: 40%;
-      width: 100%;
-      text-align: center;
-      word-break: break-all;
-      padding-top: 1rem;
-    }
-      #registro-processo {
-          flex-direction: column;   
-      }
-  
-    .proceso-voluntariado {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      align-items: flex-start;
-      width: 100%;
-      background-color: rgba(159, 152, 98, 0.345);
-      padding: 3rem;  
-      
   }
-  .proceso-texto-lideranca h2{
-    color:  var(--color1);
+  .card-text {
+    height: 40%;
+    width: 100%;
+    text-align: center;
+    word-break: break-all;
+    padding-top: 1rem;
   }
-  .proceso-texto p ,.proceso-texto.contato p {
-    color:var(--color4)
-}
-.proceso-voluntariado h1{
-  background-image: linear-gradient(to right, var(--color1), var(--color2));
+  #registro-processo {
+    flex-direction: column;
+  }
+
+  .proceso-voluntariado {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+    width: 100%;
+    background-color: rgba(159, 152, 98, 0.345);
+    padding: 3rem;
+  }
+  .proceso-texto-lideranca h2 {
+    color: var(--color1);
+  }
+  .proceso-texto p,
+  .proceso-texto.contato p {
+    color: var(--color4);
+  }
+  .proceso-voluntariado h1 {
+    background-image: linear-gradient(to right, var(--color1), var(--color2));
     background-clip: text;
     -webkit-background-clip: text; /* Prefijo para navegadores WebKit */
     color: transparent;
-}
-.proceso-voluntariado.lideranca h1{
-  background-image: linear-gradient(to right, var(--color4),var(--color4) , var(--color2));
-  background-clip: text;
-  -webkit-background-clip: text; /* Prefijo para navegadores WebKit */
-  color: transparent;
-}
+  }
+  .proceso-voluntariado.lideranca h1 {
+    background-image: linear-gradient(
+      to right,
+      var(--color4),
+      var(--color4),
+      var(--color2)
+    );
+    background-clip: text;
+    -webkit-background-clip: text; /* Prefijo para navegadores WebKit */
+    color: transparent;
+  }
 }
 @keyframes voluntariado-imagen {
   0% {
