@@ -81,11 +81,27 @@ const Accesso = () => {
     try {
       if (!email || !password) {
           setError("Por favor, preencha todos os campos");
-          return; // Detener la ejecución si los campos están vacíos
+          return; 
       }
-      const response = await Api.get(`/login/lideres?email=${email}&password=${password}`);
+      const normalizedEmail = email.toLowerCase();
+      const response = await Api.get(`/login/usuarios?email=${normalizedEmail}&password=${password}`);
       const username = response.data;
-      navigate("/interfazLider");
+    
+if (username) {
+  if (username === 'Lider') {
+    // El usuario es un líder, redirige a la interfaz de líder
+    navigate("/minhaContaLider");
+  } else if (username === 'Psicologo') {
+    // El usuario es un psicólogo, redirige a la interfaz de psicólogo
+    navigate("/minhaContaVoluntario");
+  } else if (username === 'EducadorSocial') {
+    // El usuario es un educador, redirige a la interfaz de educador
+    navigate("/minhaContaEducador");
+  } else {
+    // El usuario no tiene un rol válido, muestra un mensaje de error o redirige a una página de error
+    setError("Usuario não existe");
+  }
+}
   } catch (error) {
       console.error("Error al autenticar o cargar los datos del cliente:", error);
       setError("Email ou senha invalidos");
