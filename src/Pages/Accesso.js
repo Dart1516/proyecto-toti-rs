@@ -70,13 +70,14 @@ justifyContent:"space-between",
 alignItems:"center",
 padding:"1rem"
 }));
- let username;
-
+ 
+let username;
 const Accesso = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+
   const handleLogin = async () => {
     try {
       if (!email || !password) {
@@ -85,16 +86,17 @@ const Accesso = () => {
       }
       const normalizedEmail = email.toLowerCase();
       const response = await Api.get(`/login/usuarios?email=${normalizedEmail}&password=${password}`);
-      const username = response.data;
-    
-if (username) {
-  if (username === 'Lider') {
+      const username = response.data.username;
+      const rol = response.data.roleMessage;
+      console.log(rol + username)
+if (rol) {
+  if (rol === 'Lider') {
     // El usuario es un líder, redirige a la interfaz de líder
     navigate("/minhaContaLider");
-  } else if (username === 'Psicologo') {
+  } else if (rol === 'Psicologo') {
     // El usuario es un psicólogo, redirige a la interfaz de psicólogo
     navigate("/minhaContaVoluntario");
-  } else if (username === 'EducadorSocial') {
+  } else if (rol === 'Educadorsocial') {
     // El usuario es un educador, redirige a la interfaz de educador
     navigate("/minhaContaEducador");
   } else {
@@ -107,28 +109,23 @@ if (username) {
       setError("Email ou senha invalidos");
   }
   };
-
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
     setError(null);
   };
-
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
     setError(null);
   };
-  // codigo do checkbox
   const [rememberMe, setRememberMe] = useState(false);
 
   const handleRememberMeChange = (event) => {
     setRememberMe(event.target.checked);
   };
-  // codigo do icone do password
   const [showPassword, setShowPassword] = useState(false);
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
 };
-
   return (
     <div className="App SV">
     <div className="App-header">
@@ -141,7 +138,6 @@ if (username) {
             </Typography>
             <Typography variant="body">Ainda não faz parte da equipe de voluntarios? <StyledLink href="/cadastro">Clique aquí</StyledLink></Typography>
         <StyledLogin>
-           
             <FormGroup>
               <FormControl>
                 <InputLabel
@@ -211,18 +207,11 @@ if (username) {
               {error && <p style={{ color: "red" }}>{error}</p>}{" "}
               {/* Muestra el mensaje de error */}
             </FormGroup>
-           
-         
         </StyledLogin>
-      
-            
-     
     </StyledContainer>
     </div>
   );
-  
 };
-
+export { username }
 export default Accesso;
 
-export {username}
