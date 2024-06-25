@@ -78,24 +78,18 @@ const Accesso = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const handleLogin = async () => {
-    
-   
-
     try {
       if (!email || !password) {
           setError("Por favor, preencha todos os campos");
           return; // Detener la ejecución si los campos están vacíos
       }
-  
       const response = await Api.get(`/login/lideres?email=${email}&password=${password}`);
       const username = response.data;
-      console.log(username);
       navigate("/interfazLider");
   } catch (error) {
       console.error("Error al autenticar o cargar los datos del cliente:", error);
       setError("Email ou senha invalidos");
   }
-   
   };
 
   const handleEmailChange = (event) => {
@@ -182,9 +176,6 @@ const Accesso = () => {
                             </InputAdornment>
                     }
                 />
-               
-               
-
               </FormControl>
                  <StyledItems>
                  <FormControlLabel
