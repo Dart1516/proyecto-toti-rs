@@ -390,7 +390,7 @@ function FormularioEducadorSocial() {
                 name="password"
                 value={formData.password}
                 onChange={handleInputChange}
-                placeholder="Digite a sua senha"
+                placeholder="Crie  sua senha"
                 required
                 className="input-text"
               />
