@@ -3,6 +3,7 @@ import "../assets/styles/Header-NavMenu.css";
 import MobileMenu from "../Components/Mobile-Menu";
 import { Link } from "react-router-dom";
 import LoginMenu from "../Components/LoginMenu"; // Importa el nuevo componente
+import logo from "../../src/assets/images/logos/toters-logo-green-dark.svg"
 
 function HeaderAndMenu() {
 
@@ -17,7 +18,7 @@ function HeaderAndMenu() {
           <div className="menu-left">
             
             <ul className="opciones-derecha">
-            <Link to="/Principal" className="home-logo"></Link>
+            <Link><img src={logo} className="logo-home"></img></Link>
             </ul>
           </div>
           <ul className="opciones-izquierda">

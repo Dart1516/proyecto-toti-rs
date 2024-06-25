@@ -7,15 +7,17 @@
 
 .login-button {
   display: inline-block;
-    width: 90px;
-    height: 51px;
-    background-color: transparent;
-    border: none;
-    font-size: 20px;
-    font-weight: 700;
+  width: 90px;
+  height: 51px;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color6);
 }
 
-.login-button:hover { /* Cambia el color de fondo al pasar el cursor */
+.login-button:hover {
+  /* Cambia el color de fondo al pasar el cursor */
   color: var(--color4); /* Cambia el color del texto al pasar el cursor */
   cursor: pointer; /* Cambia el cursor al pasar el cursor sobre el contenedor */
   background-color: var(--color2);
