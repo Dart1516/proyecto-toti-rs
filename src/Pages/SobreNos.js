@@ -465,7 +465,7 @@ const About = () => {
                 <CardMedia sx={{ height: 220 }} image={manuel} title="" />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    Manuel
+                    Manuel 
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     Toter
@@ -476,7 +476,7 @@ const About = () => {
                     size="small"
                     style={{ color: "black" }}
                     target="_blank"
-                    href="https://github.com/Dart1516"
+                    href="https://github.com/ManueBernardo"
                   >
                     Github
                   </Button>
@@ -484,7 +484,7 @@ const About = () => {
                     size="small"
                     style={{ color: "black" }}
                     target="_blank"
-                    href="hhttps://www.linkedin.com/in/manuel-bernardo-165373208/"
+                    href="https://www.linkedin.com/in/manuel-bernardo-165373208/"
                   >
                     LinkedIn
                   </Button>
