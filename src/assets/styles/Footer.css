@@ -8,6 +8,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: static;
+    bottom: 0;
   }
   
   .footer-columns{

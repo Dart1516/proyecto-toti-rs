@@ -36,11 +36,12 @@ function FormularioLiderImigrante() {
       setError("Por favor, aceite os termos e condições antes de enviar o formulário.");
       return;
     }
-
+    const normalizedEmail = formData.email.toLowerCase();
     const dataToSend = {
       ...formData,
       termos: isTermsAccepted,
-      notes: formData.notes || ""
+      notes: formData.notes || "",
+      email: normalizedEmail,
     };
 
     delete dataToSend.verifyEmail;
@@ -229,7 +230,7 @@ function FormularioLiderImigrante() {
                 value={formData.email}
                 onChange={handleInputChange}
                 placeholder="Digite seu e-mail"
-                required
+                required toLowercase
                 className="input-text"
               />
             </div>

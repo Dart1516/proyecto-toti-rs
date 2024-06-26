@@ -360,7 +360,7 @@ function FormularioEducadorSocial() {
                 value={formData.email}
                 onChange={handleInputChange}
                 placeholder="Digite o seu e-mail"
-                required
+                required toLowercase
                 className="input-text"
               />
             </div>

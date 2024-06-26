@@ -2,8 +2,14 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import Logo from '../assets/images/logos/Juntos pelo RS.svg';
 import "../assets/styles/HeaderMinhaconta.css";
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function Headerminhaconta() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const username = location.state?.username;
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -26,7 +32,6 @@ function Headerminhaconta() {
     setDropdownOpen(!dropdownOpen);
   };
 
-  const username = 'Usuario';
 
   return (
     <div>
@@ -36,7 +41,7 @@ function Headerminhaconta() {
         </div>
         <div className="dropdown" ref={dropdownRef}>
           <button className="dropbtn" onClick={toggleDropdown}>
-            Olá, <span>{username}</span>
+            Olá, <span> {username}!</span>
           </button>
           {dropdownOpen && (
             <div className="dropdown-content show">

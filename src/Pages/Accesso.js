@@ -30,14 +30,16 @@ const StyledContainer = styled("div")(({theme}) => ({
   width:"70%"
 }
 }));
-const StyledLogin = styled("div")(() => ({
+const StyledLogin = styled("div")(({theme}) => ({
     gap:"2rem",
     padding:"4rem 0",
     display:"flex",
     flexDirection:"column",
     justifyContent:"center",
     width:"70%",
-
+    [theme.breakpoints.up('xs')]: { // <= mobile
+      padding:"0",
+  },
 }));
 const StyledButton = styled("button")(() => ({
   width: "100%",
@@ -71,13 +73,12 @@ alignItems:"center",
 padding:"1rem"
 }));
  
-let username;
 const Accesso = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-
+  const [username, setUsername] = useState("");
   const handleLogin = async () => {
     try {
       if (!email || !password) {
@@ -88,20 +89,15 @@ const Accesso = () => {
       const response = await Api.get(`/login/usuarios?email=${normalizedEmail}&password=${password}`);
       const username = response.data.username;
       const rol = response.data.roleMessage;
+      setUsername(username);
       console.log(rol + username)
 if (rol) {
   if (rol === 'Lider') {
-    // El usuario es un líder, redirige a la interfaz de líder
-    navigate("/minhaContaLider");
+    navigate("/minhaContaLider", { state: { username } }); // Pass username as state
   } else if (rol === 'Psicologo') {
-    // El usuario es un psicólogo, redirige a la interfaz de psicólogo
-    navigate("/minhaContaVoluntario");
+    navigate("/minhaContaVoluntario", { state: { username } });
   } else if (rol === 'Educadorsocial') {
-    // El usuario es un educador, redirige a la interfaz de educador
-    navigate("/minhaContaEducador");
-  } else {
-    // El usuario no tiene un rol válido, muestra un mensaje de error o redirige a una página de error
-    setError("Usuario não existe");
+    navigate("/minhaContaEducador", { state: { username } });
   }
 }
   } catch (error) {
@@ -204,6 +200,8 @@ if (rol) {
                  </StyledItems>
              
               <StyledButton onClick={handleLogin}>Entrar</StyledButton>
+              {/* Conditionally render a message if username is available */}
+      {username && <p>Username retrieved: {username}</p>}
               {error && <p style={{ color: "red" }}>{error}</p>}{" "}
               {/* Muestra el mensaje de error */}
             </FormGroup>
@@ -212,6 +210,5 @@ if (rol) {
     </div>
   );
 };
-export { username }
 export default Accesso;
 
