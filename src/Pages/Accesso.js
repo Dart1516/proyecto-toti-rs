@@ -133,7 +133,7 @@ if (rol) {
     <Typography variant="h4" color="black">
               Seja bem-vindo(a) de volta
             </Typography>
-            <Typography variant="body">Ainda não faz parte da equipe de voluntarios?  <Link to="/cadastro">Clique aquí.</Link> </Typography>
+            <Typography variant="body">Ainda não faz parte da equipe de voluntarios?  <StyledLink href="/Cadastro">Clique aquí.</StyledLink> <StyledLink href="/cadastro">Clique aquí.</StyledLink> <Link to="/cadastro">Clique aquí.</Link> <Link to="/Cadastro">Clique aquí.</Link> </Typography>
         <StyledLogin>
             <FormGroup>
               <FormControl>
