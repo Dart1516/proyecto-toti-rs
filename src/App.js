@@ -25,7 +25,6 @@ function App() {
         <Route path="/FormularioPsicologo" element={<FormularioPsicologo />} />
         <Route path="/FormularioEducadorSocial" element={<FormularioEducadorSocial />} />
         <Route path="/FormularioLiderImigrante" element={<FormularioLiderImigrante />} />
-        <Route path="/Cadastro" element={<Cadastro />} />
         <Route path="/material-de-apoyo" element={<MaterialDeApoio />} />
         <Route path="/avisoLegal" element={<AvisoLegal />} />
         <Route path="/Accesso" element={<Accesso />} />
