@@ -3,11 +3,12 @@ import { Typography } from "@mui/material";
 import {  styled } from "@mui/material";
 import { FormGroup, FormControl, InputLabel, Input, Checkbox , FormControlLabel} from "@mui/material";
 import { Api } from "../services/api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 import Header from "../Components/Header-NavMenu";
 import Visibility from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOff from '@mui/icons-material/VisibilityOffOutlined';
 import {  InputAdornment, IconButton } from '@mui/material';
+
 
 const StyledContainer = styled("div")(({theme}) => ({
   position: "fixed",
@@ -132,7 +133,7 @@ if (rol) {
     <Typography variant="h4" color="black">
               Seja bem-vindo(a) de volta
             </Typography>
-            <Typography variant="body">Ainda não faz parte da equipe de voluntarios? <StyledLink href="/cadastro">Clique aquí</StyledLink></Typography>
+            <Typography variant="body">Ainda não faz parte da equipe de voluntarios? <StyledLink href="/cadastro">Clique aquí.</StyledLink>  <Link to="/cadastro">Clique aquí.</Link> </Typography>
         <StyledLogin>
             <FormGroup>
               <FormControl>
