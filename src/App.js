@@ -14,6 +14,7 @@ import MinhaContaEducador from "./Pages/minhaContaEducador";
 import MinhaContaLider from "./Pages/minhaContaLider";
 import MinhaContaVoluntario from "./Pages/minhaContaVoluntario";
 import ThankYou from "./Pages/ThankYou";
+import FormularioOtro from "./Pages/FormularioOtro"
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/FormularioPsicologo" element={<FormularioPsicologo />} />
         <Route path="/FormularioEducadorSocial" element={<FormularioEducadorSocial />} />
         <Route path="/FormularioLiderImigrante" element={<FormularioLiderImigrante />} />
+        <Route path="/FormularioOtro" element={<FormularioOtro />} />
         <Route path="/material-de-apoyo" element={<MaterialDeApoio />} />
         <Route path="/avisoLegal" element={<AvisoLegal />} />
         <Route path="/Accesso" element={<Accesso />} />
