@@ -4,8 +4,11 @@ import Header from "../Components/Header-NavMenu";
 import "../assets/styles/App.css";
 import "../assets/styles/SejaVoluntario.css";
 import { FaTrash, FaPlus } from "react-icons/fa";
+import { Api } from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 function FormularioEducadorSocial() {
+  const navigate = useNavigate();
   const [additionalDays, setAdditionalDays] = useState([{ day: "", hour: "" }]);
   const [formData, setFormData] = useState({
     name: "",
@@ -16,19 +19,51 @@ function FormularioEducadorSocial() {
     certificate: "",
     state: "",
     cidade: "",
+    bairro: "",
     availability: "",
     additionalDays: [{ day: "", hour: "" }],
     password: "",
     verifyPassword: "",
     verifyEmail: "",
+    notes: "",
+    termos: false,
   });
   const [isTermsAccepted, setIsTermsAccepted] = useState(false);
   const [passwordError, setPasswordError] = useState("");
   const [passwordMatchError, setPasswordMatchError] = useState("");
   const [emailMatchError, setEmailMatchError] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!isTermsAccepted) {
+      setError("Por favor, aceite os termos e condições antes de enviar o formulário.");
+      return;
+    }
+
+    const dataToSend = {
+      ...formData,
+      termos: isTermsAccepted,
+      notes: formData.notes || "",
+      birthDate: new Date(formData.birthDate).toISOString(), // Convertir a formato ISO-8601
+    };
+
+    delete dataToSend.verifyEmail;
+    delete dataToSend.verifyPassword;
+
+    try {
+      const response = await Api.post('/cadastro/educadores', dataToSend);
+      console.log('dados enviados com sucesso:', response.data);
+      navigate('/thankyou');
+    } catch (error) {
+      console.error('Error al enviar datos:', error);
+      setError('Error al enviar datos: ' + (error.response?.data?.message || error.message));
+    }
+  };
 
   const handleTermsChange = (event) => {
     setIsTermsAccepted(event.target.checked);
+    setFormData({ ...formData, termos: event.target.checked });
   };
 
   const handleDayChange = (index, event) => {
@@ -51,15 +86,6 @@ function FormularioEducadorSocial() {
     setFormData({ ...formData, additionalDays: values });
   };
 
-  const handleSubmit = (event) => {
-    if (!isTermsAccepted) {
-      event.preventDefault();
-      alert(
-        "Por favor, aceite os termos e condições antes de enviar o formulário."
-      );
-    }
-  };
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -72,15 +98,11 @@ function FormularioEducadorSocial() {
     }
 
     if (name === "verifyPassword") {
-      setPasswordMatchError(
-        value !== formData.password ? "Las contraseñas no coinciden." : ""
-      );
+      setPasswordMatchError(value !== formData.password ? "Las contraseñas no coinciden." : "");
     }
 
     if (name === "verifyEmail") {
-      setEmailMatchError(
-        value !== formData.email ? "Los correos electrónicos no coinciden." : ""
-      );
+      setEmailMatchError(value !== formData.email ? "Los correos electrónicos no coinciden." : "");
     }
   };
 
@@ -165,12 +187,11 @@ function FormularioEducadorSocial() {
               <h4>5. Social Mídia (opcional)</h4>
               <input
                 className="input-text"
-                type="insta"
+                type="text"
                 name="insta"
-                placeholder="digite o nome de usuário"
+                placeholder="Digite o nome de usuário"
                 value={formData.insta}
                 onChange={handleInputChange}
-                required
               />
             </div>
 
@@ -212,23 +233,21 @@ function FormularioEducadorSocial() {
                 <option value="RJ">RJ</option>
                 <option value="RO">RO</option>
                 <option value="SC">SC</option>
-                <option value="AM">PA</option>
-                <option value="RS">PB</option>
-                <option value="MA">PE</option>
-                <option value="MS">PI</option>
-                <option value="RJ">RR</option>
-                <option value="RO">RN</option>
-                <option value="SC">SE</option>
-                <option value="RJ">TO</option>
-                <option value="RO">DF</option>
-                <option value="SC">GO</option>
-                <option value="SC">MS</option>
-                <option value="SC">SE</option>
+                <option value="PA">PA</option>
+                <option value="PB">PB</option>
+                <option value="PE">PE</option>
+                <option value="PI">PI</option>
+                <option value="RR">RR</option>
+                <option value="RN">RN</option>
+                <option value="SE">SE</option>
+                <option value="TO">TO</option>
+                <option value="DF">DF</option>
+                <option value="GO">GO</option>
               </select>
             </div>
             <div className="input-field">
               <h4>
-                8.Cidade<span>*</span>
+                8. Cidade<span>*</span>
               </h4>
               <input
                 type="text"
@@ -242,11 +261,11 @@ function FormularioEducadorSocial() {
             </div>
             <div className="input-field">
               <h4>
-                9.Bairro <span>*</span>
+                9. Bairro <span>*</span>
               </h4>
               <input
                 type="text"
-                name="Bairro"
+                name="bairro"
                 value={formData.bairro}
                 onChange={handleInputChange}
                 placeholder="Digite o Bairro"
@@ -262,13 +281,14 @@ function FormularioEducadorSocial() {
             </h4>
             <select
               className="form-select"
-              name="day"
+              name="availability"
               value={formData.availability}
+              onChange={handleInputChange}
               required
             >
               <option value="">Selecione</option>
-              <option value="Segunda">Sim </option>
-              <option value="Terça">Não</option>
+              <option value="Sim">Sim</option>
+              <option value="Não">Não</option>
             </select>
           </div>
           {additionalDays.map((additionalDay, index) => (
@@ -325,10 +345,7 @@ function FormularioEducadorSocial() {
                   </select>
                 </div>
                 {index > 0 && (
-                  <FaTrash
-                    onClick={() => removeDay(index)}
-                    className="borrar"
-                  />
+                  <FaTrash onClick={() => removeDay(index)} className="borrar" />
                 )}
                 {index === additionalDays.length - 1 && (
                   <button type="button" onClick={() => addDay()}>
@@ -352,7 +369,7 @@ function FormularioEducadorSocial() {
           <div className="inputs formCadastro">
             <div className="input-field">
               <h4>
-              Email para cadastro<span>*</span>
+                Email para cadastro<span>*</span>
               </h4>
               <input
                 type="email"
@@ -360,13 +377,13 @@ function FormularioEducadorSocial() {
                 value={formData.email}
                 onChange={handleInputChange}
                 placeholder="Digite o seu e-mail"
-                required toLowercase
+                required
                 className="input-text"
               />
             </div>
             <div className="input-field">
               <h4>
-              Verificação do Email<span>*</span>
+                Verificação do Email<span>*</span>
               </h4>
               <input
                 type="email"
@@ -383,14 +400,14 @@ function FormularioEducadorSocial() {
             </div>
             <div className="input-field">
               <h4>
-              Senha<span>*</span>
+                Senha<span>*</span>
               </h4>
               <input
                 type="password"
                 name="password"
                 value={formData.password}
                 onChange={handleInputChange}
-                placeholder="Crie  sua senha"
+                placeholder="Crie sua senha"
                 required
                 className="input-text"
               />
@@ -398,7 +415,7 @@ function FormularioEducadorSocial() {
             </div>
             <div className="input-field">
               <h4>
-              Verificação de Senha<span>*</span>
+                Verificação de Senha<span>*</span>
               </h4>
               <input
                 type="password"
@@ -415,14 +432,15 @@ function FormularioEducadorSocial() {
             </div>
           </div>
           <div className="opcional">
-            <h4>Observação (opcional)
-</h4>
+            <h4>Observação (opcional)</h4>
             <textarea
-              name="message"
+              name="notes"
               cols="60"
               rows="10"
               placeholder="Sua mensagem"
               className="contact-inputs"
+              value={formData.notes}
+              onChange={handleInputChange}
             ></textarea>
           </div>
           <div className="legal">
@@ -432,6 +450,7 @@ function FormularioEducadorSocial() {
               name="terms"
               onChange={handleTermsChange}
               required
+              checked={isTermsAccepted}
             />
             <label htmlFor="terms">
               Ao marcar esta caixa e clicar em Enviar, aceito o tratamento de
@@ -447,6 +466,7 @@ function FormularioEducadorSocial() {
               comunicação sobre atividades e oportunidades relacionadas.
             </label>
           </div>
+          {error && <p style={{ color: "red" }}>{error}</p>}
           <button className="SV" type="submit">
             Enviar
           </button>
