@@ -7,6 +7,8 @@ import FormularioEducadorSocial from "./Pages/FormularioEducadorSocial";
 import FormularioLiderImigrante from "./Pages/FormularioLiderImigrante";
 import Accesso from "./Pages/Accesso";
 import AvisoLegal from "./Pages/avisoLegal";
+import TermoLider from "./Pages/TermoLider";
+import TermoPsicologo from "./Pages/TermoPsicologo";
 import MaterialDeApoio from "./Pages/MaterialDeApoio";
 import InterfazLider from "./Pages/interfazLider";
 import Cadastro from "./Pages/cadastro";
@@ -29,6 +31,8 @@ function App() {
         <Route path="/FormularioOtro" element={<FormularioOtro />} />
         <Route path="/material-de-apoyo" element={<MaterialDeApoio />} />
         <Route path="/avisoLegal" element={<AvisoLegal />} />
+        <Route path="/TermoLider" element={<TermoLider />} />
+        <Route path="/TermoPsicologo" element={<TermoPsicologo />} />
         <Route path="/Accesso" element={<Accesso />} />
         <Route path="/interfazLider" element={<InterfazLider />} />
         <Route path="/cadastro" element={<Cadastro/>} />

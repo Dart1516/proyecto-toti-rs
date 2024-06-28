@@ -392,6 +392,20 @@ function FormularioPsicologo() {
             <label htmlFor="terms">
               Ao marcar esta caixa e clicar em Enviar, aceito o tratamento de meus dados pessoais por <a href="/avisoLegal" target="_blank">[Nome da sua organização]</a> conforme explicado no seu <a href="/avisoLegal" target="_blank">Aviso Legal de Proteção de Dados</a>, que inclui: 1) a coordenação e gestão de voluntários, e 2) a comunicação sobre atividades e oportunidades relacionadas.
             </label>
+            <div className="legal">
+  <input
+    type="checkbox"
+    id="terms"
+    name="terms"
+    onChange={handleTermsChange}
+    required
+    checked={formData.termos}
+  />
+  <label htmlFor="terms">
+    Ao marcar esta caixa e clicar em Enviar, aceito os termos de responsabilidade como psicólogo voluntário, conforme explicado no <a href="/TermoPsicologo" target="_blank">Termo de Responsabilidade</a>. Eu confirmo que li e aceito as condições de atuação voluntária, a confidencialidade, a pontualidade e a conformidade com o CRP, e estou ciente de que a plataforma atua apenas como um divulgador de oportunidades de serviço voluntário.
+  </label>
+</div>
+
           </div>
           {error && <p style={{ color: "red" }}>{error}</p>}{" "}
           <button className="SV" type="submit" onClick={handleSubmit}>Enviar</button>
