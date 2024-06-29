@@ -7,6 +7,8 @@ import FormularioEducadorSocial from "./Pages/FormularioEducadorSocial";
 import FormularioLiderImigrante from "./Pages/FormularioLiderImigrante";
 import Accesso from "./Pages/Accesso";
 import AvisoLegal from "./Pages/avisoLegal";
+import TermoLider from "./Pages/TermoLider";
+import TermoPsicologo from "./Pages/TermoPsicologo";
 import MaterialDeApoio from "./Pages/MaterialDeApoio";
 import InterfazLider from "./Pages/interfazLider";
 import Cadastro from "./Pages/cadastro";
@@ -15,6 +17,8 @@ import MinhaContaLider from "./Pages/minhaContaLider";
 import MinhaContaVoluntario from "./Pages/minhaContaVoluntario";
 import ThankYou from "./Pages/ThankYou";
 import RecuperarSenha from "./Pages/RecuperarSenha";
+import FormularioOtro from "./Pages/FormularioOtro"
+
 function App() {
   return (
     <Router>
@@ -25,9 +29,11 @@ function App() {
         <Route path="/FormularioPsicologo" element={<FormularioPsicologo />} />
         <Route path="/FormularioEducadorSocial" element={<FormularioEducadorSocial />} />
         <Route path="/FormularioLiderImigrante" element={<FormularioLiderImigrante />} />
-        <Route path="/Cadastro" element={<Cadastro />} />
+        <Route path="/FormularioOtro" element={<FormularioOtro />} />
         <Route path="/material-de-apoyo" element={<MaterialDeApoio />} />
         <Route path="/avisoLegal" element={<AvisoLegal />} />
+        <Route path="/TermoLider" element={<TermoLider />} />
+        <Route path="/TermoPsicologo" element={<TermoPsicologo />} />
         <Route path="/Accesso" element={<Accesso />} />
         <Route path="/interfazLider" element={<InterfazLider />} />
         <Route path="/cadastro" element={<Cadastro/>} />

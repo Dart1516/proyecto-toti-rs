@@ -56,7 +56,7 @@ function Cadastro() {
               </Link>
             </div>
             <div className="opcion">
-              <Link to="/Home"> {/* Enlace a la página de otros */}
+              <Link to="/FormularioOtro"> {/* Enlace a la página de otros */}
                 <div className="icono">
                   <FaEllipsisH />
                 </div>

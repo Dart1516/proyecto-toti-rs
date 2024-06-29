@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+
 import Header from "../Components/Header-NavMenu";
 import '../assets/styles/App.css';
 import '../assets/styles/HomePage.css';
@@ -16,52 +16,19 @@ import Banner5 from "../assets/images/Banner5.jpeg";
 import Banner6 from "../assets/images/Banner6.jpeg";
 import Banner7 from "../assets/images/Banner7.jpeg";
 import Banner8 from "../assets/images/Banner8.jpeg";
-
-function Banner() {
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    const slides = [
-        Banner1,
-        Banner2,
-        Banner3,
-        Banner4,
-        Banner5,
-        Banner6,
-        Banner7,
-        Banner8
-    ];
-
-    const nextSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
-    };
-
-    const prevSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
-    };
-
-    return (
-        <div className="banner-container">
-            <div className="slideshow" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-                {slides.map((slide, index) => (
-                    <div className="banner-slide" key={index}>
-                        <img
-                            src={slide}
-                            alt={`rotative banner ${index + 1}`}
-                            loading="lazy"
-                        />
-                    </div>
-                ))}
-            </div>
-            <div className="button-container">
-                <button onClick={prevSlide} className="button-galeria"> &lt; </button>
-                <button onClick={nextSlide} className="button-galeria"> &gt; </button>
-            </div>
-        </div>
-    );
-}
-
+import { useState } from "react";
 
 function Principal() {
+
+    const [activeIndices, setActiveIndices] = useState({});
+
+    const toggleSign = (index) => {
+        setActiveIndices((prevState) => ({
+          ...prevState,
+          [index]: !prevState[index]
+        }));
+      };
+
     return (
         <div className="App">
             <Header />
@@ -125,7 +92,7 @@ function Principal() {
                         </div>
                         <div className='text-video'>
                             <div className='titulo-video'>
-                                <h2>Estragos no Rio Grande do Sul</h2>
+                                <h2 className="titulo-h2">Estragos no Rio Grande do Sul</h2>
                             </div>
                             <p>As chuvas que atingem o Rio Grande do Sul causam muita destruição. O governo do estado já considera a tragédia como a pior da história</p>  
                             <div className='sub-text-video'>
@@ -177,7 +144,7 @@ function Principal() {
                   <div className='texto-video'>
                   <h2 >Faça parte dos que fazem a diferença</h2>
                   </div>
-                <section className="desplazarImagenes">
+                <div className="desplazarImagenes">
       <div className="contenedorImagenes">
         <img src={Banner1} alt='galeria de fotos'></img>
         <img src={Banner2} alt='galeria de fotos'></img>
@@ -191,9 +158,72 @@ function Principal() {
         <img src={Banner2} alt='galeria de fotos'></img>
         <img src={Banner3} alt='galeria de fotos'></img>
       </div>
-    </section>
-                </div>
+      </div>
+    </div>
+    <div className='perguntas-section'>
+        <h2 className="titulo-h2 second">Perguntas frequentes</h2>
+          <div className='pergunta'>
+            <div className="pergunta-encabeçado">
+              <div className='titulo-pergunta'>
+                <h2>01</h2>
+                <h1>O que é a Comunidade Toti</h1>
+              </div>
+              <button className={`sign ${activeIndices[0] ? 'active' : ''}`} onClick={() => toggleSign(0)}>
+                <div></div>
+                <div></div>
+              </button>
             </div>
+            <div className={`resposta ${activeIndices[0] ? 'show' : ''}`}>
+              <p>A Comunidade Toti é um coletivo de profissionais que tem como objetivo conectar Psicólogos e Educadores Sociais com um Líder Comunitário para prestação de serviço voluntário.</p>
+            </div>
+          </div>
+          <div className='pergunta'>
+            <div className="pergunta-encabeçado">
+              <div className='titulo-pergunta'>
+                <h2>02</h2>
+                <h1>Como posso me voluntariar?</h1>
+              </div>
+              <button className={`sign ${activeIndices[1] ? 'active' : ''}`} onClick={() => toggleSign(1)}>
+                <div></div>
+                <div></div>
+              </button>
+            </div>
+            <div className={`resposta ${activeIndices[1] ? 'show' : ''}`}>
+              <p>Para se voluntariar, basta acessar a página Serviços e selecionar sua categoria. Após isso, você irá preencher preencher um formulário com suas informações e interesses. O Líder Comunitário entrará em contato para discutir como você pode contribuir.</p>
+            </div>
+          </div>
+          <div className='pergunta'>
+            <div className="pergunta-encabeçado">
+              <div className='titulo-pergunta'>
+                <h2>03</h2>
+                <h1>Quais são as áreas de atuação para voluntários?</h1>
+              </div>
+              <button className={`sign ${activeIndices[2] ? 'active' : ''}`} onClick={() => toggleSign(2)}>
+                <div></div>
+                <div></div>
+              </button>
+            </div>
+            <div className={`resposta ${activeIndices[2] ? 'show' : ''}`}>
+              <p>Por enquanto, os voluntários podem atuar em três áreas, incluindo apoio psicológico, educação social e liderança de grupos. Nosso objetivo é aumentar as áreas de atuação para que mais voluntários possam se juntar.</p>
+            </div>
+          </div>
+          <div className='pergunta'>
+            <div className="pergunta-encabeçado">
+              <div className='titulo-pergunta'>
+                <h2>04</h2>
+                <h1>Quais são os benefícios de se voluntariar?</h1>
+              </div>
+              <button className={`sign ${activeIndices[3] ? 'active' : ''}`} onClick={() => toggleSign(3)}>
+                <div></div>
+                <div></div>
+              </button>
+            </div>
+            <div className={`resposta ${activeIndices[3] ? 'show' : ''}`}>
+              <p>Voluntariar-se para apoiar o Estado do Rio Grande do Sul proporciona uma oportunidade única de impactar positivamente a vida de pessoas em um momento de fragilidade, além de desenvolver novas habilidades, expandir sua rede de contatos, profissional e pessoal, e contribuir para uma causa significativa.</p>
+            </div>
+          </div>
+        </div>
+      </div>
             <footer>
                 <Footer />
             </footer>
