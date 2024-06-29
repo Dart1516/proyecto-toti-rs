@@ -87,7 +87,7 @@ const Accesso = () => {
           return; 
       }
       const normalizedEmail = email.toLowerCase();
-      const response = await Api.get(`/login/usuarios?email=${normalizedEmail}&password=${password}`);
+      const response = await Api.post(`/login/usuarios?email=${normalizedEmail}&password=${password}`);
       const username = response.data.username;
       const rol = response.data.roleMessage;
       setUsername(username);
