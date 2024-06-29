@@ -36,12 +36,10 @@ function FormularioPsicologo() {
       setError("Por favor, aceite os termos e condições antes de enviar o formulário.");
       return;
     }
-    const normalizedEmail = formData.email.toLowerCase();
     const dataToSend = {
       ...formData,
       birthDate: new Date(formData.birthDate).toISOString(), // Convertir a formato ISO-8601
       notes: formData.notes || "",
-      email: normalizedEmail,
     };
     delete dataToSend.verifyEmail;
     delete dataToSend.verifyPassword;

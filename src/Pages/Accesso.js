@@ -9,6 +9,7 @@ import Visibility from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOff from '@mui/icons-material/VisibilityOffOutlined';
 import {  InputAdornment, IconButton } from '@mui/material';
 
+
 const StyledContainer = styled("div")(({theme}) => ({
   position: "fixed",
   right: 0,
@@ -80,13 +81,14 @@ const Accesso = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const handleLogin = async () => {
+
     try {
       if (!email || !password) {
           setError("Por favor, preencha todos os campos");
           return; 
       }
-      const normalizedEmail = email.toLowerCase();
-      const response = await Api.get(`/login/usuarios?email=${normalizedEmail}&password=${password}`);
+      const passwordString = String(password);
+      const response = await Api.get(`/login/usuarios?email=${email}&password=${passwordString}`);
       const username = response.data.username;
       const rol = response.data.roleMessage;
       setUsername(username);
@@ -106,7 +108,8 @@ if (rol) {
   }
   };
   const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+    const lowercasedEmail = event.target.value.toLowerCase();
+  setEmail(lowercasedEmail);
     setError(null);
   };
   const handlePasswordChange = (event) => {
@@ -151,8 +154,9 @@ if (rol) {
                   type="email"
                   value={email}
                   onChange={handleEmailChange}
-                  required
+                  required 
                   className="input-text login"
+                  
                 />
               </FormControl>
               <FormControl style={{ marginTop: "20px" }}>
@@ -196,7 +200,7 @@ if (rol) {
         }
         label="Lembrar de mim"
       />
-<StyledLink href="/home">Esqueceu a senha?</StyledLink>
+<StyledLink href="/recuperarsenha">Esqueceu a senha?</StyledLink>
                  </StyledItems>
              
               <StyledButton onClick={handleLogin}>Entrar</StyledButton>
