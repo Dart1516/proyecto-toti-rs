@@ -23,7 +23,7 @@
   }
   
   .footer-column {
-    flex: 1;
+    padding-left: 40px;
   }
   
   .footer-column h4 {
