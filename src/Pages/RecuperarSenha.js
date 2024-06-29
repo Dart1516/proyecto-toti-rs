@@ -3,6 +3,7 @@ import Header from "../Components/Header-NavMenu";
 import "../assets/styles/Button.css";
 import "../assets/styles/recuperarsenha.css"
 import { Api } from "../services/api";
+import {Select,  MenuItem, Input , Typography} from "@mui/material";
 
 const RecuperarSenha = () => {
   const [recoveryMethod, setRecoveryMethod] = useState("email");
@@ -35,25 +36,26 @@ const RecuperarSenha = () => {
     <div id="container" >
    <Header/>
 <div id="body">
-      <h2>Recuperar senha</h2>
+<Typography variant="h4" color="black">Recuperar senha</Typography>
 
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
+      <form onSubmit={handleSubmit} id="form-recovery-password">
+        <div className="method">
           <label htmlFor="recoveryMethod">Método de recuperação:</label>
-          <select
+          <Select 
             id="recoveryMethod"
             value={recoveryMethod}
             onChange={(e) => setRecoveryMethod(e.target.value)}
           >
-            <option value="email">Email</option>
-            <option value="sms">SMS</option>
-          </select>
+            <MenuItem  className="option" value="email">Email</MenuItem>
+            <MenuItem  className="option" value="sms">SMS</MenuItem>
+          </Select>
         </div>
 
         {recoveryMethod === "email" && (
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input
+          <div className="form-method">
+            <label htmlFor="email" id="email-label">Email:</label>
+            <Input
+            className="input-method"
               type="email"
               id="email"
               value={email}
@@ -65,9 +67,10 @@ const RecuperarSenha = () => {
         )}
 
         {recoveryMethod === "sms" && (
-          <div className="form-group">
-            <label htmlFor="phone">Número de telefone:</label>
+          <div className="form-method">
+            <label htmlFor="phone" id="phone-label">Número de telefone:</label>
             <input
+                  className="input-method "
               type="tel"
               id="phone"
               value={phone}
@@ -78,7 +81,7 @@ const RecuperarSenha = () => {
           </div>
         )}
 
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btnRecuperarSenha">
           enviar
         </button>
         {error && <div className="error-message">{error}</div>}
