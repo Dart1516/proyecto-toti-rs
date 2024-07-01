@@ -10,6 +10,7 @@ const RecuperarSenha = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [error, setError] = useState("");
+  const [emailValidacao, setEmailValidacao] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,9 +19,10 @@ const RecuperarSenha = () => {
 
     try {
         const normalizedEmail = email.toLowerCase();
-        const response = await Api.get(`/login/usuarios?email=${normalizedEmail}`);
+        const response = await Api.post(`/login/usuarios?email=${normalizedEmail}`);
       if (response.data.length === 0) {
         setError("Usuário não encontrado.");
+        setEmailValidacao(response.data.email)
         return;
       }
 
