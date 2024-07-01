@@ -52,7 +52,7 @@ function FormularioEducadorSocial() {
     delete dataToSend.verifyPassword;
 
     try {
-      const response = await Api.post('/cadastro/educadores', dataToSend);
+      const response = await Api.post('/cadastro/educador', dataToSend);
       console.log('dados enviados com sucesso:', response.data);
       navigate('/thankyou');
     } catch (error) {
