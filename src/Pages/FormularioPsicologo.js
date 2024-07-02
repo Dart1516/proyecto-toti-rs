@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import InputMask from "react-input-mask";
 import Header from "../Components/Header-NavMenu";
-import '../assets/styles/App.css';
-import '../assets/styles/SejaVoluntario.css';
-import { FaTrash, FaPlus } from 'react-icons/fa';
+import "../assets/styles/App.css";
+import "../assets/styles/SejaVoluntario.css";
+import { FaTrash, FaPlus } from "react-icons/fa";
 import { Api } from "../services/api";
 import { useNavigate } from "react-router-dom";
 
@@ -25,43 +25,63 @@ function FormularioPsicologo() {
     password: "",
     notes: "",
     termos: false,
+    termos1: false,
     verifyEmail: "",
-    verifyPassword: ""
+    verifyPassword: "",
   });
   const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const validateForm = (form) => {
+    delete form.rede_social;
+    delete form.notes;
+    const isNotEmpty = Object.keys(form).every((key) => form[key]);
+    if (!form.termos || !form.termos1) {
+      setError(
+        "Por favor, aceite os termos e condições antes de enviar o formulário."
+      );
+    } else if (!isNotEmpty) {
+      setError("Por favor, preencha os campos que faltam.");
+    }
+    return isNotEmpty;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!isTermsAccepted) {
-      setError("Por favor, aceite os termos e condições antes de enviar o formulário.");
+    setIsLoading(true);
+    const result = validateForm({ ...formData });
+    if (!result) {
+      setIsLoading(false);
       return;
     }
     const dataToSend = {
       ...formData,
       birthDate: new Date(formData.birthDate).toISOString(), // Convertir a formato ISO-8601
-      notes: formData.notes || "",
+      notes: formData?.notes ?? "",
     };
     delete dataToSend.verifyEmail;
     delete dataToSend.verifyPassword;
 
     try {
-      const response = await Api.post('/cadastro/psicologos', dataToSend);
-      console.log('dados enviados com sucesso:', response.data);
-      navigate('/thankyou'); // Redirigir a la página de agradecimiento
+      const response = await Api.post("/cadastro/psicologos", dataToSend);
+      console.log("dados enviados com sucesso:", response.data);
+      navigate("/thankyou"); // Redirigir a la página de agradecimiento
     } catch (error) {
-      console.error('Error al enviar datos:', error);
-      setError('Error al enviar datos: ' + (error.response?.data?.message || error.message));
+      console.error("Error al enviar datos:", error);
+      setError(
+        "Error al enviar datos: " +
+          (error.response?.data?.message || error.message)
+      );
     }
+    setIsLoading(false);
   };
 
-  const [isTermsAccepted, setIsTermsAccepted] = useState(false);
   const [passwordError, setPasswordError] = useState("");
   const [passwordMatchError, setPasswordMatchError] = useState("");
   const [emailMatchError, setEmailMatchError] = useState("");
 
   const handleTermsChange = (event) => {
-    setIsTermsAccepted(event.target.checked);
-    setFormData({ ...formData, termos: event.target.checked });
+    setFormData({ ...formData, [event.target.name]: event.target.checked });
   };
 
   const handleDayChange = (index, event) => {
@@ -91,7 +111,7 @@ function FormularioPsicologo() {
     const { name, value } = event.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
 
     if (name === "password") {
@@ -99,11 +119,15 @@ function FormularioPsicologo() {
     }
 
     if (name === "verifyPassword") {
-      setPasswordMatchError(value !== formData.password ? "Las contraseñas no coinciden." : "");
+      setPasswordMatchError(
+        value !== formData.password ? "Las contraseñas no coinciden." : ""
+      );
     }
 
     if (name === "verifyEmail") {
-      setEmailMatchError(value !== formData.email ? "Los correos electrónicos no coinciden." : "");
+      setEmailMatchError(
+        value !== formData.email ? "Los correos electrónicos no coinciden." : ""
+      );
     }
   };
 
@@ -127,10 +151,12 @@ function FormularioPsicologo() {
           <h2>SOS Rio Grande do Sul </h2>
           <h2>Cadastro de Psicólogos Voluntários</h2>
         </div>
-        <form className="general-inputs" onSubmit={handleSubmit}>
+        <form className="general-inputs">
           <div className="inputs formCadastro">
             <div className="input-field">
-              <h4>1. Nome Completo<span>*</span></h4>
+              <h4>
+                1. Nome Completo<span>*</span>
+              </h4>
               <input
                 className="input-text"
                 type="text"
@@ -142,7 +168,9 @@ function FormularioPsicologo() {
               />
             </div>
             <div className="input-field">
-              <h4>2. CPF<span>*</span></h4>
+              <h4>
+                2. CPF<span>*</span>
+              </h4>
               <InputMask
                 mask="999.999.999-99"
                 value={formData.cpf}
@@ -154,7 +182,9 @@ function FormularioPsicologo() {
               />
             </div>
             <div className="input-field">
-              <h4>3. Data de Nascimento<span>*</span></h4>
+              <h4>
+                3. Data de Nascimento<span>*</span>
+              </h4>
               <input
                 className="input-text"
                 type="date"
@@ -165,7 +195,9 @@ function FormularioPsicologo() {
               />
             </div>
             <div className="input-field">
-              <h4>4. Número do WhatsApp para contato<span>*</span></h4>
+              <h4>
+                4. Número do WhatsApp para contato<span>*</span>
+              </h4>
               <InputMask
                 mask="(99) 99999-9999"
                 value={formData.phoneNumber}
@@ -188,7 +220,9 @@ function FormularioPsicologo() {
               />
             </div>
             <div className="input-field">
-              <h4>CRP<span>*</span></h4>
+              <h4>
+                CRP<span>*</span>
+              </h4>
               <InputMask
                 mask="**/******"
                 value={formData.crp}
@@ -200,28 +234,58 @@ function FormularioPsicologo() {
               />
             </div>
             <div className="input-field">
-              <h4>Área de especialização<span>*</span></h4>
-              <select className="form-select" name="specialization" value={formData.specialization} onChange={handleInputChange} required>
+              <h4>
+                Área de especialização<span>*</span>
+              </h4>
+              <select
+                className="form-select"
+                name="specialization"
+                value={formData.specialization}
+                onChange={handleInputChange}
+                required
+              >
                 <option value="">-Selecione-</option>
-                <option value="Aconselhamento Psicológico">Acolhimento Psicológico</option>
+                <option value="Aconselhamento Psicológico">
+                  Acolhimento Psicológico
+                </option>
                 <option value="Neuropsicologia">Neuropsicologia</option>
                 <option value="Psicologia Clínica">Psicologia Clínica</option>
-                <option value="Psicologia Comunitária">Psicologia Comunitária</option>
-                <option value="Psicologia do Desenvolvimento">Psicologia do Desenvolvimento</option>
-                <option value="Psicologia do Esporte">Psicologia do Esporte</option>
-                <option value="Psicologia Educacional">Psicologia Educacional</option>
-                <option value="Psicologia Experimental">Psicologia Experimental</option>
+                <option value="Psicologia Comunitária">
+                  Psicologia Comunitária
+                </option>
+                <option value="Psicologia do Desenvolvimento">
+                  Psicologia do Desenvolvimento
+                </option>
+                <option value="Psicologia do Esporte">
+                  Psicologia do Esporte
+                </option>
+                <option value="Psicologia Educacional">
+                  Psicologia Educacional
+                </option>
+                <option value="Psicologia Experimental">
+                  Psicologia Experimental
+                </option>
                 <option value="Psicologia Forense">Psicologia Forense</option>
                 <option value="Psicologia Infantil">Psicologia Infantil</option>
-                <option value="Psicologia Organizacional e do Trabalho">Psicologia Organizacional e do Trabalho</option>
+                <option value="Psicologia Organizacional e do Trabalho">
+                  Psicologia Organizacional e do Trabalho
+                </option>
                 <option value="Psicologia da Saúde">Psicologia da Saúde</option>
                 <option value="Psicologia Social">Psicologia Social</option>
                 <option value="Psicoterapia">Outros</option>
               </select>
             </div>
             <div className="input-field">
-              <h4>Estado <span>*</span></h4>
-              <select className="form-select" name="state" value={formData.state} onChange={handleInputChange} required>
+              <h4>
+                Estado <span>*</span>
+              </h4>
+              <select
+                className="form-select"
+                name="state"
+                value={formData.state}
+                onChange={handleInputChange}
+                required
+              >
                 <option value="">-Selecione-</option>
                 <option value="SP">SP</option>
                 <option value="MT">MT</option>
@@ -250,11 +314,16 @@ function FormularioPsicologo() {
           </div>
           {additionalDays.map((additionalDay, index) => (
             <div className="form-group formulario" key={index}>
-              <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+              <div
+                style={{ display: "flex", gap: "10px", alignItems: "center" }}
+              >
                 <div className="form-group formulario" key={index}>
                   <div className="dia-disponible">
                     <div>
-                      <h4>Dia Disponivel {index + 1}<span>*</span></h4>
+                      <h4>
+                        Dia Disponivel {index + 1}
+                        <span>*</span>
+                      </h4>
                       <select
                         className="form-select"
                         name="day"
@@ -273,7 +342,10 @@ function FormularioPsicologo() {
                       </select>
                     </div>
                     <div>
-                      <h4>Hora Disponivel {index + 1}<span>*</span></h4>
+                      <h4>
+                        Hora Disponivel {index + 1}
+                        <span>*</span>
+                      </h4>
                       <select
                         className="form-select"
                         name="hour"
@@ -298,10 +370,15 @@ function FormularioPsicologo() {
                       </select>
                     </div>
                     {index > 0 && (
-                      <FaTrash onClick={() => removeDay(index)} className="borrar" />
+                      <FaTrash
+                        onClick={() => removeDay(index)}
+                        className="borrar"
+                      />
                     )}
                     {index === additionalDays.length - 1 && (
-                      <button type="button" onClick={() => addDay()}><FaPlus /></button>
+                      <button type="button" onClick={() => addDay()}>
+                        <FaPlus />
+                      </button>
                     )}
                   </div>
                 </div>
@@ -310,24 +387,35 @@ function FormularioPsicologo() {
           ))}
           <div className="lembre-text">
             <h1>Lembre-se:</h1>
-            <p>Seu e-mail e senha cadastrados serão seu login para o acesso na plataforma</p>
-            <p>Após preencher todos os seus dados clique em <strong>"Enviar"</strong> e seu cadastro estará completo</p>
+            <p>
+              Seu e-mail e senha cadastrados serão seu login para o acesso na
+              plataforma
+            </p>
+            <p>
+              Após preencher todos os seus dados clique em{" "}
+              <strong>"Enviar"</strong> e seu cadastro estará completo
+            </p>
           </div>
           <div className="inputs formCadastro">
             <div className="input-field">
-              <h4>Email para cadastro<span>*</span></h4>
+              <h4>
+                Email para cadastro<span>*</span>
+              </h4>
               <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
                 placeholder="Digite o seu e-mail"
-                required toLowercase
+                required
+                toLowercase
                 className="input-text"
               />
             </div>
             <div className="input-field">
-              <h4>Verificação do Email<span>*</span></h4>
+              <h4>
+                Verificação do Email<span>*</span>
+              </h4>
               <input
                 type="email"
                 name="verifyEmail"
@@ -337,10 +425,14 @@ function FormularioPsicologo() {
                 required
                 className="input-text"
               />
-              {emailMatchError && <p style={{ color: 'red' }}>{emailMatchError}</p>}
+              {emailMatchError && (
+                <p style={{ color: "red" }}>{emailMatchError}</p>
+              )}
             </div>
             <div className="input-field">
-              <h4>Senha<span>*</span></h4>
+              <h4>
+                Senha<span>*</span>
+              </h4>
               <input
                 type="password"
                 name="password"
@@ -353,7 +445,9 @@ function FormularioPsicologo() {
               {passwordError && <p>{passwordError}</p>}
             </div>
             <div className="input-field">
-              <h4>Verificação de Senha<span>*</span></h4>
+              <h4>
+                Verificação de Senha<span>*</span>
+              </h4>
               <input
                 type="password"
                 name="verifyPassword"
@@ -363,7 +457,9 @@ function FormularioPsicologo() {
                 required
                 className="input-text"
               />
-              {passwordMatchError && <p style={{ color: 'red' }}>{passwordMatchError}</p>}
+              {passwordMatchError && (
+                <p style={{ color: "red" }}>{passwordMatchError}</p>
+              )}
             </div>
           </div>
           <div className="opcional">
@@ -381,32 +477,57 @@ function FormularioPsicologo() {
           <div className="legal">
             <input
               type="checkbox"
-              id="terms"
-              name="terms"
+              id="termos"
+              name="termos"
               onChange={handleTermsChange}
               required
               checked={formData.termos}
             />
-            <label htmlFor="terms">
-              Ao marcar esta caixa e clicar em Enviar, aceito o tratamento de meus dados pessoais por <a href="/avisoLegal" target="_blank">[Nome da sua organização]</a> conforme explicado no seu <a href="/avisoLegal" target="_blank">Aviso Legal de Proteção de Dados</a>, que inclui: 1) a coordenação e gestão de voluntários, e 2) a comunicação sobre atividades e oportunidades relacionadas.
+            <label htmlFor="termos">
+              Ao marcar esta caixa e clicar em Enviar, aceito o tratamento de
+              meus dados pessoais por{" "}
+              <a href="/avisoLegal" target="_blank">
+                [Nome da sua organização]
+              </a>{" "}
+              conforme explicado no seu{" "}
+              <a href="/avisoLegal" target="_blank">
+                Aviso Legal de Proteção de Dados
+              </a>
+              , que inclui: 1) a coordenação e gestão de voluntários, e 2) a
+              comunicação sobre atividades e oportunidades relacionadas.
             </label>
             <div className="legal">
-  <input
-    type="checkbox"
-    id="terms"
-    name="terms"
-    onChange={handleTermsChange}
-    required
-    checked={formData.termos}
-  />
-  <label htmlFor="terms">
-    Ao marcar esta caixa e clicar em Enviar, aceito os termos de responsabilidade como psicólogo voluntário, conforme explicado no <a href="/TermoPsicologo" target="_blank">Termo de Responsabilidade</a>. Eu confirmo que li e aceito as condições de atuação voluntária, a confidencialidade, a pontualidade e a conformidade com o CRP, e estou ciente de que a plataforma atua apenas como um divulgador de oportunidades de serviço voluntário.
-  </label>
-</div>
-
+              <input
+                type="checkbox"
+                id="termos1"
+                name="termos1"
+                onChange={handleTermsChange}
+                required
+                checked={formData.termos1}
+              />
+              <label htmlFor="termos1">
+                Ao marcar esta caixa e clicar em Enviar, aceito os termos de
+                responsabilidade como psicólogo voluntário, conforme explicado
+                no{" "}
+                <a href="/TermoPsicologo" target="_blank">
+                  Termo de Responsabilidade
+                </a>
+                . Eu confirmo que li e aceito as condições de atuação
+                voluntária, a confidencialidade, a pontualidade e a conformidade
+                com o CRP, e estou ciente de que a plataforma atua apenas como
+                um divulgador de oportunidades de serviço voluntário.
+              </label>
+            </div>
           </div>
           {error && <p style={{ color: "red" }}>{error}</p>}{" "}
-          <button className="SV" type="submit" onClick={handleSubmit}>Enviar</button>
+          <button
+            className={`SV${isLoading ? " submit-disabled" : ""}`}
+            type="submit"
+            onClick={handleSubmit}
+            disabled={isLoading}
+          >
+            Enviar
+          </button>
         </form>
       </div>
       <footer className="App-footer"></footer>
