@@ -5,6 +5,9 @@ import '../assets/styles/App.css';
 import '../assets/styles/SejaVoluntario.css';
 import { Api } from "../services/api";
 import { useNavigate } from "react-router-dom";
+import Visibility from '@mui/icons-material/VisibilityOutlined';
+import VisibilityOff from '@mui/icons-material/VisibilityOffOutlined';
+import {  InputAdornment, IconButton, Input } from '@mui/material';
 
 function FormularioLiderImigrante() {
   const navigate = useNavigate();
@@ -86,10 +89,18 @@ function FormularioLiderImigrante() {
     if (!/(?=.*[a-z])/.test(password)) error += "Falta minúscula. ";
     if (!/(?=.*[A-Z])/.test(password)) error += "Falta mayúscula. ";
     if (!/(?=.*\d)/.test(password)) error += "Falta número. ";
-    if (!/(?=.*[@#$%^&+=])/.test(password)) error += "Falta símbolo. ";
+    if (!/(?=.*[@#$%^&=])/.test(password)) error += "Falta símbolo.(@#$%&=)";
+    if (password.length < 8) error += "A senha deve conter pelo menos 8 digitos.";
     setPasswordError(error);
   };
-
+  const [showPassword, setShowPassword] = useState(false);
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+};
+const [showPasswordVerify, setShowPasswordVerify] = useState(false);
+const handleTogglePasswordVerify = () => {
+  setShowPasswordVerify(!showPasswordVerify);
+};
   return (
     <div className="App SV">
       <div className="App-header">
@@ -249,27 +260,45 @@ function FormularioLiderImigrante() {
             </div>
             <div className="input-field">
               <h4>Senha<span>*</span></h4>
-              <input
-                type="password"
+              <Input
+                type={showPassword ? 'text' : 'password'}
                 name="password"
                 value={formData.password}
                 onChange={handleInputChange}
                 placeholder="Crie sua senha"
                 required
                 className="input-text"
+                inputProps={{
+                  pattern: "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_{}|:;'<>\/?~])[A-Za-z0-9!@#$%^&*()_{}|:;'<>\/?~]{8}$",
+                  maxLength: 8,
+                }}
+                endAdornment={
+                  <InputAdornment position="end">
+                            <IconButton onClick={handleTogglePassword}>
+                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                            </IconButton>
+                        </InputAdornment>
+                }
               />
               {passwordError && <p>{passwordError}</p>}
             </div>
             <div className="input-field">
               <h4>Verificação de Senha<span>*</span></h4>
-              <input
-                type="password"
+              <Input
+                type={showPasswordVerify? 'text' : 'password'}
                 name="verifyPassword"
                 value={formData.verifyPassword}
                 onChange={handleInputChange}
                 placeholder="Confirme a sua senha"
                 required
                 className="input-text"
+                endAdornment={
+                  <InputAdornment position="end">
+                            <IconButton onClick={handleTogglePasswordVerify}>
+                                {showPasswordVerify? <VisibilityOff /> : <Visibility />}
+                            </IconButton>
+                        </InputAdornment>
+                }
               />
               {passwordMatchError && <p style={{ color: 'red' }}>{passwordMatchError}</p>}
             </div>

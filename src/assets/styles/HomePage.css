@@ -211,6 +211,7 @@
   display: flex;
   flex-direction: row;
   width: 100%;
+  max-width: 100vw;
   justify-content: center;
   gap: 40px;
   background-color: white;
@@ -805,6 +806,16 @@ h2.h2-processo-voluntariado {
     -webkit-background-clip: text; /* Prefijo para navegadores WebKit */
     color: transparent;
   }
+  .text-video {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    text-align: left;
+    width: 80%;
+    gap: 50px;
+    justify-content: space-around;
+  }
+  
 }
 @keyframes voluntariado-imagen {
   0% {

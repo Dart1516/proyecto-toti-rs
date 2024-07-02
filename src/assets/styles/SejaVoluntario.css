@@ -84,7 +84,7 @@ h2 {
 .input-field {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+
 }
 
 .input-field,
