@@ -148,7 +148,7 @@ font-size: clamp(0.3em, 0.5em + 1vw, 0.6em); ;
 }
 
 .professional-table {
-  min-width: 800px; 
+  max-width: 95vw; 
   border-collapse: collapse;
   margin: 20px 0;
   width: 100%;
@@ -158,6 +158,8 @@ font-size: clamp(0.3em, 0.5em + 1vw, 0.6em); ;
 .professional-table th, .professional-table td {
   padding: 14px 8px;
   text-align: left;
+  max-width: 100%;
+  width: 100%;
 }
 
 .professional-table th {
