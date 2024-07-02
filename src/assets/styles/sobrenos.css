@@ -51,6 +51,7 @@
     max-height: 450px;
     height: 430px;
     margin-bottom: 1rem;
+    object-fit: contain;
   }
 .hr{
     border: 0;
