@@ -3,14 +3,19 @@
     flex-direction: column;
     min-height: 100vh; /* altura mínima del viewport */
     min-width: 100vw;
-    max-width: 2000px;
+    max-width: 100vw;
   }
 
 /*Div Principal*/
 
 .minhaConta {
-    padding: 25px 80px 0px 80px;
+    padding: 25px 0px 25px 0px;
     background-color: var(--color4);
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
 }
 
 /*Segmentos y texto*/
@@ -19,9 +24,10 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
-    margin-bottom: 30px;
-    padding: 30px;
-    background-color: white;
+    margin-top: 30px;
+    padding: 2rem;
+    background-color:white;
+    width: 80%;
 }
 
 .inputs {
@@ -110,6 +116,8 @@
     padding: 20px 40px;
     background-color: white;
     gap: 30px;
+    margin-top: 30px;
+    width: 80%;
 }
 
 .dia-disponible {
@@ -121,6 +129,7 @@
     display: flex;
     gap: 20px;
     color: var(--color1);
+    margin-top: 2rem;
 }
 
 .texto-dia {
@@ -152,4 +161,44 @@
 .radio-option {
     display: flex;
     gap: 20px;
+}
+@media (max-width: 800px) {
+    .section, .form-group{
+        min-width: 90%;
+    }
+}
+@media (max-width: 580px) {
+    .minhaConta {
+        padding:  0px ;
+        margin: 0;
+        background-color: var(--color4);
+        min-width: 100vw;
+    }
+    .section, .form-group{
+        min-width: 100%;
+    }
+    .inputs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1rem;
+    }
+    .buttons {
+        display: flex;
+        width: 100%;
+        gap: 1rem;
+        justify-content: end;
+        align-items: center;
+    }
+    
+    .buttons button {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 16px;
+        background-color: var(--color1);
+        color: var(--color4);
+        padding: 5px 10px;
+        border-radius: 10px;
+        width: 50%;
+        border: none;
+    }
 }

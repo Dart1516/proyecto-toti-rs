@@ -139,10 +139,10 @@ function InterfazLider() {
                 <tr key={educador.id}>
                   <td>{educador.name}</td>
                   <td>{educador.day}</td>
-                  <td>{educador.specialization}</td>
+                  <td>{educador.profession}</td>
                   <td>{educador.phoneNumber}</td>
                   <td>{educador.email}</td>
-                  <td>{educador.state}</td>
+                  <td>{educador.state},<br/>{educador.city}</td>
                 </tr>
               ))}
             </tbody>

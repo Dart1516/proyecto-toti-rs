@@ -144,7 +144,7 @@
 .table-container {
   display: flex;
   width: 100%;
-  font-size: 16px;
+font-size: clamp(0.3em, 0.5em + 1vw, 0.6em); ;
 }
 
 .professional-table {
@@ -188,6 +188,5 @@
   object-fit: cover;
 }
 
-.contato-table {
 
-}
+

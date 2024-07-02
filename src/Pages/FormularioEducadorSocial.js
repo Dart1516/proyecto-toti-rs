@@ -14,7 +14,7 @@ function FormularioEducadorSocial() {
     name: "",
     cpf: "",
     birthDate: "",
-    phone: "",
+    phoneNumber: "",
     email: "",
     certificate: "",
     state: "",
@@ -175,12 +175,12 @@ function FormularioEducadorSocial() {
               </h4>
               <InputMask
                 mask="(99) 99999-9999"
-                value={formData.phone}
+                value={formData.phoneNumber}
                 onChange={handleInputChange}
                 placeholder="(DDD) Digite o número"
                 required
                 className="input-text"
-                name="phone"
+                name="phoneNumber"
               />
             </div>
             <div className="input-field">

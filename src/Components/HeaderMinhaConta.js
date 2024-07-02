@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import Logo from '../assets/images/logos/Juntos pelo RS.svg';
 import "../assets/styles/HeaderMinhaconta.css";
 import { useNavigate, useLocation } from 'react-router-dom';
+import Logo from "../assets/images/logos/toters-logo-green-dark.svg"
 
 function Headerminhaconta() {
   const navigate = useNavigate();

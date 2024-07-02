@@ -14,7 +14,6 @@ const StyledContainer = styled("div")(({theme}) => ({
   position: "fixed",
   right: 0,
   background: "#fafafa",
-  padding: "4rem 6rem",
   zIndex: "1",
   height:"100vh", 
   justifyItems:"center", 
@@ -22,10 +21,10 @@ const StyledContainer = styled("div")(({theme}) => ({
   alignItems:"center",
   display:"flex",
   flexDirection:"column",
+  marginTop:"2rem",
   [theme.breakpoints.up('xs')]: { // <= mobile
-    padding: "4rem 1rem",
-    width:"100%"
-
+    padding: "5rem 1rem",
+    width:"100vw",
 },
 [theme.breakpoints.up('md')]: { // >=mobile
   width:"70%"
@@ -33,7 +32,7 @@ const StyledContainer = styled("div")(({theme}) => ({
 }));
 const StyledLogin = styled("div")(({theme}) => ({
     gap:"2rem",
-    padding:"4rem 0",
+    padding:"5rem 0",
     display:"flex",
     flexDirection:"column",
     justifyContent:"center",
@@ -138,7 +137,9 @@ if (rol) {
             </Typography>
             <Typography variant="body">Ainda não faz parte da equipe de voluntarios?    <Link to="/cadastro">Clique aquí.</Link>  </Typography>
         <StyledLogin>
-            <FormGroup>
+            <FormGroup  style={{
+                   marginTop:"2rem"
+                  }}>
               <FormControl>
                 <InputLabel
                   style={{
