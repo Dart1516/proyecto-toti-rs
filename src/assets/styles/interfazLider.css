@@ -12,11 +12,11 @@
 }
 
 .titulo-table::after {
-  content: ""; /* Crea un pseudo-elemento después del contenido del elemento */
-  display: block; /* Hace que el pseudo-elemento sea un bloque para que pueda tener ancho */
-  border-bottom: 3px solid var(--color2); /* Define el estilo de la línea */
-  width: 120px; /* Configura el ancho de la línea, puedes ajustar este valor según tus necesidades */
-  margin-top: 5px; /* Ajusta el espacio entre el texto y la línea */
+  content: "";
+  display: block; 
+  border-bottom: 3px solid var(--color2); 
+  width: 120px; 
+  margin-top: 5px; 
 }
 
 
@@ -34,7 +34,7 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: start;
-  flex: 1;
+  width: 33%;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -54,13 +54,14 @@
 }
 
 .filter-container h4 {
-  font-size: 14px;
+  font-size: 1rem;
   padding-left: 2px;
 }
 
 .input-space {
   display: flex;
   flex-direction: column;
+  padding-left: 18px;
 }
 
 .input-filter {
@@ -70,7 +71,7 @@
   margin-top: 5px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 0.8rem;
 }
 
 .input-filter::placeholder {
@@ -108,7 +109,7 @@
   margin-bottom: 10px;
   color: var(--color5);
   font-weight: 100;
-  font-size: 22px;
+  font-size: 1rem;
 }
 
 .card p {
@@ -144,11 +145,13 @@
 .table-container {
   display: flex;
   width: 100%;
-font-size: clamp(0.3em, 0.5em + 1vw, 0.6em); ;
+  font-size: 16px;
+  overflow-x: scroll;
+  flex-direction: column;
 }
 
 .professional-table {
-  max-width: 95vw; 
+  min-width: 95vw; 
   border-collapse: collapse;
   margin: 20px 0;
   width: 100%;
@@ -156,10 +159,9 @@ font-size: clamp(0.3em, 0.5em + 1vw, 0.6em); ;
 }
 
 .professional-table th, .professional-table td {
-  padding: 14px 8px;
+  padding: 14px 10px;
   text-align: left;
-  max-width: 100%;
-  width: 100%;
+  white-space: nowrap;
 }
 
 .professional-table th {
@@ -183,6 +185,20 @@ font-size: clamp(0.3em, 0.5em + 1vw, 0.6em); ;
   color: black;
 }
 
+.professional-table th:first-child, .professional-table td:first-child {
+  min-width: auto;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background-color: inherit;
+  box-shadow: inset -2px 0 0 0px var(--color4);
+  white-space: normal;
+}
+
+.professional-table th:first-child {
+  background-color: #c5e1e1;
+}
+
 .professional-image-table {
   width: 50px;
   height: 50px;
@@ -190,5 +206,20 @@ font-size: clamp(0.3em, 0.5em + 1vw, 0.6em); ;
   object-fit: cover;
 }
 
+.pagination {
+  display: flex;
+  gap: 3px;
+}
 
+.pagination button {
+  padding: 2px 10px;
+}
 
+.pagination button.active {
+  background-color: var(--color1);
+  color: white;
+}
+
+.pagination button:hover {
+  transform: translateY(-1px);
+}

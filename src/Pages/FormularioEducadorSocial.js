@@ -117,7 +117,7 @@ const [showPasswordVerify, setShowPasswordVerify] = useState(false);
 const handleTogglePasswordVerify = () => {
   setShowPasswordVerify(!showPasswordVerify);
 };
- 
+
   const validatePassword = (password) => {
     let error = "";
     if (!/(?=.*[a-z])/.test(password)) error += "Falta minúscula.";
@@ -415,7 +415,7 @@ const handleTogglePasswordVerify = () => {
               <h4>
                 Senha<span>*</span>
               </h4>
-             
+           
               <Input
                 type={showPassword ? 'text' : 'password'}
                 name="password"
@@ -423,7 +423,7 @@ const handleTogglePasswordVerify = () => {
                 onChange={handleInputChange}
                 placeholder="Crie sua senha"
                 required
-                className="input-text"
+                className={passwordError ? 'input-text error-border' : 'input-text'}
                 inputProps={{
                   pattern: "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_{}|:;'<>\/?~])[A-Za-z0-9!@#$%^&*()_{}|:;'<>\/?~]{8}$",
                   maxLength: 8,
@@ -436,9 +436,7 @@ const handleTogglePasswordVerify = () => {
                         </InputAdornment>
                 }
               />
-            
-            
-              {passwordError && <span>{passwordError}</span>}
+              {passwordError && <p className="error-message">{passwordError}</p>}
             </div>
             <div className="input-field">
               <h4>

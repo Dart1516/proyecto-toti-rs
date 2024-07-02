@@ -464,7 +464,7 @@ const handleTogglePasswordVerify = () => {
                         </InputAdornment>
                 }
               />
-              {passwordError && <p>{passwordError}</p>}
+              {passwordError && <p className="error-message">{passwordError}</p>}
             </div>
             <div className="input-field">
               <h4>
