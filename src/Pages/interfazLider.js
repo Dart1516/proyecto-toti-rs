@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import Header from '../Components/Header-NavMenu';
 import { Api } from '../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faBuilding, faEllipsisH, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faBuilding, faEllipsisH, faSearch, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import '../assets/styles/interfazLider.css';
 import '../assets/styles/App.css';
 
 function InterfazLider() {
-  // Fetch voluntarios
+  // Estados para los voluntarios
   const [psicologos, setPsicologos] = useState([]);
   const [educadorSocial, setEducadorSocial] = useState([]);
-  
-  // Añade esta línea para definir el estado del filtro
+
+  // Estado para el filtro de búsqueda
   const [filter, setFilter] = useState({
     name: '',
     specialization: '',
@@ -19,25 +19,25 @@ function InterfazLider() {
   });
 
   useEffect(() => {
-    async function Voluntarios() {
+    async function fetchVolunteers() {
       try {
         let response = await Api.get('/voluntarios');
         setEducadorSocial(response.data.educador);
         setPsicologos(response.data.psicologo);
       } catch (error) {
-        console.error('Error al cargar los datos de los psicólogos:', error);
+        console.error('Error al cargar los datos de los voluntarios:', error);
       }
     }
 
-    Voluntarios();
+    fetchVolunteers();
   }, []);
 
-  // Calcular los conteos
+  // Conteo de voluntarios
   const psicologosCount = psicologos.length;
   const educadoresCount = educadorSocial.length;
   const total = psicologosCount + educadoresCount;
 
-  // Filtrar voluntarios
+  // Filtro de voluntarios
   const filteredPsicologos = psicologos.filter(psicologo =>
     psicologo.name.toLowerCase().includes(filter.name.toLowerCase()) &&
     psicologo.specialization.toLowerCase().includes(filter.specialization.toLowerCase()) &&
@@ -48,6 +48,28 @@ function InterfazLider() {
     educador.name.toLowerCase().includes(filter.name.toLowerCase()) &&
     educador.state.toLowerCase().includes(filter.state.toLowerCase())
   );
+
+  // Paginación
+  const ITEMS_PER_PAGE = 5;
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
+  const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
+  const currentPsicologos = filteredPsicologos.slice(indexOfFirstItem, indexOfLastItem);
+  const currentEducadores = filteredEducadores.slice(indexOfFirstItem, indexOfLastItem);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(total / ITEMS_PER_PAGE); i++) {
+    pageNumbers.push(i);
+  }
+
+  /*Número de páginas*/
+
+  const maxPagesToShow = 3;
+  const startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
+  const endPage = Math.min(startPage + maxPagesToShow - 1, pageNumbers.length);
 
   return (
     <div className="App">
@@ -77,39 +99,39 @@ function InterfazLider() {
         <h2 className="titulo-table">Voluntarios</h2>
         
         <div className="filter-container">
-        <div className='input-space'>
-  <h4>Buscar</h4>
-  <div className='input-icon'>
-    <FontAwesomeIcon icon={faSearch} className="icon-lupa" />
-    <input
-      type="text"
-      placeholder="Nome"
-      value={filter.name}
-      onChange={(e) => setFilter({...filter, name: e.target.value})}
-      className='input-filter'
-    />
-  </div>
-</div>
-        <div className='input-space'>
-          <h4>Especialidade</h4>
-          <input
-            type="text"
-            placeholder="Especialidade"
-            value={filter.specialization}
-            onChange={(e) => setFilter({...filter, specialization: e.target.value})}
-            className='input-filter'
-          />
-        </div>
-        <div className='input-space'>
-          <h4>Estado/Cidade</h4>
-          <input
-            type="text"
-            placeholder="Estado/Cidade"
-            value={filter.state}
-            onChange={(e) => setFilter({...filter, state: e.target.value})}
-            className='input-filter'
-          />
-        </div>
+          <div className='input-space'>
+            <h4>Buscar</h4>
+            <div className='input-icon'>
+              <FontAwesomeIcon icon={faSearch} className="icon-lupa" />
+              <input
+                type="text"
+                placeholder="Nome"
+                value={filter.name}
+                onChange={(e) => setFilter({...filter, name: e.target.value})}
+                className='input-filter'
+              />
+            </div>
+          </div>
+          <div className='input-space'>
+            <h4>Especialidade</h4>
+            <input
+              type="text"
+              placeholder="Especialidade"
+              value={filter.specialization}
+              onChange={(e) => setFilter({...filter, specialization: e.target.value})}
+              className='input-filter'
+            />
+          </div>
+          <div className='input-space'>
+            <h4>Estado/Cidade</h4>
+            <input
+              type="text"
+              placeholder="Estado/Cidade"
+              value={filter.state}
+              onChange={(e) => setFilter({...filter, state: e.target.value})}
+              className='input-filter'
+            />
+          </div>
         </div>
         <h2 className='title-count'>Todos <span className='background-total'>{total}</span></h2>
         <div className='table-container'>
@@ -125,7 +147,7 @@ function InterfazLider() {
               </tr>
             </thead>
             <tbody>
-              {filteredPsicologos.map(psicologo => (
+              {currentPsicologos.map(psicologo => (
                 <tr key={psicologo.id}>
                   <td>{psicologo.name}</td>
                   <td>{psicologo.day}</td>
@@ -135,20 +157,46 @@ function InterfazLider() {
                   <td>{psicologo.state}</td>
                 </tr>
               ))}
-              {filteredEducadores.map(educador => (
+              {currentEducadores.map(educador => (
                 <tr key={educador.id}>
                   <td>{educador.name}</td>
                   <td>{educador.day}</td>
-                  <td>{educador.profession}</td>
+                  <td>{educador.specialization}</td>
                   <td>{educador.phoneNumber}</td>
                   <td>{educador.email}</td>
-                  <td>{educador.state},<br/>{educador.city}</td>
+                  <td>{educador.state}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </div> 
-      </div> 
+          <div className="pagination">
+            {/* Flecha < */}
+            <button
+              onClick={() => setCurrentPage(prevPage => Math.max(prevPage - 1, 1))}
+              disabled={currentPage === 1}
+            >
+              <FontAwesomeIcon icon={faChevronLeft} />
+            </button>
+            {/* Números de página */}
+            {pageNumbers.slice(startPage - 1, endPage).map(number => (
+              <button
+                key={number}
+                onClick={() => paginate(number)}
+                className={number === currentPage ? 'active' : ''}
+              >
+                {number}
+              </button>
+            ))}
+            {/* Flecha > */}
+            <button
+              onClick={() => setCurrentPage(prevPage => Math.min(prevPage + 1, pageNumbers.length))}
+              disabled={currentPage === pageNumbers.length}
+            >
+              <FontAwesomeIcon icon={faChevronRight} />
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
