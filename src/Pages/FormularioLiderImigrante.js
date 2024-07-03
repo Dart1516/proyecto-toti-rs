@@ -34,7 +34,6 @@ function FormularioLiderImigrante() {
   const [isLoading, setIsLoading] = useState(false);
 
   const validateForm = (form) => {
-    delete form.area;
     delete form.notes;
     const isNotEmpty = Object.keys(form).every((key) => form[key]);
     if (!form.termos) {
@@ -212,7 +211,7 @@ function FormularioLiderImigrante() {
             </div>
             <div className="input-field">
               <h4>
-                6. Área em que trabalha (opcional) <span></span>
+                6. Área em que trabalha <span>*</span>
               </h4>
               <input
                 type="text"
@@ -221,6 +220,7 @@ function FormularioLiderImigrante() {
                 onChange={handleInputChange}
                 placeholder="Digite a área em que trabalha"
                 className="input-text"
+                required
               />
             </div>
             <div className="input-field">

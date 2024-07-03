@@ -20,10 +20,11 @@ function FormularioEducadorSocial() {
     phoneNumber: "",
     email: "",
     certificate: "",
+    profession: "",
     state: "",
     insta: "",
-    cidade: "",
-    bairro: "",
+    city: "",
+    neighborhood: "",
     availability: "",
     additionalDays: [{ day: "", hour: "" }],
     password: "",
@@ -246,9 +247,24 @@ function FormularioEducadorSocial() {
                 className="input-text"
               />
             </div>
+
             <div className="input-field">
               <h4>
-                7. Estado <span>*</span>
+                7. Profissão<span>*</span>
+              </h4>
+              <input
+                type="text"
+                name="profession"
+                value={formData.profession}
+                onChange={handleInputChange}
+                placeholder="Digite sua profissão"
+                required
+                className="input-text"
+              />
+            </div>
+            <div className="input-field">
+              <h4>
+                8. Estado <span>*</span>
               </h4>
               <select
                 className="form-select"
@@ -284,12 +300,12 @@ function FormularioEducadorSocial() {
             </div>
             <div className="input-field">
               <h4>
-                8. Cidade<span>*</span>
+                9. Cidade<span>*</span>
               </h4>
               <input
                 type="text"
-                name="cidade"
-                value={formData.cidade}
+                name="city"
+                value={formData.city}
                 onChange={handleInputChange}
                 placeholder="Digite a Cidade"
                 required
@@ -298,12 +314,12 @@ function FormularioEducadorSocial() {
             </div>
             <div className="input-field">
               <h4>
-                9. Bairro <span>*</span>
+                10. Bairro <span>*</span>
               </h4>
               <input
                 type="text"
-                name="bairro"
-                value={formData.bairro}
+                name="neighborhood"
+                value={formData.neighborhood}
                 onChange={handleInputChange}
                 placeholder="Digite o Bairro"
                 required
