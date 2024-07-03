@@ -88,9 +88,10 @@ function FormularioEducadorSocial() {
         "Error al enviar datos: " +
           (error.response?.data?.message || error.message)
       );
+      setIsLoading(false);
     }
-    setIsLoading(false);
-  };
+    
+ 
 
   const handleTermsChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.checked });
@@ -579,6 +580,5 @@ function FormularioEducadorSocial() {
       <footer className="App-footer"></footer>
     </div>
   );
-              
-
+ }
 export default FormularioEducadorSocial;
