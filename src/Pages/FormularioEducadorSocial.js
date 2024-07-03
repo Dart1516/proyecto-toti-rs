@@ -6,9 +6,9 @@ import "../assets/styles/SejaVoluntario.css";
 import { FaTrash, FaPlus } from "react-icons/fa";
 import { Api } from "../services/api";
 import { useNavigate } from "react-router-dom";
-import Visibility from '@mui/icons-material/VisibilityOutlined';
-import VisibilityOff from '@mui/icons-material/VisibilityOffOutlined';
-import {  InputAdornment, IconButton, Input } from '@mui/material';
+import Visibility from "@mui/icons-material/VisibilityOutlined";
+import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
+import { InputAdornment, IconButton, Input } from "@mui/material";
 
 function FormularioEducadorSocial() {
   const navigate = useNavigate();
@@ -21,6 +21,7 @@ function FormularioEducadorSocial() {
     email: "",
     certificate: "",
     state: "",
+    insta: "",
     cidade: "",
     bairro: "",
     availability: "",
@@ -31,22 +32,38 @@ function FormularioEducadorSocial() {
     notes: "",
     termos: false,
   });
-  const [isTermsAccepted, setIsTermsAccepted] = useState(false);
+
   const [passwordError, setPasswordError] = useState("");
   const [passwordMatchError, setPasswordMatchError] = useState("");
   const [emailMatchError, setEmailMatchError] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const validateForm = (form) => {
+    delete form.insta;
+    delete form.notes;
+    const isNotEmpty = Object.keys(form).every((key) => form[key]);
+    if (!form.termos) {
+      setError(
+        "Por favor, aceite os termos e condições antes de enviar o formulário."
+      );
+    } else if (!isNotEmpty) {
+      setError("Por favor, preencha os campos que faltam.");
+    }
+    return isNotEmpty;
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!isTermsAccepted) {
-      setError("Por favor, aceite os termos e condições antes de enviar o formulário.");
+    setIsLoading(true);
+    const result = validateForm({ ...formData });
+    if (!result) {
+      setIsLoading(false);
       return;
     }
 
     const dataToSend = {
       ...formData,
-      termos: isTermsAccepted,
       notes: formData.notes || "",
       birthDate: new Date(formData.birthDate).toISOString(), // Convertir a formato ISO-8601
     };
@@ -55,18 +72,21 @@ function FormularioEducadorSocial() {
     delete dataToSend.verifyPassword;
 
     try {
-      const response = await Api.post('/cadastro/educador', dataToSend);
-      console.log('dados enviados com sucesso:', response.data);
-      navigate('/thankyou');
+      const response = await Api.post("/cadastro/educador", dataToSend);
+      console.log("dados enviados com sucesso:", response.data);
+      navigate("/thankyou");
     } catch (error) {
-      console.error('Error al enviar datos:', error);
-      setError('Error al enviar datos: ' + (error.response?.data?.message || error.message));
+      console.error("Error al enviar datos:", error);
+      setError(
+        "Error al enviar datos: " +
+          (error.response?.data?.message || error.message)
+      );
     }
+    setIsLoading(false);
   };
 
   const handleTermsChange = (event) => {
-    setIsTermsAccepted(event.target.checked);
-    setFormData({ ...formData, termos: event.target.checked });
+    setFormData({ ...formData, [event.target.name]: event.target.checked });
   };
 
   const handleDayChange = (index, event) => {
@@ -89,7 +109,6 @@ function FormularioEducadorSocial() {
     setFormData({ ...formData, additionalDays: values });
   };
 
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -102,21 +121,25 @@ function FormularioEducadorSocial() {
     }
 
     if (name === "verifyPassword") {
-      setPasswordMatchError(value !== formData.password ? "Las contraseñas no coinciden." : "");
+      setPasswordMatchError(
+        value !== formData.password ? "Las contraseñas no coinciden." : ""
+      );
     }
 
     if (name === "verifyEmail") {
-      setEmailMatchError(value !== formData.email ? "Los correos electrónicos no coinciden." : "");
+      setEmailMatchError(
+        value !== formData.email ? "Los correos electrónicos no coinciden." : ""
+      );
     }
   };
   const [showPassword, setShowPassword] = useState(false);
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
-};
-const [showPasswordVerify, setShowPasswordVerify] = useState(false);
-const handleTogglePasswordVerify = () => {
-  setShowPasswordVerify(!showPasswordVerify);
-};
+  };
+  const [showPasswordVerify, setShowPasswordVerify] = useState(false);
+  const handleTogglePasswordVerify = () => {
+    setShowPasswordVerify(!showPasswordVerify);
+  };
 
   const validatePassword = (password) => {
     let error = "";
@@ -124,7 +147,8 @@ const handleTogglePasswordVerify = () => {
     if (!/(?=.*[A-Z])/.test(password)) error += "Falta mayúscula.";
     if (!/(?=.*\d)/.test(password)) error += "Falta número.";
     if (!/(?=.*[@#$%^&=])/.test(password)) error += "Falta símbolo.(@#$%&=)";
-    if (password.length < 8) error += "A senha deve conter pelo menos 8 digitos.";
+    if (password.length < 8)
+      error += "A senha deve conter pelo menos 8 digitos.";
     setPasswordError(error);
   };
 
@@ -139,7 +163,7 @@ const handleTogglePasswordVerify = () => {
           <h2>SOS Rio Grande do Sul </h2>
           <h2> Cadastro Educador Social Voluntário </h2>
         </div>
-        <form className="general-inputs" onSubmit={handleSubmit}>
+        <form className="general-inputs">
           <div className="inputs formCadastro">
             <div className="input-field">
               <h4>
@@ -358,7 +382,10 @@ const handleTogglePasswordVerify = () => {
                   </select>
                 </div>
                 {index > 0 && (
-                  <FaTrash onClick={() => removeDay(index)} className="borrar" />
+                  <FaTrash
+                    onClick={() => removeDay(index)}
+                    className="borrar"
+                  />
                 )}
                 {index === additionalDays.length - 1 && (
                   <button type="button" onClick={() => addDay()}>
@@ -415,35 +442,40 @@ const handleTogglePasswordVerify = () => {
               <h4>
                 Senha<span>*</span>
               </h4>
-           
+
               <Input
-                type={showPassword ? 'text' : 'password'}
+                type={showPassword ? "text" : "password"}
                 name="password"
                 value={formData.password}
                 onChange={handleInputChange}
                 placeholder="Crie sua senha"
                 required
-                className={passwordError ? 'input-text error-border' : 'input-text'}
+                className={
+                  passwordError ? "input-text error-border" : "input-text"
+                }
                 inputProps={{
-                  pattern: "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_{}|:;'<>\/?~])[A-Za-z0-9!@#$%^&*()_{}|:;'<>\/?~]{8}$",
+                  pattern:
+                    "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_{}|:;'<>/?~])[A-Za-z0-9!@#$%^&*()_{}|:;'<>/?~]{8}$",
                   maxLength: 8,
                 }}
                 endAdornment={
                   <InputAdornment position="end">
-                            <IconButton onClick={handleTogglePassword}>
-                                {showPassword ? <VisibilityOff /> : <Visibility />}
-                            </IconButton>
-                        </InputAdornment>
+                    <IconButton onClick={handleTogglePassword}>
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
                 }
               />
-              {passwordError && <p className="error-message">{passwordError}</p>}
+              {passwordError && (
+                <p className="error-message">{passwordError}</p>
+              )}
             </div>
             <div className="input-field">
               <h4>
                 Verificação de Senha<span>*</span>
               </h4>
               <Input
-                type={showPasswordVerify? 'text' : 'password'}
+                type={showPasswordVerify ? "text" : "password"}
                 name="verifyPassword"
                 value={formData.verifyPassword}
                 onChange={handleInputChange}
@@ -452,10 +484,10 @@ const handleTogglePasswordVerify = () => {
                 className="input-text"
                 endAdornment={
                   <InputAdornment position="end">
-                            <IconButton onClick={handleTogglePasswordVerify}>
-                                {showPasswordVerify? <VisibilityOff /> : <Visibility />}
-                            </IconButton>
-                        </InputAdornment>
+                    <IconButton onClick={handleTogglePasswordVerify}>
+                      {showPasswordVerify ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
                 }
               />
               {passwordMatchError && (
@@ -478,13 +510,13 @@ const handleTogglePasswordVerify = () => {
           <div className="legal">
             <input
               type="checkbox"
-              id="terms"
-              name="terms"
+              id="termos"
+              name="termos"
               onChange={handleTermsChange}
               required
-              checked={isTermsAccepted}
+              checked={formData.termos}
             />
-            <label htmlFor="terms">
+            <label htmlFor="termos">
               Ao marcar esta caixa e clicar em Enviar, aceito o tratamento de
               meus dados pessoais por{" "}
               <a href="/avisoLegal" target="_blank">
@@ -499,7 +531,12 @@ const handleTogglePasswordVerify = () => {
             </label>
           </div>
           {error && <p style={{ color: "red" }}>{error}</p>}
-          <button className="SV" type="submit">
+          <button
+            className={`SV${isLoading ? " submit-disabled" : ""}`}
+            type="submit"
+            onClick={handleSubmit}
+            disabled={isLoading}
+          >
             Enviar
           </button>
         </form>
