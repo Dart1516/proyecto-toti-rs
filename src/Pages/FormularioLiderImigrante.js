@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import InputMask from "react-input-mask";
 import Header from "../Components/Header-NavMenu";
-import '../assets/styles/App.css';
-import '../assets/styles/SejaVoluntario.css';
+import "../assets/styles/App.css";
+import "../assets/styles/SejaVoluntario.css";
 import { Api } from "../services/api";
 import { useNavigate } from "react-router-dom";
-import Visibility from '@mui/icons-material/VisibilityOutlined';
-import VisibilityOff from '@mui/icons-material/VisibilityOffOutlined';
-import {  InputAdornment, IconButton, Input } from '@mui/material';
+import Visibility from "@mui/icons-material/VisibilityOutlined";
+import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
+import { InputAdornment, IconButton, Input } from "@mui/material";
 
 function FormularioLiderImigrante() {
   const navigate = useNavigate();
@@ -27,22 +27,36 @@ function FormularioLiderImigrante() {
     verifyEmail: "",
     termos: false,
   });
-  const [isTermsAccepted, setIsTermsAccepted] = useState(false);
   const [passwordError, setPasswordError] = useState("");
   const [passwordMatchError, setPasswordMatchError] = useState("");
   const [emailMatchError, setEmailMatchError] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const validateForm = (form) => {
+    delete form.notes;
+    const isNotEmpty = Object.keys(form).every((key) => form[key]);
+    if (!form.termos) {
+      setError(
+        "Por favor, aceite os termos e condições antes de enviar o formulário."
+      );
+    } else if (!isNotEmpty) {
+      setError("Por favor, preencha os campos que faltam.");
+    }
+    return isNotEmpty;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!isTermsAccepted) {
-      setError("Por favor, aceite os termos e condições antes de enviar o formulário.");
+    setIsLoading(true);
+    const result = validateForm({ ...formData });
+    if (!result) {
+      setIsLoading(false);
       return;
     }
     const normalizedEmail = formData.email.toLowerCase();
     const dataToSend = {
       ...formData,
-      termos: isTermsAccepted,
       notes: formData.notes || "",
       email: normalizedEmail,
     };
@@ -51,24 +65,28 @@ function FormularioLiderImigrante() {
     delete dataToSend.verifyPassword;
 
     try {
-      const response = await Api.post('/cadastro/lideres', dataToSend);
-      console.log('dados enviados com sucesso:', response.data);
-      navigate('/thankyou');
+      const response = await Api.post("/cadastro/lideres", dataToSend);
+      console.log("dados enviados com sucesso:", response.data);
+      navigate("/thankyou");
     } catch (error) {
-      console.error('Error al enviar datos:', error);
-      setError('Error al enviar datos: ' + (error.response?.data?.message || error.message));
+      console.error("Error al enviar datos:", error);
+      setError(
+        "Error al enviar datos: " +
+          (error.response?.data?.message || error.message)
+      );
     }
+    setIsLoading(false);
   };
 
   const handleTermsChange = (event) => {
-    setIsTermsAccepted(event.target.checked);
+    setFormData({ ...formData, [event.target.name]: event.target.checked });
   };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
 
     if (name === "password") {
@@ -76,11 +94,15 @@ function FormularioLiderImigrante() {
     }
 
     if (name === "verifyPassword") {
-      setPasswordMatchError(value !== formData.password ? "Las contraseñas no coinciden." : "");
+      setPasswordMatchError(
+        value !== formData.password ? "Las contraseñas no coinciden." : ""
+      );
     }
 
     if (name === "verifyEmail") {
-      setEmailMatchError(value !== formData.email ? "Los correos electrónicos no coinciden." : "");
+      setEmailMatchError(
+        value !== formData.email ? "Los correos electrónicos no coinciden." : ""
+      );
     }
   };
 
@@ -90,17 +112,18 @@ function FormularioLiderImigrante() {
     if (!/(?=.*[A-Z])/.test(password)) error += "Falta mayúscula. ";
     if (!/(?=.*\d)/.test(password)) error += "Falta número. ";
     if (!/(?=.*[@#$%^&=])/.test(password)) error += "Falta símbolo.(@#$%&=)";
-    if (password.length < 8) error += "A senha deve conter pelo menos 8 digitos.";
+    if (password.length < 8)
+      error += "A senha deve conter pelo menos 8 digitos.";
     setPasswordError(error);
   };
   const [showPassword, setShowPassword] = useState(false);
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
-};
-const [showPasswordVerify, setShowPasswordVerify] = useState(false);
-const handleTogglePasswordVerify = () => {
-  setShowPasswordVerify(!showPasswordVerify);
-};
+  };
+  const [showPasswordVerify, setShowPasswordVerify] = useState(false);
+  const handleTogglePasswordVerify = () => {
+    setShowPasswordVerify(!showPasswordVerify);
+  };
   return (
     <div className="App SV">
       <div className="App-header">
@@ -110,12 +133,16 @@ const handleTogglePasswordVerify = () => {
       <div className="container">
         <div className="container-titulo">
           <h2>SOS Rio Grande do Sul </h2>
-          <h2>Cadastro de Liderança de ONG para Imigrantes, refugiados e apátridas</h2>
+          <h2>
+            Cadastro de Liderança de ONG para Imigrantes, refugiados e apátridas
+          </h2>
         </div>
-        <form className="general-inputs" onSubmit={handleSubmit}>
+        <form className="general-inputs">
           <div className="inputs formCadastro">
             <div className="input-field">
-              <h4>1. Nome da ONG que representa<span>*</span></h4>
+              <h4>
+                1. Nome da ONG que representa<span>*</span>
+              </h4>
               <input
                 className="input-text"
                 type="text"
@@ -127,7 +154,9 @@ const handleTogglePasswordVerify = () => {
               />
             </div>
             <div className="input-field">
-              <h4>2. CNPJ Da ONG<span>*</span></h4>
+              <h4>
+                2. CNPJ Da ONG<span>*</span>
+              </h4>
               <InputMask
                 mask="99.999.999/9999-99"
                 value={formData.cnpj}
@@ -139,7 +168,9 @@ const handleTogglePasswordVerify = () => {
               />
             </div>
             <div className="input-field">
-              <h4>3. Nome Completo do Representante Legal<span>*</span></h4>
+              <h4>
+                3. Nome Completo do Representante Legal<span>*</span>
+              </h4>
               <input
                 className="input-text"
                 type="text"
@@ -151,7 +182,9 @@ const handleTogglePasswordVerify = () => {
               />
             </div>
             <div className="input-field">
-              <h4>4. CPF Do representante Legal <span>*</span></h4>
+              <h4>
+                4. CPF Do representante Legal <span>*</span>
+              </h4>
               <InputMask
                 mask="999.999.999-99"
                 value={formData.cpf}
@@ -163,7 +196,9 @@ const handleTogglePasswordVerify = () => {
               />
             </div>
             <div className="input-field">
-              <h4>5. Número do WhatsApp do Representante<span>*</span></h4>
+              <h4>
+                5. Número do WhatsApp do Representante<span>*</span>
+              </h4>
               <InputMask
                 mask="(99) 99999-9999"
                 value={formData.phoneNumber}
@@ -175,7 +210,9 @@ const handleTogglePasswordVerify = () => {
               />
             </div>
             <div className="input-field">
-              <h4>6. Área em que trabalha (opcional) <span></span></h4>
+              <h4>
+                6. Área em que trabalha <span>*</span>
+              </h4>
               <input
                 type="text"
                 name="area"
@@ -183,11 +220,20 @@ const handleTogglePasswordVerify = () => {
                 onChange={handleInputChange}
                 placeholder="Digite a área em que trabalha"
                 className="input-text"
+                required
               />
             </div>
             <div className="input-field">
-              <h4>7. Estado em que reside  <span>*</span></h4>
-              <select className="form-select" name="state" value={formData.state} onChange={handleInputChange} required>
+              <h4>
+                7. Estado em que reside <span>*</span>
+              </h4>
+              <select
+                className="form-select"
+                name="state"
+                value={formData.state}
+                onChange={handleInputChange}
+                required
+              >
                 <option value="">-Selecione-</option>
                 <option value="SP">SP</option>
                 <option value="MT">MT</option>
@@ -214,7 +260,9 @@ const handleTogglePasswordVerify = () => {
               </select>
             </div>
             <div className="input-field">
-              <h4>8. Endereço <span>*</span></h4>
+              <h4>
+                8. Endereço <span>*</span>
+              </h4>
               <input
                 type="text"
                 name="address"
@@ -229,24 +277,35 @@ const handleTogglePasswordVerify = () => {
 
           <div className="lembre-text">
             <h1>Lembre-se:</h1>
-            <p>Seu e-mail e senha cadastrados serão seu login para o acesso na plataforma</p>
-            <p>Após preencher todos os seus dados clique em <strong>"Enviar"</strong> e seu cadastro estará completo</p>
+            <p>
+              Seu e-mail e senha cadastrados serão seu login para o acesso na
+              plataforma
+            </p>
+            <p>
+              Após preencher todos os seus dados clique em{" "}
+              <strong>"Enviar"</strong> e seu cadastro estará completo
+            </p>
           </div>
           <div className="inputs formCadastro">
             <div className="input-field">
-              <h4>Email para cadastro<span>*</span></h4>
+              <h4>
+                Email para cadastro<span>*</span>
+              </h4>
               <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
                 placeholder="Digite seu e-mail"
-                required toLowercase
+                required
+                toLowercase
                 className="input-text"
               />
             </div>
             <div className="input-field">
-              <h4>Verificação do Email<span>*</span></h4>
+              <h4>
+                Verificação do Email<span>*</span>
+              </h4>
               <input
                 type="email"
                 name="verifyEmail"
@@ -256,12 +315,16 @@ const handleTogglePasswordVerify = () => {
                 required
                 className="input-text"
               />
-              {emailMatchError && <p style={{ color: 'red' }}>{emailMatchError}</p>}
+              {emailMatchError && (
+                <p style={{ color: "red" }}>{emailMatchError}</p>
+              )}
             </div>
             <div className="input-field">
-              <h4>Senha<span>*</span></h4>
+              <h4>
+                Senha<span>*</span>
+              </h4>
               <Input
-                type={showPassword ? 'text' : 'password'}
+                type={showPassword ? "text" : "password"}
                 name="password"
                 value={formData.password}
                 onChange={handleInputChange}
@@ -269,23 +332,28 @@ const handleTogglePasswordVerify = () => {
                 required
                 className="input-text"
                 inputProps={{
-                  pattern: "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_{}|:;'<>\/?~])[A-Za-z0-9!@#$%^&*()_{}|:;'<>\/?~]{8}$",
+                  pattern:
+                    "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_{}|:;'<>/?~])[A-Za-z0-9!@#$%^&*()_{}|:;'<>/?~]{8}$",
                   maxLength: 8,
                 }}
                 endAdornment={
                   <InputAdornment position="end">
-                            <IconButton onClick={handleTogglePassword}>
-                                {showPassword ? <VisibilityOff /> : <Visibility />}
-                            </IconButton>
-                        </InputAdornment>
+                    <IconButton onClick={handleTogglePassword}>
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
                 }
               />
-              {passwordError && <p className="error-message">{passwordError}</p>}
+              {passwordError && (
+                <p className="error-message">{passwordError}</p>
+              )}
             </div>
             <div className="input-field">
-              <h4>Verificação de Senha<span>*</span></h4>
+              <h4>
+                Verificação de Senha<span>*</span>
+              </h4>
               <Input
-                type={showPasswordVerify? 'text' : 'password'}
+                type={showPasswordVerify ? "text" : "password"}
                 name="verifyPassword"
                 value={formData.verifyPassword}
                 onChange={handleInputChange}
@@ -294,13 +362,15 @@ const handleTogglePasswordVerify = () => {
                 className="input-text"
                 endAdornment={
                   <InputAdornment position="end">
-                            <IconButton onClick={handleTogglePasswordVerify}>
-                                {showPasswordVerify? <VisibilityOff /> : <Visibility />}
-                            </IconButton>
-                        </InputAdornment>
+                    <IconButton onClick={handleTogglePasswordVerify}>
+                      {showPasswordVerify ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
                 }
               />
-              {passwordMatchError && <p style={{ color: 'red' }}>{passwordMatchError}</p>}
+              {passwordMatchError && (
+                <p style={{ color: "red" }}>{passwordMatchError}</p>
+              )}
             </div>
           </div>
           <div className="opcional">
@@ -318,18 +388,35 @@ const handleTogglePasswordVerify = () => {
           <div className="legal">
             <input
               type="checkbox"
-              id="terms"
-              name="terms"
+              id="termos"
+              name="termos"
               onChange={handleTermsChange}
               required
-              checked={isTermsAccepted}
+              checked={formData.termos}
             />
-            <label htmlFor="terms">
-              Ao marcar esta caixa e clicar em Enviar, aceito o tratamento de meus dados pessoais por <a href="/avisoLegal" target="_blank">[Nome da sua organização]</a> conforme explicado no seu <a href="/avisoLegal" target="_blank">Aviso Legal de Proteção de Dados</a>, que inclui: 1) a coordenação e gestão de voluntários, e 2) a comunicação sobre atividades e oportunidades relacionadas.
+            <label htmlFor="termos">
+              Ao marcar esta caixa e clicar em Enviar, aceito o tratamento de
+              meus dados pessoais por{" "}
+              <a href="/avisoLegal" target="_blank">
+                [Nome da sua organização]
+              </a>{" "}
+              conforme explicado no seu{" "}
+              <a href="/avisoLegal" target="_blank">
+                Aviso Legal de Proteção de Dados
+              </a>
+              , que inclui: 1) a coordenação e gestão de voluntários, e 2) a
+              comunicação sobre atividades e oportunidades relacionadas.
             </label>
           </div>
           {error && <p style={{ color: "red" }}>{error}</p>}
-          <button className="SV" type="submit">Enviar</button>
+          <button
+            className={`SV${isLoading ? " submit-disabled" : ""}`}
+            type="submit"
+            onClick={handleSubmit}
+            disabled={isLoading}
+          >
+            Enviar
+          </button>
         </form>
       </div>
       <footer className="App-footer"></footer>
