@@ -20,9 +20,10 @@ function FormularioEducadorSocial() {
     phoneNumber: "",
     email: "",
     certificate: "",
+    profession:"",
     state: "",
-    cidade: "",
-    bairro: "",
+    city: "",
+    neighborhood: "",
     availability: "",
     additionalDays: [{ day: "", hour: "" }],
     password: "",
@@ -60,8 +61,11 @@ function FormularioEducadorSocial() {
       navigate('/thankyou');
     } catch (error) {
       console.error('Error al enviar datos:', error);
-      setError('Error al enviar datos: ' + (error.response?.data?.message || error.message));
+      setError('Error ao enviar os dados:Por favor ' + (error.response?.data?.message || error.message));
     }
+    if (error.response?.data?.message?.includes('CPF já cadastrado')) {
+      setError('CPF ja esta cadastrado');
+  };
   };
 
   const handleTermsChange = (event) => {
@@ -207,10 +211,23 @@ const handleTogglePasswordVerify = () => {
                 onChange={handleInputChange}
               />
             </div>
-
             <div className="input-field">
               <h4>
-                6. Certificado<span>*</span>
+                6. Profession<span>*</span>
+              </h4>
+              <input
+                className="input-text"
+                type="text"
+                name="profession"
+                placeholder="Educador"
+                value={formData.profession}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div className="input-field">
+              <h4>
+                7. Certificado<span>*</span>
               </h4>
               <input
                 type="text"
@@ -224,7 +241,7 @@ const handleTogglePasswordVerify = () => {
             </div>
             <div className="input-field">
               <h4>
-                7. Estado <span>*</span>
+                8. Estado <span>*</span>
               </h4>
               <select
                 className="form-select"
@@ -260,12 +277,12 @@ const handleTogglePasswordVerify = () => {
             </div>
             <div className="input-field">
               <h4>
-                8. Cidade<span>*</span>
+                9. Cidade<span>*</span>
               </h4>
               <input
                 type="text"
-                name="cidade"
-                value={formData.cidade}
+                name="city"
+                value={formData.city}
                 onChange={handleInputChange}
                 placeholder="Digite a Cidade"
                 required
@@ -274,12 +291,12 @@ const handleTogglePasswordVerify = () => {
             </div>
             <div className="input-field">
               <h4>
-                9. Bairro <span>*</span>
+                10. Bairro <span>*</span>
               </h4>
               <input
                 type="text"
-                name="bairro"
-                value={formData.bairro}
+                name="neighborhood"
+                value={formData.neighborhood}
                 onChange={handleInputChange}
                 placeholder="Digite o Bairro"
                 required
