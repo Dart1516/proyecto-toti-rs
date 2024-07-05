@@ -36,7 +36,7 @@ function FormularioLiderImigrante() {
   const validateForm = (form) => {
     delete form.notes;
     const isNotEmpty = Object.keys(form).every((key) => form[key]);
-    if (!form.termos) {
+if (!form.termos) {
       setError(
         "Por favor, aceite os termos e condições antes de enviar o formulário."
       );
@@ -45,6 +45,12 @@ function FormularioLiderImigrante() {
     }
     return isNotEmpty;
   };
+
+  const [errorEmail, setErrorEmail] = useState('');
+  
+  const [errorCpf, setErrorCpf] = useState('');
+  const [errors, setErrorField] = useState('');
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,12 +74,27 @@ function FormularioLiderImigrante() {
       const response = await Api.post("/cadastro/lideres", dataToSend);
       console.log("dados enviados com sucesso:", response.data);
       navigate("/thankyou");
+     
     } catch (error) {
       console.error("Error al enviar datos:", error);
-      setError(
-        "Error al enviar datos: " +
-          (error.response?.data?.message || error.message)
-      );
+      if (error.response?.data?.message?.includes("CPF já cadastrado")) {
+        setErrorCpf("Usuario ja existe, CPF ja cadastrado");
+        setError(
+          "Error al enviar datos: CPF ja existe" 
+        );
+      } else if (error.response?.data?.message?.includes("E-mail já cadastrado")) {
+        setErrorEmail("Usuario ja existe, Email ja cadastrado");
+        setError(
+          "Error al enviar datos: Email ja cadastrado"   
+        );
+      }
+      else{
+        setError(
+          "Error al enviar datos: " +
+            (error.response?.data?.message || error.message)
+        );
+      }
+    
     }
     setIsLoading(false);
   };
@@ -81,6 +102,13 @@ function FormularioLiderImigrante() {
   const handleTermsChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.checked });
   };
+
+  function resetEmailError() {
+    setErrorEmail("");
+  }
+  function resetError() {
+    setErrorField("");
+  }
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -104,8 +132,29 @@ function FormularioLiderImigrante() {
         value !== formData.email ? "Los correos electrónicos no coinciden." : ""
       );
     }
-  };
-
+     if (name === "email"){
+      const emailValue = formData.email;
+      const isValidEmail = emailValue.length !== 0 && emailValue.match(/^[\w-.]+@[\w-.]+\.[a-zA-Z]{2,}$/i);
+      setErrorEmail(!isValidEmail);
+    }
+    const validationFields = [
+      "organization",
+      "cnpj",
+      "phoneNumber",
+      "area",
+      "state",
+      "address",
+    ];
+    
+    for (const fieldName of validationFields) {
+      const fieldValue = formData[fieldName];
+      if (fieldValue.trim() === "") {
+        setErrorField(fieldName);
+      }
+      return;
+    }
+    
+  }
   const validatePassword = (password) => {
     let error = "";
     if (!/(?=.*[a-z])/.test(password)) error += "Falta minúscula. ";
@@ -116,14 +165,17 @@ function FormularioLiderImigrante() {
       error += "A senha deve conter pelo menos 8 digitos.";
     setPasswordError(error);
   };
+
   const [showPassword, setShowPassword] = useState(false);
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
+
   const [showPasswordVerify, setShowPasswordVerify] = useState(false);
   const handleTogglePasswordVerify = () => {
     setShowPasswordVerify(!showPasswordVerify);
   };
+
   return (
     <div className="App SV">
       <div className="App-header">
@@ -144,8 +196,8 @@ function FormularioLiderImigrante() {
                 1. Nome da ONG que representa<span>*</span>
               </h4>
               <input
-                className="input-text"
-                type="text"
+  className={`input-text ${errors.organization ? 'invalid' : 'valid'}`}
+  type="text"
                 name="organization"
                 placeholder="Digite o nome da ONG"
                 value={formData.organization}
@@ -163,8 +215,9 @@ function FormularioLiderImigrante() {
                 onChange={handleInputChange}
                 placeholder="Digite seu CNPJ O valor deve ser numérico"
                 required
-                className="input-text"
+                className={`input-text ${errors.cnpj ? 'invalid' : ''}`}
                 name="cnpj"
+                onFocus={() => resetError()}
               />
             </div>
             <div className="input-field">
@@ -172,8 +225,8 @@ function FormularioLiderImigrante() {
                 3. Nome Completo do Representante Legal<span>*</span>
               </h4>
               <input
-                className="input-text"
-                type="text"
+  className={`input-text ${errors.name ? 'invalid' : 'valid'}`}
+  type="text"
                 name="name"
                 placeholder="Digite seu nome"
                 value={formData.name}
@@ -191,9 +244,10 @@ function FormularioLiderImigrante() {
                 onChange={handleInputChange}
                 placeholder="Digite seu CPF O valor deve ser numérico"
                 required
-                className="input-text"
+                className={`input-text ${errorCpf ? 'invalid' : 'valid'}`}
                 name="cpf"
               />
+ {errorCpf && <p style={{ color: 'red' }}>{errorCpf}</p>}
             </div>
             <div className="input-field">
               <h4>
@@ -205,7 +259,7 @@ function FormularioLiderImigrante() {
                 onChange={handleInputChange}
                 placeholder="(DDD) Digite o número"
                 required
-                className="input-text"
+                className={`input-text ${errors.phoneNumber ? 'invalid' : 'valid'}`}
                 name="phoneNumber"
               />
             </div>
@@ -219,7 +273,7 @@ function FormularioLiderImigrante() {
                 value={formData.area}
                 onChange={handleInputChange}
                 placeholder="Digite a área em que trabalha"
-                className="input-text"
+                className={`input-text ${errors.area ? 'invalid' : 'valid'}`}
                 required
               />
             </div>
@@ -228,7 +282,7 @@ function FormularioLiderImigrante() {
                 7. Estado em que reside <span>*</span>
               </h4>
               <select
-                className="form-select"
+                className={`form-select ${errors.organization ? 'invalid' : 'valid'}`}
                 name="state"
                 value={formData.state}
                 onChange={handleInputChange}
@@ -270,7 +324,7 @@ function FormularioLiderImigrante() {
                 onChange={handleInputChange}
                 placeholder="Digite o endereço"
                 required
-                className="input-text"
+                className={`form-select ${errors.address ? 'invalid' : 'valid'}`}
               />
             </div>
           </div>
@@ -299,8 +353,11 @@ function FormularioLiderImigrante() {
                 placeholder="Digite seu e-mail"
                 required
                 toLowercase
-                className="input-text"
+                className={`input-text ${errorEmail ? 'invalid' : 'valid'}`}
+                onFocus={() => resetEmailError()}
               />
+                  {errorEmail && <p style={{ color: 'red'}}>{errorEmail}</p>}
+
             </div>
             <div className="input-field">
               <h4>
@@ -313,7 +370,7 @@ function FormularioLiderImigrante() {
                 onChange={handleInputChange}
                 placeholder="Confirme o  seu e-mail"
                 required
-                className="input-text"
+                className={`input-text ${emailMatchError ? 'invalid' : 'valid'}`}
               />
               {emailMatchError && (
                 <p style={{ color: "red" }}>{emailMatchError}</p>
@@ -330,7 +387,7 @@ function FormularioLiderImigrante() {
                 onChange={handleInputChange}
                 placeholder="Crie sua senha"
                 required
-                className="input-text"
+                className={`input-text ${passwordError ? 'invalid' : 'valid'}`}
                 inputProps={{
                   pattern:
                     "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_{}|:;'<>/?~])[A-Za-z0-9!@#$%^&*()_{}|:;'<>/?~]{8}$",
@@ -359,7 +416,7 @@ function FormularioLiderImigrante() {
                 onChange={handleInputChange}
                 placeholder="Confirme a sua senha"
                 required
-                className="input-text"
+                className={`input-text ${passwordMatchError ? 'invalid' : 'valid'}`}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton onClick={handleTogglePasswordVerify}>
@@ -408,7 +465,7 @@ function FormularioLiderImigrante() {
               comunicação sobre atividades e oportunidades relacionadas.
             </label>
           </div>
-          {error && <p style={{ color: "red" }}>{error}</p>}
+          {error && <p style={{ color: "red", marginBottom:"1rem" }}>{error}</p>}
           <button
             className={`SV${isLoading ? " submit-disabled" : ""}`}
             type="submit"

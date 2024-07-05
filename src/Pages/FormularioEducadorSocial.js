@@ -54,6 +54,8 @@ function FormularioEducadorSocial() {
     return isNotEmpty;
   };
 
+  const [errorCpf, setErrorCpf] = useState('');
+  const [errorEmail, setErrorEmail] = useState('');
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
@@ -73,23 +75,34 @@ function FormularioEducadorSocial() {
     delete dataToSend.verifyPassword;
 
     try {
-      const response = await Api.post("/cadastro/educador", dataToSend);
+      const response = await Api.post("/cadastro/lideres", dataToSend);
       console.log("dados enviados com sucesso:", response.data);
       navigate("/thankyou");
+     
     } catch (error) {
-      console.error('Error al enviar datos:', error);
-      setError('Error ao enviar os dados:Por favor ' + (error.response?.data?.message || error.message));
-    }
-    if (error.response?.data?.message?.includes('CPF já cadastrado')) {
-      setError('CPF ja esta cadastrado');
-  };
       console.error("Error al enviar datos:", error);
-      setError(
-        "Error al enviar datos: " +
-          (error.response?.data?.message || error.message)
-      );
-      setIsLoading(false);
+      if (error.response?.data?.message?.includes("CPF já cadastrado")) {
+        setErrorCpf("Usuario ja existe, CPF ja cadastrado");
+        setError(
+          "Error al enviar datos: CPF ja existe" 
+           
+        );
+      } else if (error.response?.data?.message?.includes("E-mail já cadastrado")) {
+        setErrorEmail("Usuario ja existe, Email ja cadastrado");
+        setError(
+          "Error al enviar datos: Email ja cadastrado"   
+        );
+      }
+      else{
+        setError(
+          "Error al enviar datos: " +
+            (error.response?.data?.message || error.message)
+        );
+      }
+    
     }
+    setIsLoading(false);
+  };
     
  
 
@@ -197,9 +210,12 @@ function FormularioEducadorSocial() {
                 onChange={handleInputChange}
                 placeholder="Digite seu CPF O valor deve ser numérico"
                 required
-                className="input-text"
+                className={`input-text ${error ? 'error-border' : ''}`}
                 name="cpf"
               />
+               
+             {errorCpf && <p style={{ color: 'red' }}>{errorCpf}</p>}
+  
             </div>
             <div className="input-field">
               <h4>
@@ -456,6 +472,8 @@ function FormularioEducadorSocial() {
                 required
                 className="input-text"
               />
+                        {errorEmail && <p style={{ color: 'red' }}>{errorEmail}</p>}
+
             </div>
             <div className="input-field">
               <h4>
@@ -566,7 +584,7 @@ function FormularioEducadorSocial() {
               comunicação sobre atividades e oportunidades relacionadas.
             </label>
           </div>
-          {error && <p style={{ color: "red" }}>{error}</p>}
+          {error && <p style={{ color: "red", marginBottom:"1rem" }}>{error}</p>}
           <button
             className={`SV${isLoading ? " submit-disabled" : ""}`}
             type="submit"

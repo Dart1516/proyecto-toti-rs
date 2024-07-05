@@ -86,9 +86,16 @@ h2 {
   flex-direction: column;
 
 }
-
+.input-text.invalid {
+  border: 1px solid rgba(255, 0, 0, 0.684);
+  background-color: #f00a0a12;
+}
+.input-text.valid {
+  border: 1px solid rgb(93, 238, 139);
+  background-color: #0af04727;
+}
 .error-message {
-  color: red; /* Error message text color */
+  color: red; 
 }
 .input-field,
 .form-group.formulario {
@@ -148,7 +155,7 @@ h4 {
   width: 100%;
 }
 
-.input-text:focus {
+.input-text.valid:focus {
   border-color: #4caf50;
   outline: none;
 }

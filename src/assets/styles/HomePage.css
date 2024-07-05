@@ -290,14 +290,14 @@
   gap: 2.8rem;
   align-items: flex-start;
   width: 100%;
-  background-color: rgba(149, 135, 32, 0.3);
-  padding: 3rem;
+  background-color: rgba(0, 0, 0, 0.117);
+  padding: 3rem 1rem 3rem 2rem;
 }
 
 .proceso-voluntariado h1 {
   padding: 10px 0;
   color: var(--color1);
-  font-size: clamp(0.8em, 1em + 1vw, 1.5em);
+  font-size: clamp(0.8em, 1em + 1vw, 1.6em);
 }
 .proceso-voluntariado h1::first-letter {
   text-transform: capitalize;
@@ -308,7 +308,6 @@ h2.h2-processo-voluntariado {
 .proceso-voluntariado h2,
 .proceso-texto.contato h2 {
   color: var(--color1);
-  font-size: clamp(0.5em, 0.8em + 1vw, 1em);
 }
 .proceso-texto.contato .h2-processo-voluntariado {
   color: var(--color3);
@@ -326,14 +325,13 @@ h2.h2-processo-voluntariado {
 .proceso-voluntariado p a:hover {
   filter: brightness(2);
 }
-
 .proceso-texto {
   display: flex;
   flex-direction: column;
   gap: 10px;
   justify-content: center;
   align-items: self-start;
-  color: var(--color3);
+  color: var(--color4);
   text-align: left;
 }
 
@@ -352,11 +350,10 @@ h2.h2-processo-voluntariado {
 .proceso-voluntariado.lideranca h1 {
   padding: 10px 0;
   color: var(--color2);
-  font-size: clamp(0.8em, 1em + 1vw, 1.5em);
+  font-size: clamp(0.8em, 1em + 1vw, 1.6em);
 }
 .proceso-texto-lideranca h2 {
   color: var(--color2);
-  font-size: clamp(0.5em, 0.8em + 1vw, 1em);
 }
 .proceso-voluntariado.lideranca h1::first-letter {
   text-transform: capitalize;
@@ -389,7 +386,14 @@ h2.h2-processo-voluntariado {
 .proceso-texto-lideranca p::first-letter {
   text-transform: capitalize;
 }
+#registro-processo h2{
+  font-size: clamp(0.7em, 0.9em + 1vw, 1.5em);
 
+}
+#registro-processo p{
+  font-size: clamp(0.7em, 0.9em + 1vw, 1.3em);
+
+}
 @media only screen and (max-width: 1120px) {
   .background-main {
     position: relative;
