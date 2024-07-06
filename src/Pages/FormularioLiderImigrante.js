@@ -32,7 +32,7 @@ function FormularioLiderImigrante() {
   const [emailMatchError, setEmailMatchError] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const validateForm = (form) => {
     delete form.notes;
     const isNotEmpty = Object.keys(form).every((key) => form[key]);
@@ -40,9 +40,10 @@ function FormularioLiderImigrante() {
       const emptyFields = {};
       if (!form.name) {
           emptyFields.name = true;
+          
       }
       if (!form.organization) {
-          emptyFields.ong = true;
+          emptyFields.organization = true;
       }
       if (!form.cnpj) {
         emptyFields.cnpj = true;
@@ -54,14 +55,13 @@ function FormularioLiderImigrante() {
     } else if (!form.termos ) {
       setError( "Por favor, aceite os termos e condições antes de enviar o formulário.");
     }
-
     return isNotEmpty;
   };
 
   const [errorEmail, setErrorEmail] = useState("");
   const [errorCpf, setErrorCpf] = useState("");
-const [errors, setErrorsFields] = useState("")
-const [valid, setFieldValid] = useState(false)
+const [errors, setErrorsFields] = useState("");
+const [valid, setFieldValid] = useState(false);
   function resetErrorEmailCpf() {
     setErrorEmail("");
   }
@@ -142,6 +142,7 @@ const [valid, setFieldValid] = useState(false)
     if (name === "email") {
       validateEmail(value);
     }
+   
   }
   const validatePassword = (password) => {
     let error = "";
@@ -242,6 +243,8 @@ className={`input-text ${errors ? 'invalid' : ''}`}
                 onChange={handleInputChange}
                 required
               />
+                                           {errors && <p style={{ color: 'red' }}>{errors}</p>}
+
             </div>
             <div className="input-field">
               <h4>
@@ -272,6 +275,8 @@ className={`input-text ${errors ? 'invalid' : ''}`}
                 className='input-text'
                                 name="phoneNumber"
               />
+                                           {errors && <p style={{ color: 'red' }}>{errors}</p>}
+
             </div>
             <div className="input-field">
               <h4>
@@ -286,6 +291,8 @@ className={`input-text ${errors ? 'invalid' : ''}`}
                 className='input-text'
                                 required
               />
+                                           {errors && <p style={{ color: 'red' }}>{errors}</p>}
+
             </div>
             <div className="input-field">
               <h4>
@@ -322,6 +329,8 @@ className={`input-text ${errors ? 'invalid' : ''}`}
                 <option value="DF">DF</option>
                 <option value="GO">GO</option>
               </select>
+             
+
             </div>
             <div className="input-field">
               <h4>
@@ -336,6 +345,8 @@ className={`input-text ${errors ? 'invalid' : ''}`}
                 required
                 className='input-text'
               />
+                                           {errors && <p style={{ color: 'red' }}>{errors}</p>}
+
             </div>
           </div>
 
@@ -397,7 +408,7 @@ className={`input-text ${errors ? 'invalid' : ''}`}
                 onChange={handleInputChange}
                 placeholder="Crie sua senha"
                 required
-                className={`input-text ${passwordError ? 'invalid' : ''}${valid ? 'valid' : ''}`}
+                className={`input-text ${passwordError ? 'invalid' : ''}`}
                 inputProps={{
                   pattern:
                     "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_{}|:;'<>/?~])[A-Za-z0-9!@#$%^&*()_{}|:;'<>/?~]{8}$",
