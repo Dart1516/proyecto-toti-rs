@@ -32,25 +32,39 @@ function FormularioLiderImigrante() {
   const [emailMatchError, setEmailMatchError] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
+  
   const validateForm = (form) => {
     delete form.notes;
     const isNotEmpty = Object.keys(form).every((key) => form[key]);
-if (!form.termos) {
-      setError(
-        "Por favor, aceite os termos e condições antes de enviar o formulário."
-      );
-    } else if (!isNotEmpty) {
-      setError("Por favor, preencha os campos que faltam.");
+    if (!isNotEmpty) {
+      const emptyFields = {};
+      if (!form.name) {
+          emptyFields.name = true;
+      }
+      if (!form.organization) {
+          emptyFields.ong = true;
+      }
+      if (!form.cnpj) {
+        emptyFields.cnpj = true;
     }
+        const errorMessage = 'Campo obrigatorio.';
+        setErrorsFields(errorMessage,emptyFields);
+        setError( "Por favor, preencha todos os campos.");
+
+    } else if (!form.termos ) {
+      setError( "Por favor, aceite os termos e condições antes de enviar o formulário.");
+    }
+
     return isNotEmpty;
   };
 
-  const [errorEmail, setErrorEmail] = useState('');
-  
-  const [errorCpf, setErrorCpf] = useState('');
-  const [errors, setErrorField] = useState('');
-
+  const [errorEmail, setErrorEmail] = useState("");
+  const [errorCpf, setErrorCpf] = useState("");
+const [errors, setErrorsFields] = useState("")
+const [valid, setFieldValid] = useState(false)
+  function resetErrorEmailCpf() {
+    setErrorEmail("");
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -78,10 +92,9 @@ if (!form.termos) {
     } catch (error) {
       console.error("Error al enviar datos:", error);
       if (error.response?.data?.message?.includes("CPF já cadastrado")) {
-        setErrorCpf("Usuario ja existe, CPF ja cadastrado");
-        setError(
-          "Error al enviar datos: CPF ja existe" 
-        );
+          setErrorCpf("Usuario ja existe, CPF ja cadastrado");
+          setError("Error al enviar datos: CPF ja existe");
+     
       } else if (error.response?.data?.message?.includes("E-mail já cadastrado")) {
         setErrorEmail("Usuario ja existe, Email ja cadastrado");
         setError(
@@ -96,19 +109,13 @@ if (!form.termos) {
       }
     
     }
+   
     setIsLoading(false);
   };
 
   const handleTermsChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.checked });
   };
-
-  function resetEmailError() {
-    setErrorEmail("");
-  }
-  function resetError() {
-    setErrorField("");
-  }
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -129,31 +136,12 @@ if (!form.termos) {
 
     if (name === "verifyEmail") {
       setEmailMatchError(
-        value !== formData.email ? "Los correos electrónicos no coinciden." : ""
+        value !== formData.email ? "Os E-mails nao coinciden." : ""
       );
     }
-     if (name === "email"){
-      const emailValue = formData.email;
-      const isValidEmail = emailValue.length !== 0 && emailValue.match(/^[\w-.]+@[\w-.]+\.[a-zA-Z]{2,}$/i);
-      setErrorEmail(!isValidEmail);
+    if (name === "email") {
+      validateEmail(value);
     }
-    const validationFields = [
-      "organization",
-      "cnpj",
-      "phoneNumber",
-      "area",
-      "state",
-      "address",
-    ];
-    
-    for (const fieldName of validationFields) {
-      const fieldValue = formData[fieldName];
-      if (fieldValue.trim() === "") {
-        setErrorField(fieldName);
-      }
-      return;
-    }
-    
   }
   const validatePassword = (password) => {
     let error = "";
@@ -163,9 +151,26 @@ if (!form.termos) {
     if (!/(?=.*[@#$%^&=])/.test(password)) error += "Falta símbolo.(@#$%&=)";
     if (password.length < 8)
       error += "A senha deve conter pelo menos 8 digitos.";
-    setPasswordError(error);
+      if (error) {
+        setPasswordError(error);
+    } else {
+        setPasswordError("");
+    }
   };
-
+const validateEmail = (email) => {
+  if(email.match(/^[\w-.]+@[\w-.]+\.[a-zA-Z]{2,}$/i)){
+    setFieldValid(
+      true)
+      setErrorEmail(
+        "")
+  }else{
+    setFieldValid(
+      false)
+    setErrorEmail(
+      "email invalido")
+     
+  }
+}
   const [showPassword, setShowPassword] = useState(false);
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
@@ -196,7 +201,7 @@ if (!form.termos) {
                 1. Nome da ONG que representa<span>*</span>
               </h4>
               <input
-  className={`input-text ${errors.organization ? 'invalid' : 'valid'}`}
+className={`input-text ${errors ? 'invalid' : ''}`}
   type="text"
                 name="organization"
                 placeholder="Digite o nome da ONG"
@@ -204,6 +209,8 @@ if (!form.termos) {
                 onChange={handleInputChange}
                 required
               />
+                             {errors && <p style={{ color: 'red' }}>{errors}</p>}
+
             </div>
             <div className="input-field">
               <h4>
@@ -215,18 +222,20 @@ if (!form.termos) {
                 onChange={handleInputChange}
                 placeholder="Digite seu CNPJ O valor deve ser numérico"
                 required
-                className={`input-text ${errors.cnpj ? 'invalid' : ''}`}
+                className={`input-text ${errors ? 'invalid' : ''}`}
                 name="cnpj"
-                onFocus={() => resetError()}
+
               />
+               {errors && <p style={{ color: 'red' }}>{errors}</p>}
+
             </div>
             <div className="input-field">
               <h4>
                 3. Nome Completo do Representante Legal<span>*</span>
               </h4>
               <input
-  className={`input-text ${errors.name ? 'invalid' : 'valid'}`}
-  type="text"
+ className='input-text'
+   type="text"
                 name="name"
                 placeholder="Digite seu nome"
                 value={formData.name}
@@ -244,8 +253,9 @@ if (!form.termos) {
                 onChange={handleInputChange}
                 placeholder="Digite seu CPF O valor deve ser numérico"
                 required
-                className={`input-text ${errorCpf ? 'invalid' : 'valid'}`}
+                className={`input-text ${errorCpf ? 'invalid' : ''}`}
                 name="cpf"
+                onFocus={() => resetErrorEmailCpf()}
               />
  {errorCpf && <p style={{ color: 'red' }}>{errorCpf}</p>}
             </div>
@@ -259,8 +269,8 @@ if (!form.termos) {
                 onChange={handleInputChange}
                 placeholder="(DDD) Digite o número"
                 required
-                className={`input-text ${errors.phoneNumber ? 'invalid' : 'valid'}`}
-                name="phoneNumber"
+                className='input-text'
+                                name="phoneNumber"
               />
             </div>
             <div className="input-field">
@@ -273,8 +283,8 @@ if (!form.termos) {
                 value={formData.area}
                 onChange={handleInputChange}
                 placeholder="Digite a área em que trabalha"
-                className={`input-text ${errors.area ? 'invalid' : 'valid'}`}
-                required
+                className='input-text'
+                                required
               />
             </div>
             <div className="input-field">
@@ -282,8 +292,8 @@ if (!form.termos) {
                 7. Estado em que reside <span>*</span>
               </h4>
               <select
-                className={`form-select ${errors.organization ? 'invalid' : 'valid'}`}
-                name="state"
+ className='input-text'             
+    name="state"
                 value={formData.state}
                 onChange={handleInputChange}
                 required
@@ -324,7 +334,7 @@ if (!form.termos) {
                 onChange={handleInputChange}
                 placeholder="Digite o endereço"
                 required
-                className={`form-select ${errors.address ? 'invalid' : 'valid'}`}
+                className='input-text'
               />
             </div>
           </div>
@@ -353,10 +363,10 @@ if (!form.termos) {
                 placeholder="Digite seu e-mail"
                 required
                 toLowercase
-                className={`input-text ${errorEmail ? 'invalid' : 'valid'}`}
-                onFocus={() => resetEmailError()}
+                className={`input-text ${errorEmail ? 'invalid' : ''} ${valid ? 'valid' : ''}`}
+               
               />
-                  {errorEmail && <p style={{ color: 'red'}}>{errorEmail}</p>}
+          {errorEmail && <p style={{ color: 'red' }}>{errorEmail}</p>}
 
             </div>
             <div className="input-field">
@@ -370,7 +380,7 @@ if (!form.termos) {
                 onChange={handleInputChange}
                 placeholder="Confirme o  seu e-mail"
                 required
-                className={`input-text ${emailMatchError ? 'invalid' : 'valid'}`}
+                className={`input-text ${emailMatchError ? 'invalid' : ''}`}
               />
               {emailMatchError && (
                 <p style={{ color: "red" }}>{emailMatchError}</p>
@@ -387,7 +397,7 @@ if (!form.termos) {
                 onChange={handleInputChange}
                 placeholder="Crie sua senha"
                 required
-                className={`input-text ${passwordError ? 'invalid' : 'valid'}`}
+                className={`input-text ${passwordError ? 'invalid' : ''}${valid ? 'valid' : ''}`}
                 inputProps={{
                   pattern:
                     "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_{}|:;'<>/?~])[A-Za-z0-9!@#$%^&*()_{}|:;'<>/?~]{8}$",
@@ -416,7 +426,7 @@ if (!form.termos) {
                 onChange={handleInputChange}
                 placeholder="Confirme a sua senha"
                 required
-                className={`input-text ${passwordMatchError ? 'invalid' : 'valid'}`}
+                className={`input-text ${passwordMatchError ? 'invalid' : ''}`}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton onClick={handleTogglePasswordVerify}>
