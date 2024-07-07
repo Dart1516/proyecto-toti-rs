@@ -32,35 +32,50 @@ function FormularioLiderImigrante() {
   const [emailMatchError, setEmailMatchError] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+const [nameValid, setNameValid] = useState(false);
+const [nameInvalid, setNameInvalid] = useState(false);
+const [ongInvalid, setOngInvalid] = useState(false);
+
+const [ongValid, setOngValid] = useState(false);
+const [phoneNumberValid, setPhoneNumberValid] = useState(false);
+const [cnpjValid, setCnpjValid] = useState(false);
+const [cnpjInvalid, setCnpjInvalid] = useState(false);
 
   const validateForm = (form) => {
     delete form.notes;
     const isNotEmpty = Object.keys(form).every((key) => form[key]);
     if (!isNotEmpty) {
       const emptyFields = {};
-      if (!form.name) {
+        if (!form.name) {
           emptyFields.name = true;
-          
-      }
-      if (!form.organization) {
-          emptyFields.organization = true;
+          setNameInvalid("campo obrigatorio")
+        } else {
+        setNameValid(true);
+        setNameInvalid("")
       }
       if (!form.cnpj) {
         emptyFields.cnpj = true;
+        setCnpjInvalid("campo obrigatorio")
+      } else {
+      setCnpjValid(true);
+      setCnpjInvalid("")
     }
-        const errorMessage = 'Campo obrigatorio.';
-        setErrorsFields(errorMessage,emptyFields);
-        setError( "Por favor, preencha todos os campos.");
-
-    } else if (!form.termos ) {
+    if (!form.organization) {
+      emptyFields.organization = true;
+      setOngInvalid("campo obrigatorio")
+    } else {
+    setOngValid(true);
+    setOngInvalid("")
+  }
+   if (!form.termos ) {
       setError( "Por favor, aceite os termos e condições antes de enviar o formulário.");
     }
+  }
     return isNotEmpty;
   };
 
   const [errorEmail, setErrorEmail] = useState("");
   const [errorCpf, setErrorCpf] = useState("");
-const [errors, setErrorsFields] = useState("");
 const [valid, setFieldValid] = useState(false);
   function resetErrorEmailCpf() {
     setErrorEmail("");
@@ -142,6 +157,9 @@ const [valid, setFieldValid] = useState(false);
     if (name === "email") {
       validateEmail(value);
     }
+    if (name === "organization" || name === "name") {
+      validateName(value);
+    }
    
   }
   const validatePassword = (password) => {
@@ -171,6 +189,24 @@ const validateEmail = (email) => {
       "email invalido")
      
   }
+}
+const validateName = (name, organization) => {
+  if(name < 2 && name !== Number){
+    setNameValid(
+      true)
+      setErrorEmail(
+        "")
+  }else{
+    setNameValid(
+      false)
+}
+if(organization < 2){
+  setOngValid(
+    true)
+}else{
+  setOngValid(
+    false)
+}
 }
   const [showPassword, setShowPassword] = useState(false);
   const handleTogglePassword = () => {
@@ -202,7 +238,7 @@ const validateEmail = (email) => {
                 1. Nome da ONG que representa<span>*</span>
               </h4>
               <input
-className={`input-text ${errors ? 'invalid' : ''}`}
+className={`input-text ${ongInvalid ? 'invalid' : ''} ${ongValid ? 'valid' : ''}`}
   type="text"
                 name="organization"
                 placeholder="Digite o nome da ONG"
@@ -210,7 +246,7 @@ className={`input-text ${errors ? 'invalid' : ''}`}
                 onChange={handleInputChange}
                 required
               />
-                             {errors && <p style={{ color: 'red' }}>{errors}</p>}
+               {ongInvalid && <p style={{ color: 'red' }}>{ongInvalid}</p>}
 
             </div>
             <div className="input-field">
@@ -223,11 +259,11 @@ className={`input-text ${errors ? 'invalid' : ''}`}
                 onChange={handleInputChange}
                 placeholder="Digite seu CNPJ O valor deve ser numérico"
                 required
-                className={`input-text ${errors ? 'invalid' : ''}`}
+                className={`input-text ${cnpjInvalid ? 'invalid' : ''} ${cnpjValid ? 'valid' : ''}`}
                 name="cnpj"
 
               />
-               {errors && <p style={{ color: 'red' }}>{errors}</p>}
+               {cnpjInvalid && <p style={{ color: 'red' }}>{cnpjInvalid}</p>}
 
             </div>
             <div className="input-field">
@@ -235,15 +271,15 @@ className={`input-text ${errors ? 'invalid' : ''}`}
                 3. Nome Completo do Representante Legal<span>*</span>
               </h4>
               <input
- className='input-text'
-   type="text"
+className={`input-text ${nameInvalid ? 'invalid' : ''} ${nameValid ? 'valid' : ''}`}
+type="text"
                 name="name"
                 placeholder="Digite seu nome"
                 value={formData.name}
                 onChange={handleInputChange}
                 required
               />
-                                           {errors && <p style={{ color: 'red' }}>{errors}</p>}
+               {nameInvalid && <p style={{ color: 'red' }}>{nameInvalid}</p>}
 
             </div>
             <div className="input-field">
@@ -275,7 +311,6 @@ className={`input-text ${errors ? 'invalid' : ''}`}
                 className='input-text'
                                 name="phoneNumber"
               />
-                                           {errors && <p style={{ color: 'red' }}>{errors}</p>}
 
             </div>
             <div className="input-field">
@@ -291,7 +326,6 @@ className={`input-text ${errors ? 'invalid' : ''}`}
                 className='input-text'
                                 required
               />
-                                           {errors && <p style={{ color: 'red' }}>{errors}</p>}
 
             </div>
             <div className="input-field">
@@ -345,7 +379,6 @@ className={`input-text ${errors ? 'invalid' : ''}`}
                 required
                 className='input-text'
               />
-                                           {errors && <p style={{ color: 'red' }}>{errors}</p>}
 
             </div>
           </div>
