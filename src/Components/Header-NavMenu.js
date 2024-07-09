@@ -18,7 +18,7 @@ function HeaderAndMenu() {
           <div className="menu-left">
             
             <ul className="opciones-derecha">
-            <Link><img src={logo} className="logo-home"></img></Link>
+            <Link to="/Principal"><img src={logo} className="logo-home"></img></Link>
             </ul>
           </div>
           <ul className="opciones-izquierda">
