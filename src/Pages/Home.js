@@ -40,7 +40,7 @@ function Principal() {
                                 <h2>TOTERS do BEM,</h2>
                                 <h2>SOS RIO GRANDE DO SUL</h2>
                             </div>
-                            <p>Uma plataforma para conectar voluntários e recursos, visando oferecer ajuda prática e esperança àqueles afetados pelas inundações no RS, disponibilizando serviços com psicólogos e educadores sociais</p>  
+                            <p>Uma plataforma que conecta Psicólogos e Educadores Sociais com um líder Comunitário para prestação de serviço voluntário às vítimas das inundações no Rio Grande do Sul</p>  
                             <div className='sub-text-home'>
                                 <a href="./demo">quero ser voluntário </a>
                                 <a href='./JoinUs'>quero ser atendido</a>
@@ -189,7 +189,22 @@ function Principal() {
               </button>
             </div>
             <div className={`resposta ${activeIndices[1] ? 'show' : ''}`}>
-              <p>Para se voluntariar, basta acessar a página Serviços e selecionar sua categoria. Após isso, você irá preencher preencher um formulário com suas informações e interesses. O Líder Comunitário entrará em contato para discutir como você pode contribuir.</p>
+              <p>Para se voluntariar, basta acessar a página Serviços e selecionar sua categoria. Após isso, você irá preencher preencher um formulário com suas informações e interesses. Assim que recebermos a demanda dos solicitantes O Líder Comunitário entrará em contato para discutir como você pode contribuir.</p>
+            </div>
+          </div>
+          <div className='pergunta'>
+            <div className="pergunta-encabeçado">
+              <div className='titulo-pergunta'>
+                <h2>03</h2>
+                <h1>Quem é que é o Líder Comunitario?</h1>
+              </div>
+              <button className={`sign ${activeIndices[1] ? 'active' : ''}`} onClick={() => toggleSign(1)}>
+                <div></div>
+                <div></div>
+              </button>
+            </div>
+            <div className={`resposta ${activeIndices[1] ? 'show' : ''}`}>
+              <p>asdadsasdXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.</p>
             </div>
           </div>
           <div className='pergunta'>
