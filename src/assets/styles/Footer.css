@@ -69,6 +69,8 @@
     width: 100%;
     min-width: 100vw;
     height: 5%;
+    gap: 20px;
+    padding: 20px 10px;
   }
   .footer-logo-container p {
     text-transform: capitalize;
@@ -77,7 +79,8 @@
   }
   
   .footer-logo {
-    width: 90px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     object-fit: cover;
   }

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import "../assets/styles/App.css";
 import "../assets/styles/Footer.css";
-import ToterDoBem from '../assets/images/logos/Juntos pelo RS.svg'; // Asegúrate de que la ruta al logo sea correcta
+import logo from "../../src/assets/images/logos/toters-logo-green-dark.svg" // Asegúrate de que la ruta al logo sea correcta
 import { FaEnvelope, FaPhone } from 'react-icons/fa';
 
 function Footer() {
@@ -51,7 +51,7 @@ function Footer() {
       </div>
      <hr></hr>
         <div className="footer-logo-container">
-          <img src={ToterDoBem} alt="Toters do bem Logo" className="footer-logo" />
+          <img src={logo} alt="Toters do bem Logo" className="footer-logo" />
           <p>Todos os direitos reservados - {currentMonth} {currentYear}</p>
         </div>
      

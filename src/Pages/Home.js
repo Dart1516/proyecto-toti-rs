@@ -2,20 +2,20 @@
 import Header from "../Components/Header-NavMenu";
 import '../assets/styles/App.css';
 import '../assets/styles/HomePage.css';
-import psicologa from '../assets/images/psicologa.jpg'; 
-import educador from "../assets/images/educador-social.jpg";
-import lideres from "../assets/images/lideres.png";
+import psicologa from '../assets/images/psicologa.svg'; 
+import educador from "../assets/images/educador-social.svg";
+import lideres from "../assets/images/lideres.svg";
 import { Typography } from "@mui/material";
 import Footer from "../Components/Footer";
 import Video1 from "../assets/videos/home.mp4";
-import Banner1 from "../assets/images/Banner1.jpeg";
-import Banner2 from "../assets/images/Banner2.jpeg";
-import Banner3 from "../assets/images/Banner3.jpeg";
-import Banner4 from "../assets/images/Banner4.jpeg";
-import Banner5 from "../assets/images/Banner5.jpeg";
-import Banner6 from "../assets/images/Banner6.jpeg";
-import Banner7 from "../assets/images/Banner7.jpeg";
-import Banner8 from "../assets/images/Banner8.jpeg";
+import Banner1 from "../assets/images/Banner1.svg";
+import Banner2 from "../assets/images/Banner2.svg";
+import Banner3 from "../assets/images/Banner3.svg";
+import Banner4 from "../assets/images/Banner4.svg";
+import Banner5 from "../assets/images/Banner5.svg";
+import Banner6 from "../assets/images/Banner6.svg";
+import Banner7 from "../assets/images/Banner7.svg";
+import Banner8 from "../assets/images/Banner8.svg";
 import { useState } from "react";
 
 function Principal() {
