@@ -84,18 +84,8 @@ h2 {
 .input-field {
   display: flex;
   flex-direction: column;
-
 } 
 
-/*PARA VICTOR!!!! */
-.input-text.invalid {
-
-}
-.input-text:valid {
-  border: 1px solid rgb(93, 238, 139);
-  background-color: #0af04727;
-}
-  /*PARA VICTOR!!!! */
 .error-message {
   color: red; 
 }
@@ -104,15 +94,18 @@ h2 {
 .input-field,
 .form-group.formulario {
   margin-bottom: 15px;
+  border: black;
 }
-/* ESTO ES PARA VICTOR REVISALO Y HAZLO BONITO */
-.input-field input:required{
+
+/*Validación de Colores (Borde)*/
+
+.input-field input:focus:required:invalid, .input-field select:focus:required:invalid {
   border: solid 2.5px red;
 }
-.input-field input:required:valid{
+.input-field input:focus:required:valid, .input-field select:focus:required:valid{
+  border: 1px solid rgb(93, 238, 139);
   background-color: #0af04727;
 }
-/* ESTO ES PARA VICTOR REVISALO Y HAZLO BONITO */
 
 .form-group.formulario {
   display: flex;

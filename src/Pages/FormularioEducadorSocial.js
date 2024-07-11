@@ -210,6 +210,7 @@ function FormularioEducadorSocial() {
                 onChange={handleInputChange}
                 placeholder="Digite seu CPF O valor deve ser numérico"
                 required
+                pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
                 className={`input-text ${error ? 'error-border' : ''}`}
                 name="cpf"
               />
@@ -240,6 +241,7 @@ function FormularioEducadorSocial() {
                 onChange={handleInputChange}
                 placeholder="(DDD) Digite o número"
                 required
+                pattern="\(\d{2}\) \d{5}-\d{4}"
                 className="input-text"
                 name="phoneNumber"
               />

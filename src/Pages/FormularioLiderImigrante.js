@@ -32,54 +32,25 @@ function FormularioLiderImigrante() {
   const [emailMatchError, setEmailMatchError] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-const [nameValid, setNameValid] = useState(false);
-const [nameInvalid, setNameInvalid] = useState(false);
-const [ongInvalid, setOngInvalid] = useState(false);
-
-const [ongValid, setOngValid] = useState(false);
-const [phoneNumberValid, setPhoneNumberValid] = useState(false);
-const [cnpjValid, setCnpjValid] = useState(false);
-const [cnpjInvalid, setCnpjInvalid] = useState(false);
 
   const validateForm = (form) => {
     delete form.notes;
     const isNotEmpty = Object.keys(form).every((key) => form[key]);
-    if (!isNotEmpty) {
-      const emptyFields = {};
-        if (!form.name) {
-          emptyFields.name = true;
-          setNameInvalid("campo obrigatorio")
-        } else {
-        setNameValid(true);
-        setNameInvalid("")
-      }
-      if (!form.cnpj) {
-        emptyFields.cnpj = true;
-        setCnpjInvalid("campo obrigatorio")
-      } else {
-      setCnpjValid(true);
-      setCnpjInvalid("")
+if (!form.termos) {
+      setError(
+        "Por favor, aceite os termos e condições antes de enviar o formulário."
+      );
+    } else if (!isNotEmpty) {
+      setError("Por favor, preencha os campos que faltam.");
     }
-    if (!form.organization) {
-      emptyFields.organization = true;
-      setOngInvalid("campo obrigatorio")
-    } else {
-    setOngValid(true);
-    setOngInvalid("")
-  }
-   if (!form.termos ) {
-      setError( "Por favor, aceite os termos e condições antes de enviar o formulário.");
-    }
-  }
     return isNotEmpty;
   };
 
-  const [errorEmail, setErrorEmail] = useState("");
-  const [errorCpf, setErrorCpf] = useState("");
-const [valid, setFieldValid] = useState(false);
-  function resetErrorEmailCpf() {
-    setErrorEmail("");
-  }
+  const [errorEmail, setErrorEmail] = useState('');
+  
+  const [errorCpf, setErrorCpf] = useState('');
+  const [errors, setErrorField] = useState('');
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -107,9 +78,10 @@ const [valid, setFieldValid] = useState(false);
     } catch (error) {
       console.error("Error al enviar datos:", error);
       if (error.response?.data?.message?.includes("CPF já cadastrado")) {
-          setErrorCpf("Usuario ja existe, CPF ja cadastrado");
-          setError("Error al enviar datos: CPF ja existe");
-     
+        setErrorCpf("Usuario ja existe, CPF ja cadastrado");
+        setError(
+          "Error al enviar datos: CPF ja existe" 
+        );
       } else if (error.response?.data?.message?.includes("E-mail já cadastrado")) {
         setErrorEmail("Usuario ja existe, Email ja cadastrado");
         setError(
@@ -124,13 +96,19 @@ const [valid, setFieldValid] = useState(false);
       }
     
     }
-   
     setIsLoading(false);
   };
 
   const handleTermsChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.checked });
   };
+
+  function resetEmailError() {
+    setErrorEmail("");
+  }
+  function resetError() {
+    setErrorField("");
+  }
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -151,16 +129,31 @@ const [valid, setFieldValid] = useState(false);
 
     if (name === "verifyEmail") {
       setEmailMatchError(
-        value !== formData.email ? "Os E-mails nao coinciden." : ""
+        value !== formData.email ? "Los correos electrónicos no coinciden." : ""
       );
     }
-    if (name === "email") {
-      validateEmail(value);
+     if (name === "email"){
+      const emailValue = formData.email;
+      const isValidEmail = emailValue.length !== 0 && emailValue.match(/^[\w-.]+@[\w-.]+\.[a-zA-Z]{2,}$/i);
+      setErrorEmail(!isValidEmail);
     }
-    if (name === "organization" || name === "name") {
-      validateName(value);
+    const validationFields = [
+      "organization",
+      "cnpj",
+      "phoneNumber",
+      "area",
+      "state",
+      "address",
+    ];
+    
+    for (const fieldName of validationFields) {
+      const fieldValue = formData[fieldName];
+      if (fieldValue.trim() === "") {
+        setErrorField(fieldName);
+      }
+      return;
     }
-   
+    
   }
   const validatePassword = (password) => {
     let error = "";
@@ -170,44 +163,9 @@ const [valid, setFieldValid] = useState(false);
     if (!/(?=.*[@#$%^&=])/.test(password)) error += "Falta símbolo.(@#$%&=)";
     if (password.length < 8)
       error += "A senha deve conter pelo menos 8 digitos.";
-      if (error) {
-        setPasswordError(error);
-    } else {
-        setPasswordError("");
-    }
+    setPasswordError(error);
   };
-const validateEmail = (email) => {
-  if(email.match(/^[\w-.]+@[\w-.]+\.[a-zA-Z]{2,}$/i)){
-    setFieldValid(
-      true)
-      setErrorEmail(
-        "")
-  }else{
-    setFieldValid(
-      false)
-    setErrorEmail(
-      "email invalido")
-     
-  }
-}
-const validateName = (name, organization) => {
-  if(name < 2 && name !== Number){
-    setNameValid(
-      true)
-      setErrorEmail(
-        "")
-  }else{
-    setNameValid(
-      false)
-}
-if(organization < 2){
-  setOngValid(
-    true)
-}else{
-  setOngValid(
-    false)
-}
-}
+
   const [showPassword, setShowPassword] = useState(false);
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
@@ -238,7 +196,7 @@ if(organization < 2){
                 1. Nome da ONG que representa<span>*</span>
               </h4>
               <input
-className={`input-text ${ongInvalid ? 'invalid' : ''} ${ongValid ? 'valid' : ''}`}
+  className={`input-text ${errors.organization ? 'invalid' : 'valid'}`}
   type="text"
                 name="organization"
                 placeholder="Digite o nome da ONG"
@@ -246,8 +204,6 @@ className={`input-text ${ongInvalid ? 'invalid' : ''} ${ongValid ? 'valid' : ''}
                 onChange={handleInputChange}
                 required
               />
-               {ongInvalid && <p style={{ color: 'red' }}>{ongInvalid}</p>}
-
             </div>
             <div className="input-field">
               <h4>
@@ -259,28 +215,25 @@ className={`input-text ${ongInvalid ? 'invalid' : ''} ${ongValid ? 'valid' : ''}
                 onChange={handleInputChange}
                 placeholder="Digite seu CNPJ O valor deve ser numérico"
                 required
-                className={`input-text ${cnpjInvalid ? 'invalid' : ''} ${cnpjValid ? 'valid' : ''}`}
+                className={`input-text ${errors.cnpj ? 'invalid' : ''}`}
                 name="cnpj"
-
+                pattern="\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}"
+                onFocus={() => resetError()}
               />
-               {cnpjInvalid && <p style={{ color: 'red' }}>{cnpjInvalid}</p>}
-
             </div>
             <div className="input-field">
               <h4>
                 3. Nome Completo do Representante Legal<span>*</span>
               </h4>
               <input
-className={`input-text ${nameInvalid ? 'invalid' : ''} ${nameValid ? 'valid' : ''}`}
-type="text"
+  className={`input-text ${errors.name ? 'invalid' : 'valid'}`}
+  type="text"
                 name="name"
                 placeholder="Digite seu nome"
                 value={formData.name}
                 onChange={handleInputChange}
                 required
               />
-               {nameInvalid && <p style={{ color: 'red' }}>{nameInvalid}</p>}
-
             </div>
             <div className="input-field">
               <h4>
@@ -292,9 +245,9 @@ type="text"
                 onChange={handleInputChange}
                 placeholder="Digite seu CPF O valor deve ser numérico"
                 required
-                className={`input-text ${errorCpf ? 'invalid' : ''}`}
+                className={`input-text ${errorCpf ? 'invalid' : 'valid'}`}
+                pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
                 name="cpf"
-                onFocus={() => resetErrorEmailCpf()}
               />
  {errorCpf && <p style={{ color: 'red' }}>{errorCpf}</p>}
             </div>
@@ -308,10 +261,10 @@ type="text"
                 onChange={handleInputChange}
                 placeholder="(DDD) Digite o número"
                 required
-                className='input-text'
-                                name="phoneNumber"
+                pattern="\(\d{2}\) \d{5}-\d{4}"
+                className={`input-text ${errors.phoneNumber ? 'invalid' : 'valid'}`}
+                name="phoneNumber"
               />
-
             </div>
             <div className="input-field">
               <h4>
@@ -323,18 +276,17 @@ type="text"
                 value={formData.area}
                 onChange={handleInputChange}
                 placeholder="Digite a área em que trabalha"
-                className='input-text'
-                                required
+                className={`input-text ${errors.area ? 'invalid' : 'valid'}`}
+                required
               />
-
             </div>
             <div className="input-field">
               <h4>
                 7. Estado em que reside <span>*</span>
               </h4>
               <select
- className='input-text'             
-    name="state"
+                className={`form-select ${errors.organization ? 'invalid' : 'valid'}`}
+                name="state"
                 value={formData.state}
                 onChange={handleInputChange}
                 required
@@ -363,8 +315,6 @@ type="text"
                 <option value="DF">DF</option>
                 <option value="GO">GO</option>
               </select>
-             
-
             </div>
             <div className="input-field">
               <h4>
@@ -377,9 +327,8 @@ type="text"
                 onChange={handleInputChange}
                 placeholder="Digite o endereço"
                 required
-                className='input-text'
+                className={`input-text ${errors.address ? 'invalid' : 'valid'}`}
               />
-
             </div>
           </div>
 
@@ -407,10 +356,10 @@ type="text"
                 placeholder="Digite seu e-mail"
                 required
                 toLowercase
-                className={`input-text ${errorEmail ? 'invalid' : ''} ${valid ? 'valid' : ''}`}
-               
+                className={`input-text ${errorEmail ? 'invalid' : 'valid'}`}
+                onFocus={() => resetEmailError()}
               />
-          {errorEmail && <p style={{ color: 'red' }}>{errorEmail}</p>}
+                  {errorEmail && <p style={{ color: 'red'}}>{errorEmail}</p>}
 
             </div>
             <div className="input-field">
@@ -424,7 +373,7 @@ type="text"
                 onChange={handleInputChange}
                 placeholder="Confirme o  seu e-mail"
                 required
-                className={`input-text ${emailMatchError ? 'invalid' : ''}`}
+                className={`input-text ${emailMatchError ? 'invalid' : 'valid'}`}
               />
               {emailMatchError && (
                 <p style={{ color: "red" }}>{emailMatchError}</p>
@@ -441,7 +390,7 @@ type="text"
                 onChange={handleInputChange}
                 placeholder="Crie sua senha"
                 required
-                className={`input-text ${passwordError ? 'invalid' : ''}`}
+                className={`input-text ${passwordError ? 'invalid' : 'valid'}`}
                 inputProps={{
                   pattern:
                     "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_{}|:;'<>/?~])[A-Za-z0-9!@#$%^&*()_{}|:;'<>/?~]{8}$",
@@ -470,7 +419,7 @@ type="text"
                 onChange={handleInputChange}
                 placeholder="Confirme a sua senha"
                 required
-                className={`input-text ${passwordMatchError ? 'invalid' : ''}`}
+                className={`input-text ${passwordMatchError ? 'invalid' : 'valid'}`}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton onClick={handleTogglePasswordVerify}>
