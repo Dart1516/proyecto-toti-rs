@@ -153,13 +153,13 @@ function FormularioPsicologo() {
   };
 
   const validatePassword = (password) => {
-    let error = "";
-    if (!/(?=.*[a-z])/.test(password)) error += "Falta minúscula. ";
-    if (!/(?=.*[A-Z])/.test(password)) error += "Falta mayúscula. ";
-    if (!/(?=.*\d)/.test(password)) error += "Falta número. ";
-    if (!/(?=.*[@#$%^&=])/.test(password)) error += "Falta símbolo.(@#$%&=)";
-    if (password.length < 8) error += "A senha deve conter pelo menos 8 digitos.";
-    setPasswordError(error);
+    let errors = [];
+    if (!/(?=.*[a-z])/.test(password)) errors.push("Falta minúscula.");
+    if (!/(?=.*[A-Z])/.test(password)) errors.push("Falta maiúscula.");
+    if (!/(?=.*\d)/.test(password)) errors.push("Falta número.");
+    if (!/(?=.*[@#$%^&=])/.test(password)) errors.push("Falta símbolo. (@#$%&=)");
+    if (password.length < 8) errors.push("A senha deve conter 8 caracteres.");
+    setPasswordError(errors);
   };
   const [showPassword, setShowPassword] = useState(false);
   const handleTogglePassword = () => {
@@ -210,7 +210,7 @@ const handleTogglePasswordVerify = () => {
                 className="input-text"
                 name="cpf"
               />
-                           {errorCpf && <p style={{ color: 'red' }}>{errorCpf}</p>}
+                           {errorCpf && <p style={{ color: '#ae0000' }}>{errorCpf}</p>}
 
             </div>
             <div className="input-field">
@@ -460,7 +460,7 @@ const handleTogglePasswordVerify = () => {
                 className="input-text"
               />
               {emailMatchError && (
-                <p style={{ color: "red" }}>{emailMatchError}</p>
+                <p style={{ color: '#ae0000' }}>{emailMatchError}</p>
               )}
             </div>
             <div className="input-field">
@@ -487,7 +487,13 @@ const handleTogglePasswordVerify = () => {
                         </InputAdornment>
                 }
               />
-              {passwordError && <p className="error-message">{passwordError}</p>}
+{passwordError.length > 0 && (
+  <ul className="error-message">
+    {passwordError.map((error, index) => (
+      <li key={index}>{error}</li>
+    ))}
+  </ul>
+)}
             </div>
             <div className="input-field">
               <h4>
@@ -510,7 +516,7 @@ const handleTogglePasswordVerify = () => {
                 }
               />
               {passwordMatchError && (
-                <p style={{ color: "red" }}>{passwordMatchError}</p>
+                <p style={{ color: '#ae0000' }}>{passwordMatchError}</p>
               )}
             </div>
           </div>
@@ -526,7 +532,8 @@ const handleTogglePasswordVerify = () => {
               onChange={handleInputChange}
             ></textarea>
           </div>
-          <div className="legal">
+          <div className="legal-container">
+            <div className="legal-2">
             <input
               type="checkbox"
               id="termos"
@@ -548,7 +555,9 @@ const handleTogglePasswordVerify = () => {
               , que inclui: 1) a coordenação e gestão de voluntários, e 2) a
               comunicação sobre atividades e oportunidades relacionadas.
             </label>
+            </div>
             <div className="legal">
+              <div className="legal-2">
               <input
                 type="checkbox"
                 id="termos1"
@@ -569,9 +578,10 @@ const handleTogglePasswordVerify = () => {
                 com o CRP, e estou ciente de que a plataforma atua apenas como
                 um divulgador de oportunidades de serviço voluntário.
               </label>
+              </div>
             </div>
           </div>
-          {error && <p style={{ color: "red", marginBottom:"1rem" }}>{error}</p>}
+          {error && <p style={{ color: '#ae0000', marginBottom:"1rem" }}>{error}</p>}
           <button
             className={`SV${isLoading ? " submit-disabled" : ""}`}
             type="submit"
