@@ -97,10 +97,20 @@ h2 {
 .error-message {
   color: red; 
 }
+
+
 .input-field,
 .form-group.formulario {
   margin-bottom: 15px;
 }
+/* ESTO ES PARA VICTOR REVISALO Y HAZLO BONITO */
+.input-field input:required{
+  border: solid 2.5px red;
+}
+.input-field input:required:valid{
+  border: solid 4px green;
+}
+/* ESTO ES PARA VICTOR REVISALO Y HAZLO BONITO */
 
 .form-group.formulario {
   display: flex;
