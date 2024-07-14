@@ -16,7 +16,9 @@ function Footer() {
           <h4>Sobre nós</h4>
           <ul>
             <li><a href="https://www2.camara.leg.br/legin/fed/lei/1998/lei-9608-18-fevereiro-1998-365398-publicacaooriginal-1-pl.html" target="_blank" rel="noopener noreferrer">Legislação do voluntariado</a></li>
+           
             <li><a href="/avisoLegal" target="_blank">Proteção de dados</a></li>
+            <li> <a href="/TermoPsicologo" target="_blank">                 Termo de Responsabilidade Pisicologos              </a></li>
           </ul>
         </div>
         <div className="footer-column">
