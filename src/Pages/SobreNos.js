@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React from "react";
 import Header from "../Components/Header-NavMenu";
-import "../../src/assets/styles/Mobile-Menu.module.css"
-import '../assets/styles/App.css';
+import "../../src/assets/styles/Mobile-Menu.module.css";
+import "../assets/styles/App.css";
 import { useState } from "react";
 import {
   Grid,
@@ -75,7 +75,7 @@ const About = () => {
   return (
     <>
       <header className="App-header">
-        <Header/>
+        <Header />
       </header>
       <div id="about">
         <Container
@@ -114,7 +114,10 @@ const About = () => {
             {/* img da segunda div--------------------- */}
             <div className="img-main-center">
               <StyledImg src={imgComunidade} />
-              <span>As Toters Marianela Arana & Mayfer Ramirez, vomo voluntarias no RS</span>
+              <span>
+                As Toters Marianela Arana & Mayfer Ramirez, vomo voluntarias no
+                RS
+              </span>
             </div>
             <div className="text-main">
               <Typography variant="h4" color="black" fontWeight={700}>
@@ -373,7 +376,6 @@ const About = () => {
                   </Button>
                 </CardActions>
               </Card>
-
               <Card className="card-toter">
                 <CardMedia sx={{ height: 220 }} image={cristian} title="" />
                 <CardContent>
@@ -465,7 +467,7 @@ const About = () => {
                 <CardMedia sx={{ height: 220 }} image={manuel} title="" />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    Manuel 
+                    Manuel
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     Toter
