@@ -68,7 +68,7 @@ function FormularioPsicologo() {
     delete dataToSend.verifyPassword;
 
     try {
-      const response = await Api.post("/cadastro/lideres", dataToSend);
+      const response = await Api.post("/cadastro/psicólogos", dataToSend);
       console.log("dados enviados com sucesso:", response.data);
       navigate("/thankyou");
      
