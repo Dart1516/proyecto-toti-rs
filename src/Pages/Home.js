@@ -1,13 +1,8 @@
 
-import Header from "../Components/Header-NavMenu";
-import '../assets/styles/App.css';
-import '../assets/styles/HomePage.css';
-import psicologa from '../assets/images/psicologa.svg'; 
-import educador from "../assets/images/educador-social.svg";
-import lideres from "../assets/images/lideres.svg";
 import { Typography } from "@mui/material";
+import { useState } from "react";
 import Footer from "../Components/Footer";
-import Video1 from "../assets/videos/home.mp4";
+import Header from "../Components/Header-NavMenu";
 import Banner1 from "../assets/images/Banner1.svg";
 import Banner2 from "../assets/images/Banner2.svg";
 import Banner3 from "../assets/images/Banner3.svg";
@@ -16,7 +11,12 @@ import Banner5 from "../assets/images/Banner5.svg";
 import Banner6 from "../assets/images/Banner6.svg";
 import Banner7 from "../assets/images/Banner7.svg";
 import Banner8 from "../assets/images/Banner8.svg";
-import { useState } from "react";
+import educador from "../assets/images/educador-social.svg";
+import lideres from "../assets/images/lideres.svg";
+import psicologa from '../assets/images/psicologa.svg';
+import '../assets/styles/App.css';
+import '../assets/styles/HomePage.css';
+import Video1 from "../assets/videos/home.mp4";
 
 function Principal() {
 
@@ -237,13 +237,14 @@ function Principal() {
               <p>Voluntariar-se para apoiar o Estado do Rio Grande do Sul proporciona uma oportunidade única de impactar positivamente a vida de pessoas em um momento de fragilidade, além de desenvolver novas habilidades, expandir sua rede de contatos, profissional e pessoal, e contribuir para uma causa significativa.</p>
             </div>
           </div>
-        </div>
+        </div> 
       </div>
             <footer>
-                <Footer />
+                <Footer/>
             </footer>
-        </div>
+      </div>
     );
 }
+
 
 export default Principal;
