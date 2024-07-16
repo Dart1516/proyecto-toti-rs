@@ -198,12 +198,12 @@ function Principal() {
                 <h2>03</h2>
                 <h1>Quem é que é o Líder Comunitario?</h1>
               </div>
-              <button className={`sign ${activeIndices[1] ? 'active' : ''}`} onClick={() => toggleSign(1)}>
+              <button className={`sign ${activeIndices[2] ? 'active' : ''}`} onClick={() => toggleSign(2)}>
                 <div></div>
                 <div></div>
               </button>
             </div>
-            <div className={`resposta ${activeIndices[1] ? 'show' : ''}`}>
+            <div className={`resposta ${activeIndices[2] ? 'show' : ''}`}>
               <p>asdadsasdXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.</p>
             </div>
           </div>
@@ -213,12 +213,12 @@ function Principal() {
                 <h2>03</h2>
                 <h1>Quais são as áreas de atuação para voluntários?</h1>
               </div>
-              <button className={`sign ${activeIndices[2] ? 'active' : ''}`} onClick={() => toggleSign(2)}>
+              <button className={`sign ${activeIndices[3] ? 'active' : ''}`} onClick={() => toggleSign(3)}>
                 <div></div>
                 <div></div>
               </button>
             </div>
-            <div className={`resposta ${activeIndices[2] ? 'show' : ''}`}>
+            <div className={`resposta ${activeIndices[3] ? 'show' : ''}`}>
               <p>Por enquanto, os voluntários podem atuar em três áreas, incluindo apoio psicológico, educação social e liderança de grupos. Nosso objetivo é aumentar as áreas de atuação para que mais voluntários possam se juntar.</p>
             </div>
           </div>
@@ -228,12 +228,12 @@ function Principal() {
                 <h2>04</h2>
                 <h1>Quais são os benefícios de se voluntariar?</h1>
               </div>
-              <button className={`sign ${activeIndices[3] ? 'active' : ''}`} onClick={() => toggleSign(3)}>
+              <button className={`sign ${activeIndices[4] ? 'active' : ''}`} onClick={() => toggleSign(4)}>
                 <div></div>
                 <div></div>
               </button>
             </div>
-            <div className={`resposta ${activeIndices[3] ? 'show' : ''}`}>
+            <div className={`resposta ${activeIndices[4] ? 'show' : ''}`}>
               <p>Voluntariar-se para apoiar o Estado do Rio Grande do Sul proporciona uma oportunidade única de impactar positivamente a vida de pessoas em um momento de fragilidade, além de desenvolver novas habilidades, expandir sua rede de contatos, profissional e pessoal, e contribuir para uma causa significativa.</p>
             </div>
           </div>
