@@ -54,8 +54,8 @@ function FormularioEducadorSocial() {
     return isNotEmpty;
   };
 
-  const [errorCpf, setErrorCpf] = useState('');
-  const [errorEmail, setErrorEmail] = useState('');
+  const [errorCpf, setErrorCpf] = useState("");
+  const [errorEmail, setErrorEmail] = useState("");
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
@@ -76,35 +76,27 @@ function FormularioEducadorSocial() {
 
     try {
       const response = await Api.post("/cadastro/lideres", dataToSend);
-      console.log("dados enviados com sucesso:", response.data);
+      console.log("Dados enviados com sucesso:", response.data);
       navigate("/thankyou");
-     
     } catch (error) {
-      console.error("Error al enviar datos:", error);
+      console.error("Erro ao enviar os dados:", error);
       if (error.response?.data?.message?.includes("CPF já cadastrado")) {
-        setErrorCpf("Usuario ja existe, CPF ja cadastrado");
+        setErrorCpf("Usuário já existe, CPF cadastrado");
+        setError("Erro ao enviar os dados: CPF ja existe");
+      } else if (
+        error.response?.data?.message?.includes("E-mail já cadastrado")
+      ) {
+        setErrorEmail("Usuario já existe, Email cadastrado");
+        setError("Erro ao enviar dados: Email cadastrado");
+      } else {
         setError(
-          "Error al enviar datos: CPF ja existe" 
-           
-        );
-      } else if (error.response?.data?.message?.includes("E-mail já cadastrado")) {
-        setErrorEmail("Usuario ja existe, Email ja cadastrado");
-        setError(
-          "Error al enviar datos: Email ja cadastrado"   
-        );
-      }
-      else{
-        setError(
-          "Error al enviar datos: " +
+          "Erro ao enviar dados: " +
             (error.response?.data?.message || error.message)
         );
       }
-    
     }
     setIsLoading(false);
   };
-    
- 
 
   const handleTermsChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.checked });
@@ -143,13 +135,13 @@ function FormularioEducadorSocial() {
 
     if (name === "verifyPassword") {
       setPasswordMatchError(
-        value !== formData.password ? "Las contraseñas no coinciden." : ""
+        value !== formData.password ? "As senhas não coincidem." : ""
       );
     }
 
     if (name === "verifyEmail") {
       setEmailMatchError(
-        value !== formData.email ? "Los correos electrónicos no coinciden." : ""
+        value !== formData.email ? "Os emails não coincidem." : ""
       );
     }
   };
@@ -167,7 +159,8 @@ function FormularioEducadorSocial() {
     if (!/(?=.*[a-z])/.test(password)) errors.push("Falta minúscula.");
     if (!/(?=.*[A-Z])/.test(password)) errors.push("Falta maiúscula.");
     if (!/(?=.*\d)/.test(password)) errors.push("Falta número.");
-    if (!/(?=.*[@#$%^&=])/.test(password)) errors.push("Falta símbolo. (@#$%&=)");
+    if (!/(?=.*[@#$%^&=])/.test(password))
+      errors.push("Falta símbolo. (@#$%&=)");
     if (password.length < 8) errors.push("A senha deve conter 8 caracteres.");
     setPasswordError(errors);
   };
@@ -210,12 +203,11 @@ function FormularioEducadorSocial() {
                 placeholder="Digite seu CPF O valor deve ser numérico"
                 required
                 pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
-                className={`input-text ${error ? 'error-border' : ''}`}
+                className={`input-text ${error ? "error-border" : ""}`}
                 name="cpf"
               />
-               
-             {errorCpf && <p style={{ color: 'red' }}>{errorCpf}</p>}
-  
+
+              {errorCpf && <p style={{ color: "red" }}>{errorCpf}</p>}
             </div>
             <div className="input-field">
               <h4>
@@ -381,6 +373,17 @@ function FormularioEducadorSocial() {
               <option value="Não">Não</option>
             </select>
           </div>
+          <div className="form-group formulario">
+            <h4>Qual é a região da sua preferencia? (opcional)</h4>
+            <input
+              className="input-text"
+              type="text"
+              name="regiao"
+              placeholder="Digite uma região válida"
+              value={formData.regiao}
+              onChange={handleInputChange}
+            />
+          </div>
           {additionalDays.map((additionalDay, index) => (
             <div className="form-group formulario" key={index}>
               <div className="dia-disponible">
@@ -473,8 +476,7 @@ function FormularioEducadorSocial() {
                 required
                 className="input-text"
               />
-                        {errorEmail && <p style={{ color: 'red' }}>{errorEmail}</p>}
-
+              {errorEmail && <p style={{ color: "red" }}>{errorEmail}</p>}
             </div>
             <div className="input-field">
               <h4>
@@ -490,7 +492,7 @@ function FormularioEducadorSocial() {
                 className="input-text"
               />
               {emailMatchError && (
-                <p style={{ color: '#ae0000' }}>{emailMatchError}</p>
+                <p style={{ color: "#ae0000" }}>{emailMatchError}</p>
               )}
             </div>
             <div className="input-field">
@@ -520,7 +522,8 @@ function FormularioEducadorSocial() {
                     </IconButton>
                   </InputAdornment>
                 }
-              />{passwordError.length > 0 && (
+              />
+              {passwordError.length > 0 && (
                 <ul className="error-message">
                   {passwordError.map((error, index) => (
                     <li key={index}>{error}</li>
@@ -549,7 +552,7 @@ function FormularioEducadorSocial() {
                 }
               />
               {passwordMatchError && (
-                <p style={{ color: '#ae0000' }}>{passwordMatchError}</p>
+                <p style={{ color: "#ae0000" }}>{passwordMatchError}</p>
               )}
             </div>
           </div>
@@ -588,7 +591,9 @@ function FormularioEducadorSocial() {
               comunicação sobre atividades e oportunidades relacionadas.
             </label>
           </div>
-          {error && <p style={{ color: '#ae0000', marginBottom:"1rem" }}>{error}</p>}
+          {error && (
+            <p style={{ color: "#ae0000", marginBottom: "1rem" }}>{error}</p>
+          )}
           <button
             className={`SV${isLoading ? " submit-disabled" : ""}`}
             type="submit"
@@ -602,5 +607,5 @@ function FormularioEducadorSocial() {
       <footer className="App-footer"></footer>
     </div>
   );
- }
+}
 export default FormularioEducadorSocial;
