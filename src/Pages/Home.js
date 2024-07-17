@@ -204,7 +204,7 @@ function Principal() {
               </button>
             </div>
             <div className={`resposta ${activeIndices[1] ? 'show' : ''}`}>
-              <p>asdadsasdXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.</p>
+              <p>Este e um tgexto legal.</p>
             </div>
           </div>
           <div className='pergunta'>
