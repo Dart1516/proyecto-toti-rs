@@ -69,7 +69,6 @@ function FormularioPsicologo() {
 
     try {
 
-      const response = await Api.post("/cadastro/psicologos", dataToSend);
 
       const response = await Api.post("/cadastro/psicólogos", dataToSend);
       console.log("dados enviados com sucesso:", response.data);
